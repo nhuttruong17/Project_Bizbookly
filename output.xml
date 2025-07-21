@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-07-21T09:46:56.599869" rpa="false" schemaversion="5">
-<suite id="s1" name="LoginIOS BDD" source="/Users/apple/Downloads/School/PycharmProjects/BizBookly/Tests/Authen/LoginIOS_BDD.robot">
-<kw name="Basic Setup iOS" owner="Common" type="SETUP">
+<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-07-21T17:43:28.161867" rpa="false" schemaversion="5">
+<suite id="s1" name="CheckOutAndroid" source="/Users/apple/Downloads/School/PycharmProjects/BizBookly/Tests/Checkout/CheckOutAndroid.robot">
+<kw name="Basic Setup Android" owner="Common" type="SETUP">
 <kw name="Open Application" owner="AppiumLibrary">
 <arg>${APPIUM_SERVER_URL}</arg>
-<arg>platformName=${PLATFORM_NAME}</arg>
-<arg>appium:automationName=${AUTOMATION_NAME}</arg>
-<arg>appium:udid=${UDID_iPad_Huy}</arg>
-<arg>appium:bundleId=${BUNDLE_ID}</arg>
+<arg>platformName=${PLATFORM_NAME_Android}</arg>
+<arg>appium:automationName=${AUTOMATION_NAME_Android}</arg>
+<arg>appium:udid=${UDID_Android}</arg>
+<arg>appium:appPackage=${APP_PACKAGE}</arg>
+<arg>appium:appActivity=${APP_ACTIVITY}</arg>
 <arg>noReset=true</arg>
+<arg>autoGrantPermissions=true</arg>
 <doc>Opens a new application to given Appium server.
 Capabilities of appium server, Android and iOS,
 Please check https://appium.io/docs/en/2.1/cli/args/
@@ -16,202 +18,414 @@ Please check https://appium.io/docs/en/2.1/cli/args/
 | remote_url          | Yes    | Appium server url |
 | alias               | no     | alias             |
 | strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<status status="PASS" start="2025-07-21T09:46:56.802511" elapsed="3.577814"/>
+<status status="PASS" start="2025-07-21T17:43:28.306456" elapsed="4.932017"/>
 </kw>
-<status status="PASS" start="2025-07-21T09:46:56.801782" elapsed="3.578836"/>
+<status status="PASS" start="2025-07-21T17:43:28.305700" elapsed="4.933796"/>
 </kw>
-<test id="s1-t1" name="Validate Empty Fields Validation" line="9">
-<kw name="Given User is on Login Screen iOS">
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-21T09:47:08.308366" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]
-xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-21T09:47:00.383392" elapsed="7.928650"/>
+<test id="s1-t1" name="Validate Checkout Giftcard Expired" line="80">
+<kw name="Given Find and choose Technician" owner="Common">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:34.081060" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
+<arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
+<doc>Verifies that element identified with locator is visible.</doc>
+<status status="PASS" start="2025-07-21T17:43:33.244033" elapsed="0.838710"/>
+</kw>
+<msg time="2025-07-21T17:43:34.083098" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>AppiumLibrary.Element Should Be Visible</arg>
+<arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-21T17:43:33.243093" elapsed="0.840168"/>
+</kw>
+<kw name="Exit For Loop If" owner="BuiltIn">
+<msg time="2025-07-21T17:43:34.084096" level="INFO">Exiting for loop altogether.</msg>
+<arg>${exists}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-21T17:43:34.083636" elapsed="0.001500"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-21T09:47:08.321724" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="SALON
- Sign In"]'.</msg>
-<msg time="2025-07-21T09:47:09.291081" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="SALON
- Sign In"]</msg>
-<arg>${elm_input}</arg>
+<arg>//android.view.View[@content-desc="Next Page"]</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-21T09:47:08.312512" elapsed="0.979175"/>
+<status status="NOT RUN" start="2025-07-21T17:43:34.085546" elapsed="0.000356"/>
 </kw>
-<arg>${Role_Salon}</arg>
-<status status="PASS" start="2025-07-21T09:47:00.382796" elapsed="8.909296"/>
-</kw>
-<status status="PASS" start="2025-07-21T09:47:00.382432" elapsed="8.909935"/>
-</kw>
-<kw name="When User clicks Sign In button iOS">
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-21T09:47:09.677383" level="INFO">xpath criteria: (//XCUIElementTypeStaticText[@name="Sign In"])[2]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-21T09:47:09.294955" elapsed="0.382833"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-21T09:47:09.687084" level="INFO">Clicking element 'xpath=(//XCUIElementTypeStaticText[@name="Sign In"])[2]'.</msg>
-<msg time="2025-07-21T09:47:10.613799" level="INFO">xpath criteria: (//XCUIElementTypeStaticText[@name="Sign In"])[2]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-21T09:47:09.678248" elapsed="0.936118"/>
-</kw>
-<arg>${btn_Sign_In_iOS}</arg>
-<status status="PASS" start="2025-07-21T09:47:09.293992" elapsed="1.320694"/>
-</kw>
-<status status="PASS" start="2025-07-21T09:47:09.293181" elapsed="1.321889"/>
-</kw>
-<kw name="Then System should display empty field validation errors for both username and password iOS">
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-21T09:47:11.033206" level="INFO">xpath criteria: (//XCUIElementTypeStaticText[@name="This field is required"])[1]</msg>
-<arg>${Elm_message}</arg>
-<arg>20s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-21T09:47:10.616450" elapsed="0.417154"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-07-21T09:47:11.538389" level="INFO">Element 'xpath=(//XCUIElementTypeStaticText[@name="This field is required"])[1]' text is 'This field is required' </msg>
-<msg time="2025-07-21T09:47:11.538909" level="INFO">xpath criteria: (//XCUIElementTypeStaticText[@name="This field is required"])[1]</msg>
-<msg time="2025-07-21T09:47:11.539210" level="INFO">${error_message_invalid} = This field is required</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-07-21T09:47:11.034034" elapsed="0.505349"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-21T09:47:11.539835" elapsed="0.000822"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-07-21T09:47:11.541462" level="INFO">Set test message to:
-validation error message with 'This field is required'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-07-21T09:47:11.541026" elapsed="0.000670"/>
-</kw>
-<arg>${Valid_emty1}</arg>
-<arg>${Expected_emptyfield}</arg>
-<status status="PASS" start="2025-07-21T09:47:10.616063" elapsed="0.925860"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-21T09:47:12.045486" level="INFO">xpath criteria: (//XCUIElementTypeStaticText[@name="This field is required"])[2]</msg>
-<arg>${Elm_message}</arg>
-<arg>20s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-21T09:47:11.543257" elapsed="0.502605"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-07-21T09:47:12.565061" level="INFO">Element 'xpath=(//XCUIElementTypeStaticText[@name="This field is required"])[2]' text is 'This field is required' </msg>
-<msg time="2025-07-21T09:47:12.565567" level="INFO">xpath criteria: (//XCUIElementTypeStaticText[@name="This field is required"])[2]</msg>
-<msg time="2025-07-21T09:47:12.565869" level="INFO">${error_message_invalid} = This field is required</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-07-21T09:47:12.046294" elapsed="0.519744"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-21T09:47:12.566629" elapsed="0.000807"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-07-21T09:47:12.568202" level="INFO">Set test message to:
-validation error message with 'This field is required'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-07-21T09:47:12.567803" elapsed="0.000626"/>
-</kw>
-<arg>${Valid_emty2}</arg>
-<arg>${Expected_emptyfield}</arg>
-<status status="PASS" start="2025-07-21T09:47:11.542334" elapsed="1.026318"/>
-</kw>
-<status status="PASS" start="2025-07-21T09:47:10.615699" elapsed="1.953166"/>
-</kw>
-<doc>Kiểm tra validation khi không nhập UserName &amp; Password</doc>
-<tag>empty_fields</tag>
-<tag>login</tag>
-<tag>smoke</tag>
-<tag>validation</tag>
-<status status="PASS" start="2025-07-21T09:47:00.381640" elapsed="12.187602">validation error message with 'This field is required'</status>
-</test>
-<kw name="Basic TearDowns iOS" owner="Common" type="TEARDOWN">
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-07-21T09:47:15.573173" level="INFO">Slept 3 seconds.</msg>
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-21T17:43:34.086589" elapsed="0.000355"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-07-21T17:43:33.242549" elapsed="0.844728"/>
+</iter>
+<var>${i}</var>
+<value>20</value>
+<status status="PASS" start="2025-07-21T17:43:33.241925" elapsed="0.845606"/>
+</for>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:34.340971" level="INFO">Element '//android.view.View[contains(@content-desc, "caisse")]' attribute 'content-desc' value 'caisse
+ 13 Min
+ 0 Min' </msg>
+<msg time="2025-07-21T17:43:34.341506" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
+<msg time="2025-07-21T17:43:34.341800" level="INFO">${Actual_technician} = caisse
+ 13 Min
+ 0 Min</msg>
+<var>${Actual_technician}</var>
+<arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-21T17:43:34.087884" elapsed="0.254092"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${Actual_technician}</arg>
+<arg>${Technician}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-07-21T17:43:34.342380" elapsed="0.000581"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:34.347155" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "caisse")]'.</msg>
+<msg time="2025-07-21T17:43:34.627017" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
+<arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-07-21T17:43:34.343293" elapsed="0.284627"/>
+</kw>
+<arg>caisse</arg>
+<status status="PASS" start="2025-07-21T17:43:33.241250" elapsed="1.387097"/>
+</kw>
+<kw name="And Find Categories services" owner="Common">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:35.351471" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Crystal Nails")]</msg>
+<arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
+<doc>Verifies that element identified with locator is visible.</doc>
+<status status="PASS" start="2025-07-21T17:43:34.631523" elapsed="0.720385"/>
+</kw>
+<msg time="2025-07-21T17:43:35.352277" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>AppiumLibrary.Element Should Be Visible</arg>
+<arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-21T17:43:34.631029" elapsed="0.721374"/>
+</kw>
+<kw name="Exit For Loop If" owner="BuiltIn">
+<msg time="2025-07-21T17:43:35.353482" level="INFO">Exiting for loop altogether.</msg>
+<arg>${exists}</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-21T17:43:35.352802" elapsed="0.001091"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<arg>//android.view.View[@content-desc="Next Page"]</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="NOT RUN" start="2025-07-21T17:43:35.354386" elapsed="0.000309"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>0.5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-07-21T17:43:35.355092" elapsed="0.000189"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-07-21T17:43:34.630662" elapsed="0.724779"/>
+</iter>
+<var>${i}</var>
+<value>20</value>
+<status status="PASS" start="2025-07-21T17:43:34.630206" elapsed="0.725415"/>
+</for>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:35.566969" level="INFO">Element '//android.view.View[contains(@content-desc, "Crystal Nails")]' attribute 'content-desc' value 'Crystal Nails
+$8.00' </msg>
+<msg time="2025-07-21T17:43:35.567344" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Crystal Nails")]</msg>
+<msg time="2025-07-21T17:43:35.567637" level="INFO">${Actual_Services} = Crystal Nails
+$8.00</msg>
+<var>${Actual_Services}</var>
+<arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-21T17:43:35.355942" elapsed="0.211882"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${Actual_Services}</arg>
+<arg>${Services}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-07-21T17:43:35.568305" elapsed="0.000568"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:35.572888" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "Crystal Nails")]'.</msg>
+<msg time="2025-07-21T17:43:36.317153" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Crystal Nails")]</msg>
+<arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-07-21T17:43:35.569211" elapsed="0.748605"/>
+</kw>
+<arg>Crystal Nails</arg>
+<status status="PASS" start="2025-07-21T17:43:34.629455" elapsed="1.688670"/>
+</kw>
+<kw name="Then Check validation error message Android" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:36.524560" level="INFO">xpath criteria: (//android.view.View[@content-desc="$8.00"])[2]</msg>
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-21T17:43:36.320802" elapsed="0.204243"/>
+</kw>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:36.727624" level="INFO">Element 'xpath=(//android.view.View[@content-desc="$8.00"])[2]' attribute 'content-desc' value '$8.00' </msg>
+<msg time="2025-07-21T17:43:36.728014" level="INFO">xpath criteria: (//android.view.View[@content-desc="$8.00"])[2]</msg>
+<msg time="2025-07-21T17:43:36.728318" level="INFO">${actual} = $8.00</msg>
+<var>${actual}</var>
+<arg>${Elm_message}</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-21T17:43:36.525594" elapsed="0.202898"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-07-21T17:43:36.728891" elapsed="0.000784"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-07-21T17:43:36.730459" level="INFO">Set test message to:
+validation error message with '$8.00'</msg>
+<arg>validation error message with '${actual}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-07-21T17:43:36.730024" elapsed="0.000688"/>
+</kw>
+<arg>xpath=(//android.view.View[@content-desc="$8.00"])[2]</arg>
+<arg>$8.00</arg>
+<status status="PASS" start="2025-07-21T17:43:36.319087" elapsed="0.411860"/>
+</kw>
+<kw name="And Check validation error message Android" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:36.937277" level="INFO">xpath criteria: //android.view.View[@content-desc="$0.40"]</msg>
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-21T17:43:36.732630" elapsed="0.205259"/>
+</kw>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:37.166916" level="INFO">Element '//android.view.View[@content-desc="$0.40"]' attribute 'content-desc' value '$0.40' </msg>
+<msg time="2025-07-21T17:43:37.167299" level="INFO">xpath criteria: //android.view.View[@content-desc="$0.40"]</msg>
+<msg time="2025-07-21T17:43:37.167588" level="INFO">${actual} = $0.40</msg>
+<var>${actual}</var>
+<arg>${Elm_message}</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-21T17:43:36.938607" elapsed="0.229153"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-07-21T17:43:37.168179" elapsed="0.000771"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-07-21T17:43:37.169679" level="INFO">Set test message to:
+validation error message with '$0.40'</msg>
+<arg>validation error message with '${actual}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-07-21T17:43:37.169291" elapsed="0.000622"/>
+</kw>
+<arg>//android.view.View[@content-desc="$0.40"]</arg>
+<arg>$0.40</arg>
+<status status="PASS" start="2025-07-21T17:43:36.731607" elapsed="0.438528"/>
+</kw>
+<kw name="And Check validation error message Android" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:37.363967" level="INFO">xpath criteria: //android.view.View[@content-desc="$8.40"]</msg>
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-21T17:43:37.171659" elapsed="0.192865"/>
+</kw>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:37.551300" level="INFO">Element '//android.view.View[@content-desc="$8.40"]' attribute 'content-desc' value '$8.40' </msg>
+<msg time="2025-07-21T17:43:37.551684" level="INFO">xpath criteria: //android.view.View[@content-desc="$8.40"]</msg>
+<msg time="2025-07-21T17:43:37.551972" level="INFO">${actual} = $8.40</msg>
+<var>${actual}</var>
+<arg>${Elm_message}</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-21T17:43:37.365062" elapsed="0.187086"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-07-21T17:43:37.552596" elapsed="0.000743"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-07-21T17:43:37.554066" level="INFO">Set test message to:
+validation error message with '$8.40'</msg>
+<arg>validation error message with '${actual}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-07-21T17:43:37.553679" elapsed="0.000620"/>
+</kw>
+<arg>//android.view.View[@content-desc="$8.40"]</arg>
+<arg>$8.40</arg>
+<status status="PASS" start="2025-07-21T17:43:37.170844" elapsed="0.383678"/>
+</kw>
+<kw name="When Pay By Gift Card">
+<kw name="Click on Element mobile" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:37.859832" level="INFO">xpath criteria: //android.view.View[@content-desc="Payment"]</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-21T17:43:37.556743" elapsed="0.303582"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:37.864659" level="INFO">Clicking element '//android.view.View[@content-desc="Payment"]'.</msg>
+<msg time="2025-07-21T17:43:38.923033" level="INFO">xpath criteria: //android.view.View[@content-desc="Payment"]</msg>
+<arg>${elm_input}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-07-21T17:43:37.860842" elapsed="1.062666"/>
+</kw>
+<arg>${elm_btn_Payment}</arg>
+<status status="PASS" start="2025-07-21T17:43:37.556039" elapsed="1.367870"/>
+</kw>
+<kw name="Click on Element mobile" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:39.099375" level="INFO">xpath criteria: //android.view.View[@content-desc="Gift Card"]</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-21T17:43:38.925409" elapsed="0.174446"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:39.104435" level="INFO">Clicking element '//android.view.View[@content-desc="Gift Card"]'.</msg>
+<msg time="2025-07-21T17:43:39.321086" level="INFO">xpath criteria: //android.view.View[@content-desc="Gift Card"]</msg>
+<arg>${elm_input}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-07-21T17:43:39.100367" elapsed="0.221451"/>
+</kw>
+<arg>//android.view.View[@content-desc="Gift Card"]</arg>
+<status status="PASS" start="2025-07-21T17:43:38.924494" elapsed="0.397952"/>
+</kw>
+<kw name="Click on Element mobile" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:40.207294" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-21T17:43:39.324437" elapsed="0.883347"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:40.212343" level="INFO">Clicking element '//android.widget.EditText'.</msg>
+<msg time="2025-07-21T17:43:41.435758" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<arg>${elm_input}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-07-21T17:43:40.208304" elapsed="1.228118"/>
+</kw>
+<arg>//android.widget.EditText</arg>
+<status status="PASS" start="2025-07-21T17:43:39.323100" elapsed="2.113637"/>
+</kw>
+<kw name="Fill Text Input mobile" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:41.547188" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-21T17:43:41.438237" elapsed="0.109406"/>
+</kw>
+<kw name="Input Text" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:41.552107" level="INFO">Typing text 'SGC240954437458' into text field '//android.widget.EditText'</msg>
+<msg time="2025-07-21T17:43:41.665823" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<arg>${elm_input}</arg>
+<arg>${text}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="PASS" start="2025-07-21T17:43:41.548154" elapsed="0.118210"/>
+</kw>
+<arg>//android.widget.EditText</arg>
+<arg>${gift_card}</arg>
+<status status="PASS" start="2025-07-21T17:43:41.437281" elapsed="0.229428"/>
+</kw>
+<kw name="Click on Element mobile" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:42.299502" level="INFO">xpath criteria: //android.view.View[@content-desc="Apply"]</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-21T17:43:41.668723" elapsed="0.631257"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:42.304302" level="INFO">Clicking element '//android.view.View[@content-desc="Apply"]'.</msg>
+<msg time="2025-07-21T17:43:43.355523" level="INFO">xpath criteria: //android.view.View[@content-desc="Apply"]</msg>
+<arg>${elm_input}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-07-21T17:43:42.300497" elapsed="1.055488"/>
+</kw>
+<arg>//android.view.View[@content-desc="Apply"]</arg>
+<status status="PASS" start="2025-07-21T17:43:41.667490" elapsed="1.688907"/>
+</kw>
+<arg>SGC240954437458</arg>
+<status status="PASS" start="2025-07-21T17:43:37.555225" elapsed="5.801452"/>
+</kw>
+<kw name="Then Check validation error message Android" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:43.465209" level="INFO">xpath criteria: //android.view.View[@content-desc="Gift card has been expired."]</msg>
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-21T17:43:43.358611" elapsed="0.106977"/>
+</kw>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-21T17:43:43.575205" level="INFO">Element '//android.view.View[@content-desc="Gift card has been expired."]' attribute 'content-desc' value 'Gift card has been expired.' </msg>
+<msg time="2025-07-21T17:43:43.575806" level="INFO">xpath criteria: //android.view.View[@content-desc="Gift card has been expired."]</msg>
+<msg time="2025-07-21T17:43:43.576232" level="INFO">${actual} = Gift card has been expired.</msg>
+<var>${actual}</var>
+<arg>${Elm_message}</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-21T17:43:43.466020" elapsed="0.110454"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-07-21T17:43:43.576997" elapsed="0.000845"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-07-21T17:43:43.578620" level="INFO">Set test message to:
+validation error message with 'Gift card has been expired.'</msg>
+<arg>validation error message with '${actual}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-07-21T17:43:43.578214" elapsed="0.000650"/>
+</kw>
+<arg>//android.view.View[@content-desc="Gift card has been expired."]</arg>
+<arg>Gift card has been expired.</arg>
+<status status="PASS" start="2025-07-21T17:43:43.357676" elapsed="0.221421"/>
+</kw>
+<status status="PASS" start="2025-07-21T17:43:33.239836" elapsed="10.339780">validation error message with 'Gift card has been expired.'</status>
+</test>
+<kw name="Basic TearDowns Android" owner="Common" type="TEARDOWN">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-07-21T17:43:46.586147" level="INFO">Slept 3 seconds.</msg>
 <arg>3</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-07-21T09:47:12.572468" elapsed="3.001247"/>
+<status status="PASS" start="2025-07-21T17:43:43.584299" elapsed="3.003404"/>
 </kw>
 <kw name="Close Application" owner="AppiumLibrary">
 <doc>Closes the current application and also close webdriver session.</doc>
-<status status="PASS" start="2025-07-21T09:47:15.574388" elapsed="0.019492"/>
+<status status="PASS" start="2025-07-21T17:43:46.589006" elapsed="0.429665"/>
 </kw>
-<status status="PASS" start="2025-07-21T09:47:12.571812" elapsed="3.022238"/>
+<status status="PASS" start="2025-07-21T17:43:43.583356" elapsed="3.436257"/>
 </kw>
-<doc>BDD Structure for iOS Login Flow Tests</doc>
-<status status="PASS" start="2025-07-21T09:46:56.602371" elapsed="18.991738"/>
+<status status="PASS" start="2025-07-21T17:43:28.164585" elapsed="18.855287"/>
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">empty_fields</stat>
-<stat pass="1" fail="0" skip="0">login</stat>
-<stat pass="1" fail="0" skip="0">smoke</stat>
-<stat pass="1" fail="0" skip="0">validation</stat>
 </tag>
 <suite>
-<stat name="LoginIOS BDD" id="s1" pass="1" fail="0" skip="0">LoginIOS BDD</stat>
+<stat name="CheckOutAndroid" id="s1" pass="1" fail="0" skip="0">CheckOutAndroid</stat>
 </suite>
 </statistics>
 <errors>
