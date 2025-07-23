@@ -10,13 +10,130 @@ ${Gift_card}        SGC240940632830
 ####Gift Card balances may be change with each payment
 ${Current_amount_Giftcard}        $224.80
 *** Test Cases ***
+Verify Checkout Credit Card with Discount Fixed Amount and Tips Amount
+    Given Find and choose Technician    caisse
+    And Find Categories services      Dip w/ Aloe Vera Manicure
+    And Find Categories services      Gel w/ Regular Mani
+    Then Check validation error message Android        //android.view.View[@content-desc="$85.00"]        $85.00
+    And Check validation error message Android          //android.view.View[@content-desc="$4.25"]         $4.25
+    And Check validation error message Android          //android.view.View[@content-desc="$89.25"]         $89.25
+    When Apply Fixed Discount    5    0    0
+    ## Check balance after apply discount fixed amount
+    Then Check validation error message Android         xpath=(//android.view.View[@content-desc="-$5.00"])[1]        -$5.00
+    And Check validation error message Android          //android.view.View[@content-desc="$85.00"]        $85.00
+    And Check validation error message Android          //android.view.View[@content-desc="$4.00"]         $4.00
+    And Check validation error message Android          //android.view.View[@content-desc="$84.00"]         $84.00
+    When Click on Element mobile    ${elm_btn_Payment}
+    And Click on Element mobile    ${elm_Method_CreditCard}
+    ## Check display total tips amount
+    Then Check validation error message Android    //android.view.View[@content-desc="$80.00"]    $80.00
+    And Click on Element mobile    //android.view.View[@content-desc="Custom Amount"]
+    When Enter NumberPad Amount    3    0    0
+    And Click on Element mobile    ${elm_btn_Submit}
+    ## Check Balance after tips amount
+    Then Check validation error message Android    xpath=(//android.view.View[@content-desc="$87.00"])[1]    $87.00
+    ## Check tips details
+    Then Should Contain    //android.view.View[contains(@content-desc, "caisse") and contains(@content-desc, "$3.00")]    $3.00
+    When Click on Element mobile    ${elm_btn_BeginCharge}
+    Then AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@content-desc="Proceed payment successfully"]        10s
+    When Sign And Confirm Payment
+    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
+    When Choose No Receipt
+
+Verify Checkout Credit Card with Discount Fixed Amount and Tips Percentage
+    Given Find and choose Technician    caisse
+    And Find Categories services      Dip w/ Aloe Vera Manicure
+    And Find Categories services      Gel w/ Regular Mani
+    And Find Categories services      Acrylic Full Set w/ Gel
+    Then Check validation error message Android        //android.view.View[@content-desc="$135.00"]        $135.00
+    And Check validation error message Android          //android.view.View[@content-desc="$6.75"]         $6.75
+    And Check validation error message Android          //android.view.View[@content-desc="$141.75"]         $141.75
+    When Apply Fixed Discount    5    0    0
+    ## Check balance after apply discount fixed amount
+    Then Check validation error message Android         xpath=(//android.view.View[@content-desc="-$5.00"])[1]        -$5.00
+    And Check validation error message Android          //android.view.View[@content-desc="$135.00"]        $135.00
+    And Check validation error message Android          //android.view.View[@content-desc="$6.50"]         $6.50
+    And Check validation error message Android          //android.view.View[@content-desc="$136.50"]         $136.50
+    When Click on Element mobile    ${elm_btn_Payment}
+    And Click on Element mobile    ${elm_Method_CreditCard}
+    ## Check display total tips amount
+    Then Check validation error message Android    //android.view.View[@content-desc="$130.00"]    $130.00
+    ## Check balance after tip percentage
+    When Click on Element mobile    //android.view.View[contains(@content-desc, "5%") and contains(@content-desc, "$6.50")]
+    Then Check validation error message Android    xpath=(//android.view.View[@content-desc="$143.00"])[1]    $143.00
+    ## Check tip details
+    Then Should Contain    //android.view.View[contains(@content-desc, "caisse") and contains(@content-desc, "$6.50")]    $6.50
+    And Click on Element mobile    ${elm_btn_BeginCharge}
+    Then AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@content-desc="Proceed payment successfully"]        10s
+    When Sign And Confirm Payment
+    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
+    When Choose No Receipt
+
+Verify Checkout Credit Card with Discount Percentage and Tips Percentage
+    Given Find and choose Technician    caisse
+    And Find Categories services      Dip w/ Aloe Vera Manicure
+    And Find Categories services      Gel w/ Regular Mani
+    Then Check validation error message Android        //android.view.View[@content-desc="$85.00"]        $85.00
+    And Check validation error message Android          //android.view.View[@content-desc="$4.25"]         $4.25
+    And Check validation error message Android          //android.view.View[@content-desc="$89.25"]         $89.25
+    When Apply Percentage Discount    1    0
+    ## Check balance after apply discount fixed amount
+    Then Check validation error message Android         xpath=(//android.view.View[@content-desc="-$8.50"])[1]    -$8.50
+    And Check validation error message Android          //android.view.View[@content-desc="$85.00"]        $85.00
+    And Check validation error message Android          //android.view.View[@content-desc="$3.83"]         $3.83
+    And Check validation error message Android          //android.view.View[@content-desc="$80.33"]         $80.33
+    When Click on Element mobile    ${elm_btn_Payment}
+    And Click on Element mobile    ${elm_Method_CreditCard}
+    ## Check display total tips amount
+    Then Check validation error message Android    //android.view.View[@content-desc="$76.50"]    $76.50
+    When Click on Element mobile    //android.view.View[contains(@content-desc, "5%") and contains(@content-desc, "$3.82")]
+    ## Check Balance after tips amount
+    Then Check validation error message Android    xpath=(//android.view.View[@content-desc="$84.15"])[1]    $84.15
+    ## Check tips details
+    Then Should Contain    //android.view.View[contains(@content-desc, "caisse") and contains(@content-desc, "$3.82")]    $3.82
+    When Click on Element mobile    ${elm_btn_BeginCharge}
+    Then AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@content-desc="Proceed payment successfully"]        10s
+    When Sign And Confirm Payment
+    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
+    When Choose No Receipt
+
+Verify Checkout Credit Card with Discount Percentage and Tips Amount
+    Given Find and choose Technician    caisse
+    And Find Categories services      Dip w/ Aloe Vera Manicure
+    And Find Categories services      Gel w/ Regular Mani
+    And Find Categories services      Acrylic Full Set w/ Gel
+    Then Check validation error message Android        //android.view.View[@content-desc="$135.00"]        $135.00
+    And Check validation error message Android          //android.view.View[@content-desc="$6.75"]         $6.75
+    And Check validation error message Android          //android.view.View[@content-desc="$141.75"]         $141.75
+    When Apply Percentage Discount    1    0
+    ## Check balance after apply discount fixed amount
+    Then Check validation error message Android         xpath=(//android.view.View[@content-desc="-$13.50"])[1]        -$13.50
+    And Check validation error message Android          //android.view.View[@content-desc="$135.00"]        $135.00
+    And Check validation error message Android          //android.view.View[@content-desc="$6.08"]         $6.08
+    And Check validation error message Android          //android.view.View[@content-desc="$127.58"]         $127.58
+    When Click on Element mobile    ${elm_btn_Payment}
+    And Click on Element mobile    ${elm_Method_CreditCard}
+    ## Check display total tips amount
+    Then Check validation error message Android    //android.view.View[@content-desc="$121.50"]    $121.50
+    ## Check balance after tip percentage
+    And Click on Element mobile    //android.view.View[@content-desc="Custom Amount"]
+    When Enter NumberPad Amount    3    0    0
+    And Click on Element mobile    ${elm_btn_Submit}
+    Then Check validation error message Android    xpath=(//android.view.View[@content-desc="$130.58"])[1]    $130.58
+    ## Check tip details
+    Then Should Contain    //android.view.View[contains(@content-desc, "caisse") and contains(@content-desc, "$3.00")]    $3.00
+    And Click on Element mobile    ${elm_btn_BeginCharge}
+    Then AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@content-desc="Proceed payment successfully"]        10s
+    When Sign And Confirm Payment
+    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
+    When Choose No Receipt
+
 Verify Checkout Credit Card with Discount option Apply Voucher
     Given Find and choose Technician    caisse
     And Find Categories services      Dip w/ Aloe Vera Manicure
     Then Check validation error message Android    //android.view.View[@content-desc="$50.00"]    $50.00
     When Apply Voucher Discount    Testvoucher
     And Click on Element mobile    ${elm_btn_Submit}
-    # Thêm các bước kiểm tra kết quả, thanh toán, ký tên, nhận receipt nếu cần
     When Pay By Credit Card
     Then AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@content-desc="Proceed payment successfully"]        10s
     When Sign And Confirm Payment
@@ -39,6 +156,8 @@ Verify Checkout Credit Card with Discount option Fixed Amount
     Then AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@content-desc="Proceed payment successfully"]        10s
     When Sign And Confirm Payment
     Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]       Your payment is confirmed!
+    When Choose send receipt to SMS      8    0    4    2    8    6    0    4    3    9
+    Then Check validation error message Android    //android.view.View[@content-desc="The receipt has been sent successfully."]    The receipt has been sent successfully.
     When Choose No Receipt
 
 Verify Checkout Credit Card with Discount option Percentage
@@ -57,6 +176,8 @@ Verify Checkout Credit Card with Discount option Percentage
     Then AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@content-desc="Proceed payment successfully"]        10s
     When Sign And Confirm Payment
     Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]       Your payment is confirmed!
+    When Choose send receipt to Email    school@yopmail.com
+    Then Check validation error message Android    //android.view.View[@content-desc="Send Receipt Successfully"]    Send Receipt Successfully
     When Choose No Receipt
 
 Verify Checkout Credit Card without discount and without tip
@@ -72,6 +193,7 @@ Verify Checkout Credit Card without discount and without tip
     When Sign And Confirm Payment
     Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]       Your payment is confirmed!
     When Choose No Receipt
+
 ##Method Giftcard
 Validate Checkout Giftcard Not Found
     Given Find and choose Technician    caisse
@@ -113,6 +235,40 @@ Verify Checkout Giftcard
     # And Check validation error message Android    //android.view.View[@content-desc="${Current_amount_Giftcard}"]    ${Current_amount_Giftcard}
     Then Check validation error message Android    xpath=(//android.view.View[@content-desc="$8.40"])[4]    $8.40
     Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]       Your payment is confirmed!
+    When Choose No Receipt
+
+Verify Checkout Giftcard and Send email
+    Given Find and choose Technician    caisse
+    And Find Categories services      Crystal Nails
+    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$8.00"])[2]         $8.00
+    And Check validation error message Android          //android.view.View[@content-desc="$0.40"]         $0.40
+    And Check validation error message Android          //android.view.View[@content-desc="$8.40"]         $8.40
+    When Pay By Gift Card       ${Gift_card}
+    And Click on Element mobile    //android.view.View[@content-desc="Apply"]
+    And Click on Element mobile    ${elm_btn_Submit}
+    Then Check validation error message Android    //android.view.View[@content-desc="SGC240940632830"]    ${Gift_card}
+    # And Check validation error message Android    //android.view.View[@content-desc="${Current_amount_Giftcard}"]    ${Current_amount_Giftcard}
+    Then Check validation error message Android    xpath=(//android.view.View[@content-desc="$8.40"])[4]    $8.40
+    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]       Your payment is confirmed!
+    When Choose send receipt to Email    school@yopmail.com
+    Then Check validation error message Android    //android.view.View[@content-desc="Send Receipt Successfully"]    Send Receipt Successfully
+    When Choose No Receipt
+
+Verify Checkout Giftcard and Send SMS
+    Given Find and choose Technician    caisse
+    And Find Categories services      Crystal Nails
+    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$8.00"])[2]         $8.00
+    And Check validation error message Android          //android.view.View[@content-desc="$0.40"]         $0.40
+    And Check validation error message Android          //android.view.View[@content-desc="$8.40"]         $8.40
+    When Pay By Gift Card       ${Gift_card}
+    And Click on Element mobile    //android.view.View[@content-desc="Apply"]
+    And Click on Element mobile    ${elm_btn_Submit}
+    Then Check validation error message Android    //android.view.View[@content-desc="SGC240940632830"]    ${Gift_card}
+    # And Check validation error message Android    //android.view.View[@content-desc="${Current_amount_Giftcard}"]    ${Current_amount_Giftcard}
+    Then Check validation error message Android    xpath=(//android.view.View[@content-desc="$8.40"])[4]    $8.40
+    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]       Your payment is confirmed!
+    When Choose send receipt to SMS      8    0    4    2    8    6    0    4    3    9
+    Then Check validation error message Android    //android.view.View[@content-desc="The receipt has been sent successfully."]    The receipt has been sent successfully.
     When Choose No Receipt
 
 # ##Method Paid Externally
@@ -238,6 +394,34 @@ Verify Checkout Paid Externally without discount and without tip
     ## Check Title Paid Externally
     Then Check validation error message Android    //android.view.View[@content-desc="Paid Externally"]    Paid Externally
     Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]       Your payment is confirmed!
+    When Choose No Receipt
+
+Verify Checkout Paid Externally without discount and without tip and send Email
+    Given Find and choose Technician    caisse
+    And Find Categories services      Crystal Nails
+    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$8.00"])[2]         $8.00
+    And Check validation error message Android          //android.view.View[@content-desc="$0.40"]         $0.40
+    And Check validation error message Android          //android.view.View[@content-desc="$8.40"]         $8.40
+    When Pay By Paid Externally
+    ## Check Title Paid Externally
+    Then Check validation error message Android    //android.view.View[@content-desc="Paid Externally"]    Paid Externally
+    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]       Your payment is confirmed!
+    When Choose send receipt to Email    school@yopmail.com
+    Then Check validation error message Android    //android.view.View[@content-desc="Send Receipt Successfully"]    Send Receipt Successfully
+    When Choose No Receipt
+
+Verify Checkout Paid Externally without discount and without tip and send Sms
+    Given Find and choose Technician    caisse
+    And Find Categories services      Crystal Nails
+    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$8.00"])[2]         $8.00
+    And Check validation error message Android          //android.view.View[@content-desc="$0.40"]         $0.40
+    And Check validation error message Android          //android.view.View[@content-desc="$8.40"]         $8.40
+    When Pay By Paid Externally
+    ## Check Title Paid Externally
+    Then Check validation error message Android    //android.view.View[@content-desc="Paid Externally"]    Paid Externally
+    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]       Your payment is confirmed!
+    When Choose send receipt to SMS      8    0    4    2    8    6    0    4    3    9
+    Then Check validation error message Android    //android.view.View[@content-desc="The receipt has been sent successfully."]    The receipt has been sent successfully.
     When Choose No Receipt
 
 Verify Checkout Paid Externally discount percentage and without tip
@@ -429,21 +613,22 @@ Verify Check out Cash and send email
     Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$8.00"])[2]         $8.00
     And Check validation error message Android          //android.view.View[@content-desc="$0.40"]         $0.40
     And Check validation error message Android          //android.view.View[@content-desc="$8.40"]         $8.40
-    # And Find Categories services      Swedish Massage
-    # Then Check validation error message Android    //android.view.View[@content-desc="$83.00"]    $83.00
-    # And Check validation error message Android    //android.view.View[@content-desc="$4.15"]    $4.15
-    # And Check validation error message Android    //android.view.View[@content-desc="$87.15"]        $87.15
-    # When Click on Element mobile    //android.widget.EditText
-    # And Fill Text Input mobile      //android.widget.EditText    Royal Pedicure
-    # And Click on Element mobile     //android.view.View[@content-desc="Change position"]
-    # And Click on Element mobile     //android.view.View[contains(@content-desc, "Royal Pedicure") and contains(@content-desc, "$45.00")]
-    # Then Check validation error message Android    //android.view.View[@content-desc="$128.00"]    $128.00
-    # And Check validation error message Android    //android.view.View[@content-desc="$6.40"]    $6.40
-    # And Check validation error message Android    //android.view.View[@content-desc="$134.40"]        $134.40
     When Pay By Cash
     Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
     When Choose send receipt to Email    school@yopmail.com
     Then Check validation error message Android    //android.view.View[@content-desc="Send Receipt Successfully"]    Send Receipt Successfully
+    When Choose No Receipt
+
+Verify Check out Cash and send Sms
+    Given Find and choose Technician    caisse
+    And Find Categories services      Crystal Nails
+    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$8.00"])[2]         $8.00
+    And Check validation error message Android          //android.view.View[@content-desc="$0.40"]         $0.40
+    And Check validation error message Android          //android.view.View[@content-desc="$8.40"]         $8.40
+    When Pay By Cash
+    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
+    When Choose send receipt to SMS      8    0    4    2    8    6    0    4    3    9
+    Then Check validation error message Android    //android.view.View[@content-desc="The receipt has been sent successfully."]    The receipt has been sent successfully.
     When Choose No Receipt
     
 
@@ -680,6 +865,16 @@ Choose send receipt to Email
     Click on Element mobile    //android.widget.ScrollView/android.view.View[7]
     Click on Element mobile    //android.widget.EditText[@text="${email}"]/android.view.View
     Click on Element mobile    //android.view.View[@content-desc="SEND"]
+
+Choose send receipt to SMS    
+    [Arguments]    @{digits}
+    Click on Element mobile    //android.view.View[@content-desc="Text (SMS)"]
+    FOR    ${digit}    IN    @{digits}
+        Click on Element mobile    //android.view.View[@content-desc="${digit}"]
+    END
+
+    Click on Element mobile    //android.view.View[@content-desc="Send"]
+
 Enter NumberPad Amount
     [Arguments]    @{digits}
     FOR    ${digit}    IN    @{digits}

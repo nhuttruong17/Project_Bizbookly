@@ -185,6 +185,7 @@ Swipe Dob
 
 Swipe Dob Android Index
     [Arguments]    ${MONTH_TARGET}    ${DAY_TARGET}    ${YEAR_TARGET}
+    AppiumLibrary.Wait Until Element Is Visible    //android.widget.SeekBar        10s
     ${seekbars}=    AppiumLibrary.Get Webelements    //android.widget.SeekBar
     ${month_seekbar}=    Set Variable    ${seekbars[0]}
     ${day_seekbar}=      Set Variable    ${seekbars[1]}
@@ -262,7 +263,7 @@ Find and choose Technician
 Find Categories services
     [Arguments]    ${Services}
     FOR    ${i}    IN RANGE    20
-        ${exists}=    Run Keyword And Return Status      AppiumLibrary.Element Should Be Visible    //android.view.View[contains(@content-desc, "${Services}")]
+        ${exists}=    Run Keyword And Return Status      AppiumLibrary.Element Should Be Visible       //android.view.View[contains(@content-desc, "${Services}")]
         Exit For Loop If    ${exists}
         AppiumLibrary.Click Element     //android.view.View[@content-desc="Next Page"]
         Sleep    0.5s
