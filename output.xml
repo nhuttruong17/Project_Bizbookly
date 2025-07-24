@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-07-23T17:33:33.083378" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-07-24T17:56:54.239259" rpa="false" schemaversion="5">
 <suite id="s1" name="CheckOutAndroid" source="/Users/apple/Downloads/School/PycharmProjects/BizBookly/Tests/Checkout/CheckOutAndroid.robot">
 <kw name="Basic Setup Android" owner="Common" type="SETUP">
 <kw name="Open Application" owner="AppiumLibrary">
 <arg>${APPIUM_SERVER_URL}</arg>
 <arg>platformName=${PLATFORM_NAME_Android}</arg>
 <arg>appium:automationName=${AUTOMATION_NAME_Android}</arg>
-<arg>appium:udid=${UDID_Android}</arg>
+<arg>appium:device=${UDID_Android}</arg>
 <arg>appium:appPackage=${APP_PACKAGE}</arg>
 <arg>appium:appActivity=${APP_ACTIVITY}</arg>
 <arg>noReset=true</arg>
@@ -18,694 +18,889 @@ Please check https://appium.io/docs/en/2.1/cli/args/
 | remote_url          | Yes    | Appium server url |
 | alias               | no     | alias             |
 | strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<status status="PASS" start="2025-07-23T17:33:33.201104" elapsed="4.629139"/>
+<status status="PASS" start="2025-07-24T17:56:54.389956" elapsed="4.775085"/>
 </kw>
-<status status="PASS" start="2025-07-23T17:33:33.200473" elapsed="4.630456"/>
+<status status="PASS" start="2025-07-24T17:56:54.389206" elapsed="4.777310"/>
 </kw>
-<test id="s1-t1" name="Verify Checkout Credit Card with Discount option Percentage" line="164">
+<test id="s1-t1" name="Verify Checkout Credit Card With Voucher Discount And Tip Percentage" line="43">
 <kw name="Given Find and choose Technician" owner="Common">
 <for flavor="IN RANGE">
 <iter>
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
 <kw name="Element Should Be Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:38.663080" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
+<msg time="2025-07-24T17:56:59.996719" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
 <arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
 <doc>Verifies that element identified with locator is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:37.835209" elapsed="0.829299"/>
+<status status="PASS" start="2025-07-24T17:56:59.171201" elapsed="0.828079"/>
 </kw>
-<msg time="2025-07-23T17:33:38.664950" level="INFO">${exists} = True</msg>
+<msg time="2025-07-24T17:56:59.999629" level="INFO">${exists} = True</msg>
 <var>${exists}</var>
 <arg>AppiumLibrary.Element Should Be Visible</arg>
 <arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2025-07-23T17:33:37.834637" elapsed="0.830540"/>
+<status status="PASS" start="2025-07-24T17:56:59.170659" elapsed="0.829134"/>
 </kw>
 <kw name="Exit For Loop If" owner="BuiltIn">
-<msg time="2025-07-23T17:33:38.666274" level="INFO">Exiting for loop altogether.</msg>
+<msg time="2025-07-24T17:57:00.000628" level="INFO">Exiting for loop altogether.</msg>
 <arg>${exists}</arg>
 <doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" start="2025-07-23T17:33:38.665675" elapsed="0.001870"/>
+<status status="PASS" start="2025-07-24T17:57:00.000162" elapsed="0.001499"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
 <arg>//android.view.View[@content-desc="Next Page"]</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="NOT RUN" start="2025-07-23T17:33:38.668030" elapsed="0.000245"/>
+<status status="NOT RUN" start="2025-07-24T17:57:00.002085" elapsed="0.000238"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
 <arg>0.5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2025-07-23T17:33:38.668606" elapsed="0.000421"/>
+<status status="NOT RUN" start="2025-07-24T17:57:00.003409" elapsed="0.000699"/>
 </kw>
 <var name="${i}">0</var>
-<status status="PASS" start="2025-07-23T17:33:37.834255" elapsed="0.835263"/>
+<status status="PASS" start="2025-07-24T17:56:59.170268" elapsed="0.834540"/>
 </iter>
 <var>${i}</var>
 <value>20</value>
-<status status="PASS" start="2025-07-23T17:33:37.833772" elapsed="0.836269"/>
+<status status="PASS" start="2025-07-24T17:56:59.169758" elapsed="0.835438"/>
 </for>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:38.981721" level="INFO">Element '//android.view.View[contains(@content-desc, "caisse")]' attribute 'content-desc' value 'caisse
-5 Hour 50 Min
+<msg time="2025-07-24T17:57:00.318873" level="INFO">Element '//android.view.View[contains(@content-desc, "caisse")]' attribute 'content-desc' value 'caisse
+5 Hour 52 Min
  0 Min' </msg>
-<msg time="2025-07-23T17:33:38.982173" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
-<msg time="2025-07-23T17:33:38.982554" level="INFO">${Actual_technician} = caisse
-5 Hour 50 Min
+<msg time="2025-07-24T17:57:00.319235" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
+<msg time="2025-07-24T17:57:00.319529" level="INFO">${Actual_technician} = caisse
+5 Hour 52 Min
  0 Min</msg>
 <var>${Actual_technician}</var>
 <arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:33:38.671073" elapsed="0.311706"/>
+<status status="PASS" start="2025-07-24T17:57:00.005604" elapsed="0.314102"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${Actual_technician}</arg>
 <arg>${Technician}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-07-23T17:33:38.983285" elapsed="0.000661"/>
+<status status="PASS" start="2025-07-24T17:57:00.320122" elapsed="0.000576"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:38.988038" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "caisse")]'.</msg>
-<msg time="2025-07-23T17:33:39.339714" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
+<msg time="2025-07-24T17:57:00.325079" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "caisse")]'.</msg>
+<msg time="2025-07-24T17:57:00.651323" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
 <arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:38.984274" elapsed="0.356199"/>
+<status status="PASS" start="2025-07-24T17:57:00.321028" elapsed="0.330927"/>
 </kw>
 <arg>caisse</arg>
-<status status="PASS" start="2025-07-23T17:33:37.833035" elapsed="1.507974"/>
+<status status="PASS" start="2025-07-24T17:56:59.169052" elapsed="1.483353"/>
 </kw>
 <kw name="And Find Categories services" owner="Common">
 <for flavor="IN RANGE">
 <iter>
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
 <kw name="Element Should Be Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:40.137640" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Dip w/ Aloe Vera Manicure")]</msg>
+<msg time="2025-07-24T17:57:01.186725" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Dip w/ Aloe Vera Manicure")]</msg>
 <arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
 <doc>Verifies that element identified with locator is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:39.344607" elapsed="0.793574"/>
+<status status="PASS" start="2025-07-24T17:57:00.656679" elapsed="0.530539"/>
 </kw>
-<msg time="2025-07-23T17:33:40.138624" level="INFO">${exists} = True</msg>
+<msg time="2025-07-24T17:57:01.187650" level="INFO">${exists} = True</msg>
 <var>${exists}</var>
 <arg>AppiumLibrary.Element Should Be Visible</arg>
 <arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2025-07-23T17:33:39.344040" elapsed="0.794742"/>
+<status status="PASS" start="2025-07-24T17:57:00.655983" elapsed="0.531803"/>
 </kw>
 <kw name="Exit For Loop If" owner="BuiltIn">
-<msg time="2025-07-23T17:33:40.139967" level="INFO">Exiting for loop altogether.</msg>
+<msg time="2025-07-24T17:57:01.189089" level="INFO">Exiting for loop altogether.</msg>
 <arg>${exists}</arg>
 <doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" start="2025-07-23T17:33:40.139344" elapsed="0.000959"/>
+<status status="PASS" start="2025-07-24T17:57:01.188253" elapsed="0.001322"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
 <arg>//android.view.View[@content-desc="Next Page"]</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="NOT RUN" start="2025-07-23T17:33:40.140808" elapsed="0.000237"/>
+<status status="NOT RUN" start="2025-07-24T17:57:01.190197" elapsed="0.000274"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
 <arg>0.5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2025-07-23T17:33:40.141827" elapsed="0.000310"/>
+<status status="NOT RUN" start="2025-07-24T17:57:01.190774" elapsed="0.000169"/>
 </kw>
 <var name="${i}">0</var>
-<status status="PASS" start="2025-07-23T17:33:39.343589" elapsed="0.798777"/>
+<status status="PASS" start="2025-07-24T17:57:00.655155" elapsed="0.535953"/>
 </iter>
 <var>${i}</var>
 <value>20</value>
-<status status="PASS" start="2025-07-23T17:33:39.342945" elapsed="0.799658"/>
+<status status="PASS" start="2025-07-24T17:57:00.654397" elapsed="0.536905"/>
 </for>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:40.496020" level="INFO">Element '//android.view.View[contains(@content-desc, "Dip w/ Aloe Vera Manicure")]' attribute 'content-desc' value 'Dip w/ Aloe Vera Manicure
+<msg time="2025-07-24T17:57:01.440582" level="INFO">Element '//android.view.View[contains(@content-desc, "Dip w/ Aloe Vera Manicure")]' attribute 'content-desc' value 'Dip w/ Aloe Vera Manicure
 50 mins
 $50.00' </msg>
-<msg time="2025-07-23T17:33:40.496445" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Dip w/ Aloe Vera Manicure")]</msg>
-<msg time="2025-07-23T17:33:40.496744" level="INFO">${Actual_Services} = Dip w/ Aloe Vera Manicure
+<msg time="2025-07-24T17:57:01.440962" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Dip w/ Aloe Vera Manicure")]</msg>
+<msg time="2025-07-24T17:57:01.441256" level="INFO">${Actual_Services} = Dip w/ Aloe Vera Manicure
 50 mins
 $50.00</msg>
 <var>${Actual_Services}</var>
 <arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:33:40.143022" elapsed="0.353906"/>
+<status status="PASS" start="2025-07-24T17:57:01.191635" elapsed="0.249814"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${Actual_Services}</arg>
 <arg>${Services}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-07-23T17:33:40.497424" elapsed="0.000764"/>
+<status status="PASS" start="2025-07-24T17:57:01.441864" elapsed="0.000551"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:40.502397" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "Dip w/ Aloe Vera Manicure")]'.</msg>
-<msg time="2025-07-23T17:33:41.296817" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Dip w/ Aloe Vera Manicure")]</msg>
+<msg time="2025-07-24T17:57:01.446755" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "Dip w/ Aloe Vera Manicure")]'.</msg>
+<msg time="2025-07-24T17:57:02.230077" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Dip w/ Aloe Vera Manicure")]</msg>
 <arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:40.498577" elapsed="0.798759"/>
+<status status="PASS" start="2025-07-24T17:57:01.442740" elapsed="0.787868"/>
 </kw>
 <arg>Dip w/ Aloe Vera Manicure</arg>
-<status status="PASS" start="2025-07-23T17:33:39.341935" elapsed="1.955727"/>
+<status status="PASS" start="2025-07-24T17:57:00.653347" elapsed="1.577706"/>
 </kw>
 <kw name="And Find Categories services" owner="Common">
 <for flavor="IN RANGE">
 <iter>
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
 <kw name="Element Should Be Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:41.548705" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Dip Ombre")]</msg>
+<msg time="2025-07-24T17:57:02.499625" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Gel w/ Regular Mani")]</msg>
 <arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
 <doc>Verifies that element identified with locator is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:41.301036" elapsed="0.248225"/>
+<status status="PASS" start="2025-07-24T17:57:02.235213" elapsed="0.264810"/>
 </kw>
-<msg time="2025-07-23T17:33:41.549696" level="INFO">${exists} = True</msg>
+<msg time="2025-07-24T17:57:02.500455" level="INFO">${exists} = True</msg>
 <var>${exists}</var>
 <arg>AppiumLibrary.Element Should Be Visible</arg>
 <arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2025-07-23T17:33:41.300558" elapsed="0.249260"/>
+<status status="PASS" start="2025-07-24T17:57:02.234589" elapsed="0.266046"/>
 </kw>
 <kw name="Exit For Loop If" owner="BuiltIn">
-<msg time="2025-07-23T17:33:41.551170" level="INFO">Exiting for loop altogether.</msg>
+<msg time="2025-07-24T17:57:02.501637" level="INFO">Exiting for loop altogether.</msg>
 <arg>${exists}</arg>
 <doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" start="2025-07-23T17:33:41.550407" elapsed="0.001130"/>
+<status status="PASS" start="2025-07-24T17:57:02.501089" elapsed="0.000820"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
 <arg>//android.view.View[@content-desc="Next Page"]</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="NOT RUN" start="2025-07-23T17:33:41.551979" elapsed="0.000190"/>
+<status status="NOT RUN" start="2025-07-24T17:57:02.502232" elapsed="0.000171"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
 <arg>0.5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2025-07-23T17:33:41.552475" elapsed="0.000163"/>
+<status status="NOT RUN" start="2025-07-24T17:57:02.502688" elapsed="0.000161"/>
 </kw>
 <var name="${i}">0</var>
-<status status="PASS" start="2025-07-23T17:33:41.300210" elapsed="0.252589"/>
+<status status="PASS" start="2025-07-24T17:57:02.234116" elapsed="0.268894"/>
 </iter>
 <var>${i}</var>
 <value>20</value>
-<status status="PASS" start="2025-07-23T17:33:41.299701" elapsed="0.253279"/>
+<status status="PASS" start="2025-07-24T17:57:02.233442" elapsed="0.269749"/>
 </for>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:41.790354" level="INFO">Element '//android.view.View[contains(@content-desc, "Dip Ombre")]' attribute 'content-desc' value 'Dip Ombre
-50 mins
-$50.00' </msg>
-<msg time="2025-07-23T17:33:41.790842" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Dip Ombre")]</msg>
-<msg time="2025-07-23T17:33:41.791201" level="INFO">${Actual_Services} = Dip Ombre
-50 mins
-$50.00</msg>
+<msg time="2025-07-24T17:57:02.743587" level="INFO">Element '//android.view.View[contains(@content-desc, "Gel w/ Regular Mani")]' attribute 'content-desc' value 'Gel w/ Regular Mani
+35 mins
+$35.00' </msg>
+<msg time="2025-07-24T17:57:02.744002" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Gel w/ Regular Mani")]</msg>
+<msg time="2025-07-24T17:57:02.744312" level="INFO">${Actual_Services} = Gel w/ Regular Mani
+35 mins
+$35.00</msg>
 <var>${Actual_Services}</var>
 <arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:33:41.553284" elapsed="0.238109"/>
+<status status="PASS" start="2025-07-24T17:57:02.503510" elapsed="0.240986"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${Actual_Services}</arg>
 <arg>${Services}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-07-23T17:33:41.791820" elapsed="0.000561"/>
+<status status="PASS" start="2025-07-24T17:57:02.744921" elapsed="0.000585"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:41.796501" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "Dip Ombre")]'.</msg>
-<msg time="2025-07-23T17:33:42.574784" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Dip Ombre")]</msg>
+<msg time="2025-07-24T17:57:02.749725" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "Gel w/ Regular Mani")]'.</msg>
+<msg time="2025-07-24T17:57:03.531197" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Gel w/ Regular Mani")]</msg>
 <arg>//android.view.View[contains(@content-desc, "${Services}")]</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:41.792726" elapsed="0.782531"/>
+<status status="PASS" start="2025-07-24T17:57:02.745834" elapsed="0.785816"/>
 </kw>
-<arg>Dip Ombre</arg>
-<status status="PASS" start="2025-07-23T17:33:41.298703" elapsed="1.276916"/>
+<arg>Gel w/ Regular Mani</arg>
+<status status="PASS" start="2025-07-24T17:57:02.232283" elapsed="1.299767"/>
 </kw>
-<kw name="Then Check validation error message Android" owner="Common">
+<kw name="Then System should display original price breakdown">
+<kw name="Check validation error message Android" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:42.822809" level="INFO">xpath criteria: //android.view.View[@content-desc="$100.00"]</msg>
+<msg time="2025-07-24T17:57:03.783633" level="INFO">xpath criteria: //android.view.View[@content-desc="$85.00"]</msg>
 <arg>${Elm_message}</arg>
 <arg>15s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:42.577329" elapsed="0.245943"/>
+<status status="PASS" start="2025-07-24T17:57:03.535394" elapsed="0.248722"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:43.069772" level="INFO">Element '//android.view.View[@content-desc="$100.00"]' attribute 'content-desc' value '$100.00' </msg>
-<msg time="2025-07-23T17:33:43.070010" level="INFO">xpath criteria: //android.view.View[@content-desc="$100.00"]</msg>
-<msg time="2025-07-23T17:33:43.070115" level="INFO">${actual} = $100.00</msg>
+<msg time="2025-07-24T17:57:04.023234" level="INFO">Element '//android.view.View[@content-desc="$85.00"]' attribute 'content-desc' value '$85.00' </msg>
+<msg time="2025-07-24T17:57:04.023641" level="INFO">xpath criteria: //android.view.View[@content-desc="$85.00"]</msg>
+<msg time="2025-07-24T17:57:04.023937" level="INFO">${actual} = $85.00</msg>
 <var>${actual}</var>
 <arg>${Elm_message}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:33:42.823774" elapsed="0.246397"/>
+<status status="PASS" start="2025-07-24T17:57:03.784633" elapsed="0.239480"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${actual}</arg>
 <arg>${Expected_message}</arg>
 <arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-23T17:33:43.070345" elapsed="0.000296"/>
+<status status="PASS" start="2025-07-24T17:57:04.024545" elapsed="0.000842"/>
 </kw>
 <kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-07-23T17:33:43.070896" level="INFO">Set test message to:
-validation error message with '$100.00'</msg>
+<msg time="2025-07-24T17:57:04.026435" level="INFO">Set test message to:
+validation error message with '$85.00'</msg>
 <arg>validation error message with '${actual}'</arg>
 <doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-07-23T17:33:43.070754" elapsed="0.000279"/>
+<status status="PASS" start="2025-07-24T17:57:04.025732" elapsed="0.000952"/>
 </kw>
-<arg>//android.view.View[@content-desc="$100.00"]</arg>
-<arg>$100.00</arg>
-<status status="PASS" start="2025-07-23T17:33:42.576316" elapsed="0.494827"/>
+<arg>//android.view.View[@content-desc="${price}"]</arg>
+<arg>${price}</arg>
+<status status="PASS" start="2025-07-24T17:57:03.534362" elapsed="0.492558"/>
 </kw>
-<kw name="And Check validation error message Android" owner="Common">
+<kw name="Check validation error message Android" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:43.302574" level="INFO">xpath criteria: //android.view.View[@content-desc="$5.00"]</msg>
+<msg time="2025-07-24T17:57:04.264790" level="INFO">xpath criteria: //android.view.View[@content-desc="$4.25"]</msg>
 <arg>${Elm_message}</arg>
 <arg>15s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:43.072048" elapsed="0.231111"/>
+<status status="PASS" start="2025-07-24T17:57:04.028207" elapsed="0.236979"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:43.542511" level="INFO">Element '//android.view.View[@content-desc="$5.00"]' attribute 'content-desc' value '$5.00' </msg>
-<msg time="2025-07-23T17:33:43.542877" level="INFO">xpath criteria: //android.view.View[@content-desc="$5.00"]</msg>
-<msg time="2025-07-23T17:33:43.543169" level="INFO">${actual} = $5.00</msg>
+<msg time="2025-07-24T17:57:04.528895" level="INFO">Element '//android.view.View[@content-desc="$4.25"]' attribute 'content-desc' value '$4.25' </msg>
+<msg time="2025-07-24T17:57:04.529223" level="INFO">xpath criteria: //android.view.View[@content-desc="$4.25"]</msg>
+<msg time="2025-07-24T17:57:04.529463" level="INFO">${actual} = $4.25</msg>
 <var>${actual}</var>
 <arg>${Elm_message}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:33:43.303695" elapsed="0.239647"/>
+<status status="PASS" start="2025-07-24T17:57:04.265679" elapsed="0.263934"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${actual}</arg>
 <arg>${Expected_message}</arg>
 <arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-23T17:33:43.543749" elapsed="0.000757"/>
+<status status="PASS" start="2025-07-24T17:57:04.529963" elapsed="0.000628"/>
 </kw>
 <kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-07-23T17:33:43.545223" level="INFO">Set test message to:
-validation error message with '$5.00'</msg>
+<msg time="2025-07-24T17:57:04.531191" level="INFO">Set test message to:
+validation error message with '$4.25'</msg>
 <arg>validation error message with '${actual}'</arg>
 <doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-07-23T17:33:43.544838" elapsed="0.000624"/>
+<status status="PASS" start="2025-07-24T17:57:04.530868" elapsed="0.000520"/>
 </kw>
-<arg>//android.view.View[@content-desc="$5.00"]</arg>
-<arg>$5.00</arg>
-<status status="PASS" start="2025-07-23T17:33:43.071453" elapsed="0.474232"/>
+<arg>//android.view.View[@content-desc="${tax}"]</arg>
+<arg>${tax}</arg>
+<status status="PASS" start="2025-07-24T17:57:04.027344" elapsed="0.504232"/>
 </kw>
-<kw name="And Check validation error message Android" owner="Common">
+<kw name="Check validation error message Android" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:43.766467" level="INFO">xpath criteria: //android.view.View[@content-desc="$105.00"]</msg>
+<msg time="2025-07-24T17:57:04.862564" level="INFO">xpath criteria: //android.view.View[@content-desc="$89.25"]</msg>
 <arg>${Elm_message}</arg>
 <arg>15s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:43.547337" elapsed="0.219443"/>
+<status status="PASS" start="2025-07-24T17:57:04.532743" elapsed="0.330316"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:43.987198" level="INFO">Element '//android.view.View[@content-desc="$105.00"]' attribute 'content-desc' value '$105.00' </msg>
-<msg time="2025-07-23T17:33:43.987545" level="INFO">xpath criteria: //android.view.View[@content-desc="$105.00"]</msg>
-<msg time="2025-07-23T17:33:43.987829" level="INFO">${actual} = $105.00</msg>
+<msg time="2025-07-24T17:57:05.086734" level="INFO">Element '//android.view.View[@content-desc="$89.25"]' attribute 'content-desc' value '$89.25' </msg>
+<msg time="2025-07-24T17:57:05.087217" level="INFO">xpath criteria: //android.view.View[@content-desc="$89.25"]</msg>
+<msg time="2025-07-24T17:57:05.087522" level="INFO">${actual} = $89.25</msg>
 <var>${actual}</var>
 <arg>${Elm_message}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:33:43.767084" elapsed="0.220923"/>
+<status status="PASS" start="2025-07-24T17:57:04.863582" elapsed="0.224118"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${actual}</arg>
 <arg>${Expected_message}</arg>
 <arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-23T17:33:43.988417" elapsed="0.000748"/>
+<status status="PASS" start="2025-07-24T17:57:05.088118" elapsed="0.000770"/>
 </kw>
 <kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-07-23T17:33:43.989883" level="INFO">Set test message to:
-validation error message with '$105.00'</msg>
+<msg time="2025-07-24T17:57:05.089640" level="INFO">Set test message to:
+validation error message with '$89.25'</msg>
 <arg>validation error message with '${actual}'</arg>
 <doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-07-23T17:33:43.989498" elapsed="0.000617"/>
+<status status="PASS" start="2025-07-24T17:57:05.089237" elapsed="0.000645"/>
 </kw>
-<arg>//android.view.View[@content-desc="$105.00"]</arg>
-<arg>$105.00</arg>
-<status status="PASS" start="2025-07-23T17:33:43.546454" elapsed="0.443889"/>
+<arg>//android.view.View[@content-desc="${total}"]</arg>
+<arg>${total}</arg>
+<status status="PASS" start="2025-07-24T17:57:04.532076" elapsed="0.558036"/>
 </kw>
-<kw name="When Apply Percentage Discount">
+<arg>$85.00</arg>
+<arg>$4.25</arg>
+<arg>$89.25</arg>
+<status status="PASS" start="2025-07-24T17:57:03.533025" elapsed="1.557307"/>
+</kw>
+<kw name="When Apply Voucher Discount">
 <kw name="Click on Element mobile" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:44.274285" level="INFO">xpath criteria: //android.view.View[@content-desc="Discount" and @clickable="true"]</msg>
+<msg time="2025-07-24T17:57:05.395078" level="INFO">xpath criteria: //android.view.View[@content-desc="Discount" and @clickable="true"]</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:43.993215" elapsed="0.281401"/>
+<status status="PASS" start="2025-07-24T17:57:05.093792" elapsed="0.301752"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:44.277976" level="INFO">Clicking element '//android.view.View[@content-desc="Discount" and @clickable="true"]'.</msg>
-<msg time="2025-07-23T17:33:44.578269" level="INFO">xpath criteria: //android.view.View[@content-desc="Discount" and @clickable="true"]</msg>
+<msg time="2025-07-24T17:57:05.399973" level="INFO">Clicking element '//android.view.View[@content-desc="Discount" and @clickable="true"]'.</msg>
+<msg time="2025-07-24T17:57:06.502664" level="INFO">xpath criteria: //android.view.View[@content-desc="Discount" and @clickable="true"]</msg>
 <arg>${elm_input}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:44.274960" elapsed="0.303869"/>
+<status status="PASS" start="2025-07-24T17:57:05.396048" elapsed="1.107096"/>
 </kw>
 <arg>//android.view.View[@content-desc="Discount" and @clickable="true"]</arg>
-<status status="PASS" start="2025-07-23T17:33:43.992352" elapsed="0.586857"/>
+<status status="PASS" start="2025-07-24T17:57:05.092482" elapsed="1.411031"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:45.476176" level="INFO">xpath criteria: //android.view.View[@content-desc="Quick discount"]/android.view.View</msg>
+<msg time="2025-07-24T17:57:06.611803" level="INFO">xpath criteria: //android.view.View[@content-desc="Apply Voucher"]</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:44.581151" elapsed="0.895487"/>
+<status status="PASS" start="2025-07-24T17:57:06.504958" elapsed="0.107316"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:45.481462" level="INFO">Clicking element '//android.view.View[@content-desc="Quick discount"]/android.view.View'.</msg>
-<msg time="2025-07-23T17:33:45.636944" level="INFO">xpath criteria: //android.view.View[@content-desc="Quick discount"]/android.view.View</msg>
+<msg time="2025-07-24T17:57:06.617050" level="INFO">Clicking element '//android.view.View[@content-desc="Apply Voucher"]'.</msg>
+<msg time="2025-07-24T17:57:06.757796" level="INFO">xpath criteria: //android.view.View[@content-desc="Apply Voucher"]</msg>
 <arg>${elm_input}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:45.477107" elapsed="0.160303"/>
+<status status="PASS" start="2025-07-24T17:57:06.612780" elapsed="0.145453"/>
 </kw>
-<arg>//android.view.View[@content-desc="Quick discount"]/android.view.View</arg>
-<status status="PASS" start="2025-07-23T17:33:44.579936" elapsed="1.057840"/>
+<arg>//android.view.View[@content-desc="Apply Voucher"]</arg>
+<status status="PASS" start="2025-07-24T17:57:06.504051" elapsed="0.254535"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:45.806459" level="INFO">xpath criteria: //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View</msg>
+<msg time="2025-07-24T17:57:06.860979" level="INFO">xpath criteria: //android.widget.EditText</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:45.639214" elapsed="0.167752"/>
+<status status="PASS" start="2025-07-24T17:57:06.760083" elapsed="0.101350"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:45.811207" level="INFO">Clicking element '//android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View'.</msg>
-<msg time="2025-07-23T17:33:46.035794" level="INFO">xpath criteria: //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View</msg>
+<msg time="2025-07-24T17:57:06.866618" level="INFO">Clicking element '//android.widget.EditText'.</msg>
+<msg time="2025-07-24T17:57:07.739670" level="INFO">xpath criteria: //android.widget.EditText</msg>
 <arg>${elm_input}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:45.807469" elapsed="0.228767"/>
+<status status="PASS" start="2025-07-24T17:57:06.861930" elapsed="0.878456"/>
 </kw>
-<arg>//android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View</arg>
-<status status="PASS" start="2025-07-23T17:33:45.638303" elapsed="0.398288"/>
+<arg>//android.widget.EditText</arg>
+<status status="PASS" start="2025-07-24T17:57:06.759153" elapsed="0.981886"/>
 </kw>
-<for flavor="IN">
-<iter>
-<kw name="Click on Element mobile" owner="Common">
+<kw name="Fill Text Input mobile" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:46.665828" level="INFO">xpath criteria: //android.view.View[@content-desc="1"]</msg>
+<msg time="2025-07-24T17:57:07.857714" level="INFO">xpath criteria: //android.widget.EditText</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:46.038684" elapsed="0.627634"/>
+<status status="PASS" start="2025-07-24T17:57:07.742819" elapsed="0.115361"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:46.670672" level="INFO">Clicking element '//android.view.View[@content-desc="1"]'.</msg>
-<msg time="2025-07-23T17:33:47.319659" level="INFO">xpath criteria: //android.view.View[@content-desc="1"]</msg>
+<kw name="Input Text" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:07.862726" level="INFO">Typing text 'Testvoucher' into text field '//android.widget.EditText'</msg>
+<msg time="2025-07-24T17:57:07.981601" level="INFO">xpath criteria: //android.widget.EditText</msg>
 <arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:46.666830" elapsed="0.653347"/>
+<arg>${text}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="PASS" start="2025-07-24T17:57:07.858703" elapsed="0.123361"/>
 </kw>
-<arg>//android.view.View[@content-desc="${digit}"]</arg>
-<status status="PASS" start="2025-07-23T17:33:46.037929" elapsed="1.282626"/>
-</kw>
-<var name="${digit}">1</var>
-<status status="PASS" start="2025-07-23T17:33:46.037447" elapsed="1.283342"/>
-</iter>
-<iter>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:47.437378" level="INFO">xpath criteria: //android.view.View[@content-desc="0"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:47.323024" elapsed="0.114836"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:47.442620" level="INFO">Clicking element '//android.view.View[@content-desc="0"]'.</msg>
-<msg time="2025-07-23T17:33:48.098523" level="INFO">xpath criteria: //android.view.View[@content-desc="0"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:47.438365" elapsed="0.660824"/>
-</kw>
-<arg>//android.view.View[@content-desc="${digit}"]</arg>
-<status status="PASS" start="2025-07-23T17:33:47.321727" elapsed="0.777859"/>
-</kw>
-<var name="${digit}">0</var>
-<status status="PASS" start="2025-07-23T17:33:47.321205" elapsed="0.778567"/>
-</iter>
-<var>${digit}</var>
-<value>@{percent}</value>
-<status status="PASS" start="2025-07-23T17:33:46.036858" elapsed="2.063120"/>
-</for>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:48.221028" level="INFO">xpath criteria: //android.view.View[@content-desc="Done"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:48.102058" elapsed="0.119857"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:48.227092" level="INFO">Clicking element '//android.view.View[@content-desc="Done"]'.</msg>
-<msg time="2025-07-23T17:33:49.102872" level="INFO">xpath criteria: //android.view.View[@content-desc="Done"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:48.222717" elapsed="0.880356"/>
-</kw>
-<arg>${elm_btn_Done}</arg>
-<status status="PASS" start="2025-07-23T17:33:48.100770" elapsed="1.002434"/>
+<arg>//android.widget.EditText</arg>
+<arg>${voucher_code}</arg>
+<status status="PASS" start="2025-07-24T17:57:07.741703" elapsed="0.240738"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:49.206239" level="INFO">xpath criteria: //android.view.View[@content-desc="Submit"]</msg>
+<msg time="2025-07-24T17:57:09.795708" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVTestvoucher")]
+xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVTestvoucher")]
+xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVTestvoucher")]
+xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVTestvoucher")]</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:49.103733" elapsed="0.102885"/>
+<status status="PASS" start="2025-07-24T17:57:07.984016" elapsed="1.812168"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:49.208849" level="INFO">Clicking element '//android.view.View[@content-desc="Submit"]'.</msg>
-<msg time="2025-07-23T17:33:50.176490" level="INFO">xpath criteria: //android.view.View[@content-desc="Submit"]</msg>
+<msg time="2025-07-24T17:57:09.800944" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "Code: #SBVTestvoucher")]'.</msg>
+<msg time="2025-07-24T17:57:10.824510" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVTestvoucher")]</msg>
 <arg>${elm_input}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:49.206922" elapsed="0.970060"/>
+<status status="PASS" start="2025-07-24T17:57:09.796715" elapsed="1.028252"/>
+</kw>
+<arg>//android.view.View[contains(@content-desc, "Code: #SBV${voucher_code}")]</arg>
+<status status="PASS" start="2025-07-24T17:57:07.983014" elapsed="2.842262"/>
+</kw>
+<arg>Testvoucher</arg>
+<status status="PASS" start="2025-07-24T17:57:05.091676" elapsed="5.733819"/>
+</kw>
+<kw name="And User clicks Submit button">
+<kw name="Click on Element mobile" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:10.938559" level="INFO">xpath criteria: //android.view.View[@content-desc="Submit"]</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-24T17:57:10.827741" elapsed="0.111032"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:10.941013" level="INFO">Clicking element '//android.view.View[@content-desc="Submit"]'.</msg>
+<msg time="2025-07-24T17:57:11.896458" level="INFO">xpath criteria: //android.view.View[@content-desc="Submit"]</msg>
+<arg>${elm_input}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-07-24T17:57:10.939093" elapsed="0.957751"/>
 </kw>
 <arg>${elm_btn_Submit}</arg>
-<status status="PASS" start="2025-07-23T17:33:49.103399" elapsed="1.073910"/>
+<status status="PASS" start="2025-07-24T17:57:10.827343" elapsed="1.069786"/>
 </kw>
-<arg>1</arg>
-<arg>0</arg>
-<status status="PASS" start="2025-07-23T17:33:43.991378" elapsed="6.186151"/>
+<status status="PASS" start="2025-07-24T17:57:10.826374" elapsed="1.070970"/>
 </kw>
-<kw name="Then Check validation error message Android" owner="Common">
+<kw name="Then System should display updated price after discount">
+<kw name="Check validation error message Android" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:50.386241" level="INFO">xpath criteria: (//android.view.View[@content-desc="-$10.00"])[1]</msg>
+<msg time="2025-07-24T17:57:12.114997" level="INFO">xpath criteria: (//android.view.View[@content-desc="-$5.00"])[1]</msg>
 <arg>${Elm_message}</arg>
 <arg>15s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:50.179820" elapsed="0.206889"/>
+<status status="PASS" start="2025-07-24T17:57:11.899812" elapsed="0.215567"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:50.589419" level="INFO">Element 'xpath=(//android.view.View[@content-desc="-$10.00"])[1]' attribute 'content-desc' value '-$10.00' </msg>
-<msg time="2025-07-23T17:33:50.589774" level="INFO">xpath criteria: (//android.view.View[@content-desc="-$10.00"])[1]</msg>
-<msg time="2025-07-23T17:33:50.590058" level="INFO">${actual} = -$10.00</msg>
+<msg time="2025-07-24T17:57:12.337586" level="INFO">Element 'xpath=(//android.view.View[@content-desc="-$5.00"])[1]' attribute 'content-desc' value '-$5.00' </msg>
+<msg time="2025-07-24T17:57:12.337966" level="INFO">xpath criteria: (//android.view.View[@content-desc="-$5.00"])[1]</msg>
+<msg time="2025-07-24T17:57:12.338255" level="INFO">${actual} = -$5.00</msg>
 <var>${actual}</var>
 <arg>${Elm_message}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:33:50.387218" elapsed="0.203011"/>
+<status status="PASS" start="2025-07-24T17:57:12.115802" elapsed="0.222638"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${actual}</arg>
 <arg>${Expected_message}</arg>
 <arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-23T17:33:50.590639" elapsed="0.000754"/>
+<status status="PASS" start="2025-07-24T17:57:12.338862" elapsed="0.000781"/>
 </kw>
 <kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-07-23T17:33:50.592112" level="INFO">Set test message to:
-validation error message with '-$10.00'</msg>
+<msg time="2025-07-24T17:57:12.340397" level="INFO">Set test message to:
+validation error message with '-$5.00'</msg>
 <arg>validation error message with '${actual}'</arg>
 <doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-07-23T17:33:50.591727" elapsed="0.000656"/>
+<status status="PASS" start="2025-07-24T17:57:12.339989" elapsed="0.000669"/>
 </kw>
-<arg>xpath=(//android.view.View[@content-desc="-$10.00"])[1]</arg>
-<arg>-$10.00</arg>
-<status status="PASS" start="2025-07-23T17:33:50.178297" elapsed="0.414418"/>
+<arg>xpath=(//android.view.View[@content-desc="${discount}"])[1]</arg>
+<arg>${discount}</arg>
+<status status="PASS" start="2025-07-24T17:57:11.898889" elapsed="0.442005"/>
 </kw>
-<kw name="And Check validation error message Android" owner="Common">
+<kw name="Check validation error message Android" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:50.784752" level="INFO">xpath criteria: //android.view.View[@content-desc="$100.00"]</msg>
+<msg time="2025-07-24T17:57:12.537607" level="INFO">xpath criteria: //android.view.View[@content-desc="$85.00"]</msg>
 <arg>${Elm_message}</arg>
 <arg>15s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:50.594370" elapsed="0.190662"/>
+<status status="PASS" start="2025-07-24T17:57:12.342093" elapsed="0.195890"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:50.981097" level="INFO">Element '//android.view.View[@content-desc="$100.00"]' attribute 'content-desc' value '$100.00' </msg>
-<msg time="2025-07-23T17:33:50.981623" level="INFO">xpath criteria: //android.view.View[@content-desc="$100.00"]</msg>
-<msg time="2025-07-23T17:33:50.982035" level="INFO">${actual} = $100.00</msg>
+<msg time="2025-07-24T17:57:12.741172" level="INFO">Element '//android.view.View[@content-desc="$85.00"]' attribute 'content-desc' value '$85.00' </msg>
+<msg time="2025-07-24T17:57:12.741719" level="INFO">xpath criteria: //android.view.View[@content-desc="$85.00"]</msg>
+<msg time="2025-07-24T17:57:12.742107" level="INFO">${actual} = $85.00</msg>
 <var>${actual}</var>
 <arg>${Elm_message}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:33:50.785314" elapsed="0.196927"/>
+<status status="PASS" start="2025-07-24T17:57:12.538409" elapsed="0.203909"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${actual}</arg>
 <arg>${Expected_message}</arg>
 <arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-23T17:33:50.982838" elapsed="0.000950"/>
+<status status="PASS" start="2025-07-24T17:57:12.742844" elapsed="0.000808"/>
 </kw>
 <kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-07-23T17:33:50.984509" level="INFO">Set test message to:
-validation error message with '$100.00'</msg>
+<msg time="2025-07-24T17:57:12.744429" level="INFO">Set test message to:
+validation error message with '$85.00'</msg>
 <arg>validation error message with '${actual}'</arg>
 <doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-07-23T17:33:50.984124" elapsed="0.000604"/>
+<status status="PASS" start="2025-07-24T17:57:12.744006" elapsed="0.000653"/>
 </kw>
-<arg>//android.view.View[@content-desc="$100.00"]</arg>
-<arg>$100.00</arg>
-<status status="PASS" start="2025-07-23T17:33:50.593455" elapsed="0.391500"/>
+<arg>//android.view.View[@content-desc="${price}"]</arg>
+<arg>${price}</arg>
+<status status="PASS" start="2025-07-24T17:57:12.341291" elapsed="0.403592"/>
 </kw>
-<kw name="And Check validation error message Android" owner="Common">
+<kw name="Check validation error message Android" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:51.185214" level="INFO">xpath criteria: //android.view.View[@content-desc="$4.50"]</msg>
+<msg time="2025-07-24T17:57:12.954380" level="INFO">xpath criteria: //android.view.View[@content-desc="$4.00"]</msg>
 <arg>${Elm_message}</arg>
 <arg>15s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:50.987546" elapsed="0.197881"/>
+<status status="PASS" start="2025-07-24T17:57:12.746082" elapsed="0.208927"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:51.378200" level="INFO">Element '//android.view.View[@content-desc="$4.50"]' attribute 'content-desc' value '$4.50' </msg>
-<msg time="2025-07-23T17:33:51.378409" level="INFO">xpath criteria: //android.view.View[@content-desc="$4.50"]</msg>
-<msg time="2025-07-23T17:33:51.378549" level="INFO">${actual} = $4.50</msg>
+<msg time="2025-07-24T17:57:13.152908" level="INFO">Element '//android.view.View[@content-desc="$4.00"]' attribute 'content-desc' value '$4.00' </msg>
+<msg time="2025-07-24T17:57:13.153418" level="INFO">xpath criteria: //android.view.View[@content-desc="$4.00"]</msg>
+<msg time="2025-07-24T17:57:13.153714" level="INFO">${actual} = $4.00</msg>
 <var>${actual}</var>
 <arg>${Elm_message}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:33:51.185620" elapsed="0.193039"/>
+<status status="PASS" start="2025-07-24T17:57:12.955607" elapsed="0.198285"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${actual}</arg>
 <arg>${Expected_message}</arg>
 <arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-23T17:33:51.378883" elapsed="0.000415"/>
+<status status="PASS" start="2025-07-24T17:57:13.154388" elapsed="0.000804"/>
 </kw>
 <kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-07-23T17:33:51.379712" level="INFO">Set test message to:
-validation error message with '$4.50'</msg>
+<msg time="2025-07-24T17:57:13.155927" level="INFO">Set test message to:
+validation error message with '$4.00'</msg>
 <arg>validation error message with '${actual}'</arg>
 <doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-07-23T17:33:51.379494" elapsed="0.000344"/>
+<status status="PASS" start="2025-07-24T17:57:13.155535" elapsed="0.000628"/>
 </kw>
-<arg>//android.view.View[@content-desc="$4.50"]</arg>
-<arg>$4.50</arg>
-<status status="PASS" start="2025-07-23T17:33:50.986334" elapsed="0.393622"/>
+<arg>//android.view.View[@content-desc="${tax}"]</arg>
+<arg>${tax}</arg>
+<status status="PASS" start="2025-07-24T17:57:12.745277" elapsed="0.411114"/>
 </kw>
-<kw name="And Check validation error message Android" owner="Common">
+<kw name="Check validation error message Android" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:51.624289" level="INFO">xpath criteria: //android.view.View[@content-desc="$94.50"]</msg>
+<msg time="2025-07-24T17:57:13.374824" level="INFO">xpath criteria: //android.view.View[@content-desc="$84.00"]</msg>
 <arg>${Elm_message}</arg>
 <arg>15s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:51.381013" elapsed="0.243547"/>
+<status status="PASS" start="2025-07-24T17:57:13.157589" elapsed="0.217758"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:51.811526" level="INFO">Element '//android.view.View[@content-desc="$94.50"]' attribute 'content-desc' value '$94.50' </msg>
-<msg time="2025-07-23T17:33:51.812077" level="INFO">xpath criteria: //android.view.View[@content-desc="$94.50"]</msg>
-<msg time="2025-07-23T17:33:51.812314" level="INFO">${actual} = $94.50</msg>
+<msg time="2025-07-24T17:57:13.572274" level="INFO">Element '//android.view.View[@content-desc="$84.00"]' attribute 'content-desc' value '$84.00' </msg>
+<msg time="2025-07-24T17:57:13.572700" level="INFO">xpath criteria: //android.view.View[@content-desc="$84.00"]</msg>
+<msg time="2025-07-24T17:57:13.572991" level="INFO">${actual} = $84.00</msg>
 <var>${actual}</var>
 <arg>${Elm_message}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:33:51.624826" elapsed="0.187608"/>
+<status status="PASS" start="2025-07-24T17:57:13.376008" elapsed="0.197157"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${actual}</arg>
 <arg>${Expected_message}</arg>
 <arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-23T17:33:51.812731" elapsed="0.000518"/>
+<status status="PASS" start="2025-07-24T17:57:13.573570" elapsed="0.000767"/>
 </kw>
 <kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-07-23T17:33:51.814020" level="INFO">Set test message to:
-validation error message with '$94.50'</msg>
+<msg time="2025-07-24T17:57:13.575073" level="INFO">Set test message to:
+validation error message with '$84.00'</msg>
 <arg>validation error message with '${actual}'</arg>
 <doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-07-23T17:33:51.813541" elapsed="0.000673"/>
+<status status="PASS" start="2025-07-24T17:57:13.574680" elapsed="0.000789"/>
 </kw>
-<arg>//android.view.View[@content-desc="$94.50"]</arg>
-<arg>$94.50</arg>
-<status status="PASS" start="2025-07-23T17:33:51.380457" elapsed="0.433916"/>
+<arg>//android.view.View[@content-desc="${total}"]</arg>
+<arg>${total}</arg>
+<status status="PASS" start="2025-07-24T17:57:13.156790" elapsed="0.418919"/>
 </kw>
-<kw name="When Pay By Credit Card">
+<arg>-$5.00</arg>
+<arg>$85.00</arg>
+<arg>$4.00</arg>
+<arg>$84.00</arg>
+<status status="PASS" start="2025-07-24T17:57:11.897842" elapsed="1.678084"/>
+</kw>
+<kw name="When User proceeds to Payment">
 <kw name="Click on Element mobile" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:52.006352" level="INFO">xpath criteria: //android.view.View[@content-desc="Payment"]</msg>
+<msg time="2025-07-24T17:57:13.767395" level="INFO">xpath criteria: //android.view.View[@content-desc="Payment"]</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:51.816923" elapsed="0.190158"/>
+<status status="PASS" start="2025-07-24T17:57:13.578138" elapsed="0.189573"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:52.012962" level="INFO">Clicking element '//android.view.View[@content-desc="Payment"]'.</msg>
-<msg time="2025-07-23T17:33:52.233859" level="INFO">xpath criteria: //android.view.View[@content-desc="Payment"]</msg>
+<msg time="2025-07-24T17:57:13.771038" level="INFO">Clicking element '//android.view.View[@content-desc="Payment"]'.</msg>
+<msg time="2025-07-24T17:57:14.845108" level="INFO">xpath criteria: //android.view.View[@content-desc="Payment"]</msg>
 <arg>${elm_input}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:52.007810" elapsed="0.226507"/>
+<status status="PASS" start="2025-07-24T17:57:13.768030" elapsed="1.077456"/>
 </kw>
 <arg>${elm_btn_Payment}</arg>
-<status status="PASS" start="2025-07-23T17:33:51.816451" elapsed="0.418164"/>
+<status status="PASS" start="2025-07-24T17:57:13.577463" elapsed="1.268328"/>
 </kw>
+<status status="PASS" start="2025-07-24T17:57:13.576743" elapsed="1.269263"/>
+</kw>
+<kw name="Then System should show balance due">
+<kw name="Check validation error message Android" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:15.003166" level="INFO">xpath criteria: //android.view.View[@content-desc="BALANCE DUE"]</msg>
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-24T17:57:14.849147" elapsed="0.154576"/>
+</kw>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:15.162269" level="INFO">Element '//android.view.View[@content-desc="BALANCE DUE"]' attribute 'content-desc' value 'BALANCE DUE' </msg>
+<msg time="2025-07-24T17:57:15.162631" level="INFO">xpath criteria: //android.view.View[@content-desc="BALANCE DUE"]</msg>
+<msg time="2025-07-24T17:57:15.162916" level="INFO">${actual} = BALANCE DUE</msg>
+<var>${actual}</var>
+<arg>${Elm_message}</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-24T17:57:15.004367" elapsed="0.158725"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-07-24T17:57:15.163494" elapsed="0.000754"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-07-24T17:57:15.164973" level="INFO">Set test message to:
+validation error message with 'BALANCE DUE'</msg>
+<arg>validation error message with '${actual}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-07-24T17:57:15.164587" elapsed="0.000619"/>
+</kw>
+<arg>//android.view.View[@content-desc="BALANCE DUE"]</arg>
+<arg>BALANCE DUE</arg>
+<status status="PASS" start="2025-07-24T17:57:14.848066" elapsed="0.317366"/>
+</kw>
+<kw name="Check validation error message Android" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:15.330547" level="INFO">xpath criteria: (//android.view.View[@content-desc="$84.00"])[3]</msg>
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-24T17:57:15.166859" elapsed="0.164089"/>
+</kw>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:15.481663" level="INFO">Element 'xpath=(//android.view.View[@content-desc="$84.00"])[3]' attribute 'content-desc' value '$84.00' </msg>
+<msg time="2025-07-24T17:57:15.482120" level="INFO">xpath criteria: (//android.view.View[@content-desc="$84.00"])[3]</msg>
+<msg time="2025-07-24T17:57:15.482406" level="INFO">${actual} = $84.00</msg>
+<var>${actual}</var>
+<arg>${Elm_message}</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-24T17:57:15.331379" elapsed="0.151208"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-07-24T17:57:15.482984" elapsed="0.000776"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-07-24T17:57:15.484489" level="INFO">Set test message to:
+validation error message with '$84.00'</msg>
+<arg>validation error message with '${actual}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-07-24T17:57:15.484101" elapsed="0.000607"/>
+</kw>
+<arg>xpath=(//android.view.View[@content-desc="${amount}"])[3]</arg>
+<arg>${amount}</arg>
+<status status="PASS" start="2025-07-24T17:57:15.165895" elapsed="0.319039"/>
+</kw>
+<arg>$84.00</arg>
+<status status="PASS" start="2025-07-24T17:57:14.846938" elapsed="0.638211"/>
+</kw>
+<kw name="When User selects payment method as Credit Card">
 <kw name="Click on Element mobile" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:53.179430" level="INFO">xpath criteria: //android.view.View[@content-desc="Credit Card"]</msg>
+<msg time="2025-07-24T17:57:15.633991" level="INFO">xpath criteria: //android.view.View[@content-desc="Credit Card"]</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:52.235824" elapsed="0.944308"/>
+<status status="PASS" start="2025-07-24T17:57:15.488073" elapsed="0.146707"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:53.185838" level="INFO">Clicking element '//android.view.View[@content-desc="Credit Card"]'.</msg>
-<msg time="2025-07-23T17:33:54.195478" level="INFO">xpath criteria: //android.view.View[@content-desc="Credit Card"]</msg>
+<msg time="2025-07-24T17:57:15.639809" level="INFO">Clicking element '//android.view.View[@content-desc="Credit Card"]'.</msg>
+<msg time="2025-07-24T17:57:15.864343" level="INFO">xpath criteria: //android.view.View[@content-desc="Credit Card"]</msg>
 <arg>${elm_input}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:53.180842" elapsed="1.014967"/>
+<status status="PASS" start="2025-07-24T17:57:15.635509" elapsed="0.229356"/>
 </kw>
 <arg>${elm_Method_CreditCard}</arg>
-<status status="PASS" start="2025-07-23T17:33:52.235053" elapsed="1.960996"/>
+<status status="PASS" start="2025-07-24T17:57:15.487326" elapsed="0.377859"/>
 </kw>
+<status status="PASS" start="2025-07-24T17:57:15.486126" elapsed="0.379278"/>
+</kw>
+<kw name="Then System should display tip screen with default tip amount">
+<kw name="Check validation error message Android" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:16.788839" level="INFO">xpath criteria: //android.view.View[@content-desc="$80.00"]</msg>
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-24T17:57:15.868173" elapsed="0.921189"/>
+</kw>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:16.923037" level="INFO">Element '//android.view.View[@content-desc="$80.00"]' attribute 'content-desc' value '$80.00' </msg>
+<msg time="2025-07-24T17:57:16.923402" level="INFO">xpath criteria: //android.view.View[@content-desc="$80.00"]</msg>
+<msg time="2025-07-24T17:57:16.923694" level="INFO">${actual} = $80.00</msg>
+<var>${actual}</var>
+<arg>${Elm_message}</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-24T17:57:16.789876" elapsed="0.133993"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-07-24T17:57:16.924279" elapsed="0.000954"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-07-24T17:57:16.926255" level="INFO">Set test message to:
+validation error message with '$80.00'</msg>
+<arg>validation error message with '${actual}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-07-24T17:57:16.925638" elapsed="0.000962"/>
+</kw>
+<arg>//android.view.View[@content-desc="${amount}"]</arg>
+<arg>${amount}</arg>
+<status status="PASS" start="2025-07-24T17:57:15.867207" elapsed="1.059670"/>
+</kw>
+<arg>$80.00</arg>
+<status status="PASS" start="2025-07-24T17:57:15.866122" elapsed="1.060984"/>
+</kw>
+<kw name="When Choose tip percentage on screen Tips">
 <kw name="Click on Element mobile" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:54.316035" level="INFO">xpath criteria: //android.view.View[@content-desc="Skip"]</msg>
+<msg time="2025-07-24T17:57:17.035381" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "5%") and contains(@content-desc, "$4.00")]</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:54.197044" elapsed="0.119454"/>
+<status status="PASS" start="2025-07-24T17:57:16.929145" elapsed="0.106637"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:54.320586" level="INFO">Clicking element '//android.view.View[@content-desc="Skip"]'.</msg>
-<msg time="2025-07-23T17:33:55.283972" level="INFO">xpath criteria: //android.view.View[@content-desc="Skip"]</msg>
+<msg time="2025-07-24T17:57:17.040018" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "5%") and contains(@content-desc, "$4.00")]'.</msg>
+<msg time="2025-07-24T17:57:17.191769" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "5%") and contains(@content-desc, "$4.00")]</msg>
 <arg>${elm_input}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:54.316944" elapsed="0.967541"/>
+<status status="PASS" start="2025-07-24T17:57:17.036189" elapsed="0.156408"/>
 </kw>
-<arg>${elm_btn_Skip}</arg>
-<status status="PASS" start="2025-07-23T17:33:54.196405" elapsed="1.088460"/>
+<arg>//android.view.View[contains(@content-desc, "${percent}") and contains(@content-desc, "${amount}")]</arg>
+<status status="PASS" start="2025-07-24T17:57:16.928409" elapsed="0.264700"/>
 </kw>
+<arg>5%</arg>
+<arg>$4.00</arg>
+<status status="PASS" start="2025-07-24T17:57:16.927576" elapsed="0.265831"/>
+</kw>
+<kw name="Then System should still show total amount as">
+<kw name="Check validation error message Android" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:18.084185" level="INFO">xpath criteria: (//android.view.View[@content-desc="$88.00"])[1]</msg>
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-24T17:57:17.197148" elapsed="0.887647"/>
+</kw>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:18.203776" level="INFO">Element 'xpath=(//android.view.View[@content-desc="$88.00"])[1]' attribute 'content-desc' value '$88.00' </msg>
+<msg time="2025-07-24T17:57:18.204174" level="INFO">xpath criteria: (//android.view.View[@content-desc="$88.00"])[1]</msg>
+<msg time="2025-07-24T17:57:18.204463" level="INFO">${actual} = $88.00</msg>
+<var>${actual}</var>
+<arg>${Elm_message}</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-24T17:57:18.085414" elapsed="0.119226"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-07-24T17:57:18.205049" elapsed="0.000750"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-07-24T17:57:18.206530" level="INFO">Set test message to:
+validation error message with '$88.00'</msg>
+<arg>validation error message with '${actual}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-07-24T17:57:18.206139" elapsed="0.000689"/>
+</kw>
+<arg>xpath=(//android.view.View[@content-desc="${amount}"])[1]</arg>
+<arg>${amount}</arg>
+<status status="PASS" start="2025-07-24T17:57:17.196054" elapsed="1.011076"/>
+</kw>
+<arg>$88.00</arg>
+<status status="PASS" start="2025-07-24T17:57:17.194477" elapsed="1.012885"/>
+</kw>
+<kw name="And System should display tip detail with technician and amount tip">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:18.327772" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse") and contains(@content-desc, "$4.00")]</msg>
+<arg>//android.view.View[contains(@content-desc, "${technician}") and contains(@content-desc, "${tip}")]</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-07-24T17:57:18.208960" elapsed="0.119710"/>
+</kw>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:18.452144" level="INFO">Element '//android.view.View[contains(@content-desc, "caisse") and contains(@content-desc, "$4.00")]' attribute 'content-desc' value 'caisse
+$4.00' </msg>
+<msg time="2025-07-24T17:57:18.452532" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse") and contains(@content-desc, "$4.00")]</msg>
+<msg time="2025-07-24T17:57:18.452819" level="INFO">${desc} = caisse
+$4.00</msg>
+<var>${desc}</var>
+<arg>//android.view.View[contains(@content-desc, "${technician}") and contains(@content-desc, "${tip}")]</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-24T17:57:18.329145" elapsed="0.123849"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${desc}</arg>
+<arg>${technician}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-07-24T17:57:18.453413" elapsed="0.000548"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${desc}</arg>
+<arg>${tip}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-07-24T17:57:18.454286" elapsed="0.000472"/>
+</kw>
+<arg>caisse</arg>
+<arg>$4.00</arg>
+<status status="PASS" start="2025-07-24T17:57:18.208121" elapsed="0.246891"/>
+</kw>
+<kw name="When User Begins Charge">
 <kw name="Click on Element mobile" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:55.410526" level="INFO">xpath criteria: //android.view.View[@content-desc="Begin Charge"]</msg>
+<msg time="2025-07-24T17:57:18.565065" level="INFO">xpath criteria: //android.view.View[@content-desc="Begin Charge"]</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:55.286969" elapsed="0.124068"/>
+<status status="PASS" start="2025-07-24T17:57:18.457045" elapsed="0.108502"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:33:55.415093" level="INFO">Clicking element '//android.view.View[@content-desc="Begin Charge"]'.</msg>
-<msg time="2025-07-23T17:33:55.571269" level="INFO">xpath criteria: //android.view.View[@content-desc="Begin Charge"]</msg>
+<msg time="2025-07-24T17:57:18.570387" level="INFO">Clicking element '//android.view.View[@content-desc="Begin Charge"]'.</msg>
+<msg time="2025-07-24T17:57:18.730499" level="INFO">xpath criteria: //android.view.View[@content-desc="Begin Charge"]</msg>
 <arg>${elm_input}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:33:55.411460" elapsed="0.160114"/>
+<status status="PASS" start="2025-07-24T17:57:18.566063" elapsed="0.164890"/>
 </kw>
 <arg>${elm_btn_BeginCharge}</arg>
-<status status="PASS" start="2025-07-23T17:33:55.285583" elapsed="0.286231"/>
+<status status="PASS" start="2025-07-24T17:57:18.456349" elapsed="0.274971"/>
 </kw>
-<status status="PASS" start="2025-07-23T17:33:51.815559" elapsed="3.756432"/>
+<status status="PASS" start="2025-07-24T17:57:18.455633" elapsed="0.275967"/>
 </kw>
-<kw name="Then AppiumLibrary.Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:05.677189" level="INFO">xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
+<kw name="Then System should display notify message as">
+<kw name="Check validation error message Android" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:28.863135" level="INFO">xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
+xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
 xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
 xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
 xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
@@ -732,10 +927,41 @@ xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"
 xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
 xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
 xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]</msg>
-<arg>//android.view.View[@content-desc="Proceed payment successfully"]</arg>
-<arg>10s</arg>
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:33:55.572644" elapsed="10.106241"/>
+<status status="PASS" start="2025-07-24T17:57:18.734285" elapsed="10.130121"/>
+</kw>
+<kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-07-24T17:57:28.981981" level="INFO">Element '//android.view.View[@content-desc="Proceed payment successfully"]' attribute 'content-desc' value 'Proceed payment successfully' </msg>
+<msg time="2025-07-24T17:57:28.982466" level="INFO">xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]</msg>
+<msg time="2025-07-24T17:57:28.982807" level="INFO">${actual} = Proceed payment successfully</msg>
+<var>${actual}</var>
+<arg>${Elm_message}</arg>
+<arg>content-desc</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<status status="PASS" start="2025-07-24T17:57:28.865237" elapsed="0.117752"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-07-24T17:57:28.983418" elapsed="0.000851"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-07-24T17:57:28.985024" level="INFO">Set test message to:
+validation error message with 'Proceed payment successfully'</msg>
+<arg>validation error message with '${actual}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-07-24T17:57:28.984626" elapsed="0.000642"/>
+</kw>
+<arg>//android.view.View[@content-desc="${message}"]</arg>
+<arg>${message}</arg>
+<status status="PASS" start="2025-07-24T17:57:18.733365" elapsed="10.252140"/>
+</kw>
+<arg>Proceed payment successfully</arg>
+<status status="PASS" start="2025-07-24T17:57:18.732436" elapsed="10.253291"/>
 </kw>
 <kw name="When Sign And Confirm Payment">
 <kw name="Swipe" owner="AppiumLibrary">
@@ -744,7 +970,7 @@ xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"
 <arg>1250</arg>
 <arg>300</arg>
 <doc>Swipe from one point to another point, for an optional duration.</doc>
-<status status="PASS" start="2025-07-23T17:34:05.680800" elapsed="1.324219"/>
+<status status="PASS" start="2025-07-24T17:57:28.986767" elapsed="1.358233"/>
 </kw>
 <kw name="Swipe" owner="AppiumLibrary">
 <arg>928</arg>
@@ -752,263 +978,120 @@ xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"
 <arg>918</arg>
 <arg>750</arg>
 <doc>Swipe from one point to another point, for an optional duration.</doc>
-<status status="PASS" start="2025-07-23T17:34:07.005904" elapsed="1.380456"/>
+<status status="PASS" start="2025-07-24T17:57:30.345877" elapsed="1.369927"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:09.282508" level="INFO">xpath criteria: //android.view.View[@content-desc="Done"]</msg>
+<msg time="2025-07-24T17:57:32.453162" level="INFO">xpath criteria: //android.view.View[@content-desc="Done"]</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:34:08.388519" elapsed="0.894460"/>
+<status status="PASS" start="2025-07-24T17:57:31.717575" elapsed="0.736075"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:09.287532" level="INFO">Clicking element '//android.view.View[@content-desc="Done"]'.</msg>
-<msg time="2025-07-23T17:34:09.418263" level="INFO">xpath criteria: //android.view.View[@content-desc="Done"]</msg>
+<msg time="2025-07-24T17:57:32.458405" level="INFO">Clicking element '//android.view.View[@content-desc="Done"]'.</msg>
+<msg time="2025-07-24T17:57:32.600132" level="INFO">xpath criteria: //android.view.View[@content-desc="Done"]</msg>
 <arg>${elm_input}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:34:09.283493" elapsed="0.135313"/>
+<status status="PASS" start="2025-07-24T17:57:32.454166" elapsed="0.146413"/>
 </kw>
 <arg>${elm_btn_Done}</arg>
-<status status="PASS" start="2025-07-23T17:34:08.387151" elapsed="1.032030"/>
+<status status="PASS" start="2025-07-24T17:57:31.716559" elapsed="0.884380"/>
 </kw>
-<status status="PASS" start="2025-07-23T17:34:05.679936" elapsed="3.739493"/>
+<status status="PASS" start="2025-07-24T17:57:28.986191" elapsed="3.615023"/>
 </kw>
-<kw name="Then Check validation error message Android" owner="Common">
+<kw name="And System should display text on screen as">
+<kw name="Check validation error message Android" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:11.085969" level="INFO">xpath criteria: //android.view.View[@content-desc="Your payment is confirmed!"]
-xpath criteria: //android.view.View[@content-desc="Your payment is confirmed!"]</msg>
+<msg time="2025-07-24T17:57:34.128419" level="INFO">xpath criteria: //android.view.View[@content-desc="Your payment is confirmed!"]</msg>
 <arg>${Elm_message}</arg>
 <arg>15s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:34:09.421844" elapsed="1.664635"/>
+<status status="PASS" start="2025-07-24T17:57:32.604972" elapsed="1.524261"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:11.179188" level="INFO">Element '//android.view.View[@content-desc="Your payment is confirmed!"]' attribute 'content-desc' value 'Your payment is confirmed!' </msg>
-<msg time="2025-07-23T17:34:11.179548" level="INFO">xpath criteria: //android.view.View[@content-desc="Your payment is confirmed!"]</msg>
-<msg time="2025-07-23T17:34:11.179852" level="INFO">${actual} = Your payment is confirmed!</msg>
+<msg time="2025-07-24T17:57:34.226725" level="INFO">Element '//android.view.View[@content-desc="Your payment is confirmed!"]' attribute 'content-desc' value 'Your payment is confirmed!' </msg>
+<msg time="2025-07-24T17:57:34.227266" level="INFO">xpath criteria: //android.view.View[@content-desc="Your payment is confirmed!"]</msg>
+<msg time="2025-07-24T17:57:34.227553" level="INFO">${actual} = Your payment is confirmed!</msg>
 <var>${actual}</var>
 <arg>${Elm_message}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:34:11.087018" elapsed="0.093006"/>
+<status status="PASS" start="2025-07-24T17:57:34.130013" elapsed="0.097713"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${actual}</arg>
 <arg>${Expected_message}</arg>
 <arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-23T17:34:11.180436" elapsed="0.000757"/>
+<status status="PASS" start="2025-07-24T17:57:34.228431" elapsed="0.001044"/>
 </kw>
 <kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-07-23T17:34:11.181910" level="INFO">Set test message to:
+<msg time="2025-07-24T17:57:34.230303" level="INFO">Set test message to:
 validation error message with 'Your payment is confirmed!'</msg>
 <arg>validation error message with '${actual}'</arg>
 <doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-07-23T17:34:11.181524" elapsed="0.000620"/>
+<status status="PASS" start="2025-07-24T17:57:34.229896" elapsed="0.000669"/>
 </kw>
-<arg>//android.view.View[@content-desc="Your payment is confirmed!"]</arg>
-<arg>Your payment is confirmed!</arg>
-<status status="PASS" start="2025-07-23T17:34:09.420448" elapsed="1.761922"/>
-</kw>
-<kw name="When Choose send receipt to Email">
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:11.276445" level="INFO">xpath criteria: //android.view.View[@content-desc="Email"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:34:11.185070" elapsed="0.091830"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:11.280371" level="INFO">Clicking element '//android.view.View[@content-desc="Email"]'.</msg>
-<msg time="2025-07-23T17:34:11.445574" level="INFO">xpath criteria: //android.view.View[@content-desc="Email"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:34:11.277270" elapsed="0.168769"/>
-</kw>
-<arg>//android.view.View[@content-desc="Email"]</arg>
-<status status="PASS" start="2025-07-23T17:34:11.184347" elapsed="0.262049"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:14.268220" level="INFO">xpath criteria: //android.widget.EditText
-xpath criteria: //android.widget.EditText
-xpath criteria: //android.widget.EditText
-xpath criteria: //android.widget.EditText
-xpath criteria: //android.widget.EditText
-xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:34:11.447533" elapsed="2.821170"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:14.273003" level="INFO">Clicking element '//android.widget.EditText'.</msg>
-<msg time="2025-07-23T17:34:14.467600" level="INFO">xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:34:14.269220" elapsed="0.198852"/>
-</kw>
-<arg>//android.widget.EditText</arg>
-<status status="PASS" start="2025-07-23T17:34:11.446822" elapsed="3.021607"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:15.615373" level="INFO">xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:34:14.469993" elapsed="1.145829"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:15.620405" level="INFO">Typing text 'school@yopmail.com' into text field '//android.widget.EditText'</msg>
-<msg time="2025-07-23T17:34:15.725677" level="INFO">xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
+<arg>//android.view.View[@content-desc="${text}"]</arg>
 <arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:34:15.616343" elapsed="0.109770"/>
+<status status="PASS" start="2025-07-24T17:57:32.603761" elapsed="1.627036"/>
 </kw>
-<arg>//android.widget.EditText</arg>
-<arg>${email}</arg>
-<status status="PASS" start="2025-07-23T17:34:14.468965" elapsed="1.257450"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:16.346745" level="INFO">xpath criteria: //android.widget.ScrollView/android.view.View[7]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:34:15.727632" elapsed="0.619669"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:16.351526" level="INFO">Clicking element '//android.widget.ScrollView/android.view.View[7]'.</msg>
-<msg time="2025-07-23T17:34:17.295071" level="INFO">xpath criteria: //android.widget.ScrollView/android.view.View[7]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:34:16.347846" elapsed="0.947691"/>
-</kw>
-<arg>//android.widget.ScrollView/android.view.View[7]</arg>
-<status status="PASS" start="2025-07-23T17:34:15.726863" elapsed="1.569009"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:17.402407" level="INFO">xpath criteria: //android.widget.EditText[@text="school@yopmail.com"]/android.view.View</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:34:17.297736" elapsed="0.105426"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:17.408268" level="INFO">Clicking element '//android.widget.EditText[@text="school@yopmail.com"]/android.view.View'.</msg>
-<msg time="2025-07-23T17:34:18.075350" level="INFO">xpath criteria: //android.widget.EditText[@text="school@yopmail.com"]/android.view.View</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:34:17.403846" elapsed="0.672030"/>
-</kw>
-<arg>//android.widget.EditText[@text="${email}"]/android.view.View</arg>
-<status status="PASS" start="2025-07-23T17:34:17.296557" elapsed="0.779657"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:18.197562" level="INFO">xpath criteria: //android.view.View[@content-desc="SEND"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:34:18.077888" elapsed="0.120397"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:18.203448" level="INFO">Clicking element '//android.view.View[@content-desc="SEND"]'.</msg>
-<msg time="2025-07-23T17:34:20.083905" level="INFO">xpath criteria: //android.view.View[@content-desc="SEND"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:34:18.199005" elapsed="1.885352"/>
-</kw>
-<arg>//android.view.View[@content-desc="SEND"]</arg>
-<status status="PASS" start="2025-07-23T17:34:18.076748" elapsed="2.007918"/>
-</kw>
-<arg>school@yopmail.com</arg>
-<status status="PASS" start="2025-07-23T17:34:11.183258" elapsed="8.901625"/>
-</kw>
-<kw name="Then Check validation error message Android" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:20.187793" level="INFO">xpath criteria: //android.view.View[@content-desc="Send Receipt Successfully"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:34:20.087082" elapsed="0.101174"/>
-</kw>
-<kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:20.288719" level="INFO">Element '//android.view.View[@content-desc="Send Receipt Successfully"]' attribute 'content-desc' value 'Send Receipt Successfully' </msg>
-<msg time="2025-07-23T17:34:20.289073" level="INFO">xpath criteria: //android.view.View[@content-desc="Send Receipt Successfully"]</msg>
-<msg time="2025-07-23T17:34:20.289353" level="INFO">${actual} = Send Receipt Successfully</msg>
-<var>${actual}</var>
-<arg>${Elm_message}</arg>
-<arg>content-desc</arg>
-<doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-07-23T17:34:20.188757" elapsed="0.100766"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${actual}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-07-23T17:34:20.289932" elapsed="0.000751"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-07-23T17:34:20.291465" level="INFO">Set test message to:
-validation error message with 'Send Receipt Successfully'</msg>
-<arg>validation error message with '${actual}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-07-23T17:34:20.291014" elapsed="0.000754"/>
-</kw>
-<arg>//android.view.View[@content-desc="Send Receipt Successfully"]</arg>
-<arg>Send Receipt Successfully</arg>
-<status status="PASS" start="2025-07-23T17:34:20.085656" elapsed="0.206374"/>
+<arg>Your payment is confirmed!</arg>
+<status status="PASS" start="2025-07-24T17:57:32.602500" elapsed="1.628515"/>
 </kw>
 <kw name="When Choose No Receipt">
 <kw name="Click on Element mobile" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:20.389187" level="INFO">xpath criteria: //android.view.View[@content-desc="No receipt"]</msg>
+<msg time="2025-07-24T17:57:34.319663" level="INFO">xpath criteria: //android.view.View[@content-desc="No receipt"]</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-07-23T17:34:20.295316" elapsed="0.094275"/>
+<status status="PASS" start="2025-07-24T17:57:34.233061" elapsed="0.086982"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-07-23T17:34:20.393693" level="INFO">Clicking element '//android.view.View[@content-desc="No receipt"]'.</msg>
-<msg time="2025-07-23T17:34:20.524661" level="INFO">xpath criteria: //android.view.View[@content-desc="No receipt"]</msg>
+<msg time="2025-07-24T17:57:34.324068" level="INFO">Clicking element '//android.view.View[@content-desc="No receipt"]'.</msg>
+<msg time="2025-07-24T17:57:34.494068" level="INFO">xpath criteria: //android.view.View[@content-desc="No receipt"]</msg>
 <arg>${elm_input}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-07-23T17:34:20.390013" elapsed="0.135095"/>
+<status status="PASS" start="2025-07-24T17:57:34.320464" elapsed="0.173972"/>
 </kw>
 <arg>${elm_Option_NoReceipt}</arg>
-<status status="PASS" start="2025-07-23T17:34:20.294237" elapsed="0.231231"/>
+<status status="PASS" start="2025-07-24T17:57:34.232283" elapsed="0.262443"/>
 </kw>
-<status status="PASS" start="2025-07-23T17:34:20.293343" elapsed="0.232400"/>
+<status status="PASS" start="2025-07-24T17:57:34.231641" elapsed="0.263315"/>
 </kw>
-<status status="PASS" start="2025-07-23T17:33:37.831247" elapsed="42.695467">validation error message with 'Send Receipt Successfully'</status>
+<doc>Verify Credit Card checkout with a voucher discount and tip selected as percentage.</doc>
+<tag>checkout</tag>
+<tag>credit_card</tag>
+<tag>tip_percentage</tag>
+<tag>voucher_discount</tag>
+<status status="PASS" start="2025-07-24T17:56:59.166917" elapsed="35.328683">validation error message with 'Your payment is confirmed!'</status>
 </test>
 <kw name="Basic TearDowns Android" owner="Common" type="TEARDOWN">
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-07-23T17:34:23.532481" level="INFO">Slept 3 seconds.</msg>
+<msg time="2025-07-24T17:57:37.501334" level="INFO">Slept 3 seconds.</msg>
 <arg>3</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-07-23T17:34:20.530252" elapsed="3.002632"/>
+<status status="PASS" start="2025-07-24T17:57:34.499112" elapsed="3.002788"/>
 </kw>
 <kw name="Close Application" owner="AppiumLibrary">
 <doc>Closes the current application and also close webdriver session.</doc>
-<status status="PASS" start="2025-07-23T17:34:23.533256" elapsed="0.438252"/>
+<status status="PASS" start="2025-07-24T17:57:37.502408" elapsed="0.457538"/>
 </kw>
-<status status="PASS" start="2025-07-23T17:34:20.529507" elapsed="3.442365"/>
+<status status="PASS" start="2025-07-24T17:57:34.497745" elapsed="3.462947"/>
 </kw>
-<status status="PASS" start="2025-07-23T17:33:33.085493" elapsed="50.886605"/>
+<status status="PASS" start="2025-07-24T17:56:54.241449" elapsed="43.719445"/>
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">checkout</stat>
+<stat pass="1" fail="0" skip="0">credit_card</stat>
+<stat pass="1" fail="0" skip="0">tip_percentage</stat>
+<stat pass="1" fail="0" skip="0">voucher_discount</stat>
 </tag>
 <suite>
 <stat name="CheckOutAndroid" id="s1" pass="1" fail="0" skip="0">CheckOutAndroid</stat>

@@ -13,6 +13,6 @@ ${BUNDLE_ID}            com.bizbookly.manager.dev
 #Appium Android
 ${PLATFORM_NAME_Android}    Android
 ${AUTOMATION_NAME_Android}  UiAutomator2
-${UDID_Android}             192.168.31.159:46193
+${UDID_Android}             192.168.31.159:34485
 ${APP_PACKAGE}              com.bizbookly.manager.dev
 ${APP_ACTIVITY}             com.bizbookly.manager.MainActivity

@@ -102,7 +102,7 @@ Basic TearDowns iOS
     Close Application
 
 Basic Setup Android
-    Open Application    ${APPIUM_SERVER_URL}    platformName=${PLATFORM_NAME_Android}   appium:automationName=${AUTOMATION_NAME_Android}    appium:udid=${UDID_Android}     appium:appPackage=${APP_PACKAGE}   appium:appActivity=${APP_ACTIVITY}       noReset=true      autoGrantPermissions=true
+    Open Application    ${APPIUM_SERVER_URL}    platformName=${PLATFORM_NAME_Android}   appium:automationName=${AUTOMATION_NAME_Android}    appium:device=${UDID_Android}     appium:appPackage=${APP_PACKAGE}   appium:appActivity=${APP_ACTIVITY}       noReset=true      autoGrantPermissions=true
 Basic TearDowns Android
     Sleep    3
     Close Application
