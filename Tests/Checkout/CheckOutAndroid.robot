@@ -1073,5 +1073,3 @@ Choose send receipt to SMS
     END
 
     Click on Element mobile    //android.view.View[@content-desc="Send"]
-
-
