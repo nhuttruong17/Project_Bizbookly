@@ -11,33 +11,28 @@ Library         String
 ${Gift_card}        SGC240940632830
 ####Gift Card balances may be change with each payment
 ${Current_amount_Giftcard}        $224.80
-${voucher_code}    Testvoucher
+${voucher_code}    Voucher10per
 *** Test Cases ***
 Verify Checkout Paid Externally without discount and without tip
     [Tags]    checkout    no_voucher    no_tip    external_payment    success
     [Documentation]    Verify full checkout flow without any voucher or tip applied,
     ...    paid externally, and ensure total amount remains unchanged with confirmation displayed.
-    Given Find and choose Technician    caisse
+    
+    Find and choose Technician    caisse
     Select service and add on & apply voucher
-    # Select service and add on
-    # Select list of add on
-    # And Select And Store Services Price
-    # When User proceeds to Payment
-    # When User selects payment method as Paid Externally
-    # Tip on service random
-    # And Get value from system and compare with result
-    # Then System should display original price breakdown    ${ORIGINAL_PRICE_SUM}    ${ORIGINAL_TAX_SUM}    ${ORIGINAL_TOTAL_SUM}
-    # When User proceeds to Payment
-    # Then System should show balance due    ${ORIGINAL_TOTAL_SUM}
-    # When User selects payment method as Paid Externally
-    # Then System should display tip screen with default tip amount    ${ORIGINAL_PRICE_SUM}
-    # When User Skips Tip
-    # Then System should still show total amount as    ${ORIGINAL_TOTAL_SUM}
-    # And System should display tip detail with technician and amount tip    caisse    $0.00
-    # When User Begins Charge
-    # Then System should display notify message as     Proceed payment successfully
-    # And System should display text on screen as     Your payment is confirmed!
-    # When Choose No Receipt
+    Get value from system and compare with result for billing summary
+    User proceeds to Payment
+    Get value from system and compare with result for Balance Due
+    User selects payment method as Paid Externally
+    Tip on service random
+    Get value from system and compare with result for Tip
+    User Begins Charge
+    System should display notify message as     Proceed payment successfully
+    System should display text on screen as     Your payment is confirmed!
+    Choose No Receipt
+    
+    
+    
 
 
 *** Keywords ***
@@ -119,29 +114,6 @@ User selects payment method as Credit Card
 ## Method Payment
 
 ## Apply Discount
-Apply Fixed Discount
-    [Arguments]    @{amount}
-    Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
-    Click on Element mobile    //android.view.View[@content-desc="Quick discount"]/android.view.View
-    Click on Element mobile    //android.view.View[@content-desc="Fixed amount"]
-    Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[4]/android.view.View
-    FOR    ${digit}    IN    @{amount}
-        Click on Element mobile    //android.view.View[@content-desc="${digit}"]
-    END
-    Click on Element mobile    ${elm_btn_Done}
-    Click on Element mobile    ${elm_btn_Submit}
-
-Apply Percentage Discount
-    [Arguments]    @{percent}
-    Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
-    Click on Element mobile    //android.view.View[@content-desc="Quick discount"]/android.view.View
-    Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View
-    FOR    ${digit}    IN    @{percent}
-        Click on Element mobile    //android.view.View[@content-desc="${digit}"]
-    END
-    Click on Element mobile    ${elm_btn_Done}
-    Click on Element mobile    ${elm_btn_Submit}
-
 Apply Voucher Discount
     [Arguments]    ${voucher_code}
     Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
@@ -161,18 +133,6 @@ Pay By Cash
     Click on Element mobile    ${elm_btn_Payment}
     Click on Element mobile    ${elm_Option_Cash}
     Click on Element mobile    ${elm_btn_BeginCharge}
-
-
-Enter NumberPad Amount
-    [Arguments]    @{digits}
-    FOR    ${digit}    IN    @{digits}
-        Click on Element mobile    //android.view.View[@content-desc="${digit}"]
-    END
-
-Choose tip percentage on screen Tips
-    [Arguments]    ${percent}    ${amount}
-    Click on Element mobile    //android.view.View[contains(@content-desc, "${percent}") and contains(@content-desc, "${amount}")]
-
 Sign And Confirm Payment
     Swipe    600    300    1250    300
     Swipe    928    300    918    750
@@ -194,15 +154,15 @@ Choose send receipt to SMS
     [Arguments]    @{digits}
     Click on Element mobile    //android.view.View[@content-desc="Text (SMS)"]
     FOR    ${digit}    IN    @{digits}
-        Click on Element mobile    //android.view.View[@content-desc="${digit}"]
+        Click on Element mobile    //android.view.View[@content-desc="${digit}" and @clickable="true"]
     END
 
     Click on Element mobile    //android.view.View[@content-desc="Send"]
 
 
 ### Test 
-Select service and add on & apply voucher
-    [Arguments]    ${number_of_services}=2       ${number_of_add_ons}=2        ${discount_type}='voucher'       ${include_discount}='on' 
+Select service and add on & apply voucher    ### Nếu k sử dụng voucher thì sửa lại $vouchercode= ${None}
+    [Arguments]    ${number_of_services}=2       ${number_of_add_ons}=2        ${discount_type}='none'       ${include_discount}=${None}        ${voucher_code}=${None}
     ${service_list}=    AppiumLibrary.Get Webelements    xpath=//android.view.View[8]//android.view.View[contains(@content-desc, "$") and @clickable="true"]
     ${add_on_list}=    AppiumLibrary.Get Webelements    xpath=//android.view.View[10]/android.view.View//android.view.View[contains(@content-desc, "$") and @clickable="true"]
     ${count_service}=    Get Length    ${service_list}
@@ -246,7 +206,6 @@ Select service and add on & apply voucher
 
     END
 
-    
     ${Total_service}=    Evaluate    ${subtotal_before_discount_service} + ${subtotal_before_discount_list_of_add_ons}
     Log    ${Total_service}
     
@@ -269,7 +228,7 @@ Select service and add on & apply voucher
             ${number_list}=   Convert To List    ${number_str}
             Log    ${number_list}
             FOR    ${digit}    IN    @{number_list}
-                Click on Element mobile    //android.view.View[@content-desc="${digit}"]
+                Click on Element mobile    //android.view.View[@content-desc="${digit}" and @clickable="true"]
             END
             Click on Element mobile    ${elm_btn_Done}
             Click on Element mobile    ${elm_btn_Submit}
@@ -289,15 +248,14 @@ Select service and add on & apply voucher
             ${number_list}=   Convert To List    ${number_str}
             Log    ${number_list}
             FOR    ${digit}    IN    @{number_list}
-                Click on Element mobile    //android.view.View[@content-desc="${digit}"]
+                Click on Element mobile    //android.view.View[@content-desc="${digit}" and @clickable="true"]
             END
             Click on Element mobile    ${elm_btn_Done}
             Click on Element mobile    ${elm_btn_Submit}
         ELSE
             Fail    Invalid include discount: ${include_discount} must be 'off' or 'on'.
         END
-        
-        
+
     ELSE IF  ${discount_type} == 'fixed'
         Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
         Click on Element mobile    //android.view.View[@content-desc="Quick discount"]/android.view.View
@@ -307,8 +265,13 @@ Select service and add on & apply voucher
         ${format_subtotal}=     Evaluate    '{:.2f}'.format(${Total_service})
         Log    ${format_subtotal}
         # Tạo một giá trị giảm giá ngẫu nhiên từ 1.00 đến ${format_subtotal} và làm tròn đến 2 chữ số
-        ${random_discount}=     Evaluate       round(random.uniform(1.00, ${format_subtotal}), 2)    modules=random
-        Log    ${random_discount}
+        # ${random_discount}=     Evaluate       round(random.uniform(1.00, ${format_subtotal}), 2)    modules=random
+        # Log    ${random_discount}
+
+        ${random_fixed}=     Evaluate       random.uniform(1.00, ${format_subtotal})    modules=random
+        Log    ${random_fixed}
+        ${random_discount}=     Evaluate    int(${random_fixed} * 100) / 100
+        Log  ${random_discount}
         ${number_str}=    Convert To String    ${random_discount}
         Log    ${number_str}
         # Cắt bỏ dấu . để nhập numberpad
@@ -326,13 +289,36 @@ Select service and add on & apply voucher
         Click on Element mobile    //android.view.View[@content-desc="Apply Voucher"]
         Click on Element mobile    //android.widget.EditText
         Fill Text Input mobile    //android.widget.EditText    ${voucher_code}
+        # Kiểm tra xem voucher có tồn tại và hiển thị
+        AppiumLibrary.Wait Until Element Is Visible    //android.view.View[contains(@content-desc, "Code: #SBV${voucher_code}")]
+        ${amount_voucher}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "Code: #SBV${voucher_code}")]    content-desc
+        Log    ${amount_voucher}
+
+        ${amount_list}=    Evaluate    re.findall(r'(\\d+(?:\\.\\d+)?(?= off|%))', """${amount_voucher}""", re.MULTILINE)    modules=re
+        Log    Amount List: ${amount_list}
+
+        # Kiểm tra loại voucher (fixed hay percentage)
+        ${is_percentage}=    Evaluate    """${amount_voucher}""".find('%') != -1
+        ${is_fixed}=    Evaluate    """${amount_voucher}""".find(' off') != -1
+        
+        IF    '${is_percentage}' == 'True'
+            Log    Loại voucher: percentage
+            Log    Giá trị Percentage: ${amount_list}[0]
+            ${random_discount}=    Evaluate    float(${amount_list}[0]) * ${Total_service} / 100
+        ELSE IF    '${is_fixed}' == 'True'
+            Log    Loại voucher: fixed
+            Log    Giá trị Fixed amount: ${amount_list}[0]
+            ${random_discount}=    Evaluate    float(${amount_list}[0])
+        ELSE
+            Fail    Không phải voucher hợp lệ, không có giá trị fixed hay percentage.
+        END
         Click on Element mobile    //android.view.View[contains(@content-desc, "Code: #SBV${voucher_code}")]
         Click on Element mobile    ${elm_btn_Submit}
-        ${amount_voucher}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "-$") and @index=21]    content-desc
-        ${value_voucher}=    Get Amount Value From Service Desc    ${amount_voucher}
-        ${random_discount}=    Evaluate    f\"{${value_voucher}:.2f}\"
-        Log    ${random_discount}
-        
+
+        # ${amount_voucher}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "-$") and @index=21]    content-desc
+        # ${value_voucher}=    Get Amount Value From Service Desc    ${amount_voucher}
+        # ${random_discount}=    Evaluate    f\"{${value_voucher}:.2f}\"
+        # Log    ${random_discount}
     ELSE IF    ${discount_type} == 'none'
         No Operation
     ELSE 
@@ -353,6 +339,456 @@ Select service and add on & apply voucher
     ${final_discount_str}=    Evaluate    f\"{${random_discount}:.2f}\"
     ${final_before_discount}=    Evaluate    f\"{${Total_service}:.2f}\"
 
+    Log    Tổng Price (tính toán): Subtotal=${final_subtotal_str}, Discount=${final_discount_str}, Tax=${final_tax_str}, Total=${final_total_str}, Subtotalbefore=${final_before_discount}
+
+    # Lưu vào biến Suite
+    Set Suite Variable    ${ORIGINAL_PRICE_SUM}       ${final_subtotal_str} 
+    Set Suite Variable    ${ORIGINAL_TAX_SUM}         ${final_tax_str}
+    Set Suite Variable    ${ORIGINAL_TOTAL_SUM}       ${final_total_str}
+    Set Suite Variable    ${ORIGINAL_DISCOUNT_VALUE}  ${final_discount_str} 
+    Set Suite Variable    ${SELECTED_SERVICE_DESCS}   ${selected_service_texts}
+    Set Suite Variable    ${SELECTED_LISTOF_ADD-ONS}   ${selected_add_on_texts}
+    Set Suite Variable    ${DISCOUNT_TYPE_APPLIED}    ${discount_type} 
+    Set Suite Variable    ${SUBTOTAL_BEFORE_DISCOUNT}     ${final_before_discount}
+
+Get value from system and compare with result for billing summary
+    [Arguments]        ${use_discount}='no_discount'
+    IF    ${use_discount} == 'have_discount'
+        ## Get value Subtotal
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=23 and @clickable="false"]    content-desc
+        ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
+        ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
+        Log    ${Subtotal_system_value}
+        ## Get value Tax
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=25 and @clickable="false"]    content-desc
+        ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
+        ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
+        Log    ${Tax_system_value}
+        ## Get value Total Balance Due
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=30 and @clickable="false"]    content-desc
+        ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
+        ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
+        Log    ${Total_system_value}
+        ## Get value Discount
+        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "-$") and @index=21 and @clickable="false"]        content-desc
+        ${Discount_system_value}=    Get Amount Value From Service Desc    ${Discount_system}
+        ${Discount_system_value}=    Evaluate    f\"{${Discount_system_value}:.2f}\"
+        Log    ${Discount_system_value}
+
+    ELSE IF    ${use_discount} == 'no_discount'
+        ## Get value Subtotal
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=23 and @clickable="false"]    content-desc
+        ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
+        ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
+        Log    ${Subtotal_system_value}
+        ## Get value Tax
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=27 and @clickable="false"]    content-desc
+        ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
+        ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
+        Log    ${Tax_system_value}
+        ## Get value Total Balance Due
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=28 and @clickable="false"]    content-desc
+        ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
+        ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
+        Log    ${Total_system_value}
+        ## Get value Discount
+        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "-$") and @index=21 and @clickable="false"]        content-desc
+        ${Discount_system_value}=    Get Amount Value From Service Desc    ${Discount_system}
+        ${Discount_system_value}=    Evaluate    f\"{${Discount_system_value}:.2f}\"
+        Log    ${Discount_system_value}
+    ELSE
+        Fail    Invalid discount type: ${Tax_system} must be 'have_discount' or 'no_discount'.
+    END
+    ## So sánh giá trị của 
+    Should Be Equal    ${Subtotal_system_value}    ${SUBTOTAL_BEFORE_DISCOUNT}    Subtotal_system_value không khớp với SUBTOTAL_BEFORE_DISCOUNT    
+    Should Be Equal    ${Tax_system_value}    ${ORIGINAL_TAX_SUM}    Tax_system_value không khớp với ORIGINAL_TAX_SUM
+    Should Be Equal    ${Total_system_value}    ${ORIGINAL_TOTAL_SUM}    Total_system_value không khớp với ORIGINAL_TOTAL_SUM
+    Should Be Equal    ${Discount_system_value}    ${ORIGINAL_DISCOUNT_VALUE}    Discount_system_value không khớp với ORIGINAL_DISCOUNT_VALUE
+    
+Get value from system and compare with result for Balance Due
+    [Arguments]        ${use_discount}='no_discount'
+    IF    ${use_discount} == 'have_discount'
+        ## Get value Balance Due
+        ${BalanceDue_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=1 and @clickable="false"]    content-desc
+        ${BalanceDue_system_value}=    Get Amount Value From Service Desc    ${BalanceDue_system}
+        ${Balancedue_system_value}=    Evaluate    f\"{${BalanceDue_system_value}:.2f}\"
+        Log    ${BalanceDue_system_value}
+
+        ## Get value Subtotal
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
+        ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
+        ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
+        Log    ${Subtotal_system_value}
+
+        ## Get value Discount
+        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=12 and @clickable="false"]    content-desc
+        ${Discount_system_value}=    Get Amount Value From Service Desc    ${Discount_system}
+        ${Discount_system_value}=    Evaluate    f\"{${Discount_system_value}:.2f}\"
+        Log    ${Discount_system_value}
+
+        ## Get value Discounted Subtotal
+        ${DiscountedSubtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=14 and @clickable="false"]    content-desc
+        ${DiscountedSubtotal_system_value}=    Get Amount Value From Service Desc    ${DiscountedSubtotal_system}
+        ${DiscountedSubtotal_system_value}=    Evaluate    f\"{${DiscountedSubtotal_system_value}:.2f}\"
+        Log    ${DiscountedSubtotal_system_value}
+
+        ## Get value Tax
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=16 and @clickable="false"]    content-desc
+        ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
+        ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
+        Log    ${Tax_system_value}
+
+        ## Get value Tip
+        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=18 and @clickable="false"]    content-desc
+        ${Tip_system_value}=    Get Amount Value From Service Desc    ${Tip_system}
+        ${Tip_system_value}=    Evaluate    f\"{${Tip_system_value}:.2f}\"
+        Log    ${Tip_system_value}
+
+        ## Get value Total
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=20 and @clickable="false"]    content-desc
+        ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
+        ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
+        Log    ${Total_system_value}
+
+        ## So sánh giá trị của Robot Framework VS giá trị của hệ thống
+        Should Be Equal    ${BalanceDue_system_value}    ${ORIGINAL_TOTAL_SUM}    BalanceDue_system_value không khớp với ORIGINAL_TOTAL_SUM
+        Should Be Equal    ${Subtotal_system_value}    ${SUBTOTAL_BEFORE_DISCOUNT}    Subtotal_system_value không khớp với SUBTOTAL_BEFORE_DISCOUNT
+        Should Be Equal    ${Discount_system_value}    ${ORIGINAL_DISCOUNT_VALUE}    Discount_system_value không khớp với ORIGINAL_DISCOUNT_VALUE
+        Should Be Equal    ${DiscountedSubtotal_system_value}    ${ORIGINAL_PRICE_SUM}    DiscountedSubtotal_system_value không khớp với ORIGINAL_PRICE_SUM
+        Should Be Equal    ${Tax_system_value}   ${ORIGINAL_TAX_SUM}    Tax_system_value không khớp với ORIGINAL_TAX_SUM
+        Should Be Equal    ${Tip_system_value}    0.00    Tip_system_value không khớp với 0.00
+        Should Be Equal    ${Total_system_value}    ${ORIGINAL_TOTAL_SUM}    Total_system_value không khớp với ORIGINAL_TOTAL_SUM
+        
+    ELSE IF    ${use_discount} == 'no_discount'
+        ## Get value Balance Due
+        ${BalanceDue_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=1 and @clickable="false"]    content-desc
+        ${BalanceDue_system_value}=    Get Amount Value From Service Desc    ${BalanceDue_system}
+        ${Balancedue_system_value}=    Evaluate    f\"{${BalanceDue_system_value}:.2f}\"
+        Log    ${BalanceDue_system_value}
+        ## Get value Subtotal
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
+        ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
+        ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
+        Log    ${Subtotal_system_value}
+        ## Get value Tax
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=12 and @clickable="false"]    content-desc
+        ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
+        ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
+        Log    ${Tax_system_value}
+        ## Get value Tip
+        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=14 and @clickable="false"]    content-desc
+        ${Tip_system_value}=    Get Amount Value From Service Desc    ${Tip_system}
+        ${Tip_system_value}=    Evaluate    f\"{${Tip_system_value}:.2f}\"
+        Log    ${Tip_system_value}
+        ## Get value Total
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=16 and @clickable="false"]    content-desc
+        ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
+        ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
+        Log    ${Total_system_value}
+
+        ## So sánh giá trị của Robot Framework VS giá trị của hệ thống
+        Should Be Equal    ${BalanceDue_system_value}    ${ORIGINAL_TOTAL_SUM}    BalanceDue_system_value không khớp với ORIGINAL_TOTAL_SUM
+        Should Be Equal    ${Subtotal_system_value}    ${SUBTOTAL_BEFORE_DISCOUNT}    Subtotal_system_value không khớp với SUBTOTAL_BEFORE_DISCOUNT
+        Should Be Equal    ${Tax_system_value}   ${ORIGINAL_TAX_SUM}    Tax_system_value không khớp với ORIGINAL_TAX_SUM
+        Should Be Equal    ${Tip_system_value}    0.00    Tip_system_value không khớp với 0.00
+        Should Be Equal    ${Total_system_value}    ${ORIGINAL_TOTAL_SUM}    Total_system_value không khớp với ORIGINAL_TOTAL_SUM
+        
+    ELSE
+        Fail    Invalid discount type: ${use_discount} must be 'have_discount' or 'no_discount'.    
+    END
+    
+Tip on service random
+    ## Tính toán Tip
+    [Arguments]    ${tip_type}='none'
+    ${random_tip}=             Set Variable    ${0.0}
+    IF    ${tip_type} == 'tip_percentage'
+        # Lấy tất cả các phần tử tip % có sẵn
+        ${real_tip_percentage}=    AppiumLibrary.Get Webelements    xpath=//android.view.View[contains(@content-desc, "%") and @clickable="true"]
+        # Đếm các phần tử lấy được
+        ${count}=    Get Length    ${real_tip_percentage}
+        Log    Số lượng service thực sự tìm thấy: ${count}
+        # Chọn ngẫu nhiên một phần tử trong tip % 
+        ${random_tip_percentage}=    Evaluate    random.randint(0, ${count} - 1)    modules=random
+        # Lấy phần tử từ list bằng chỉ mục
+        ${selected_tip_element}=    Get From List    ${real_tip_percentage}    ${random_tip_percentage}
+        ${selected_tip_desc}=       AppiumLibrary.Get Element Attribute    ${selected_tip_element}    content-desc
+        Log    Đã chọn tip phần trăm: ${selected_tip_desc}
+        # Tách $amount để lấy amount% 
+        ${tip_percent_match}=    Get Regexp Matches    ${selected_tip_desc}    (\\d+%)    1
+        Log    ${tip_percent_match}
+        #Click vào phần tử tip đã chọn
+        AppiumLibrary.Click Element    //android.view.View[contains(@content-desc, "${selected_tip_desc}") and @clickable="true"]
+
+        ${get_tip_percentage}=    Get From List    ${tip_percent_match}    0
+        Log    ${get_tip_percentage}
+        ${tip_percentage_amount}=   Replace String    ${get_tip_percentage}    %    ${EMPTY}
+        Log    ${tip_percentage_amount}
+        ${random_tip}=    Evaluate    round(${ORIGINAL_PRICE_SUM} * ${tip_percentage_amount} / 100, 2)
+        Log    ${random_tip}
+    
+    ELSE IF  ${tip_type} == 'tip_amount'
+        Click on Element mobile    //android.view.View[@content-desc="Custom Amount"]
+        # Tạo một giá trị giảm giá ngẫu nhiên từ 1.00 đến ${format_subtotal} và làm tròn đến 2 chữ số
+        ${random_tip}=     Evaluate       round(random.uniform(1.00, ${ORIGINAL_PRICE_SUM}), 2)    modules=random
+        Log    ${random_tip}
+        ${number_str}=    Convert To String    ${random_tip}
+        Log    ${number_str}
+        # Cắt bỏ dấu . để nhập numberpad
+        ${number_str_no_dot}=    Replace String    ${number_str}    .    ${EMPTY}
+        Log    ${number_str_no_dot}
+        ${number_list}=   Convert To List    ${number_str_no_dot}
+        FOR    ${digit}    IN    @{number_list}
+            Click on Element mobile    //android.view.View[@content-desc="${digit}" and @clickable="true"]
+        END
+        Click on Element mobile    ${elm_btn_Submit}
+
+    ELSE IF    ${tip_type} == 'none'
+        Click on Element mobile    ${elm_btn_Skip}
+    ELSE 
+        Fail    Invalid discount type: ${tip_type} must be 'tip_percentage' or 'tip_amount'.
+    END
+    
+    # --- Tính toán Subtotal sau discount, Tax, Tip và  Total cuối cùng ---
+    ${final_subtotal_after_tip}=    Evaluate    round(${ORIGINAL_TOTAL_SUM} + ${random_tip}, 2)
+    Log    ${final_subtotal_after_tip}
+    Set Suite Variable    ${TIP_RANDOM}    ${random_tip}
+    Set Suite Variable    ${FINAL_TOTAL_AFTER_TIP}    ${final_subtotal_after_tip}
+
+Get value from system and compare with result for Tip
+    [Arguments]        ${use_discount}='no_discount'
+    IF    ${use_discount} == 'have_discount'
+        ## Get value Total Amount
+        ${TotalAmount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=2 and @clickable="false"]    content-desc
+        ${TotalAmount_system_value}=    Get Amount Value From Service Desc    ${TotalAmount_system}
+        ${TotalAmount_system_value}=    Evaluate    f\"{${TotalAmount_system_value}:.2f}\"
+        Log    ${TotalAmount_system_value}
+        
+        ## Get value Subtotal
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
+        ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
+        ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
+        Log    ${Subtotal_system_value}
+
+        ## Get value Discount
+        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=12 and @clickable="false"]    content-desc
+        ${Discount_system_value}=    Get Amount Value From Service Desc    ${Discount_system}
+        ${Discount_system_value}=    Evaluate    f\"{${Discount_system_value}:.2f}\"
+        Log    ${Discount_system_value}
+
+        ## Get value Discounted Subtotal
+        ${DiscountedSubtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=14 and @clickable="false"]    content-desc
+        ${DiscountedSubtotal_system_value}=    Get Amount Value From Service Desc    ${DiscountedSubtotal_system}
+        ${DiscountedSubtotal_system_value}=    Evaluate    f\"{${DiscountedSubtotal_system_value}:.2f}\"
+        Log    ${DiscountedSubtotal_system_value}
+
+        ## Get value Tax
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=16 and @clickable="false"]    content-desc
+        ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
+        ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
+        Log    ${Tax_system_value}
+
+        ## Get value Tip
+        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=18 and @clickable="false"]    content-desc
+        ${Tip_system_value}=    Get Amount Value From Service Desc    ${Tip_system}
+        ${Tip_system_value}=    Evaluate    f\"{${Tip_system_value}:.2f}\"
+        Log    ${Tip_system_value}
+        
+        ## Get value Total
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=20 and @clickable="false"]    content-desc
+        ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
+        ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
+        Log    ${Total_system_value}
+        
+        ## Get Tip details
+        ${TipDetails_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=0 and @clickable="false"]    content-desc
+        ${TipDetails_system_value}=    Get Amount Value From Service Desc    ${TipDetails_system}
+        ${TipDetails_system_value}=    Evaluate    f\"{${TipDetails_system_value}:.2f}\"
+        Log    ${TipDetails_system_value}
+        
+
+        ## So sánh giá trị của Robot Framework VS giá trị của hệ thống
+        Should Be Equal As Numbers     ${TotalAmount_system_value}    ${FINAL_TOTAL_AFTER_TIP}    TotalAmount_system_value không khớp với ORIGINAL_TOTAL_SUM
+        Should Be Equal As Numbers     ${Subtotal_system_value}    ${SUBTOTAL_BEFORE_DISCOUNT}    Subtotal_system_value không khớp với SUBTOTAL_BEFORE_DISCOUNT
+        Should Be Equal As Numbers     ${Discount_system_value}    ${ORIGINAL_DISCOUNT_VALUE}    Discount_system_value không khớp với ORIGINAL_DISCOUNT_VALUE
+        Should Be Equal As Numbers     ${DiscountedSubtotal_system_value}    ${ORIGINAL_PRICE_SUM}    DiscountedSubtotal_system_value không khớp với ORIGINAL_PRICE_SUM
+        Should Be Equal As Numbers     ${Tax_system_value}   ${ORIGINAL_TAX_SUM}    Tax_system_value không khớp với ORIGINAL_TAX_SUM
+        Should Be Equal As Numbers     ${Tip_system_value}    ${TIP_RANDOM}    Tip_system_value không khớp với
+        Should Be Equal As Numbers     ${Total_system_value}    ${FINAL_TOTAL_AFTER_TIP}    Total_system_value không khớp với FINAL_TOTAL_AFTER_TIP
+        Should Be Equal As Numbers     ${TipDetails_system_value}    ${TIP_RANDOM}    TipDetails_system_value không khớp với TIP_RANDOM
+        
+    ELSE IF    ${use_discount} == 'no_discount'
+        ## Get value Total Amount
+        ${TotalAmount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=2 and @clickable="false"]    content-desc
+        ${TotalAmount_system_value}=    Get Amount Value From Service Desc    ${TotalAmount_system}
+        ${TotalAmount_system_value}=    Evaluate    f\"{${TotalAmount_system_value}:.2f}\"
+        Log    ${TotalAmount_system_value}
+        
+        ## Get value Subtotal
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
+        ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
+        ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
+        Log    ${Subtotal_system_value}
+
+        ## Get value Tax
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=12 and @clickable="false"]    content-desc
+        ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
+        ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
+        Log    ${Tax_system_value}
+
+        ## Get value Tip
+        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=14 and @clickable="false"]    content-desc
+        ${Tip_system_value}=    Get Amount Value From Service Desc    ${Tip_system}
+        ${Tip_system_value}=    Evaluate    f\"{${Tip_system_value}:.2f}\"
+        Log    ${Tip_system_value}
+        
+        ## Get value Total
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=16 and @clickable="false"]    content-desc
+        ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
+        ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
+        Log    ${Total_system_value}
+        
+        ## Get Tip details
+        ${TipDetails_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=0 and @clickable="false"]    content-desc
+        ${TipDetails_system_value}=    Get Amount Value From Service Desc    ${TipDetails_system}
+        ${TipDetails_system_value}=    Evaluate    f\"{${TipDetails_system_value}:.2f}\"
+        Log    ${TipDetails_system_value}
+        
+
+        ## So sánh giá trị của Robot Framework VS giá trị của hệ thống
+        Should Be Equal As Numbers     ${TotalAmount_system_value}    ${FINAL_TOTAL_AFTER_TIP}    TotalAmount_system_value không khớp với ORIGINAL_TOTAL_SUM
+        Should Be Equal As Numbers     ${Subtotal_system_value}    ${SUBTOTAL_BEFORE_DISCOUNT}    Subtotal_system_value không khớp với SUBTOTAL_BEFORE_DISCOUNT
+        Should Be Equal As Numbers     ${Tax_system_value}   ${ORIGINAL_TAX_SUM}    Tax_system_value không khớp với ORIGINAL_TAX_SUM
+        Should Be Equal As Numbers     ${Tip_system_value}    ${TIP_RANDOM}    Tip_system_value không khớp với
+        Should Be Equal As Numbers     ${Total_system_value}    ${FINAL_TOTAL_AFTER_TIP}    Total_system_value không khớp với FINAL_TOTAL_AFTER_TIP
+        Should Be Equal As Numbers     ${TipDetails_system_value}    ${TIP_RANDOM}    TipDetails_system_value không khớp với TIP_RANDOM
+
+    ELSE
+        Fail    Invalid discount type: ${use_discount} must be 'have_discount' or 'no_discount'.
+    END
+
+
+
+Get Amount Value From Service Desc
+    [Arguments]    ${desc}
+    ${lines}=    Split String    ${desc}    \n
+    ${amount_str}=    Strip String    ${lines}[-1]
+    ${price_match}=    Evaluate    re.findall(r"\\$([0-9]+\\.[0-9]{2})", '''${amount_str}''')    modules=re
+    Run Keyword If    ${price_match} == []    Fail    Không tìm thấy giá trong amount: ${amount_str}
+    ${price_value}=    Evaluate    float(${price_match[0]})
+    RETURN    ${price_value}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Select And Store Services Price
+    [Arguments]    ${number_of_services}=2          ${discount_type}='none'        
+    ##### Đây là xpath lấy tất cả service mà k lấy list of add on: //android.view.View[8]//android.view.View[contains(@content-desc, "$") and @clickable="true"]
+    ##### Đây là xpath lấy tất cả list_of_add-ons mà k lấy service: //android.view.View[10]/android.view.View//android.view.View[contains(@content-desc, "$") and @clickable="true"]
+    ##### Đây là xpath lấy tất cả service và add on: //android.view.View[contains(@content-desc, "$") and @clickable="true"]
+    # Lấy tất cả service có content-desc chứa dấu $ VÀ có thể click được
+    ${real_services}=    AppiumLibrary.Get Webelements    xpath=//android.view.View[8]//android.view.View[contains(@content-desc, "$") and @clickable="true"]
+
+    ${count}=    Get Length    ${real_services}
+    Log    Số lượng service thực sự tìm thấy: ${count}
+    Run Keyword If    ${count} < ${number_of_services}    Fail    Không đủ service thực sự để chọn ${number_of_services} dịch vụ!
+
+    ${indexes}=    Evaluate    random.sample(range(${count}), ${number_of_services})    modules=random
+    ${selected_service_texts}=    Create List
+    ${subtotal_before_discount}=    Set Variable    ${0.0}
+    ${total_tax_value}=             Set Variable    ${0.0}
+    ${random_discount}=             Set Variable    ${0.0}
+
+
+    FOR    ${index}    IN    @{indexes}
+        ${service_element}=    Get From List    ${real_services}    ${index}
+        ${service_text}=       AppiumLibrary.Get Element Attribute    ${service_element}    content-desc
+        Log    Đã chọn Service: ${service_text}
+        Append To List         ${selected_service_texts}    ${service_text}
+        AppiumLibrary.Click Element    ${service_element}
+
+        # Lấy giá của từng dịch vụ và cộng dồn vào subtotal trước discount
+        ${price}=    Get Amount Value From Service Desc    ${service_text}
+        ${subtotal_before_discount}=    Evaluate    ${subtotal_before_discount} + ${price}
+        Log    ${subtotal_before_discount}
+    END
+    
+    # --- Tính toán Discount ---
+    IF    ${discount_type} == 'percentage'
+        Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
+        Click on Element mobile    //android.view.View[@content-desc="Quick discount"]/android.view.View
+        Click on Element mobile    //android.view.View[@content-desc="Off"]
+        Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View
+        
+        # Tạo số ngẫu nhiên từ 1% đến 100%
+        ${discount_percentage_subtotal}=     Evaluate       random.randint(1, 100)        modules=random
+        Log    ${discount_percentage_subtotal}
+        # Tính % của số ngẫu nhiên cho subtotal
+        ${random_discount}=    Evaluate    round((${discount_percentage_subtotal} / 100) * ${subtotal_before_discount}, 2)
+        Log    ${random_discount}
+        # Chuyển số ngẫu nhiên thành chuỗi
+        ${number_str}=    Convert To String    ${discount_percentage_subtotal}
+        Log    ${number_str}
+        # Chuyển số chuỗi thành danh sách
+        ${number_list}=   Convert To List    ${number_str}
+        Log    ${number_list}
+        FOR    ${digit}    IN    @{number_list}
+            Click on Element mobile    //android.view.View[@content-desc="${digit}"]
+        END
+        Click on Element mobile    ${elm_btn_Done}
+        Click on Element mobile    ${elm_btn_Submit}
+
+    ELSE IF  ${discount_type} == 'fixed'
+        Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
+        Click on Element mobile    //android.view.View[@content-desc="Quick discount"]/android.view.View
+        Click on Element mobile    //android.view.View[@content-desc="Fixed amount"]
+        Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[4]/android.view.View
+        # Định dạng subtotal thành 2 chữ số sau dấu thập phân
+        ${format_subtotal}=     Evaluate    '{:.2f}'.format(${subtotal_before_discount})
+        Log    ${format_subtotal}
+        # Tạo một giá trị giảm giá ngẫu nhiên từ 1.00 đến ${format_subtotal} và làm tròn đến 2 chữ số
+        ${random_discount}=     Evaluate       round(random.uniform(1.00, ${format_subtotal}), 2)    modules=random
+        Log    ${random_discount}
+        ${number_str}=    Convert To String    ${random_discount}
+        Log    ${number_str}
+        # Cắt bỏ dấu . để nhập numberpad
+        ${number_str_no_dot}=    Replace String    ${number_str}    .    ${EMPTY}
+        Log    ${number_str_no_dot}
+        ${number_list}=   Convert To List    ${number_str_no_dot}
+        FOR    ${digit}    IN    @{number_list}
+            Click on Element mobile    //android.view.View[@content-desc="${digit}"]
+        END
+        Click on Element mobile    ${elm_btn_Done}
+        Click on Element mobile    ${elm_btn_Submit}
+
+    ELSE IF    ${discount_type} == 'none'
+        No Operation
+    ELSE 
+        Fail    Invalid discount type: ${discount_type} must be 'fixed' or 'percent'.
+    END
+    
+    # --- Tính toán Subtotal sau discount, Tax và Total cuối cùng ---
+    ${final_subtotal_after_discount}=    Evaluate    round(${subtotal_before_discount} - ${random_discount}, 2)
+    # ${total_tax_value}=                  Evaluate    round(${final_subtotal_after_discount} * 0.05, 2) # Thuế tính trên subtotal sau discount, tính tax không làm tròn
+    ${total_tax_value}=    Evaluate    str(__import__('decimal').Decimal(str(${final_subtotal_after_discount} * 0.05)).quantize(__import__('decimal').Decimal('0.01'), rounding=__import__('decimal').ROUND_HALF_UP))   #>=5 tính tax làm tròn
+    # ${total_tax_value}=    Evaluate    math.ceil(${final_subtotal_after_discount} * 0.05 * 100) / 100    modules=math        # Thuế tính trên subtotal sau discount, tính tax làm tròn
+    ${final_total_value}=                Evaluate    round(${final_subtotal_after_discount} + ${total_tax_value}, 2)
+    
+    # Định dạng lại về dạng 2 số thập phân
+    ${final_subtotal_str}=    Evaluate    f\"{${final_subtotal_after_discount}:.2f}\"
+    ${final_tax_str}=         Evaluate    f\"{${total_tax_value}:.2f}\"
+    ${final_total_str}=       Evaluate    f\"{${final_total_value}:.2f}\"
+    ${final_discount_str}=    Evaluate    f\"{${random_discount}:.2f}\"
+    ${final_before_discount}=    Evaluate    f\"{${subtotal_before_discount}:.2f}\"
+
 
     Log    Tổng Price (tính toán): Subtotal=${final_subtotal_str}, Discount=${final_discount_str}, Tax=${final_tax_str}, Total=${final_total_str}, Subtotalbefore=${final_before_discount}
 
@@ -364,6 +800,137 @@ Select service and add on & apply voucher
     Set Suite Variable    ${SELECTED_SERVICE_DESCS}   ${selected_service_texts}
     Set Suite Variable    ${DISCOUNT_TYPE_APPLIED}    ${discount_type} 
 
+Select list of add on
+    [Arguments]    ${number_of_services}=2          ${discount_type}='percentage'       ${include_discount}="on" 
+    ##### Đây là xpath lấy tất cả service mà k lấy list of add on: //android.view.View[8]//android.view.View[contains(@content-desc, "$") and @clickable="true"]
+    ##### Đây là xpath lấy tất cả list_of_add-ons mà k lấy service: //android.view.View[10]/android.view.View//android.view.View[contains(@content-desc, "$") and @clickable="true"]
+    # Lấy tất cả service có content-desc chứa dấu $ VÀ có thể click được
+    ${real_services}=    AppiumLibrary.Get Webelements    xpath=//android.view.View[10]/android.view.View//android.view.View[contains(@content-desc, "$") and @clickable="true"]
+
+    ${count}=    Get Length    ${real_services}
+    Log    Số lượng service thực sự tìm thấy: ${count}
+    Run Keyword If    ${count} < ${number_of_services}    Fail    Không đủ service thực sự để chọn ${number_of_services} dịch vụ!
+
+    ${indexes}=    Evaluate    random.sample(range(${count}), ${number_of_services})    modules=random
+    ${selected_service_texts}=    Create List
+    ${subtotal_before_discount}=    Set Variable    ${0.0}
+    ${total_tax_value}=             Set Variable    ${0.0}
+    ${random_discount}=             Set Variable    ${0.0}
+
+
+    FOR    ${index}    IN    @{indexes}
+        ${service_element}=    Get From List    ${real_services}    ${index}
+        ${service_text}=       AppiumLibrary.Get Element Attribute    ${service_element}    content-desc
+        Log    Đã chọn Service: ${service_text}
+        Append To List         ${selected_service_texts}    ${service_text}
+        AppiumLibrary.Click Element    ${service_element}
+
+        # Lấy giá của từng dịch vụ và cộng dồn vào subtotal trước discount
+        ${price}=    Get Amount Value From Service Desc    ${service_text}
+        ${subtotal_before_discount}=    Evaluate    ${subtotal_before_discount} + ${price}
+        Log    ${subtotal_before_discount}
+    END
+    
+    # --- Tính toán Discount ---
+    IF    ${discount_type} == 'percentage'
+        Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
+        Click on Element mobile    //android.view.View[@content-desc="Quick discount"]/android.view.View
+        IF    ${include_discount} == "off"
+            Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View
+            # Tạo số ngẫu nhiên từ 1% đến 100%
+            ${discount_percentage_subtotal}=     Evaluate       random.randint(1, 100)        modules=random
+            Log    ${discount_percentage_subtotal}
+            # Tính % của số ngẫu nhiên cho subtotal
+            # ${random_discount}=    Evaluate    round((${discount_percentage_subtotal} / 100) * ${subtotal_before_discount}, 2)
+            # Log    ${random_discount}
+            # Chuyển số ngẫu nhiên thành chuỗi
+            ${number_str}=    Convert To String    ${discount_percentage_subtotal}
+            Log    ${number_str}
+            # Chuyển số chuỗi thành danh sách
+            ${number_list}=   Convert To List    ${number_str}
+            Log    ${number_list}
+            FOR    ${digit}    IN    @{number_list}
+                Click on Element mobile    //android.view.View[@content-desc="${digit}"]
+            END
+            Click on Element mobile    ${elm_btn_Done}
+            Click on Element mobile    ${elm_btn_Submit}
+        ELSE
+            Click on Element mobile    //android.view.View[@content-desc="Off"]
+            Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View
+            # Tạo số ngẫu nhiên từ 1% đến 100%
+            ${discount_percentage_subtotal}=     Evaluate       random.randint(1, 100)        modules=random
+            Log    ${discount_percentage_subtotal}
+            # Tính % của số ngẫu nhiên cho subtotal
+            ${random_discount}=    Evaluate    round((${discount_percentage_subtotal} / 100) * ${subtotal_before_discount}, 2)
+            Log    ${random_discount}
+            # Chuyển số ngẫu nhiên thành chuỗi
+            ${number_str}=    Convert To String    ${discount_percentage_subtotal}
+            Log    ${number_str}
+            # Chuyển số chuỗi thành danh sách
+            ${number_list}=   Convert To List    ${number_str}
+            Log    ${number_list}
+            FOR    ${digit}    IN    @{number_list}
+                Click on Element mobile    //android.view.View[@content-desc="${digit}"]
+            END
+            Click on Element mobile    ${elm_btn_Done}
+            Click on Element mobile    ${elm_btn_Submit}
+        END
+        
+        
+
+    ELSE IF  ${discount_type} == 'fixed'
+        Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
+        Click on Element mobile    //android.view.View[@content-desc="Quick discount"]/android.view.View
+        Click on Element mobile    //android.view.View[@content-desc="Fixed amount"]
+        Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[4]/android.view.View
+        # Định dạng subtotal thành 2 chữ số sau dấu thập phân
+        ${format_subtotal}=     Evaluate    '{:.2f}'.format(${subtotal_before_discount})
+        Log    ${format_subtotal}
+        # Tạo một giá trị giảm giá ngẫu nhiên từ 1.00 đến ${format_subtotal} và làm tròn đến 2 chữ số
+        ${random_discount}=     Evaluate       round(random.uniform(1.00, ${format_subtotal}), 2)    modules=random
+        Log    ${random_discount}
+        ${number_str}=    Convert To String    ${random_discount}
+        Log    ${number_str}
+        # Cắt bỏ dấu . để nhập numberpad
+        ${number_str_no_dot}=    Replace String    ${number_str}    .    ${EMPTY}
+        Log    ${number_str_no_dot}
+        ${number_list}=   Convert To List    ${number_str_no_dot}
+        FOR    ${digit}    IN    @{number_list}
+            Click on Element mobile    //android.view.View[@content-desc="${digit}"]
+        END
+        Click on Element mobile    ${elm_btn_Done}
+        Click on Element mobile    ${elm_btn_Submit}
+
+    ELSE IF    ${discount_type} == 'none'
+        No Operation
+    ELSE 
+        Fail    Invalid discount type: ${discount_type} must be 'fixed' or 'percent'.
+    END
+    
+    # --- Tính toán Subtotal sau discount, Tax và Total cuối cùng ---
+    ${final_subtotal_after_discount}=    Evaluate    round(${subtotal_before_discount} - ${random_discount}, 2)
+    # ${total_tax_value}=                  Evaluate    round(${final_subtotal_after_discount} * 0.05, 2) # Thuế tính trên subtotal sau discount, tính tax không làm tròn
+    ${total_tax_value}=    Evaluate    str(__import__('decimal').Decimal(str(${final_subtotal_after_discount} * 0.05)).quantize(__import__('decimal').Decimal('0.01'), rounding=__import__('decimal').ROUND_HALF_UP))   #>=5 tính tax làm tròn
+    # ${total_tax_value}=    Evaluate    math.ceil(${final_subtotal_after_discount} * 0.05 * 100) / 100    modules=math        # Thuế tính trên subtotal sau discount, tính tax làm tròn
+    ${final_total_value}=                Evaluate    round(${final_subtotal_after_discount} + ${total_tax_value}, 2)
+    
+    # Định dạng lại về dạng 2 số thập phân
+    ${final_subtotal_str}=    Evaluate    f\"{${final_subtotal_after_discount}:.2f}\"
+    ${final_tax_str}=         Evaluate    f\"{${total_tax_value}:.2f}\"
+    ${final_total_str}=       Evaluate    f\"{${final_total_value}:.2f}\"
+    ${final_discount_str}=    Evaluate    f\"{${random_discount}:.2f}\"
+    ${final_before_discount}=    Evaluate    f\"{${subtotal_before_discount}:.2f}\"
+
+
+    Log    Tổng Price (tính toán): Subtotal=${final_subtotal_str}, Discount=${final_discount_str}, Tax=${final_tax_str}, Total=${final_total_str}, Subtotalbefore=${final_before_discount}
+
+    # Lưu vào biến Suite
+    Set Suite Variable    ${ORIGINAL_PRICE_SUM}       ${final_subtotal_str} 
+    Set Suite Variable    ${ORIGINAL_TAX_SUM}         ${final_tax_str}
+    Set Suite Variable    ${ORIGINAL_TOTAL_SUM}       ${final_total_str}
+    Set Suite Variable    ${ORIGINAL_DISCOUNT_VALUE}  ${final_discount_str} 
+    Set Suite Variable    ${SELECTED_SERVICE_DESCS}   ${selected_service_texts}
+    Set Suite Variable    ${DISCOUNT_TYPE_APPLIED}    ${discount_type} 
 
 
 
@@ -517,346 +1084,3 @@ Select service and add on
     Set Suite Variable    ${ORIGINAL_DISCOUNT_VALUE}  ${final_discount_str} 
     Set Suite Variable    ${SELECTED_SERVICE_DESCS}   ${selected_service_texts}
     Set Suite Variable    ${DISCOUNT_TYPE_APPLIED}    ${discount_type} 
-
-
-
-
-Select list of add on
-    [Arguments]    ${number_of_services}=2          ${discount_type}='percentage'       ${include_discount}="on" 
-    ##### Đây là xpath lấy tất cả service mà k lấy list of add on: //android.view.View[8]//android.view.View[contains(@content-desc, "$") and @clickable="true"]
-    ##### Đây là xpath lấy tất cả list_of_add-ons mà k lấy service: //android.view.View[10]/android.view.View//android.view.View[contains(@content-desc, "$") and @clickable="true"]
-    # Lấy tất cả service có content-desc chứa dấu $ VÀ có thể click được
-    ${real_services}=    AppiumLibrary.Get Webelements    xpath=//android.view.View[10]/android.view.View//android.view.View[contains(@content-desc, "$") and @clickable="true"]
-
-    ${count}=    Get Length    ${real_services}
-    Log    Số lượng service thực sự tìm thấy: ${count}
-    Run Keyword If    ${count} < ${number_of_services}    Fail    Không đủ service thực sự để chọn ${number_of_services} dịch vụ!
-
-    ${indexes}=    Evaluate    random.sample(range(${count}), ${number_of_services})    modules=random
-    ${selected_service_texts}=    Create List
-    ${subtotal_before_discount}=    Set Variable    ${0.0}
-    ${total_tax_value}=             Set Variable    ${0.0}
-    ${random_discount}=             Set Variable    ${0.0}
-
-
-    FOR    ${index}    IN    @{indexes}
-        ${service_element}=    Get From List    ${real_services}    ${index}
-        ${service_text}=       AppiumLibrary.Get Element Attribute    ${service_element}    content-desc
-        Log    Đã chọn Service: ${service_text}
-        Append To List         ${selected_service_texts}    ${service_text}
-        AppiumLibrary.Click Element    ${service_element}
-
-        # Lấy giá của từng dịch vụ và cộng dồn vào subtotal trước discount
-        ${price}=    Get Amount Value From Service Desc    ${service_text}
-        ${subtotal_before_discount}=    Evaluate    ${subtotal_before_discount} + ${price}
-        Log    ${subtotal_before_discount}
-    END
-    
-    # --- Tính toán Discount ---
-    IF    ${discount_type} == 'percentage'
-        Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
-        Click on Element mobile    //android.view.View[@content-desc="Quick discount"]/android.view.View
-        IF    ${include_discount} == "off"
-            Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View
-            # Tạo số ngẫu nhiên từ 1% đến 100%
-            ${discount_percentage_subtotal}=     Evaluate       random.randint(1, 100)        modules=random
-            Log    ${discount_percentage_subtotal}
-            # Tính % của số ngẫu nhiên cho subtotal
-            # ${random_discount}=    Evaluate    round((${discount_percentage_subtotal} / 100) * ${subtotal_before_discount}, 2)
-            # Log    ${random_discount}
-            # Chuyển số ngẫu nhiên thành chuỗi
-            ${number_str}=    Convert To String    ${discount_percentage_subtotal}
-            Log    ${number_str}
-            # Chuyển số chuỗi thành danh sách
-            ${number_list}=   Convert To List    ${number_str}
-            Log    ${number_list}
-            FOR    ${digit}    IN    @{number_list}
-                Click on Element mobile    //android.view.View[@content-desc="${digit}"]
-            END
-            Click on Element mobile    ${elm_btn_Done}
-            Click on Element mobile    ${elm_btn_Submit}
-        ELSE
-            Click on Element mobile    //android.view.View[@content-desc="Off"]
-            Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View
-            # Tạo số ngẫu nhiên từ 1% đến 100%
-            ${discount_percentage_subtotal}=     Evaluate       random.randint(1, 100)        modules=random
-            Log    ${discount_percentage_subtotal}
-            # Tính % của số ngẫu nhiên cho subtotal
-            ${random_discount}=    Evaluate    round((${discount_percentage_subtotal} / 100) * ${subtotal_before_discount}, 2)
-            Log    ${random_discount}
-            # Chuyển số ngẫu nhiên thành chuỗi
-            ${number_str}=    Convert To String    ${discount_percentage_subtotal}
-            Log    ${number_str}
-            # Chuyển số chuỗi thành danh sách
-            ${number_list}=   Convert To List    ${number_str}
-            Log    ${number_list}
-            FOR    ${digit}    IN    @{number_list}
-                Click on Element mobile    //android.view.View[@content-desc="${digit}"]
-            END
-            Click on Element mobile    ${elm_btn_Done}
-            Click on Element mobile    ${elm_btn_Submit}
-        END
-        
-        
-
-    ELSE IF  ${discount_type} == 'fixed'
-        Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
-        Click on Element mobile    //android.view.View[@content-desc="Quick discount"]/android.view.View
-        Click on Element mobile    //android.view.View[@content-desc="Fixed amount"]
-        Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[4]/android.view.View
-        # Định dạng subtotal thành 2 chữ số sau dấu thập phân
-        ${format_subtotal}=     Evaluate    '{:.2f}'.format(${subtotal_before_discount})
-        Log    ${format_subtotal}
-        # Tạo một giá trị giảm giá ngẫu nhiên từ 1.00 đến ${format_subtotal} và làm tròn đến 2 chữ số
-        ${random_discount}=     Evaluate       round(random.uniform(1.00, ${format_subtotal}), 2)    modules=random
-        Log    ${random_discount}
-        ${number_str}=    Convert To String    ${random_discount}
-        Log    ${number_str}
-        # Cắt bỏ dấu . để nhập numberpad
-        ${number_str_no_dot}=    Replace String    ${number_str}    .    ${EMPTY}
-        Log    ${number_str_no_dot}
-        ${number_list}=   Convert To List    ${number_str_no_dot}
-        FOR    ${digit}    IN    @{number_list}
-            Click on Element mobile    //android.view.View[@content-desc="${digit}"]
-        END
-        Click on Element mobile    ${elm_btn_Done}
-        Click on Element mobile    ${elm_btn_Submit}
-
-    ELSE IF    ${discount_type} == 'none'
-        No Operation
-    ELSE 
-        Fail    Invalid discount type: ${discount_type} must be 'fixed' or 'percent'.
-    END
-    
-    # --- Tính toán Subtotal sau discount, Tax và Total cuối cùng ---
-    ${final_subtotal_after_discount}=    Evaluate    round(${subtotal_before_discount} - ${random_discount}, 2)
-    # ${total_tax_value}=                  Evaluate    round(${final_subtotal_after_discount} * 0.05, 2) # Thuế tính trên subtotal sau discount, tính tax không làm tròn
-    ${total_tax_value}=    Evaluate    str(__import__('decimal').Decimal(str(${final_subtotal_after_discount} * 0.05)).quantize(__import__('decimal').Decimal('0.01'), rounding=__import__('decimal').ROUND_HALF_UP))   #>=5 tính tax làm tròn
-    # ${total_tax_value}=    Evaluate    math.ceil(${final_subtotal_after_discount} * 0.05 * 100) / 100    modules=math        # Thuế tính trên subtotal sau discount, tính tax làm tròn
-    ${final_total_value}=                Evaluate    round(${final_subtotal_after_discount} + ${total_tax_value}, 2)
-    
-    # Định dạng lại về dạng 2 số thập phân
-    ${final_subtotal_str}=    Evaluate    f\"{${final_subtotal_after_discount}:.2f}\"
-    ${final_tax_str}=         Evaluate    f\"{${total_tax_value}:.2f}\"
-    ${final_total_str}=       Evaluate    f\"{${final_total_value}:.2f}\"
-    ${final_discount_str}=    Evaluate    f\"{${random_discount}:.2f}\"
-    ${final_before_discount}=    Evaluate    f\"{${subtotal_before_discount}:.2f}\"
-
-
-    Log    Tổng Price (tính toán): Subtotal=${final_subtotal_str}, Discount=${final_discount_str}, Tax=${final_tax_str}, Total=${final_total_str}, Subtotalbefore=${final_before_discount}
-
-    # Lưu vào biến Suite
-    Set Suite Variable    ${ORIGINAL_PRICE_SUM}       ${final_subtotal_str} 
-    Set Suite Variable    ${ORIGINAL_TAX_SUM}         ${final_tax_str}
-    Set Suite Variable    ${ORIGINAL_TOTAL_SUM}       ${final_total_str}
-    Set Suite Variable    ${ORIGINAL_DISCOUNT_VALUE}  ${final_discount_str} 
-    Set Suite Variable    ${SELECTED_SERVICE_DESCS}   ${selected_service_texts}
-    Set Suite Variable    ${DISCOUNT_TYPE_APPLIED}    ${discount_type} 
-    
-    
-    
-
-
-
-
-
-Select And Store Services Price
-    [Arguments]    ${number_of_services}=2          ${discount_type}='none'        
-    ##### Đây là xpath lấy tất cả service mà k lấy list of add on: //android.view.View[8]//android.view.View[contains(@content-desc, "$") and @clickable="true"]
-    ##### Đây là xpath lấy tất cả list_of_add-ons mà k lấy service: //android.view.View[10]/android.view.View//android.view.View[contains(@content-desc, "$") and @clickable="true"]
-    ##### Đây là xpath lấy tất cả service và add on: //android.view.View[contains(@content-desc, "$") and @clickable="true"]
-    # Lấy tất cả service có content-desc chứa dấu $ VÀ có thể click được
-    ${real_services}=    AppiumLibrary.Get Webelements    xpath=//android.view.View[8]//android.view.View[contains(@content-desc, "$") and @clickable="true"]
-
-    ${count}=    Get Length    ${real_services}
-    Log    Số lượng service thực sự tìm thấy: ${count}
-    Run Keyword If    ${count} < ${number_of_services}    Fail    Không đủ service thực sự để chọn ${number_of_services} dịch vụ!
-
-    ${indexes}=    Evaluate    random.sample(range(${count}), ${number_of_services})    modules=random
-    ${selected_service_texts}=    Create List
-    ${subtotal_before_discount}=    Set Variable    ${0.0}
-    ${total_tax_value}=             Set Variable    ${0.0}
-    ${random_discount}=             Set Variable    ${0.0}
-
-
-    FOR    ${index}    IN    @{indexes}
-        ${service_element}=    Get From List    ${real_services}    ${index}
-        ${service_text}=       AppiumLibrary.Get Element Attribute    ${service_element}    content-desc
-        Log    Đã chọn Service: ${service_text}
-        Append To List         ${selected_service_texts}    ${service_text}
-        AppiumLibrary.Click Element    ${service_element}
-
-        # Lấy giá của từng dịch vụ và cộng dồn vào subtotal trước discount
-        ${price}=    Get Amount Value From Service Desc    ${service_text}
-        ${subtotal_before_discount}=    Evaluate    ${subtotal_before_discount} + ${price}
-        Log    ${subtotal_before_discount}
-    END
-    
-    # --- Tính toán Discount ---
-    IF    ${discount_type} == 'percentage'
-        Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
-        Click on Element mobile    //android.view.View[@content-desc="Quick discount"]/android.view.View
-        Click on Element mobile    //android.view.View[@content-desc="Off"]
-        Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View
-        
-        # Tạo số ngẫu nhiên từ 1% đến 100%
-        ${discount_percentage_subtotal}=     Evaluate       random.randint(1, 100)        modules=random
-        Log    ${discount_percentage_subtotal}
-        # Tính % của số ngẫu nhiên cho subtotal
-        ${random_discount}=    Evaluate    round((${discount_percentage_subtotal} / 100) * ${subtotal_before_discount}, 2)
-        Log    ${random_discount}
-        # Chuyển số ngẫu nhiên thành chuỗi
-        ${number_str}=    Convert To String    ${discount_percentage_subtotal}
-        Log    ${number_str}
-        # Chuyển số chuỗi thành danh sách
-        ${number_list}=   Convert To List    ${number_str}
-        Log    ${number_list}
-        FOR    ${digit}    IN    @{number_list}
-            Click on Element mobile    //android.view.View[@content-desc="${digit}"]
-        END
-        Click on Element mobile    ${elm_btn_Done}
-        Click on Element mobile    ${elm_btn_Submit}
-
-    ELSE IF  ${discount_type} == 'fixed'
-        Click on Element mobile    //android.view.View[@content-desc="Discount" and @clickable="true"]
-        Click on Element mobile    //android.view.View[@content-desc="Quick discount"]/android.view.View
-        Click on Element mobile    //android.view.View[@content-desc="Fixed amount"]
-        Click on Element mobile    //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[4]/android.view.View
-        # Định dạng subtotal thành 2 chữ số sau dấu thập phân
-        ${format_subtotal}=     Evaluate    '{:.2f}'.format(${subtotal_before_discount})
-        Log    ${format_subtotal}
-        # Tạo một giá trị giảm giá ngẫu nhiên từ 1.00 đến ${format_subtotal} và làm tròn đến 2 chữ số
-        ${random_discount}=     Evaluate       round(random.uniform(1.00, ${format_subtotal}), 2)    modules=random
-        Log    ${random_discount}
-        ${number_str}=    Convert To String    ${random_discount}
-        Log    ${number_str}
-        # Cắt bỏ dấu . để nhập numberpad
-        ${number_str_no_dot}=    Replace String    ${number_str}    .    ${EMPTY}
-        Log    ${number_str_no_dot}
-        ${number_list}=   Convert To List    ${number_str_no_dot}
-        FOR    ${digit}    IN    @{number_list}
-            Click on Element mobile    //android.view.View[@content-desc="${digit}"]
-        END
-        Click on Element mobile    ${elm_btn_Done}
-        Click on Element mobile    ${elm_btn_Submit}
-
-    ELSE IF    ${discount_type} == 'none'
-        No Operation
-    ELSE 
-        Fail    Invalid discount type: ${discount_type} must be 'fixed' or 'percent'.
-    END
-    
-    # --- Tính toán Subtotal sau discount, Tax và Total cuối cùng ---
-    ${final_subtotal_after_discount}=    Evaluate    round(${subtotal_before_discount} - ${random_discount}, 2)
-    # ${total_tax_value}=                  Evaluate    round(${final_subtotal_after_discount} * 0.05, 2) # Thuế tính trên subtotal sau discount, tính tax không làm tròn
-    ${total_tax_value}=    Evaluate    str(__import__('decimal').Decimal(str(${final_subtotal_after_discount} * 0.05)).quantize(__import__('decimal').Decimal('0.01'), rounding=__import__('decimal').ROUND_HALF_UP))   #>=5 tính tax làm tròn
-    # ${total_tax_value}=    Evaluate    math.ceil(${final_subtotal_after_discount} * 0.05 * 100) / 100    modules=math        # Thuế tính trên subtotal sau discount, tính tax làm tròn
-    ${final_total_value}=                Evaluate    round(${final_subtotal_after_discount} + ${total_tax_value}, 2)
-    
-    # Định dạng lại về dạng 2 số thập phân
-    ${final_subtotal_str}=    Evaluate    f\"{${final_subtotal_after_discount}:.2f}\"
-    ${final_tax_str}=         Evaluate    f\"{${total_tax_value}:.2f}\"
-    ${final_total_str}=       Evaluate    f\"{${final_total_value}:.2f}\"
-    ${final_discount_str}=    Evaluate    f\"{${random_discount}:.2f}\"
-    ${final_before_discount}=    Evaluate    f\"{${subtotal_before_discount}:.2f}\"
-
-
-    Log    Tổng Price (tính toán): Subtotal=${final_subtotal_str}, Discount=${final_discount_str}, Tax=${final_tax_str}, Total=${final_total_str}, Subtotalbefore=${final_before_discount}
-
-    # Lưu vào biến Suite
-    Set Suite Variable    ${ORIGINAL_PRICE_SUM}       ${final_subtotal_str} 
-    Set Suite Variable    ${ORIGINAL_TAX_SUM}         ${final_tax_str}
-    Set Suite Variable    ${ORIGINAL_TOTAL_SUM}       ${final_total_str}
-    Set Suite Variable    ${ORIGINAL_DISCOUNT_VALUE}  ${final_discount_str} 
-    Set Suite Variable    ${SELECTED_SERVICE_DESCS}   ${selected_service_texts}
-    Set Suite Variable    ${DISCOUNT_TYPE_APPLIED}    ${discount_type} 
-    
-
-Tip on service random
-    ## Tính toán Tip
-    [Arguments]    ${tip_type}='tip_amount'
-    ${random_discount}=             Set Variable    ${0.0}
-    IF    ${tip_type} == 'tip_percentage'
-        # Lấy tất cả các phần tử tip % có sẵn
-        ${real_tip_percentage}=    AppiumLibrary.Get Webelements    xpath=//android.view.View[contains(@content-desc, "%") and @clickable="true"]
-        # Đếm các phần tử lấy được
-        ${count}=    Get Length    ${real_tip_percentage}
-        Log    Số lượng service thực sự tìm thấy: ${count}
-        # Chọn ngẫu nhiên một phần tử trong tip % 
-        ${random_tip_percentage}=    Evaluate    random.randint(0, ${count} - 1)    modules=random
-        # Lấy phần tử từ list bằng chỉ mục
-        ${selected_tip_element}=    Get From List    ${real_tip_percentage}    ${random_tip_percentage}
-        ${selected_tip_desc}=       AppiumLibrary.Get Element Attribute    ${selected_tip_element}    content-desc
-        Log    Đã chọn tip phần trăm: ${selected_tip_desc}
-        # Tách $amount để lấy amount% 
-        ${tip_percent_match}=    Get Regexp Matches    ${selected_tip_desc}    (\\d+%)    1
-        Log    ${tip_percent_match}
-        #Click vào phần tử tip đã chọn
-        AppiumLibrary.Click Element    //android.view.View[contains(@content-desc, "${selected_tip_desc}") and @clickable="true"]
-
-        ${get_tip_percentage}=    Get From List    ${tip_percent_match}    0
-        Log    ${get_tip_percentage}
-        ${tip_percentage_amount}=   Replace String    ${get_tip_percentage}    %    ${EMPTY}
-        Log    ${tip_percentage_amount}
-        ${random_discount}=    Evaluate    round(${ORIGINAL_PRICE_SUM} * ${tip_percentage_amount} / 100, 2)
-        Log    ${random_discount}
-    
-    ELSE IF  ${tip_type} == 'tip_amount'
-        Click on Element mobile    //android.view.View[@content-desc="Custom Amount"]
-        # Tạo một giá trị giảm giá ngẫu nhiên từ 1.00 đến ${format_subtotal} và làm tròn đến 2 chữ số
-        ${random_discount}=     Evaluate       round(random.uniform(1.00, ${ORIGINAL_PRICE_SUM}), 2)    modules=random
-        Log    ${random_discount}
-        ${number_str}=    Convert To String    ${random_discount}
-        Log    ${number_str}
-        # Cắt bỏ dấu . để nhập numberpad
-        ${number_str_no_dot}=    Replace String    ${number_str}    .    ${EMPTY}
-        Log    ${number_str_no_dot}
-        ${number_list}=   Convert To List    ${number_str_no_dot}
-        FOR    ${digit}    IN    @{number_list}
-            Click on Element mobile    //android.view.View[@content-desc="${digit}"]
-        END
-        Click on Element mobile    ${elm_btn_Submit}
-
-    ELSE IF    ${tip_type} == 'none'
-        No Operation
-    ELSE 
-        Fail    Invalid discount type: ${tip_type} must be 'tip_percentage' or 'tip_amount'.
-    END
-    
-    # --- Tính toán Subtotal sau discount, Tax, Tip và  Total cuối cùng ---
-    ${final_subtotal_after_discount}=    Evaluate    round(${ORIGINAL_TOTAL_SUM} + ${random_discount}, 2)
-    Log    ${final_subtotal_after_discount}
-    
-    
-    
-
-
-Get value from system and compare with result
-    ## Get value from system
-    ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=23 and @clickable="false"]    content-desc
-    ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
-    ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
-    Log    ${Subtotal_system_value}
-    ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=27 and @clickable="false"]    content-desc
-    ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
-    ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
-    Log    ${Tax_system_value}
-    ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=28 and @clickable="false"]    content-desc
-    ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
-    ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
-    Log    ${Total_system_value}
-
-    ## So sánh giá trị của Subtotal_system_value với ORIGINAL_PRICE_SUM
-    Should Be Equal    ${Subtotal_system_value}    ${ORIGINAL_PRICE_SUM}    Subtotal_system_value không khớp với ORIGINAL_PRICE_SUM    
-    Should Be Equal    ${Tax_system_value}    ${ORIGINAL_TAX_SUM}    Tax_system_value không khớp với ORIGINAL_TAX_SUM
-    Should Be Equal    ${Total_system_value}    ${ORIGINAL_TOTAL_SUM}    Total_system_value không khớp với ORIGINAL_TOTAL_SUM
-
-    ## Đây là xpath của tip details: //android.view.View[contains(@content-desc, "$") and @index=0 and @clickable="false"]
-Get Amount Value From Service Desc
-    [Arguments]    ${desc}
-    ${lines}=    Split String    ${desc}    \n
-    ${amount_str}=    Strip String    ${lines}[-1]
-    ${price_match}=    Evaluate    re.findall(r"\\$([0-9]+\\.[0-9]{2})", '''${amount_str}''')    modules=re
-    Run Keyword If    ${price_match} == []    Fail    Không tìm thấy giá trong amount: ${amount_str}
-    ${price_value}=    Evaluate    float(${price_match[0]})
-    RETURN    ${price_value}

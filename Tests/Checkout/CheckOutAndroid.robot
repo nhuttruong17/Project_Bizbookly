@@ -30,7 +30,7 @@ Verify Checkout Credit Card With Voucher Discount And Tip Amount
     And User clicks Submit button
     ## Check Balance after tips amount
     Then System should still show total amount as    $50.25
-    ## Check tip detail
+    ## Check tip detail 
     And System should display tip detail with technician and amount tip    caisse    $3.00
     When User Begins Charge
     ## Check display notify message on screen
