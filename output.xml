@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-08-08T15:10:55.568649" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-08-08T17:35:11.541239" rpa="false" schemaversion="5">
 <suite id="s1" name="CheckoutTestcal" source="/Users/apple/Downloads/School/PycharmProjects/BizBookly/Tests/Checkout/CheckoutTestcal.robot">
 <kw name="Basic Setup Android" owner="Common" type="SETUP">
 <kw name="Open Application" owner="AppiumLibrary">
@@ -18,995 +18,867 @@ Please check https://appium.io/docs/en/2.1/cli/args/
 | remote_url          | Yes    | Appium server url |
 | alias               | no     | alias             |
 | strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<status status="PASS" start="2025-08-08T15:10:55.719368" elapsed="5.469182"/>
+<status status="PASS" start="2025-08-08T17:35:11.660928" elapsed="4.644089"/>
 </kw>
-<status status="PASS" start="2025-08-08T15:10:55.718556" elapsed="5.471163"/>
+<status status="PASS" start="2025-08-08T17:35:11.660177" elapsed="4.645448"/>
 </kw>
-<test id="s1-t1" name="Verify Checkout Giftcard with discount percentage and Send email" line="247">
+<test id="s1-t1" name="Verify Checkout with Option Apply Voucher expired" line="611">
 <kw name="Given Find and choose Technician" owner="Common">
 <for flavor="IN RANGE">
 <iter>
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
 <kw name="Element Should Be Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:02.071246" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
+<msg time="2025-08-08T17:35:17.138457" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
 <arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
 <doc>Verifies that element identified with locator is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:01.194091" elapsed="0.879434"/>
+<status status="PASS" start="2025-08-08T17:35:16.309431" elapsed="0.830819"/>
 </kw>
-<msg time="2025-08-08T15:11:02.073941" level="INFO">${exists} = True</msg>
+<msg time="2025-08-08T17:35:17.141077" level="INFO">${exists} = True</msg>
 <var>${exists}</var>
 <arg>AppiumLibrary.Element Should Be Visible</arg>
 <arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2025-08-08T15:11:01.193561" elapsed="0.880520"/>
+<status status="PASS" start="2025-08-08T17:35:16.308908" elapsed="0.832454"/>
 </kw>
 <kw name="Exit For Loop If" owner="BuiltIn">
-<msg time="2025-08-08T15:11:02.075300" level="INFO">Exiting for loop altogether.</msg>
+<msg time="2025-08-08T17:35:17.142461" level="INFO">Exiting for loop altogether.</msg>
 <arg>${exists}</arg>
 <doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-08T15:11:02.074622" elapsed="0.002306"/>
+<status status="PASS" start="2025-08-08T17:35:17.141888" elapsed="0.001788"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
 <arg>//android.view.View[@content-desc="Next Page"]</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:02.077839" elapsed="0.000352"/>
+<status status="NOT RUN" start="2025-08-08T17:35:17.144052" elapsed="0.000217"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
 <arg>0.5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:02.078902" elapsed="0.000610"/>
+<status status="NOT RUN" start="2025-08-08T17:35:17.145162" elapsed="0.001113"/>
 </kw>
 <var name="${i}">0</var>
-<status status="PASS" start="2025-08-08T15:11:01.193141" elapsed="0.886679"/>
+<status status="PASS" start="2025-08-08T17:35:16.308512" elapsed="0.838486"/>
 </iter>
 <var>${i}</var>
 <value>20</value>
-<status status="PASS" start="2025-08-08T15:11:01.192662" elapsed="0.887503"/>
+<status status="PASS" start="2025-08-08T17:35:16.308021" elapsed="0.839512"/>
 </for>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:02.409780" level="INFO">Element '//android.view.View[contains(@content-desc, "caisse")]' attribute 'content-desc' value 'caisse
-1 Hour 50 Min
+<msg time="2025-08-08T17:35:17.456190" level="INFO">Element '//android.view.View[contains(@content-desc, "caisse")]' attribute 'content-desc' value 'caisse
+4 Hour 11 Min
  0 Min' </msg>
-<msg time="2025-08-08T15:11:02.410599" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
-<msg time="2025-08-08T15:11:02.411129" level="INFO">${Actual_technician} = caisse
-1 Hour 50 Min
+<msg time="2025-08-08T17:35:17.456693" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
+<msg time="2025-08-08T17:35:17.457078" level="INFO">${Actual_technician} = caisse
+4 Hour 11 Min
  0 Min</msg>
 <var>${Actual_technician}</var>
 <arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:02.080831" elapsed="0.330551"/>
+<status status="PASS" start="2025-08-08T17:35:17.147977" elapsed="0.309338"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${Actual_technician}</arg>
 <arg>${Technician}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-08-08T15:11:02.411919" elapsed="0.000687"/>
+<status status="PASS" start="2025-08-08T17:35:17.457841" elapsed="0.000730"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:02.417218" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "caisse")]'.</msg>
-<msg time="2025-08-08T15:11:02.809574" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
+<msg time="2025-08-08T17:35:17.463456" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "caisse")]'.</msg>
+<msg time="2025-08-08T17:35:18.132479" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "caisse")]</msg>
 <arg>//android.view.View[contains(@content-desc, "${Technician}")]</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:02.412943" elapsed="0.397546"/>
+<status status="PASS" start="2025-08-08T17:35:17.459029" elapsed="0.673927"/>
 </kw>
 <arg>caisse</arg>
-<status status="PASS" start="2025-08-08T15:11:01.191946" elapsed="1.619196"/>
+<status status="PASS" start="2025-08-08T17:35:16.307338" elapsed="1.826002"/>
 </kw>
 <kw name="When Select service and add on &amp; apply voucher">
 <kw name="Get Webelements" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:03.428242" level="INFO">xpath criteria: //android.view.View[8]//android.view.View[contains(@content-desc, "$") and @clickable="true"]</msg>
-<msg time="2025-08-08T15:11:03.430176" level="INFO">${service_list} = [&lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-23ff00000003")&gt;, &lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c...</msg>
+<msg time="2025-08-08T17:35:18.906164" level="INFO">xpath criteria: //android.view.View[8]//android.view.View[contains(@content-desc, "$") and @clickable="true"]</msg>
+<msg time="2025-08-08T17:35:18.907327" level="INFO">${service_list} = [&lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2f9900000003")&gt;, &lt;appium.webdriver.webelement.WebElement (session="ce0e8774-b...</msg>
 <var>${service_list}</var>
 <arg>xpath=//android.view.View[8]//android.view.View[contains(@content-desc, "$") and @clickable="true"]</arg>
 <doc>Returns list of [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] objects matching ``locator``.</doc>
-<status status="PASS" start="2025-08-08T15:11:02.816844" elapsed="0.613650"/>
+<status status="PASS" start="2025-08-08T17:35:18.137081" elapsed="0.770465"/>
 </kw>
 <kw name="Get Webelements" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:03.653162" level="INFO">xpath criteria: //android.view.View[10]/android.view.View//android.view.View[contains(@content-desc, "$") and @clickable="true"]</msg>
-<msg time="2025-08-08T15:11:03.654386" level="INFO">${add_on_list} = [&lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-241900000003")&gt;, &lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c...</msg>
+<msg time="2025-08-08T17:35:19.130502" level="INFO">xpath criteria: //android.view.View[10]/android.view.View//android.view.View[contains(@content-desc, "$") and @clickable="true"]</msg>
+<msg time="2025-08-08T17:35:19.131124" level="INFO">${add_on_list} = [&lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2fb300000003")&gt;, &lt;appium.webdriver.webelement.WebElement (session="ce0e8774-b...</msg>
 <var>${add_on_list}</var>
 <arg>xpath=//android.view.View[10]/android.view.View//android.view.View[contains(@content-desc, "$") and @clickable="true"]</arg>
 <doc>Returns list of [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] objects matching ``locator``.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.431717" elapsed="0.222931"/>
+<status status="PASS" start="2025-08-08T17:35:18.907981" elapsed="0.223409"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.656313" level="INFO">Length is 12.</msg>
-<msg time="2025-08-08T15:11:03.656659" level="INFO">${count_service} = 12</msg>
+<msg time="2025-08-08T17:35:19.132737" level="INFO">Length is 12.</msg>
+<msg time="2025-08-08T17:35:19.133141" level="INFO">${count_service} = 12</msg>
 <var>${count_service}</var>
 <arg>${service_list}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.655683" elapsed="0.001166"/>
+<status status="PASS" start="2025-08-08T17:35:19.131990" elapsed="0.001372"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.657835" level="INFO">Length is 4.</msg>
-<msg time="2025-08-08T15:11:03.658371" level="INFO">${count_add_on} = 4</msg>
+<msg time="2025-08-08T17:35:19.134141" level="INFO">Length is 4.</msg>
+<msg time="2025-08-08T17:35:19.134422" level="INFO">${count_add_on} = 4</msg>
 <var>${count_add_on}</var>
 <arg>${add_on_list}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.657203" elapsed="0.001422"/>
+<status status="PASS" start="2025-08-08T17:35:19.133751" elapsed="0.000843"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.659944" level="INFO">Số lượng service thực sự tìm thấy: 12</msg>
+<msg time="2025-08-08T17:35:19.135381" level="INFO">Số lượng service thực sự tìm thấy: 12</msg>
 <arg>Số lượng service thực sự tìm thấy: ${count_service}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.659377" elapsed="0.000855"/>
+<status status="PASS" start="2025-08-08T17:35:19.134921" elapsed="0.000727"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.660997" level="INFO">Số lượng add on thực sự tìm thấy: 4</msg>
+<msg time="2025-08-08T17:35:19.136361" level="INFO">Số lượng add on thực sự tìm thấy: 4</msg>
 <arg>Số lượng add on thực sự tìm thấy: ${count_add_on}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.660584" elapsed="0.000769"/>
+<status status="PASS" start="2025-08-08T17:35:19.135968" elapsed="0.000792"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <arg>${count_service} &lt; ${number_of_services}</arg>
 <arg>Fail</arg>
 <arg>Không đủ service thực sự để chọn ${number_of_services} dịch vụ!</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.661743" elapsed="0.000889"/>
+<status status="PASS" start="2025-08-08T17:35:19.137099" elapsed="0.000841"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <arg>${count_add_on} &lt; ${number_of_add_ons}</arg>
 <arg>Fail</arg>
 <arg>Không đủ add on thực sự để chọn ${number_of_add_ons} add on!</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.663018" elapsed="0.000679"/>
+<status status="PASS" start="2025-08-08T17:35:19.138293" elapsed="0.000496"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.664987" level="INFO">${indexes_service} = [11, 0]</msg>
+<msg time="2025-08-08T17:35:19.139921" level="INFO">${indexes_service} = [10, 1]</msg>
 <var>${indexes_service}</var>
 <arg>random.sample(range(${count_service}), ${number_of_services})</arg>
 <arg>modules=random</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.664103" elapsed="0.001105"/>
+<status status="PASS" start="2025-08-08T17:35:19.139119" elapsed="0.001006"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.666275" level="INFO">${indexes_add_on} = [0, 1]</msg>
+<msg time="2025-08-08T17:35:19.141161" level="INFO">${indexes_add_on} = [1, 2]</msg>
 <var>${indexes_add_on}</var>
 <arg>random.sample(range(${count_add_on}), ${number_of_add_ons})</arg>
 <arg>modules=random</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.665563" elapsed="0.000908"/>
+<status status="PASS" start="2025-08-08T17:35:19.140448" elapsed="0.000899"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.667270" level="INFO">${selected_service_texts} = []</msg>
+<msg time="2025-08-08T17:35:19.142067" level="INFO">${selected_service_texts} = []</msg>
 <var>${selected_service_texts}</var>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.666830" elapsed="0.000623"/>
+<status status="PASS" start="2025-08-08T17:35:19.141667" elapsed="0.000580"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.668316" level="INFO">${selected_add_on_texts} = []</msg>
+<msg time="2025-08-08T17:35:19.142914" level="INFO">${selected_add_on_texts} = []</msg>
 <var>${selected_add_on_texts}</var>
 <doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.667895" elapsed="0.000618"/>
+<status status="PASS" start="2025-08-08T17:35:19.142550" elapsed="0.000644"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.670076" level="INFO">${subtotal_before_discount_service} = 0.0</msg>
+<msg time="2025-08-08T17:35:19.144933" level="INFO">${subtotal_before_discount_service} = 0.0</msg>
 <var>${subtotal_before_discount_service}</var>
 <arg>${0.0}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.668832" elapsed="0.001404"/>
+<status status="PASS" start="2025-08-08T17:35:19.143503" elapsed="0.001743"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.671569" level="INFO">${subtotal_before_discount_list_of_add_ons} = 0.0</msg>
+<msg time="2025-08-08T17:35:19.146737" level="INFO">${subtotal_before_discount_list_of_add_ons} = 0.0</msg>
 <var>${subtotal_before_discount_list_of_add_ons}</var>
 <arg>${0.0}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.670509" elapsed="0.001214"/>
+<status status="PASS" start="2025-08-08T17:35:19.145662" elapsed="0.001239"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.673063" level="INFO">${total_tax_value} = 0.0</msg>
+<msg time="2025-08-08T17:35:19.148218" level="INFO">${total_tax_value} = 0.0</msg>
 <var>${total_tax_value}</var>
 <arg>${0.0}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.671983" elapsed="0.001230"/>
+<status status="PASS" start="2025-08-08T17:35:19.147161" elapsed="0.001210"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.674653" level="INFO">${random_discount} = 0.0</msg>
+<msg time="2025-08-08T17:35:19.149832" level="INFO">${random_discount} = 0.0</msg>
 <var>${random_discount}</var>
 <arg>${0.0}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.673470" elapsed="0.001353"/>
+<status status="PASS" start="2025-08-08T17:35:19.148627" elapsed="0.001394"/>
 </kw>
 <for flavor="IN">
 <iter>
 <kw name="Get From List" owner="Collections">
-<msg time="2025-08-08T15:11:03.676206" level="INFO">${service_element} = &lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-241500000003")&gt;</msg>
+<msg time="2025-08-08T17:35:19.151461" level="INFO">${service_element} = &lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2fad00000003")&gt;</msg>
 <var>${service_element}</var>
 <arg>${service_list}</arg>
 <arg>${index}</arg>
 <doc>Returns the value specified with an ``index`` from ``list``.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.675716" elapsed="0.000657"/>
+<status status="PASS" start="2025-08-08T17:35:19.150967" elapsed="0.000665"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:03.734417" level="INFO">Element '&lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-241500000003")&gt;' attribute 'content-desc' value 'Dip Ombre
-50 mins
-$50.00' </msg>
-<msg time="2025-08-08T15:11:03.734776" level="INFO">${service_text} = Dip Ombre
-50 mins
-$50.00</msg>
+<msg time="2025-08-08T17:35:19.203262" level="INFO">Element '&lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2fad00000003")&gt;' attribute 'content-desc' value 'Extravagant Manicure
+38 mins
+$38.00' </msg>
+<msg time="2025-08-08T17:35:19.203569" level="INFO">${service_text} = Extravagant Manicure
+38 mins
+$38.00</msg>
 <var>${service_text}</var>
 <arg>${service_element}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:03.676660" elapsed="0.058251"/>
+<status status="PASS" start="2025-08-08T17:35:19.151921" elapsed="0.051734"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.735544" level="INFO">Đã chọn Service: Dip Ombre
-50 mins
-$50.00</msg>
+<msg time="2025-08-08T17:35:19.204103" level="INFO">Đã chọn Service: Extravagant Manicure
+38 mins
+$38.00</msg>
 <arg>Đã chọn Service: ${service_text}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.735219" elapsed="0.000495"/>
+<status status="PASS" start="2025-08-08T17:35:19.203876" elapsed="0.000333"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${selected_service_texts}</arg>
 <arg>${service_text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.735942" elapsed="0.000350"/>
+<status status="PASS" start="2025-08-08T17:35:19.204342" elapsed="0.000203"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:03.739994" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-241500000003")&gt;'.</msg>
+<msg time="2025-08-08T17:35:19.206790" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2fad00000003")&gt;'.</msg>
 <arg>${service_element}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.736524" elapsed="0.071406"/>
+<status status="PASS" start="2025-08-08T17:35:19.204685" elapsed="0.074944"/>
 </kw>
 <kw name="Get Amount Value From Service Desc">
 <kw name="Split String" owner="String">
-<msg time="2025-08-08T15:11:03.809768" level="INFO">${lines} = ['Dip Ombre', '50 mins', '$50.00']</msg>
+<msg time="2025-08-08T17:35:19.280784" level="INFO">${lines} = ['Extravagant Manicure', '38 mins', '$38.00']</msg>
 <var>${lines}</var>
 <arg>${desc}</arg>
 <arg>\n</arg>
 <doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.809275" elapsed="0.000694"/>
+<status status="PASS" start="2025-08-08T17:35:19.280456" elapsed="0.000463"/>
 </kw>
 <kw name="Strip String" owner="String">
-<msg time="2025-08-08T15:11:03.810835" level="INFO">${amount_str} = $50.00</msg>
+<msg time="2025-08-08T17:35:19.281383" level="INFO">${amount_str} = $38.00</msg>
 <var>${amount_str}</var>
 <arg>${lines}[-1]</arg>
 <doc>Remove leading and/or trailing whitespaces from the given string.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.810306" elapsed="0.000714"/>
+<status status="PASS" start="2025-08-08T17:35:19.281099" elapsed="0.000398"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.816801" level="INFO">${price_match} = ['50.00']</msg>
+<msg time="2025-08-08T17:35:19.285226" level="INFO">${price_match} = ['38.00']</msg>
 <var>${price_match}</var>
 <arg>re.findall(r"\\$([0-9]+\\.[0-9]{2})", '''${amount_str}''')</arg>
 <arg>modules=re</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.811319" elapsed="0.005675"/>
+<status status="PASS" start="2025-08-08T17:35:19.281672" elapsed="0.003668"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <arg>${price_match} == []</arg>
 <arg>Fail</arg>
 <arg>Không tìm thấy giá trong amount: ${amount_str}</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.817309" elapsed="0.000408"/>
+<status status="PASS" start="2025-08-08T17:35:19.285536" elapsed="0.000263"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.819352" level="INFO">${price_value} = 50.0</msg>
+<msg time="2025-08-08T17:35:19.287011" level="INFO">${price_value} = 38.0</msg>
 <var>${price_value}</var>
 <arg>float(${price_match[0]})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.817996" elapsed="0.001521"/>
+<status status="PASS" start="2025-08-08T17:35:19.285980" elapsed="0.001159"/>
 </kw>
 <return>
 <value>${price_value}</value>
-<status status="PASS" start="2025-08-08T15:11:03.819705" elapsed="0.000183"/>
+<status status="PASS" start="2025-08-08T17:35:19.287266" elapsed="0.000118"/>
 </return>
-<msg time="2025-08-08T15:11:03.820198" level="INFO">${price} = 50.0</msg>
+<msg time="2025-08-08T17:35:19.287586" level="INFO">${price} = 38.0</msg>
 <var>${price}</var>
 <arg>${service_text}</arg>
-<status status="PASS" start="2025-08-08T15:11:03.808525" elapsed="0.011825"/>
+<status status="PASS" start="2025-08-08T17:35:19.279993" elapsed="0.007697"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.821358" level="INFO">${subtotal_before_discount_service} = 50.0</msg>
+<msg time="2025-08-08T17:35:19.288223" level="INFO">${subtotal_before_discount_service} = 38.0</msg>
 <var>${subtotal_before_discount_service}</var>
 <arg>${subtotal_before_discount_service} + ${price}</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.820705" elapsed="0.000791"/>
+<status status="PASS" start="2025-08-08T17:35:19.287920" elapsed="0.000401"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:03.822004" level="INFO">50.0</msg>
+<msg time="2025-08-08T17:35:19.288673" level="INFO">38.0</msg>
 <arg>${subtotal_before_discount_service}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.821728" elapsed="0.000435"/>
+<status status="PASS" start="2025-08-08T17:35:19.288483" elapsed="0.000301"/>
 </kw>
-<var name="${index}">11</var>
-<status status="PASS" start="2025-08-08T15:11:03.675438" elapsed="0.146848"/>
+<var name="${index}">10</var>
+<status status="PASS" start="2025-08-08T17:35:19.150669" elapsed="0.138198"/>
 </iter>
 <iter>
 <kw name="Get From List" owner="Collections">
-<msg time="2025-08-08T15:11:03.823135" level="INFO">${service_element} = &lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-23ff00000003")&gt;</msg>
+<msg time="2025-08-08T17:35:19.289443" level="INFO">${service_element} = &lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2f9b00000003")&gt;</msg>
 <var>${service_element}</var>
 <arg>${service_list}</arg>
 <arg>${index}</arg>
 <doc>Returns the value specified with an ``index`` from ``list``.</doc>
-<status status="PASS" start="2025-08-08T15:11:03.822756" elapsed="0.000577"/>
+<status status="PASS" start="2025-08-08T17:35:19.289188" elapsed="0.000351"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:04.353731" level="INFO">Element '&lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-23ff00000003")&gt;' attribute 'content-desc' value 'Acrylic Full Set w/ Gel
-50 mins
-$50.00' </msg>
-<msg time="2025-08-08T15:11:04.354417" level="INFO">${service_text} = Acrylic Full Set w/ Gel
-50 mins
-$50.00</msg>
+<msg time="2025-08-08T17:35:19.804380" level="INFO">Element '&lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2f9b00000003")&gt;' attribute 'content-desc' value 'Gel w/ Regular Mani
+35 mins
+$35.00' </msg>
+<msg time="2025-08-08T17:35:19.804961" level="INFO">${service_text} = Gel w/ Regular Mani
+35 mins
+$35.00</msg>
 <var>${service_text}</var>
 <arg>${service_element}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:03.823705" elapsed="0.530929"/>
+<status status="PASS" start="2025-08-08T17:35:19.289709" elapsed="0.515454"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:04.355631" level="INFO">Đã chọn Service: Acrylic Full Set w/ Gel
-50 mins
-$50.00</msg>
+<msg time="2025-08-08T17:35:19.806089" level="INFO">Đã chọn Service: Gel w/ Regular Mani
+35 mins
+$35.00</msg>
 <arg>Đã chọn Service: ${service_text}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.355123" elapsed="0.000769"/>
+<status status="PASS" start="2025-08-08T17:35:19.805599" elapsed="0.000751"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${selected_service_texts}</arg>
 <arg>${service_text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.356215" elapsed="0.000480"/>
+<status status="PASS" start="2025-08-08T17:35:19.806701" elapsed="0.000492"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:04.362319" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-23ff00000003")&gt;'.</msg>
+<msg time="2025-08-08T17:35:19.813063" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2f9b00000003")&gt;'.</msg>
 <arg>${service_element}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.357028" elapsed="0.116194"/>
+<status status="PASS" start="2025-08-08T17:35:19.807531" elapsed="0.078084"/>
 </kw>
 <kw name="Get Amount Value From Service Desc">
 <kw name="Split String" owner="String">
-<msg time="2025-08-08T15:11:04.477027" level="INFO">${lines} = ['Acrylic Full Set w/ Gel', '50 mins', '$50.00']</msg>
+<msg time="2025-08-08T17:35:19.889514" level="INFO">${lines} = ['Gel w/ Regular Mani', '35 mins', '$35.00']</msg>
 <var>${lines}</var>
 <arg>${desc}</arg>
 <arg>\n</arg>
 <doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.475858" elapsed="0.001583"/>
+<status status="PASS" start="2025-08-08T17:35:19.888459" elapsed="0.001382"/>
 </kw>
 <kw name="Strip String" owner="String">
-<msg time="2025-08-08T15:11:04.478542" level="INFO">${amount_str} = $50.00</msg>
+<msg time="2025-08-08T17:35:19.890823" level="INFO">${amount_str} = $35.00</msg>
 <var>${amount_str}</var>
 <arg>${lines}[-1]</arg>
 <doc>Remove leading and/or trailing whitespaces from the given string.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.477967" elapsed="0.000770"/>
+<status status="PASS" start="2025-08-08T17:35:19.890319" elapsed="0.000704"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:04.480075" level="INFO">${price_match} = ['50.00']</msg>
+<msg time="2025-08-08T17:35:19.892479" level="INFO">${price_match} = ['35.00']</msg>
 <var>${price_match}</var>
 <arg>re.findall(r"\\$([0-9]+\\.[0-9]{2})", '''${amount_str}''')</arg>
 <arg>modules=re</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.479087" elapsed="0.001204"/>
+<status status="PASS" start="2025-08-08T17:35:19.891357" elapsed="0.001331"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <arg>${price_match} == []</arg>
 <arg>Fail</arg>
 <arg>Không tìm thấy giá trong amount: ${amount_str}</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.480682" elapsed="0.000496"/>
+<status status="PASS" start="2025-08-08T17:35:19.893095" elapsed="0.000630"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:04.483220" level="INFO">${price_value} = 50.0</msg>
+<msg time="2025-08-08T17:35:19.895859" level="INFO">${price_value} = 35.0</msg>
 <var>${price_value}</var>
 <arg>float(${price_match[0]})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.481534" elapsed="0.001879"/>
+<status status="PASS" start="2025-08-08T17:35:19.894128" elapsed="0.001950"/>
 </kw>
 <return>
 <value>${price_value}</value>
-<status status="PASS" start="2025-08-08T15:11:04.483625" elapsed="0.000195"/>
+<status status="PASS" start="2025-08-08T17:35:19.896294" elapsed="0.000189"/>
 </return>
-<msg time="2025-08-08T15:11:04.484174" level="INFO">${price} = 50.0</msg>
+<msg time="2025-08-08T17:35:19.896894" level="INFO">${price} = 35.0</msg>
 <var>${price}</var>
 <arg>${service_text}</arg>
-<status status="PASS" start="2025-08-08T15:11:04.474564" elapsed="0.009783"/>
+<status status="PASS" start="2025-08-08T17:35:19.886869" elapsed="0.010216"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:04.485270" level="INFO">${subtotal_before_discount_service} = 100.0</msg>
+<msg time="2025-08-08T17:35:19.898024" level="INFO">${subtotal_before_discount_service} = 73.0</msg>
 <var>${subtotal_before_discount_service}</var>
 <arg>${subtotal_before_discount_service} + ${price}</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.484676" elapsed="0.000800"/>
+<status status="PASS" start="2025-08-08T17:35:19.897420" elapsed="0.000796"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:04.486200" level="INFO">100.0</msg>
+<msg time="2025-08-08T17:35:19.899035" level="INFO">73.0</msg>
 <arg>${subtotal_before_discount_service}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.485796" elapsed="0.000786"/>
+<status status="PASS" start="2025-08-08T17:35:19.898534" elapsed="0.000733"/>
 </kw>
-<var name="${index}">0</var>
-<status status="PASS" start="2025-08-08T15:11:03.822532" elapsed="0.664231"/>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-08-08T17:35:19.289035" elapsed="0.610405"/>
 </iter>
 <var>${index}</var>
 <value>@{indexes_service}</value>
-<status status="PASS" start="2025-08-08T15:11:03.675015" elapsed="0.812017"/>
+<status status="PASS" start="2025-08-08T17:35:19.150231" elapsed="0.749394"/>
 </for>
 <for flavor="IN">
 <iter>
 <kw name="Get From List" owner="Collections">
-<msg time="2025-08-08T15:11:04.488560" level="INFO">${add_on_element} = &lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-241900000003")&gt;</msg>
+<msg time="2025-08-08T17:35:19.901225" level="INFO">${add_on_element} = &lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2fb400000003")&gt;</msg>
 <var>${add_on_element}</var>
 <arg>${add_on_list}</arg>
 <arg>${index}</arg>
 <doc>Returns the value specified with an ``index`` from ``list``.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.488081" elapsed="0.000656"/>
+<status status="PASS" start="2025-08-08T17:35:19.900680" elapsed="0.000749"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:04.949990" level="INFO">Element '&lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-241900000003")&gt;' attribute 'content-desc' value 'Crystal Nails
-$8.00' </msg>
-<msg time="2025-08-08T15:11:04.950874" level="INFO">${add_on_text} = Crystal Nails
-$8.00</msg>
+<msg time="2025-08-08T17:35:20.397634" level="INFO">Element '&lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2fb400000003")&gt;' attribute 'content-desc' value 'Nail Grace
+$20.00' </msg>
+<msg time="2025-08-08T17:35:20.398180" level="INFO">${add_on_text} = Nail Grace
+$20.00</msg>
 <var>${add_on_text}</var>
 <arg>${add_on_element}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:04.489027" elapsed="0.462029"/>
+<status status="PASS" start="2025-08-08T17:35:19.901774" elapsed="0.496600"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:04.952515" level="INFO">Đã chọn Add On: Crystal Nails
-$8.00</msg>
+<msg time="2025-08-08T17:35:20.399481" level="INFO">Đã chọn Add On: Nail Grace
+$20.00</msg>
 <arg>Đã chọn Add On: ${add_on_text}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.951804" elapsed="0.001110"/>
+<status status="PASS" start="2025-08-08T17:35:20.398972" elapsed="0.000758"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${selected_add_on_texts}</arg>
 <arg>${add_on_text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.953299" elapsed="0.000497"/>
+<status status="PASS" start="2025-08-08T17:35:20.400059" elapsed="0.000479"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:04.959777" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-241900000003")&gt;'.</msg>
+<msg time="2025-08-08T17:35:20.405660" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2fb400000003")&gt;'.</msg>
 <arg>${add_on_element}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:04.954133" elapsed="0.087035"/>
+<status status="PASS" start="2025-08-08T17:35:20.400871" elapsed="0.081066"/>
 </kw>
 <kw name="Get Amount Value From Service Desc">
 <kw name="Split String" owner="String">
-<msg time="2025-08-08T15:11:05.045184" level="INFO">${lines} = ['Crystal Nails', '$8.00']</msg>
+<msg time="2025-08-08T17:35:20.484466" level="INFO">${lines} = ['Nail Grace', '$20.00']</msg>
 <var>${lines}</var>
 <arg>${desc}</arg>
 <arg>\n</arg>
 <doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
-<status status="PASS" start="2025-08-08T15:11:05.044370" elapsed="0.001126"/>
+<status status="PASS" start="2025-08-08T17:35:20.483857" elapsed="0.001104"/>
 </kw>
 <kw name="Strip String" owner="String">
-<msg time="2025-08-08T15:11:05.046403" level="INFO">${amount_str} = $8.00</msg>
+<msg time="2025-08-08T17:35:20.486209" level="INFO">${amount_str} = $20.00</msg>
 <var>${amount_str}</var>
 <arg>${lines}[-1]</arg>
 <doc>Remove leading and/or trailing whitespaces from the given string.</doc>
-<status status="PASS" start="2025-08-08T15:11:05.045903" elapsed="0.000696"/>
+<status status="PASS" start="2025-08-08T17:35:20.485483" elapsed="0.001011"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:05.047749" level="INFO">${price_match} = ['8.00']</msg>
+<msg time="2025-08-08T17:35:20.487714" level="INFO">${price_match} = ['20.00']</msg>
 <var>${price_match}</var>
 <arg>re.findall(r"\\$([0-9]+\\.[0-9]{2})", '''${amount_str}''')</arg>
 <arg>modules=re</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:05.046929" elapsed="0.001014"/>
+<status status="PASS" start="2025-08-08T17:35:20.486854" elapsed="0.001068"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <arg>${price_match} == []</arg>
 <arg>Fail</arg>
 <arg>Không tìm thấy giá trong amount: ${amount_str}</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-08T15:11:05.048305" elapsed="0.000592"/>
+<status status="PASS" start="2025-08-08T17:35:20.488283" elapsed="0.000466"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:05.052439" level="INFO">${price_value} = 8.0</msg>
+<msg time="2025-08-08T17:35:20.492590" level="INFO">${price_value} = 20.0</msg>
 <var>${price_value}</var>
 <arg>float(${price_match[0]})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:05.049250" elapsed="0.003439"/>
+<status status="PASS" start="2025-08-08T17:35:20.489278" elapsed="0.003583"/>
 </kw>
 <return>
 <value>${price_value}</value>
-<status status="PASS" start="2025-08-08T15:11:05.052924" elapsed="0.000265"/>
+<status status="PASS" start="2025-08-08T17:35:20.493105" elapsed="0.000195"/>
 </return>
-<msg time="2025-08-08T15:11:05.053596" level="INFO">${price} = 8.0</msg>
+<msg time="2025-08-08T17:35:20.493692" level="INFO">${price} = 20.0</msg>
 <var>${price}</var>
 <arg>${add_on_text}</arg>
-<status status="PASS" start="2025-08-08T15:11:05.042957" elapsed="0.010836"/>
+<status status="PASS" start="2025-08-08T17:35:20.482942" elapsed="0.010947"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:05.054776" level="INFO">${subtotal_before_discount_list_of_add_ons} = 8.0</msg>
+<msg time="2025-08-08T17:35:20.494881" level="INFO">${subtotal_before_discount_list_of_add_ons} = 20.0</msg>
 <var>${subtotal_before_discount_list_of_add_ons}</var>
 <arg>${subtotal_before_discount_list_of_add_ons} + ${price}</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:05.054156" elapsed="0.000965"/>
+<status status="PASS" start="2025-08-08T17:35:20.494242" elapsed="0.000837"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:05.055994" level="INFO">8.0</msg>
+<msg time="2025-08-08T17:35:20.495942" level="INFO">20.0</msg>
 <arg>${subtotal_before_discount_list_of_add_ons}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:05.055523" elapsed="0.000722"/>
+<status status="PASS" start="2025-08-08T17:35:20.495529" elapsed="0.000660"/>
 </kw>
-<var name="${index}">0</var>
-<status status="PASS" start="2025-08-08T15:11:04.487806" elapsed="0.568623"/>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-08-08T17:35:19.900353" elapsed="0.596006"/>
 </iter>
 <iter>
 <kw name="Get From List" owner="Collections">
-<msg time="2025-08-08T15:11:05.057585" level="INFO">${add_on_element} = &lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-241a00000003")&gt;</msg>
+<msg time="2025-08-08T17:35:20.497350" level="INFO">${add_on_element} = &lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2fb500000003")&gt;</msg>
 <var>${add_on_element}</var>
 <arg>${add_on_list}</arg>
 <arg>${index}</arg>
 <doc>Returns the value specified with an ``index`` from ``list``.</doc>
-<status status="PASS" start="2025-08-08T15:11:05.057108" elapsed="0.000642"/>
+<status status="PASS" start="2025-08-08T17:35:20.496914" elapsed="0.000601"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:05.550228" level="INFO">Element '&lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-241a00000003")&gt;' attribute 'content-desc' value 'Nail Grace
+<msg time="2025-08-08T17:35:21.116056" level="INFO">Element '&lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2fb500000003")&gt;' attribute 'content-desc' value 'Polished Charm
 $20.00' </msg>
-<msg time="2025-08-08T15:11:05.550760" level="INFO">${add_on_text} = Nail Grace
+<msg time="2025-08-08T17:35:21.116290" level="INFO">${add_on_text} = Polished Charm
 $20.00</msg>
 <var>${add_on_text}</var>
 <arg>${add_on_element}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:05.058025" elapsed="0.492933"/>
+<status status="PASS" start="2025-08-08T17:35:20.497805" elapsed="0.618552"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:05.551884" level="INFO">Đã chọn Add On: Nail Grace
+<msg time="2025-08-08T17:35:21.116705" level="INFO">Đã chọn Add On: Polished Charm
 $20.00</msg>
 <arg>Đã chọn Add On: ${add_on_text}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:05.551408" elapsed="0.000720"/>
+<status status="PASS" start="2025-08-08T17:35:21.116531" elapsed="0.000257"/>
 </kw>
 <kw name="Append To List" owner="Collections">
 <arg>${selected_add_on_texts}</arg>
 <arg>${add_on_text}</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" start="2025-08-08T15:11:05.552448" elapsed="0.000507"/>
+<status status="PASS" start="2025-08-08T17:35:21.116893" elapsed="0.000158"/>
 </kw>
 <kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:05.558115" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="f6aeea75-c851-448b-98e7-97a9400d73f8", element="00000000-0000-0244-0000-241a00000003")&gt;'.</msg>
+<msg time="2025-08-08T17:35:21.119096" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="ce0e8774-bc4c-4879-b1cc-2b182dcb3933", element="00000000-0000-02d8-0000-2fb500000003")&gt;'.</msg>
 <arg>${add_on_element}</arg>
 <doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:05.553302" elapsed="0.635214"/>
+<status status="PASS" start="2025-08-08T17:35:21.117164" elapsed="0.083206"/>
 </kw>
 <kw name="Get Amount Value From Service Desc">
 <kw name="Split String" owner="String">
-<msg time="2025-08-08T15:11:06.191684" level="INFO">${lines} = ['Nail Grace', '$20.00']</msg>
+<msg time="2025-08-08T17:35:21.204863" level="INFO">${lines} = ['Polished Charm', '$20.00']</msg>
 <var>${lines}</var>
 <arg>${desc}</arg>
 <arg>\n</arg>
 <doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.190840" elapsed="0.001223"/>
+<status status="PASS" start="2025-08-08T17:35:21.203967" elapsed="0.001319"/>
 </kw>
 <kw name="Strip String" owner="String">
-<msg time="2025-08-08T15:11:06.193230" level="INFO">${amount_str} = $20.00</msg>
+<msg time="2025-08-08T17:35:21.206359" level="INFO">${amount_str} = $20.00</msg>
 <var>${amount_str}</var>
 <arg>${lines}[-1]</arg>
 <doc>Remove leading and/or trailing whitespaces from the given string.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.192588" elapsed="0.000843"/>
+<status status="PASS" start="2025-08-08T17:35:21.205727" elapsed="0.001121"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:06.194615" level="INFO">${price_match} = ['20.00']</msg>
+<msg time="2025-08-08T17:35:21.208496" level="INFO">${price_match} = ['20.00']</msg>
 <var>${price_match}</var>
 <arg>re.findall(r"\\$([0-9]+\\.[0-9]{2})", '''${amount_str}''')</arg>
 <arg>modules=re</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.193774" elapsed="0.001036"/>
+<status status="PASS" start="2025-08-08T17:35:21.207388" elapsed="0.001394"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <arg>${price_match} == []</arg>
 <arg>Fail</arg>
 <arg>Không tìm thấy giá trong amount: ${amount_str}</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.195301" elapsed="0.000483"/>
+<status status="PASS" start="2025-08-08T17:35:21.209249" elapsed="0.000587"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:06.197919" level="INFO">${price_value} = 20.0</msg>
+<msg time="2025-08-08T17:35:21.211939" level="INFO">${price_value} = 20.0</msg>
 <var>${price_value}</var>
 <arg>float(${price_match[0]})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.196129" elapsed="0.002034"/>
+<status status="PASS" start="2025-08-08T17:35:21.210266" elapsed="0.002004"/>
 </kw>
 <return>
 <value>${price_value}</value>
-<status status="PASS" start="2025-08-08T15:11:06.198404" elapsed="0.000203"/>
+<status status="PASS" start="2025-08-08T17:35:21.212618" elapsed="0.000238"/>
 </return>
-<msg time="2025-08-08T15:11:06.198994" level="INFO">${price} = 20.0</msg>
+<msg time="2025-08-08T17:35:21.213338" level="INFO">${price} = 20.0</msg>
 <var>${price}</var>
 <arg>${add_on_text}</arg>
-<status status="PASS" start="2025-08-08T15:11:06.189779" elapsed="0.009414"/>
+<status status="PASS" start="2025-08-08T17:35:21.202172" elapsed="0.011387"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:06.200190" level="INFO">${subtotal_before_discount_list_of_add_ons} = 28.0</msg>
+<msg time="2025-08-08T17:35:21.214605" level="INFO">${subtotal_before_discount_list_of_add_ons} = 40.0</msg>
 <var>${subtotal_before_discount_list_of_add_ons}</var>
 <arg>${subtotal_before_discount_list_of_add_ons} + ${price}</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.199557" elapsed="0.000831"/>
+<status status="PASS" start="2025-08-08T17:35:21.213927" elapsed="0.000888"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:06.201153" level="INFO">28.0</msg>
+<msg time="2025-08-08T17:35:21.215556" level="INFO">40.0</msg>
 <arg>${subtotal_before_discount_list_of_add_ons}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.200730" elapsed="0.000800"/>
+<status status="PASS" start="2025-08-08T17:35:21.215150" elapsed="0.000651"/>
 </kw>
-<var name="${index}">1</var>
-<status status="PASS" start="2025-08-08T15:11:05.056784" elapsed="1.144990"/>
+<var name="${index}">2</var>
+<status status="PASS" start="2025-08-08T17:35:20.496650" elapsed="0.719330"/>
 </iter>
 <var>${index}</var>
 <value>@{indexes_add_on}</value>
-<status status="PASS" start="2025-08-08T15:11:04.487291" elapsed="1.714688"/>
+<status status="PASS" start="2025-08-08T17:35:19.899866" elapsed="1.318470"/>
 </for>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:06.203323" level="INFO">${Total_service} = 128.0</msg>
+<msg time="2025-08-08T17:35:21.220836" level="INFO">${Total_service} = 113.0</msg>
 <var>${Total_service}</var>
 <arg>${subtotal_before_discount_service} + ${subtotal_before_discount_list_of_add_ons}</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.202548" elapsed="0.000962"/>
+<status status="PASS" start="2025-08-08T17:35:21.219502" elapsed="0.001891"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:06.204124" level="INFO">128.0</msg>
+<msg time="2025-08-08T17:35:21.223102" level="INFO">113.0</msg>
 <arg>${Total_service}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.203797" elapsed="0.000521"/>
+<status status="PASS" start="2025-08-08T17:35:21.222323" elapsed="0.001216"/>
 </kw>
 <if>
 <branch type="IF" condition="${discount_type} == 'percentage'">
 <kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:06.565638" level="INFO">xpath criteria: //android.view.View[@content-desc="Discount" and @clickable="true"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.205646" elapsed="0.360703"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:06.571813" level="INFO">Clicking element '//android.view.View[@content-desc="Discount" and @clickable="true"]'.</msg>
-<msg time="2025-08-08T15:11:06.955217" level="INFO">xpath criteria: //android.view.View[@content-desc="Discount" and @clickable="true"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.567007" elapsed="0.389190"/>
-</kw>
 <arg>//android.view.View[@content-desc="Discount" and @clickable="true"]</arg>
-<status status="PASS" start="2025-08-08T15:11:06.205083" elapsed="0.751655"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.224814" elapsed="0.000339"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:07.857223" level="INFO">xpath criteria: //android.view.View[@content-desc="Quick discount"]/android.view.View</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:06.958620" elapsed="0.899201"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:07.862843" level="INFO">Clicking element '//android.view.View[@content-desc="Quick discount"]/android.view.View'.</msg>
-<msg time="2025-08-08T15:11:08.646324" level="INFO">xpath criteria: //android.view.View[@content-desc="Quick discount"]/android.view.View</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:07.858493" elapsed="0.788964"/>
-</kw>
 <arg>//android.view.View[@content-desc="Quick discount"]/android.view.View</arg>
-<status status="PASS" start="2025-08-08T15:11:06.957518" elapsed="1.690635"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.225792" elapsed="0.000182"/>
 </kw>
 <if>
 <branch type="IF" condition="${include_discount} == 'off'">
 <kw name="Click on Element mobile" owner="Common">
 <arg>//android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:08.649890" elapsed="0.000373"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.226537" elapsed="0.000165"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
 <var>${discount_percentage_subtotal}</var>
 <arg>random.randint(1, 100)</arg>
 <arg>modules=random</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:08.650717" elapsed="0.000256"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.227190" elapsed="0.000214"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>${discount_percentage_subtotal}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:08.651413" elapsed="0.000476"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.227691" elapsed="0.000144"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
 <var>${random_discount}</var>
 <arg>round((${discount_percentage_subtotal} / 100) * ${subtotal_before_discount_service}, 2)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:08.652522" elapsed="0.000283"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.228101" elapsed="0.000160"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>${random_discount}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:08.653428" elapsed="0.000329"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.228512" elapsed="0.000140"/>
 </kw>
 <kw name="Convert To String" owner="BuiltIn">
 <var>${number_str}</var>
 <arg>${discount_percentage_subtotal}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:08.654223" elapsed="0.000295"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.228901" elapsed="0.000173"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>${number_str}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:08.654942" elapsed="0.000220"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.229325" elapsed="0.000128"/>
 </kw>
 <kw name="Convert To List" owner="Collections">
 <var>${number_list}</var>
 <arg>${number_str}</arg>
 <doc>Converts the given ``item`` to a Python ``list`` type.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:08.655506" elapsed="0.000210"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.229686" elapsed="0.000165"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>${number_list}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:08.656032" elapsed="0.000557"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.230088" elapsed="0.000127"/>
 </kw>
 <for flavor="IN">
 <iter>
 <kw name="Click on Element mobile" owner="Common">
 <arg>//android.view.View[@content-desc="${digit}" and @clickable="true"]</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:08.657461" elapsed="0.000195"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.230802" elapsed="0.000221"/>
 </kw>
 <var name="${digit}"/>
-<status status="NOT RUN" start="2025-08-08T15:11:08.657076" elapsed="0.000754"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.230538" elapsed="0.000633"/>
 </iter>
 <var>${digit}</var>
 <value>@{number_list}</value>
-<status status="NOT RUN" start="2025-08-08T15:11:08.656796" elapsed="0.001200"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.230349" elapsed="0.000970"/>
 </for>
 <kw name="Click on Element mobile" owner="Common">
 <arg>${elm_btn_Done}</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:08.658354" elapsed="0.000206"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.231621" elapsed="0.000375"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
 <arg>${elm_btn_Submit}</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:08.658886" elapsed="0.000186"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.232246" elapsed="0.000142"/>
 </kw>
-<status status="NOT RUN" start="2025-08-08T15:11:08.648705" elapsed="0.010541"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.226207" elapsed="0.006299"/>
 </branch>
 <branch type="ELSE IF" condition="${include_discount} == 'on'">
 <kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:08.859329" level="INFO">xpath criteria: //android.view.View[@content-desc="Off"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:08.661592" elapsed="0.198045"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:08.862781" level="INFO">Clicking element '//android.view.View[@content-desc="Off"]'.</msg>
-<msg time="2025-08-08T15:11:09.054850" level="INFO">xpath criteria: //android.view.View[@content-desc="Off"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:08.859949" elapsed="0.195955"/>
-</kw>
 <arg>//android.view.View[@content-desc="Off"]</arg>
-<status status="PASS" start="2025-08-08T15:11:08.660083" elapsed="0.396438"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.232880" elapsed="0.000133"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:09.939429" level="INFO">xpath criteria: //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:09.058448" elapsed="0.881981"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:09.947765" level="INFO">Clicking element '//android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View'.</msg>
-<msg time="2025-08-08T15:11:10.122313" level="INFO">xpath criteria: //android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:09.941303" elapsed="0.182466"/>
-</kw>
 <arg>//android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[6]/android.view.View</arg>
-<status status="PASS" start="2025-08-08T15:11:09.057269" elapsed="1.067036"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.233247" elapsed="0.000122"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:10.126386" level="INFO">${discount_percentage_subtotal} = 72</msg>
 <var>${discount_percentage_subtotal}</var>
 <arg>random.randint(1, 100)</arg>
 <arg>modules=random</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:10.124996" elapsed="0.001903"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.233581" elapsed="0.000135"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:10.128354" level="INFO">72</msg>
 <arg>${discount_percentage_subtotal}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:10.127428" elapsed="0.001366"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.233934" elapsed="0.000115"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:10.130264" level="INFO">${random_discount} = 92.16</msg>
 <var>${random_discount}</var>
 <arg>round((${discount_percentage_subtotal} / 100) * ${Total_service}, 2)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:10.129405" elapsed="0.001070"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.234256" elapsed="0.000131"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:10.131430" level="INFO">92.16</msg>
 <arg>${random_discount}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:10.130838" elapsed="0.001012"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.234599" elapsed="0.000113"/>
 </kw>
 <kw name="Convert To String" owner="BuiltIn">
-<msg time="2025-08-08T15:11:10.132836" level="INFO">${number_str} = 72</msg>
 <var>${number_str}</var>
 <arg>${discount_percentage_subtotal}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<status status="PASS" start="2025-08-08T15:11:10.132242" elapsed="0.000796"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.234912" elapsed="0.000122"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:10.133761" level="INFO">72</msg>
 <arg>${number_str}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:10.133377" elapsed="0.000604"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.235236" elapsed="0.000113"/>
 </kw>
 <kw name="Convert To List" owner="Collections">
-<msg time="2025-08-08T15:11:10.134781" level="INFO">${number_list} = ['7', '2']</msg>
 <var>${number_list}</var>
 <arg>${number_str}</arg>
 <doc>Converts the given ``item`` to a Python ``list`` type.</doc>
-<status status="PASS" start="2025-08-08T15:11:10.134295" elapsed="0.000687"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.235546" elapsed="0.000121"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:10.135665" level="INFO">['7', '2']</msg>
 <arg>${number_list}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:10.135304" elapsed="0.000628"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.235874" elapsed="0.000109"/>
 </kw>
 <for flavor="IN">
 <iter>
 <kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:10.773794" level="INFO">xpath criteria: //android.view.View[@content-desc="7" and @clickable="true"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:10.137947" elapsed="0.636488"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:10.779980" level="INFO">Clicking element '//android.view.View[@content-desc="7" and @clickable="true"]'.</msg>
-<msg time="2025-08-08T15:11:11.466964" level="INFO">xpath criteria: //android.view.View[@content-desc="7" and @clickable="true"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:10.775013" elapsed="0.693054"/>
-</kw>
 <arg>//android.view.View[@content-desc="${digit}" and @clickable="true"]</arg>
-<status status="PASS" start="2025-08-08T15:11:10.137207" elapsed="1.331535"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.236500" elapsed="0.000122"/>
 </kw>
-<var name="${digit}">7</var>
-<status status="PASS" start="2025-08-08T15:11:10.136756" elapsed="1.332337"/>
-</iter>
-<iter>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:11.615761" level="INFO">xpath criteria: //android.view.View[@content-desc="2" and @clickable="true"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:11.471594" elapsed="0.145256"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:11.624082" level="INFO">Clicking element '//android.view.View[@content-desc="2" and @clickable="true"]'.</msg>
-<msg time="2025-08-08T15:11:12.312104" level="INFO">xpath criteria: //android.view.View[@content-desc="2" and @clickable="true"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:11.617858" elapsed="0.694853"/>
-</kw>
-<arg>//android.view.View[@content-desc="${digit}" and @clickable="true"]</arg>
-<status status="PASS" start="2025-08-08T15:11:11.470425" elapsed="0.842782"/>
-</kw>
-<var name="${digit}">2</var>
-<status status="PASS" start="2025-08-08T15:11:11.469667" elapsed="0.843962"/>
+<var name="${digit}"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.236276" elapsed="0.000459"/>
 </iter>
 <var>${digit}</var>
 <value>@{number_list}</value>
-<status status="PASS" start="2025-08-08T15:11:10.136162" elapsed="2.177725"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.236119" elapsed="0.000731"/>
 </for>
 <kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:12.454128" level="INFO">xpath criteria: //android.view.View[@content-desc="Done"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:12.315717" elapsed="0.138995"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:12.460029" level="INFO">Clicking element '//android.view.View[@content-desc="Done"]'.</msg>
-<msg time="2025-08-08T15:11:13.368280" level="INFO">xpath criteria: //android.view.View[@content-desc="Done"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:12.455281" elapsed="0.914119"/>
-</kw>
 <arg>${elm_btn_Done}</arg>
-<status status="PASS" start="2025-08-08T15:11:12.314555" elapsed="1.055565"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.237090" elapsed="0.000120"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:13.504988" level="INFO">xpath criteria: //android.view.View[@content-desc="Submit"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:13.372393" elapsed="0.133464"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:13.511753" level="INFO">Clicking element '//android.view.View[@content-desc="Submit"]'.</msg>
-<msg time="2025-08-08T15:11:14.499883" level="INFO">xpath criteria: //android.view.View[@content-desc="Submit"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:13.506731" elapsed="0.994095"/>
-</kw>
 <arg>${elm_btn_Submit}</arg>
-<status status="PASS" start="2025-08-08T15:11:13.371204" elapsed="1.130211"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.237601" elapsed="0.000125"/>
 </kw>
-<status status="PASS" start="2025-08-08T15:11:08.659409" elapsed="5.842311"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.232621" elapsed="0.005219"/>
 </branch>
 <branch type="ELSE">
 <kw name="Fail" owner="BuiltIn">
 <arg>Invalid include discount: ${include_discount} must be 'off' or 'on'.</arg>
 <doc>Fails the test with the given message and optionally alters its tags.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.502904" elapsed="0.000274"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.238169" elapsed="0.000130"/>
 </kw>
-<status status="NOT RUN" start="2025-08-08T15:11:14.502048" elapsed="0.001338"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.237950" elapsed="0.000794"/>
 </branch>
-<status status="PASS" start="2025-08-08T15:11:08.648588" elapsed="5.854977"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.226169" elapsed="0.012738"/>
 </if>
-<status status="PASS" start="2025-08-08T15:11:06.204559" elapsed="8.299119"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.223908" elapsed="0.015051"/>
 </branch>
 <branch type="ELSE IF" condition="${discount_type} == 'fixed_amount'">
 <kw name="Click on Element mobile" owner="Common">
 <arg>//android.view.View[@content-desc="Discount" and @clickable="true"]</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.504677" elapsed="0.000213"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.239594" elapsed="0.000395"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
 <arg>//android.view.View[@content-desc="Quick discount"]/android.view.View</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.505215" elapsed="0.000166"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.240543" elapsed="0.000321"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
 <arg>//android.view.View[@content-desc="Fixed amount"]</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.505698" elapsed="0.000192"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.241230" elapsed="0.000160"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
 <arg>//android.view.View[@content-desc="Select Discount"]/android.view.View[2]/android.view.View[4]/android.view.View</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.506439" elapsed="0.000556"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.241630" elapsed="0.000123"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
 <var>${format_subtotal}</var>
 <arg>'{:.2f}'.format(${Total_service})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.507616" elapsed="0.000311"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.241959" elapsed="0.000124"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>${format_subtotal}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.508357" elapsed="0.000187"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.242276" elapsed="0.000100"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
 <var>${random_fixed}</var>
 <arg>random.uniform(1.00, ${format_subtotal})</arg>
 <arg>modules=random</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.508953" elapsed="0.000283"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.242554" elapsed="0.000123"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>${random_fixed}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.509589" elapsed="0.000185"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.242860" elapsed="0.000098"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
 <var>${random_discount}</var>
 <arg>int(${random_fixed} * 100) / 100</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.510087" elapsed="0.000319"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.243134" elapsed="0.000114"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>${random_discount}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.510729" elapsed="0.000173"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.243424" elapsed="0.000094"/>
 </kw>
 <kw name="Convert To String" owner="BuiltIn">
 <var>${number_str}</var>
 <arg>${random_discount}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.511308" elapsed="0.000241"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.243689" elapsed="0.000102"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>${number_str}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.511893" elapsed="0.000183"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.243964" elapsed="0.000094"/>
 </kw>
 <kw name="Replace String" owner="String">
 <var>${number_str_no_dot}</var>
@@ -1014,1137 +886,573 @@ $20.00</msg>
 <arg>.</arg>
 <arg>${EMPTY}</arg>
 <doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.512381" elapsed="0.000248"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.244226" elapsed="0.000146"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>${number_str_no_dot}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.512960" elapsed="0.000183"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.244576" elapsed="0.000093"/>
 </kw>
 <kw name="Convert To List" owner="Collections">
 <var>${number_list}</var>
 <arg>${number_str_no_dot}</arg>
 <doc>Converts the given ``item`` to a Python ``list`` type.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.513445" elapsed="0.000174"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.244834" elapsed="0.000171"/>
 </kw>
 <for flavor="IN">
 <iter>
 <kw name="Click on Element mobile" owner="Common">
 <arg>//android.view.View[@content-desc="${digit}"]</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.514472" elapsed="0.000194"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.245557" elapsed="0.000126"/>
 </kw>
 <var name="${digit}"/>
-<status status="NOT RUN" start="2025-08-08T15:11:14.514085" elapsed="0.000757"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.245324" elapsed="0.000465"/>
 </iter>
 <var>${digit}</var>
 <value>@{number_list}</value>
-<status status="NOT RUN" start="2025-08-08T15:11:14.513821" elapsed="0.001198"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.245150" elapsed="0.000740"/>
 </for>
 <kw name="Click on Element mobile" owner="Common">
 <arg>${elm_btn_Done}</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.515379" elapsed="0.000177"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.246108" elapsed="0.000105"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
 <arg>${elm_btn_Submit}</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.515879" elapsed="0.000166"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.246416" elapsed="0.000106"/>
 </kw>
-<status status="NOT RUN" start="2025-08-08T15:11:14.504087" elapsed="0.012112"/>
+<status status="NOT RUN" start="2025-08-08T17:35:21.239071" elapsed="0.007555"/>
 </branch>
 <branch type="ELSE IF" condition="${discount_type} == 'voucher'">
 <kw name="Click on Element mobile" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:22.035685" level="INFO">xpath criteria: //android.view.View[@content-desc="Discount" and @clickable="true"]</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-08-08T17:35:21.247483" elapsed="0.788977"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:22.042946" level="INFO">Clicking element '//android.view.View[@content-desc="Discount" and @clickable="true"]'.</msg>
+<msg time="2025-08-08T17:35:22.434629" level="INFO">xpath criteria: //android.view.View[@content-desc="Discount" and @clickable="true"]</msg>
+<arg>${elm_input}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-08-08T17:35:22.037292" elapsed="0.398192"/>
+</kw>
 <arg>//android.view.View[@content-desc="Discount" and @clickable="true"]</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.516897" elapsed="0.000193"/>
+<status status="PASS" start="2025-08-08T17:35:21.247052" elapsed="1.188989"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:23.338002" level="INFO">xpath criteria: //android.view.View[@content-desc="Apply Voucher"]</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-08-08T17:35:22.438100" elapsed="0.901045"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:23.345299" level="INFO">Clicking element '//android.view.View[@content-desc="Apply Voucher"]'.</msg>
+<msg time="2025-08-08T17:35:24.021161" level="INFO">xpath criteria: //android.view.View[@content-desc="Apply Voucher"]</msg>
+<arg>${elm_input}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-08-08T17:35:23.340234" elapsed="0.681412"/>
+</kw>
 <arg>//android.view.View[@content-desc="Apply Voucher"]</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.517440" elapsed="0.000188"/>
+<status status="PASS" start="2025-08-08T17:35:22.436926" elapsed="1.585090"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:24.142327" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-08-08T17:35:24.023417" elapsed="0.119582"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:24.149158" level="INFO">Clicking element '//android.widget.EditText'.</msg>
+<msg time="2025-08-08T17:35:24.831406" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<arg>${elm_input}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-08-08T17:35:24.143662" elapsed="0.688715"/>
+</kw>
 <arg>//android.widget.EditText</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.517974" elapsed="0.000180"/>
+<status status="PASS" start="2025-08-08T17:35:24.022556" elapsed="0.810457"/>
 </kw>
 <kw name="Fill Text Input mobile" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:25.879110" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-08-08T17:35:24.835614" elapsed="1.044544"/>
+</kw>
+<kw name="Input Text" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:25.886090" level="INFO">Typing text 'expired' into text field '//android.widget.EditText'</msg>
+<msg time="2025-08-08T17:35:26.007649" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<arg>${elm_input}</arg>
+<arg>${text}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="PASS" start="2025-08-08T17:35:25.880993" elapsed="0.127907"/>
+</kw>
 <arg>//android.widget.EditText</arg>
 <arg>${voucher_code}</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.518430" elapsed="0.000429"/>
+<status status="PASS" start="2025-08-08T17:35:24.833998" elapsed="1.175670"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:28.136570" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVexpired")]
+xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVexpired")]
+xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVexpired")]
+xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVexpired")]</msg>
 <arg>//android.view.View[contains(@content-desc, "Code: #SBV${voucher_code}")]</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.519207" elapsed="0.000183"/>
+<status status="PASS" start="2025-08-08T17:35:26.010689" elapsed="2.126798"/>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:28.266668" level="INFO">Element '//android.view.View[contains(@content-desc, "Code: #SBVexpired")]' attribute 'content-desc' value 'Code: #SBVexpired
+5.00 off
+Valid until June 18, 2025' </msg>
+<msg time="2025-08-08T17:35:28.267285" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVexpired")]</msg>
+<msg time="2025-08-08T17:35:28.267631" level="INFO">${amount_voucher} = Code: #SBVexpired
+5.00 off
+Valid until June 18, 2025</msg>
 <var>${amount_voucher}</var>
 <arg>//android.view.View[contains(@content-desc, "Code: #SBV${voucher_code}")]</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.519668" elapsed="0.000180"/>
+<status status="PASS" start="2025-08-08T17:35:28.138312" elapsed="0.129509"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
+<msg time="2025-08-08T17:35:28.268726" level="INFO">Code: #SBVexpired
+5.00 off
+Valid until June 18, 2025</msg>
 <arg>${amount_voucher}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.520126" elapsed="0.000180"/>
+<status status="PASS" start="2025-08-08T17:35:28.268271" elapsed="0.000691"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-08T17:35:28.270372" level="INFO">${amount_list} = ['5.00']</msg>
 <var>${amount_list}</var>
 <arg>re.findall(r'(\\d+(?:\\.\\d+)?(?= off|%))', """${amount_voucher}""", re.MULTILINE)</arg>
 <arg>modules=re</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.520565" elapsed="0.000246"/>
+<status status="PASS" start="2025-08-08T17:35:28.269300" elapsed="0.001274"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
+<msg time="2025-08-08T17:35:28.271318" level="INFO">Amount List: ['5.00']</msg>
 <arg>Amount List: ${amount_list}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.521111" elapsed="0.000158"/>
+<status status="PASS" start="2025-08-08T17:35:28.270915" elapsed="0.000636"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-08T17:35:28.272566" level="INFO">${is_percentage} = False</msg>
 <var>${is_percentage}</var>
 <arg>"""${amount_voucher}""".find('%') != -1</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.521528" elapsed="0.000167"/>
+<status status="PASS" start="2025-08-08T17:35:28.271866" elapsed="0.000893"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-08T17:35:28.274039" level="INFO">${is_fixed} = True</msg>
 <var>${is_fixed}</var>
 <arg>"""${amount_voucher}""".find(' off') != -1</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.521951" elapsed="0.000174"/>
+<status status="PASS" start="2025-08-08T17:35:28.273078" elapsed="0.001220"/>
 </kw>
 <if>
 <branch type="IF" condition="'${is_percentage}' == 'True'">
 <kw name="Log" owner="BuiltIn">
 <arg>Loại voucher: percentage</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.522622" elapsed="0.000150"/>
+<status status="NOT RUN" start="2025-08-08T17:35:28.275129" elapsed="0.000213"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>Giá trị Percentage: ${amount_list}[0]</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.523165" elapsed="0.000171"/>
+<status status="NOT RUN" start="2025-08-08T17:35:28.275664" elapsed="0.000190"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
 <var>${random_discount}</var>
 <arg>float(${amount_list}[0]) * ${Total_service} / 100</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.523803" elapsed="0.000242"/>
+<status status="NOT RUN" start="2025-08-08T17:35:28.276156" elapsed="0.000193"/>
 </kw>
-<status status="NOT RUN" start="2025-08-08T15:11:14.522348" elapsed="0.001956"/>
+<status status="NOT RUN" start="2025-08-08T17:35:28.274606" elapsed="0.001914"/>
 </branch>
 <branch type="ELSE IF" condition="'${is_fixed}' == 'True'">
 <kw name="Log" owner="BuiltIn">
+<msg time="2025-08-08T17:35:28.277443" level="INFO">Loại voucher: fixed</msg>
 <arg>Loại voucher: fixed</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.524967" elapsed="0.000367"/>
+<status status="PASS" start="2025-08-08T17:35:28.277107" elapsed="0.000588"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
+<msg time="2025-08-08T17:35:28.278423" level="INFO">Giá trị Fixed amount: 5.00</msg>
 <arg>Giá trị Fixed amount: ${amount_list}[0]</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.525733" elapsed="0.000153"/>
+<status status="PASS" start="2025-08-08T17:35:28.278003" elapsed="0.000657"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-08-08T17:35:28.279425" level="INFO">${random_discount} = 5.0</msg>
 <var>${random_discount}</var>
 <arg>float(${amount_list}[0])</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.526134" elapsed="0.000154"/>
+<status status="PASS" start="2025-08-08T17:35:28.278954" elapsed="0.000737"/>
 </kw>
-<status status="NOT RUN" start="2025-08-08T15:11:14.524642" elapsed="0.001789"/>
+<status status="PASS" start="2025-08-08T17:35:28.276673" elapsed="0.003186"/>
 </branch>
 <branch type="ELSE">
 <kw name="Fail" owner="BuiltIn">
 <arg>Không phải voucher hợp lệ, không có giá trị fixed hay percentage.</arg>
 <doc>Fails the test with the given message and optionally alters its tags.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.526824" elapsed="0.000147"/>
+<status status="NOT RUN" start="2025-08-08T17:35:28.280403" elapsed="0.000378"/>
 </kw>
-<status status="NOT RUN" start="2025-08-08T15:11:14.526581" elapsed="0.000524"/>
+<status status="NOT RUN" start="2025-08-08T17:35:28.280101" elapsed="0.000837"/>
 </branch>
-<status status="NOT RUN" start="2025-08-08T15:11:14.522303" elapsed="0.004916"/>
+<status status="PASS" start="2025-08-08T17:35:28.274550" elapsed="0.006514"/>
 </if>
 <kw name="Click on Element mobile" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:28.393892" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVexpired")]</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-08-08T17:35:28.281912" elapsed="0.112202"/>
+</kw>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:28.396565" level="INFO">Clicking element '//android.view.View[contains(@content-desc, "Code: #SBVexpired")]'.</msg>
+<msg time="2025-08-08T17:35:28.591101" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "Code: #SBVexpired")]</msg>
+<arg>${elm_input}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-08-08T17:35:28.394351" elapsed="0.197829"/>
+</kw>
 <arg>//android.view.View[contains(@content-desc, "Code: #SBV${voucher_code}")]</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.527460" elapsed="0.000325"/>
+<status status="PASS" start="2025-08-08T17:35:28.281301" elapsed="0.311446"/>
 </kw>
 <kw name="Click on Element mobile" owner="Common">
-<arg>${elm_btn_Submit}</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:14.528067" elapsed="0.000148"/>
+<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:30.209902" level="INFO">xpath criteria: //android.view.View[@content-desc="Submit"]</msg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" start="2025-08-08T17:35:28.594718" elapsed="1.616249"/>
 </kw>
-<status status="NOT RUN" start="2025-08-08T15:11:14.516382" elapsed="0.011967"/>
+<kw name="Click Element" owner="AppiumLibrary">
+<msg time="2025-08-08T17:35:30.218303" level="INFO">Clicking element '//android.view.View[@content-desc="Submit"]'.</msg>
+<msg time="2025-08-08T17:35:31.890114" level="INFO">xpath criteria: //android.view.View[@content-desc="Submit"]</msg>
+<arg>${elm_input}</arg>
+<doc>Click element identified by `locator`.</doc>
+<status status="PASS" start="2025-08-08T17:35:30.211860" elapsed="1.678758"/>
+</kw>
+<arg>${elm_btn_Submit}</arg>
+<status status="PASS" start="2025-08-08T17:35:28.593578" elapsed="3.297397"/>
+</kw>
+<status status="PASS" start="2025-08-08T17:35:21.246723" elapsed="10.644462"/>
 </branch>
 <branch type="ELSE IF" condition="${discount_type} == 'none'">
 <kw name="No Operation" owner="BuiltIn">
 <doc>Does absolutely nothing.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.528725" elapsed="0.000139"/>
+<status status="NOT RUN" start="2025-08-08T17:35:31.891966" elapsed="0.000198"/>
 </kw>
-<status status="NOT RUN" start="2025-08-08T15:11:14.528468" elapsed="0.000527"/>
+<status status="NOT RUN" start="2025-08-08T17:35:31.891404" elapsed="0.000951"/>
 </branch>
 <branch type="ELSE">
 <kw name="Fail" owner="BuiltIn">
 <arg>Invalid discount type: ${discount_type} must be 'fixed' or 'percent'.</arg>
 <doc>Fails the test with the given message and optionally alters its tags.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:14.529347" elapsed="0.000142"/>
+<status status="NOT RUN" start="2025-08-08T17:35:31.892799" elapsed="0.000166"/>
 </kw>
-<status status="NOT RUN" start="2025-08-08T15:11:14.529116" elapsed="0.000504"/>
+<status status="NOT RUN" start="2025-08-08T17:35:31.892505" elapsed="0.000642"/>
 </branch>
-<status status="PASS" start="2025-08-08T15:11:06.204514" elapsed="8.325218"/>
+<status status="PASS" start="2025-08-08T17:35:21.223827" elapsed="10.669456"/>
 </if>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.530425" level="INFO">${final_subtotal_after_discount} = 35.84</msg>
+<msg time="2025-08-08T17:35:31.894743" level="INFO">${final_subtotal_after_discount} = 108.0</msg>
 <var>${final_subtotal_after_discount}</var>
 <arg>round(${Total_service} - ${random_discount}, 2)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.529879" elapsed="0.000709"/>
+<status status="PASS" start="2025-08-08T17:35:31.893500" elapsed="0.001783"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.531628" level="INFO">${total_tax_value} = 1.79</msg>
+<msg time="2025-08-08T17:35:31.897167" level="INFO">${total_tax_value} = 5.40</msg>
 <var>${total_tax_value}</var>
 <arg>str(__import__('decimal').Decimal(str(${final_subtotal_after_discount} * 0.05)).quantize(__import__('decimal').Decimal('0.01'), rounding=__import__('decimal').ROUND_HALF_UP))</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.530811" elapsed="0.001039"/>
+<status status="PASS" start="2025-08-08T17:35:31.896026" elapsed="0.001382"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.532540" level="INFO">${final_total_value} = 37.63</msg>
+<msg time="2025-08-08T17:35:31.898450" level="INFO">${final_total_value} = 113.4</msg>
 <var>${final_total_value}</var>
 <arg>round(${final_subtotal_after_discount} + ${total_tax_value}, 2)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.532095" elapsed="0.000581"/>
+<status status="PASS" start="2025-08-08T17:35:31.897772" elapsed="0.000877"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.533301" level="INFO">${final_subtotal_str} = 35.84</msg>
+<msg time="2025-08-08T17:35:31.899576" level="INFO">${final_subtotal_str} = 108.00</msg>
 <var>${final_subtotal_str}</var>
 <arg>f\"{${final_subtotal_after_discount}:.2f}\"</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.532895" elapsed="0.000535"/>
+<status status="PASS" start="2025-08-08T17:35:31.898989" elapsed="0.000798"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.534021" level="INFO">${final_tax_str} = 1.79</msg>
+<msg time="2025-08-08T17:35:31.900644" level="INFO">${final_tax_str} = 5.40</msg>
 <var>${final_tax_str}</var>
 <arg>f\"{${total_tax_value}:.2f}\"</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.533644" elapsed="0.000507"/>
+<status status="PASS" start="2025-08-08T17:35:31.900105" elapsed="0.000725"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.534742" level="INFO">${final_total_str} = 37.63</msg>
+<msg time="2025-08-08T17:35:31.901719" level="INFO">${final_total_str} = 113.40</msg>
 <var>${final_total_str}</var>
 <arg>f\"{${final_total_value}:.2f}\"</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.534369" elapsed="0.000501"/>
+<status status="PASS" start="2025-08-08T17:35:31.901144" elapsed="0.000756"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.535449" level="INFO">${final_discount_str} = 92.16</msg>
+<msg time="2025-08-08T17:35:31.902742" level="INFO">${final_discount_str} = 5.00</msg>
 <var>${final_discount_str}</var>
 <arg>f\"{${random_discount}:.2f}\"</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.535083" elapsed="0.000491"/>
+<status status="PASS" start="2025-08-08T17:35:31.902220" elapsed="0.000708"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.536174" level="INFO">${final_before_discount} = 128.00</msg>
+<msg time="2025-08-08T17:35:31.904108" level="INFO">${final_before_discount} = 113.00</msg>
 <var>${final_before_discount}</var>
 <arg>f\"{${Total_service}:.2f}\"</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.535800" elapsed="0.000503"/>
+<status status="PASS" start="2025-08-08T17:35:31.903300" elapsed="0.001044"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.536989" level="INFO">Tổng Price (tính toán): Subtotal=35.84, Discount=92.16, Tax=1.79, Total=37.63, Subtotalbefore=128.00</msg>
+<msg time="2025-08-08T17:35:31.905407" level="INFO">Tổng Price (tính toán): Subtotal=108.00, Discount=5.00, Tax=5.40, Total=113.40, Subtotalbefore=113.00</msg>
 <arg>Tổng Price (tính toán): Subtotal=${final_subtotal_str}, Discount=${final_discount_str}, Tax=${final_tax_str}, Total=${final_total_str}, Subtotalbefore=${final_before_discount}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.536514" elapsed="0.000650"/>
+<status status="PASS" start="2025-08-08T17:35:31.904707" elapsed="0.000946"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.539838" level="INFO">${ORIGINAL_PRICE_SUM} = 35.84</msg>
+<msg time="2025-08-08T17:35:31.908883" level="INFO">${ORIGINAL_PRICE_SUM} = 108.00</msg>
 <arg>${ORIGINAL_PRICE_SUM}</arg>
 <arg>${final_subtotal_str}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.537522" elapsed="0.002481"/>
+<status status="PASS" start="2025-08-08T17:35:31.905937" elapsed="0.003177"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.542173" level="INFO">${ORIGINAL_TAX_SUM} = 1.79</msg>
+<msg time="2025-08-08T17:35:31.912316" level="INFO">${ORIGINAL_TAX_SUM} = 5.40</msg>
 <arg>${ORIGINAL_TAX_SUM}</arg>
 <arg>${final_tax_str}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.540227" elapsed="0.002093"/>
+<status status="PASS" start="2025-08-08T17:35:31.909421" elapsed="0.003145"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.544824" level="INFO">${ORIGINAL_TOTAL_SUM} = 37.63</msg>
+<msg time="2025-08-08T17:35:31.915722" level="INFO">${ORIGINAL_TOTAL_SUM} = 113.40</msg>
 <arg>${ORIGINAL_TOTAL_SUM}</arg>
 <arg>${final_total_str}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.542526" elapsed="0.002479"/>
+<status status="PASS" start="2025-08-08T17:35:31.912890" elapsed="0.003042"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.547279" level="INFO">${ORIGINAL_DISCOUNT_VALUE} = 92.16</msg>
+<msg time="2025-08-08T17:35:31.918701" level="INFO">${ORIGINAL_DISCOUNT_VALUE} = 5.00</msg>
 <arg>${ORIGINAL_DISCOUNT_VALUE}</arg>
 <arg>${final_discount_str}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.545291" elapsed="0.002166"/>
+<status status="PASS" start="2025-08-08T17:35:31.916324" elapsed="0.002559"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.549682" level="INFO">${SELECTED_SERVICE_DESCS} = ['Dip Ombre\n50 mins\n$50.00', 'Acrylic Full Set w/ Gel\n50 mins\n$50.00']</msg>
+<msg time="2025-08-08T17:35:31.921559" level="INFO">${SELECTED_SERVICE_DESCS} = ['Extravagant Manicure\n38 mins\n$38.00', 'Gel w/ Regular Mani\n35 mins\n$35.00']</msg>
 <arg>${SELECTED_SERVICE_DESCS}</arg>
 <arg>${selected_service_texts}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.547702" elapsed="0.002112"/>
+<status status="PASS" start="2025-08-08T17:35:31.919136" elapsed="0.002667"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.552684" level="INFO">${SELECTED_LISTOF_ADD-ONS} = ['Crystal Nails\n$8.00', 'Nail Grace\n$20.00']</msg>
+<msg time="2025-08-08T17:35:31.925629" level="INFO">${SELECTED_LISTOF_ADD-ONS} = ['Nail Grace\n$20.00', 'Polished Charm\n$20.00']</msg>
 <arg>${SELECTED_LISTOF_ADD-ONS}</arg>
 <arg>${selected_add_on_texts}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.550137" elapsed="0.002689"/>
+<status status="PASS" start="2025-08-08T17:35:31.922075" elapsed="0.003806"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.554713" level="INFO">${DISCOUNT_TYPE_APPLIED} = 'percentage'</msg>
+<msg time="2025-08-08T17:35:31.928395" level="INFO">${DISCOUNT_TYPE_APPLIED} = 'voucher'</msg>
 <arg>${DISCOUNT_TYPE_APPLIED}</arg>
 <arg>${discount_type}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.553036" elapsed="0.001803"/>
+<status status="PASS" start="2025-08-08T17:35:31.926165" elapsed="0.002390"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.556914" level="INFO">${SUBTOTAL_BEFORE_DISCOUNT} = 128.00</msg>
+<msg time="2025-08-08T17:35:31.931221" level="INFO">${SUBTOTAL_BEFORE_DISCOUNT} = 113.00</msg>
 <arg>${SUBTOTAL_BEFORE_DISCOUNT}</arg>
 <arg>${final_before_discount}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.555022" elapsed="0.002024"/>
+<status status="PASS" start="2025-08-08T17:35:31.928928" elapsed="0.002537"/>
 </kw>
 <arg>2</arg>
 <arg>2</arg>
-<arg>'percentage'</arg>
+<arg>'voucher'</arg>
 <arg>'on'</arg>
-<arg>${None}</arg>
-<status status="PASS" start="2025-08-08T15:11:02.815030" elapsed="11.742151"/>
+<arg>expired</arg>
+<status status="PASS" start="2025-08-08T17:35:18.135982" elapsed="13.795790"/>
 </kw>
-<kw name="Then Get value from system and compare with result for billing summary">
-<if>
-<branch type="IF" condition="${use_discount} == 'have_discount'">
-<kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:14.988045" level="INFO">Element '//android.view.View[@index=23 and @clickable="false"]' attribute 'content-desc' value '$128.00' </msg>
-<msg time="2025-08-08T15:11:14.988525" level="INFO">xpath criteria: //android.view.View[@index=23 and @clickable="false"]</msg>
-<msg time="2025-08-08T15:11:14.988932" level="INFO">${Subtotal_system} = $128.00</msg>
-<var>${Subtotal_system}</var>
-<arg>//android.view.View[@index=23 and @clickable="false"]</arg>
-<arg>content-desc</arg>
-<doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:14.558275" elapsed="0.430887"/>
-</kw>
-<kw name="Get Amount Value From Service Desc">
-<kw name="Split String" owner="String">
-<msg time="2025-08-08T15:11:14.991175" level="INFO">${lines} = ['$128.00']</msg>
-<var>${lines}</var>
-<arg>${desc}</arg>
-<arg>\n</arg>
-<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.990627" elapsed="0.000736"/>
-</kw>
-<kw name="Strip String" owner="String">
-<msg time="2025-08-08T15:11:14.992167" level="INFO">${amount_str} = $128.00</msg>
-<var>${amount_str}</var>
-<arg>${lines}[-1]</arg>
-<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.991697" elapsed="0.000653"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.993445" level="INFO">${price_match} = ['128.00']</msg>
-<var>${price_match}</var>
-<arg>re.findall(r"\\$([0-9]+\\.[0-9]{2})", '''${amount_str}''')</arg>
-<arg>modules=re</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.992668" elapsed="0.000966"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<arg>${price_match} == []</arg>
-<arg>Fail</arg>
-<arg>Không tìm thấy giá trong amount: ${amount_str}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.993968" elapsed="0.000470"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.996709" level="INFO">${price_value} = 128.0</msg>
-<var>${price_value}</var>
-<arg>float(${price_match[0]})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.994907" elapsed="0.002039"/>
-</kw>
-<return>
-<value>${price_value}</value>
-<status status="PASS" start="2025-08-08T15:11:14.997174" elapsed="0.000202"/>
-</return>
-<msg time="2025-08-08T15:11:14.997748" level="INFO">${Subtotal_system_value} = 128.0</msg>
-<var>${Subtotal_system_value}</var>
-<arg>${Subtotal_system}</arg>
-<status status="PASS" start="2025-08-08T15:11:14.989810" elapsed="0.008130"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.998918" level="INFO">${Subtotal_system_value} = 128.00</msg>
-<var>${Subtotal_system_value}</var>
-<arg>f\"{${Subtotal_system_value}:.2f}\"</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.998291" elapsed="0.000822"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:14.999809" level="INFO">128.00</msg>
-<arg>${Subtotal_system_value}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:14.999436" elapsed="0.000568"/>
-</kw>
-<kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:15.391114" level="INFO">Element '//android.view.View[@index=25 and @clickable="false"]' attribute 'content-desc' value '$1.79' </msg>
-<msg time="2025-08-08T15:11:15.391553" level="INFO">xpath criteria: //android.view.View[@index=25 and @clickable="false"]</msg>
-<msg time="2025-08-08T15:11:15.391872" level="INFO">${Tax_system} = $1.79</msg>
-<var>${Tax_system}</var>
-<arg>//android.view.View[@index=25 and @clickable="false"]</arg>
-<arg>content-desc</arg>
-<doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:15.000267" elapsed="0.391779"/>
-</kw>
-<kw name="Get Amount Value From Service Desc">
-<kw name="Split String" owner="String">
-<msg time="2025-08-08T15:11:15.393898" level="INFO">${lines} = ['$1.79']</msg>
-<var>${lines}</var>
-<arg>${desc}</arg>
-<arg>\n</arg>
-<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.393331" elapsed="0.000759"/>
-</kw>
-<kw name="Strip String" owner="String">
-<msg time="2025-08-08T15:11:15.394895" level="INFO">${amount_str} = $1.79</msg>
-<var>${amount_str}</var>
-<arg>${lines}[-1]</arg>
-<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.394426" elapsed="0.000652"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:15.396163" level="INFO">${price_match} = ['1.79']</msg>
-<var>${price_match}</var>
-<arg>re.findall(r"\\$([0-9]+\\.[0-9]{2})", '''${amount_str}''')</arg>
-<arg>modules=re</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.395397" elapsed="0.000951"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<arg>${price_match} == []</arg>
-<arg>Fail</arg>
-<arg>Không tìm thấy giá trong amount: ${amount_str}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.396687" elapsed="0.000464"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:15.399786" level="INFO">${price_value} = 1.79</msg>
-<var>${price_value}</var>
-<arg>float(${price_match[0]})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.397491" elapsed="0.002555"/>
-</kw>
-<return>
-<value>${price_value}</value>
-<status status="PASS" start="2025-08-08T15:11:15.400281" elapsed="0.000201"/>
-</return>
-<msg time="2025-08-08T15:11:15.400804" level="INFO">${Tax_system_value} = 1.79</msg>
-<var>${Tax_system_value}</var>
-<arg>${Tax_system}</arg>
-<status status="PASS" start="2025-08-08T15:11:15.392564" elapsed="0.008402"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:15.401755" level="INFO">${Tax_system_value} = 1.79</msg>
-<var>${Tax_system_value}</var>
-<arg>f\"{${Tax_system_value}:.2f}\"</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.401265" elapsed="0.000645"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:15.402784" level="INFO">1.79</msg>
-<arg>${Tax_system_value}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.402382" elapsed="0.000680"/>
-</kw>
-<kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:15.804645" level="INFO">Element '//android.view.View[@index=30 and @clickable="false"]' attribute 'content-desc' value '$37.63' </msg>
-<msg time="2025-08-08T15:11:15.805087" level="INFO">xpath criteria: //android.view.View[@index=30 and @clickable="false"]</msg>
-<msg time="2025-08-08T15:11:15.805389" level="INFO">${Total_system} = $37.63</msg>
-<var>${Total_system}</var>
-<arg>//android.view.View[@index=30 and @clickable="false"]</arg>
-<arg>content-desc</arg>
-<doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:15.403433" elapsed="0.402140"/>
-</kw>
-<kw name="Get Amount Value From Service Desc">
-<kw name="Split String" owner="String">
-<msg time="2025-08-08T15:11:15.807367" level="INFO">${lines} = ['$37.63']</msg>
-<var>${lines}</var>
-<arg>${desc}</arg>
-<arg>\n</arg>
-<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.806838" elapsed="0.000722"/>
-</kw>
-<kw name="Strip String" owner="String">
-<msg time="2025-08-08T15:11:15.808388" level="INFO">${amount_str} = $37.63</msg>
-<var>${amount_str}</var>
-<arg>${lines}[-1]</arg>
-<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.807904" elapsed="0.000677"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:15.809704" level="INFO">${price_match} = ['37.63']</msg>
-<var>${price_match}</var>
-<arg>re.findall(r"\\$([0-9]+\\.[0-9]{2})", '''${amount_str}''')</arg>
-<arg>modules=re</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.808907" elapsed="0.000985"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<arg>${price_match} == []</arg>
-<arg>Fail</arg>
-<arg>Không tìm thấy giá trong amount: ${amount_str}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.810243" elapsed="0.000449"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:15.813067" level="INFO">${price_value} = 37.63</msg>
-<var>${price_value}</var>
-<arg>float(${price_match[0]})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.810988" elapsed="0.002284"/>
-</kw>
-<return>
-<value>${price_value}</value>
-<status status="PASS" start="2025-08-08T15:11:15.813466" elapsed="0.000167"/>
-</return>
-<msg time="2025-08-08T15:11:15.813942" level="INFO">${Total_system_value} = 37.63</msg>
-<var>${Total_system_value}</var>
-<arg>${Total_system}</arg>
-<status status="PASS" start="2025-08-08T15:11:15.806079" elapsed="0.008020"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:15.814870" level="INFO">${Total_system_value} = 37.63</msg>
-<var>${Total_system_value}</var>
-<arg>f\"{${Total_system_value}:.2f}\"</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.814383" elapsed="0.000640"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:15.815636" level="INFO">37.63</msg>
-<arg>${Total_system_value}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:15.815294" elapsed="0.000530"/>
-</kw>
-<kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:16.224846" level="INFO">Element '//android.view.View[contains(@content-desc, "-$") and @index=21 and @clickable="false"]' attribute 'content-desc' value '-$92.16' </msg>
-<msg time="2025-08-08T15:11:16.225272" level="INFO">xpath criteria: //android.view.View[contains(@content-desc, "-$") and @index=21 and @clickable="false"]</msg>
-<msg time="2025-08-08T15:11:16.225585" level="INFO">${Discount_system} = -$92.16</msg>
-<var>${Discount_system}</var>
-<arg>//android.view.View[contains(@content-desc, "-$") and @index=21 and @clickable="false"]</arg>
-<arg>content-desc</arg>
-<doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:15.816092" elapsed="0.409666"/>
-</kw>
-<kw name="Get Amount Value From Service Desc">
-<kw name="Split String" owner="String">
-<msg time="2025-08-08T15:11:16.227547" level="INFO">${lines} = ['-$92.16']</msg>
-<var>${lines}</var>
-<arg>${desc}</arg>
-<arg>\n</arg>
-<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.227041" elapsed="0.000696"/>
-</kw>
-<kw name="Strip String" owner="String">
-<msg time="2025-08-08T15:11:16.228572" level="INFO">${amount_str} = -$92.16</msg>
-<var>${amount_str}</var>
-<arg>${lines}[-1]</arg>
-<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.228087" elapsed="0.000673"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:16.229890" level="INFO">${price_match} = ['92.16']</msg>
-<var>${price_match}</var>
-<arg>re.findall(r"\\$([0-9]+\\.[0-9]{2})", '''${amount_str}''')</arg>
-<arg>modules=re</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.229080" elapsed="0.000998"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<arg>${price_match} == []</arg>
-<arg>Fail</arg>
-<arg>Không tìm thấy giá trong amount: ${amount_str}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.230424" elapsed="0.000389"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:16.232573" level="INFO">${price_value} = 92.16</msg>
-<var>${price_value}</var>
-<arg>float(${price_match[0]})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.231079" elapsed="0.001659"/>
-</kw>
-<return>
-<value>${price_value}</value>
-<status status="PASS" start="2025-08-08T15:11:16.232906" elapsed="0.000150"/>
-</return>
-<msg time="2025-08-08T15:11:16.233343" level="INFO">${Discount_system_value} = 92.16</msg>
-<var>${Discount_system_value}</var>
-<arg>${Discount_system}</arg>
-<status status="PASS" start="2025-08-08T15:11:16.226276" elapsed="0.007215"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-08T15:11:16.234234" level="INFO">${Discount_system_value} = 92.16</msg>
-<var>${Discount_system_value}</var>
-<arg>f\"{${Discount_system_value}:.2f}\"</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.233756" elapsed="0.000618"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-08-08T15:11:16.234934" level="INFO">92.16</msg>
-<arg>${Discount_system_value}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.234632" elapsed="0.000476"/>
-</kw>
-<status status="PASS" start="2025-08-08T15:11:14.558005" elapsed="1.677253"/>
-</branch>
-<branch type="ELSE IF" condition="${use_discount} == 'no_discount'">
-<kw name="Get Element Attribute" owner="AppiumLibrary">
-<var>${Subtotal_system}</var>
-<arg>//android.view.View[@index=23 and @clickable="false"]</arg>
-<arg>content-desc</arg>
-<doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.235675" elapsed="0.000162"/>
-</kw>
-<kw name="Get Amount Value From Service Desc">
-<var>${Subtotal_system_value}</var>
-<arg>${Subtotal_system}</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:16.236171" elapsed="0.000164"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<var>${Subtotal_system_value}</var>
-<arg>f\"{${Subtotal_system_value}:.2f}\"</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.236579" elapsed="0.000168"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>${Subtotal_system_value}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.237259" elapsed="0.000194"/>
-</kw>
-<kw name="Get Element Attribute" owner="AppiumLibrary">
-<var>${Tax_system}</var>
-<arg>//android.view.View[@index=27 and @clickable="false"]</arg>
-<arg>content-desc</arg>
-<doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.237986" elapsed="0.000225"/>
-</kw>
-<kw name="Get Amount Value From Service Desc">
-<var>${Tax_system_value}</var>
-<arg>${Tax_system}</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:16.238574" elapsed="0.000169"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<var>${Tax_system_value}</var>
-<arg>f\"{${Tax_system_value}:.2f}\"</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.264212" elapsed="0.000415"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>${Tax_system_value}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.265025" elapsed="0.000210"/>
-</kw>
-<kw name="Get Element Attribute" owner="AppiumLibrary">
-<var>${Total_system}</var>
-<arg>//android.view.View[@index=28 and @clickable="false"]</arg>
-<arg>content-desc</arg>
-<doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.265642" elapsed="0.000204"/>
-</kw>
-<kw name="Get Amount Value From Service Desc">
-<var>${Total_system_value}</var>
-<arg>${Total_system}</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:16.266242" elapsed="0.000960"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<var>${Total_system_value}</var>
-<arg>f\"{${Total_system_value}:.2f}\"</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.267413" elapsed="0.000098"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>${Total_system_value}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.267653" elapsed="0.000076"/>
-</kw>
-<kw name="Get Element Attribute" owner="AppiumLibrary">
-<var>${Discount_system}</var>
-<arg>//android.view.View[contains(@content-desc, "-$") and @index=21 and @clickable="false"]</arg>
-<arg>content-desc</arg>
-<doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.267864" elapsed="0.000086"/>
-</kw>
-<kw name="Get Amount Value From Service Desc">
-<var>${Discount_system_value}</var>
-<arg>${Discount_system}</arg>
-<status status="NOT RUN" start="2025-08-08T15:11:16.268135" elapsed="0.000083"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<var>${Discount_system_value}</var>
-<arg>f\"{${Discount_system_value}:.2f}\"</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.268349" elapsed="0.000077"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>${Discount_system_value}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.268553" elapsed="0.000070"/>
-</kw>
-<status status="NOT RUN" start="2025-08-08T15:11:16.235394" elapsed="0.033298"/>
-</branch>
-<branch type="ELSE">
-<kw name="Fail" owner="BuiltIn">
-<arg>Invalid discount type: ${Tax_system} must be 'have_discount' or 'no_discount'.</arg>
-<doc>Fails the test with the given message and optionally alters its tags.</doc>
-<status status="NOT RUN" start="2025-08-08T15:11:16.268902" elapsed="0.000081"/>
-</kw>
-<status status="NOT RUN" start="2025-08-08T15:11:16.268770" elapsed="0.000284"/>
-</branch>
-<status status="PASS" start="2025-08-08T15:11:14.557975" elapsed="1.711141"/>
-</if>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${Subtotal_system_value}</arg>
-<arg>${SUBTOTAL_BEFORE_DISCOUNT}</arg>
-<arg>Subtotal_system_value không khớp với SUBTOTAL_BEFORE_DISCOUNT</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.269209" elapsed="0.000376"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${Tax_system_value}</arg>
-<arg>${ORIGINAL_TAX_SUM}</arg>
-<arg>Tax_system_value không khớp với ORIGINAL_TAX_SUM</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.269740" elapsed="0.000260"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${Total_system_value}</arg>
-<arg>${ORIGINAL_TOTAL_SUM}</arg>
-<arg>Total_system_value không khớp với ORIGINAL_TOTAL_SUM</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.270145" elapsed="0.000249"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${Discount_system_value}</arg>
-<arg>${ORIGINAL_DISCOUNT_VALUE}</arg>
-<arg>Discount_system_value không khớp với ORIGINAL_DISCOUNT_VALUE</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.270537" elapsed="0.001802"/>
-</kw>
-<arg>'have_discount'</arg>
-<status status="PASS" start="2025-08-08T15:11:14.557672" elapsed="1.714983"/>
-</kw>
-<kw name="When User proceeds to Payment">
-<kw name="Click on Element mobile" owner="Common">
+<kw name="Then Check validation error message Android" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:16.511216" level="INFO">xpath criteria: //android.view.View[@content-desc="Payment"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.275347" elapsed="0.236644"/>
+<msg time="2025-08-08T17:35:47.257812" level="INFO">&lt;?xml version='1.0' encoding='UTF-8' standalone='yes' ?&gt;
+&lt;hierarchy index="0" class="hierarchy" rotation="0" width="1920" height="1015"&gt;
+  &lt;android.widget.FrameLayout index="0" package="com.bizbookly.manager.dev" class="android.widget.FrameLayout" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,0][1920,1080]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+    &lt;android.widget.LinearLayout index="0" package="com.bizbookly.manager.dev" class="android.widget.LinearLayout" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,0][1920,1080]" displayed="true" a11y-important="false" screen-reader-focusable="false" drawing-order="1" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+      &lt;android.widget.FrameLayout index="0" package="com.bizbookly.manager.dev" class="android.widget.FrameLayout" text="" resource-id="android:id/content" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,0][1920,1080]" displayed="true" a11y-important="false" screen-reader-focusable="false" drawing-order="2" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+        &lt;android.widget.FrameLayout index="0" package="com.bizbookly.manager.dev" class="android.widget.FrameLayout" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="true" focused="true" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,0][1920,1080]" displayed="true" a11y-important="false" screen-reader-focusable="false" drawing-order="1" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false" pane-title=" "&gt;
+          &lt;android.view.View index="0" package="com.bizbookly.manager.dev" class="android.view.View" text="" resource-id="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,0][1920,1080]" displayed="true" a11y-important="false" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+            &lt;android.view.View index="0" package="com.bizbookly.manager.dev" class="android.view.View" text="" resource-id="" checkable="false" checked="false" clickable="false" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,0][1920,1080]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+              &lt;android.view.View index="0" package="com.bizbookly.manager.dev" class="android.view.View" text="" resource-id="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,0][1920,1080]" displayed="true" a11y-important="false" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+                &lt;android.view.View index="0" package="com.bizbookly.manager.dev" class="android.view.View" text="" resource-id="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,0][1920,1080]" displayed="true" a11y-important="false" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+                  &lt;android.view.View index="0" package="com.bizbookly.manager.dev" class="android.view.View" text="" content-desc="Select Discount" resource-id="" checkable="false" checked="false" clickable="false" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1344,0][1920,1080]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+                    &lt;android.view.View index="0" package="com.bizbookly.manager.dev" class="android.view.View" text="" resource-id="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1867,14][1906,53]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false" /&gt;
+                    &lt;android.view.View index="1" package="com.bizbookly.manager.dev" class="android.view.View" text="" resource-id="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1344,82][1920,1010]" displayed="true" a11y-important="false" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+                      &lt;android.view.View index="0" package="com.bizbookly.manager.dev" class="android.view.View" text="" content-desc="Quick discount" resource-id="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1344,83][1920,171]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+                        &lt;android.view.View index="0" package="com.bizbookly.manager.dev" class="android.view.View" text="" resource-id="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1864,113][1892,141]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false" /&gt;
+                      &lt;/android.view.View&gt;
+                      &lt;android.view.View index="1" package="com.bizbookly.manager.dev" class="android.view.View" text="" content-desc="Apply Voucher" resource-id="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1344,187][1920,275]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+                        &lt;android.view.View index="0" package="com.bizbookly.manager.dev" class="android.view.View" text="" resource-id="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1864,217][1892,245]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false" /&gt;
+                      &lt;/android.view.View&gt;
+                      &lt;android.view.View index="2" package="com.bizbookly.manager.dev" class="android.view.View" text="" content-desc="Voucher Code" resource-id="" checkable="false" checked="false" clickable="false" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1358,290][1503,317]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false" /&gt;
+                      &lt;android.view.View index="3" package="com.bizbookly.manager.dev" class="android.view.View" text="" resource-id="" checkable="false" checked="false" clickable="false" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1358,323][1906,401]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+                        &lt;android.widget.EditText index="0" package="com.bizbookly.manager.dev" class="android.widget.EditText" text="expired" resource-id="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="true" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1358,323][1906,401]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false" /&gt;
+                      &lt;/android.view.View&gt;
+                      &lt;android.view.View index="4" package="com.bizbookly.manager.dev" class="android.view.View" text="" resource-id="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1359,426][1905,566]" displayed="true" a11y-important="false" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+                        &lt;android.view.View index="0" package="com.bizbookly.manager.dev" class="android.view.View" text="" resource-id="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1359,426][1905,566]" displayed="true" a11y-important="false" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false"&gt;
+                          &lt;android.view.View index="0" package="com.bizbookly.manager.dev" class="android.view.View" text="" content-desc="Code: #SBVexpired&amp;#10;5.00 off&amp;#10;Valid until June 18, 2025" resource-id="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1359,426][1905,566]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false" /&gt;
+                        &lt;/android.view.View&gt;
+                      &lt;/android.view.View&gt;
+                    &lt;/android.view.View&gt;
+                    &lt;android.view.View index="2" package="com.bizbookly.manager.dev" class="android.view.View" text="" content-desc="Cancel" resource-id="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1344,1010][1632,1080]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false" /&gt;
+                    &lt;android.view.View index="3" package="com.bizbookly.manager.dev" class="android.view.View" text="" content-desc="Submit" resource-id="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1632,1010][1920,1080]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="false" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false" /&gt;
+                  &lt;/android.view.View&gt;
+                &lt;/android.view.View&gt;
+              &lt;/android.view.View&gt;
+              &lt;android.view.View index="1" package="com.bizbookly.manager.dev" class="android.view.View" text="" content-desc="Side Sheet" resource-id="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,0][1920,1080]" displayed="true" a11y-important="true" screen-reader-focusable="false" drawing-order="0" showing-hint="false" text-entry-key="false" dismissable="true" a11y-focused="false" heading="false" live-region="0" context-clickable="false" content-invalid="false" /&gt;
+            &lt;/android.view.View&gt;
+          &lt;/android.view.View&gt;
+        &lt;/android.widget.FrameLayout&gt;
+      &lt;/android.widget.FrameLayout&gt;
+    &lt;/android.widget.LinearLayout&gt;
+  &lt;/android.widget.FrameLayout&gt;
+&lt;/hierarchy&gt;</msg>
+<kw name="Capture Page Screenshot">
+<msg time="2025-08-08T17:35:47.259163" level="FAIL">Multiple keywords with name 'Capture Page Screenshot' found. Give the full name of the keyword you want to use:
+    AppiumLibrary.Capture Page Screenshot
+    SeleniumLibrary.Capture Page Screenshot</msg>
+<status status="FAIL" start="2025-08-08T17:35:47.258981" elapsed="0.004536">Multiple keywords with name 'Capture Page Screenshot' found. Give the full name of the keyword you want to use:
+    AppiumLibrary.Capture Page Screenshot
+    SeleniumLibrary.Capture Page Screenshot</status>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:16.518391" level="INFO">Clicking element '//android.view.View[@content-desc="Payment"]'.</msg>
-<msg time="2025-08-08T15:11:17.632387" level="INFO">xpath criteria: //android.view.View[@content-desc="Payment"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:16.512724" elapsed="1.120669"/>
-</kw>
-<arg>${elm_btn_Payment}</arg>
-<status status="PASS" start="2025-08-08T15:11:16.273896" elapsed="1.360074"/>
-</kw>
-<status status="PASS" start="2025-08-08T15:11:16.273204" elapsed="1.361099"/>
-</kw>
-<kw name="And User selects payment method as Gift Card">
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:17.794750" level="INFO">xpath criteria: //android.view.View[@content-desc="Gift Card"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:17.637749" elapsed="0.158065"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:17.803700" level="INFO">Clicking element '//android.view.View[@content-desc="Gift Card"]'.</msg>
-<msg time="2025-08-08T15:11:17.996221" level="INFO">xpath criteria: //android.view.View[@content-desc="Gift Card"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:17.796848" elapsed="0.200146"/>
-</kw>
-<arg>${elm_Method_GiftCard}</arg>
-<status status="PASS" start="2025-08-08T15:11:17.636631" elapsed="0.360897"/>
-</kw>
-<status status="PASS" start="2025-08-08T15:11:17.635533" elapsed="0.362344"/>
-</kw>
-<kw name="When Pay By Gift Card">
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:18.958228" level="INFO">xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:18.001314" elapsed="0.958140"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:18.966239" level="INFO">Clicking element '//android.widget.EditText'.</msg>
-<msg time="2025-08-08T15:11:20.680099" level="INFO">xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:18.960522" elapsed="1.719814"/>
-</kw>
-<arg>//android.widget.EditText</arg>
-<status status="PASS" start="2025-08-08T15:11:18.000442" elapsed="2.680061"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:20.790575" level="INFO">xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:20.681210" elapsed="0.109744"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:20.795575" level="INFO">Typing text 'SGC240932327903' into text field '//android.widget.EditText'</msg>
-<msg time="2025-08-08T15:11:20.913527" level="INFO">xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:20.791376" elapsed="0.122769"/>
-</kw>
-<arg>//android.widget.EditText</arg>
-<arg>${gift_card}</arg>
-<status status="PASS" start="2025-08-08T15:11:20.680751" elapsed="0.233893"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:21.539526" level="INFO">xpath criteria: //android.view.View[@content-desc="Apply"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:20.916332" elapsed="0.624192"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:21.548492" level="INFO">Clicking element '//android.view.View[@content-desc="Apply"]'.</msg>
-<msg time="2025-08-08T15:11:22.631435" level="INFO">xpath criteria: //android.view.View[@content-desc="Apply"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:21.541535" elapsed="1.090430"/>
-</kw>
-<arg>//android.view.View[@content-desc="Apply"]</arg>
-<status status="PASS" start="2025-08-08T15:11:20.915390" elapsed="1.716935"/>
-</kw>
-<arg>${Gift_card}</arg>
-<status status="PASS" start="2025-08-08T15:11:17.999000" elapsed="4.633590"/>
-</kw>
-<kw name="And User clicks Submit button">
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:22.867543" level="INFO">xpath criteria: //android.view.View[@content-desc="Submit"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:22.635258" elapsed="0.232940"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:22.874038" level="INFO">Clicking element '//android.view.View[@content-desc="Submit"]'.</msg>
-<msg time="2025-08-08T15:11:23.057461" level="INFO">xpath criteria: //android.view.View[@content-desc="Submit"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:22.868836" elapsed="0.189436"/>
-</kw>
-<arg>${elm_btn_Submit}</arg>
-<status status="PASS" start="2025-08-08T15:11:22.634160" elapsed="0.424595"/>
-</kw>
-<status status="PASS" start="2025-08-08T15:11:22.633347" elapsed="0.425662"/>
-</kw>
-<kw name="Then System should display notify message as">
-<kw name="Check validation error message Android" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:27.001964" level="INFO">xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
-xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
-xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
-xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
-xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]
-xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]</msg>
+<msg time="2025-08-08T17:35:47.266231" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Multiple keywords with name 'Capture Page Screenshot' found. Give the full name of the keyword you want to use:
+    AppiumLibrary.Capture Page Screenshot
+    SeleniumLibrary.Capture Page Screenshot</msg>
+<msg time="2025-08-08T17:35:47.266766" level="INFO">xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]
+xpath criteria: //android.view.View[@content-desc="The voucher has been expired!"]</msg>
+<msg time="2025-08-08T17:35:47.267233" level="FAIL">Element locator '//android.view.View[@content-desc="The voucher has been expired!"]' did not match any elements after 15 seconds</msg>
 <arg>${Elm_message}</arg>
 <arg>15s</arg>
 <doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:23.062717" elapsed="3.940400"/>
+<status status="FAIL" start="2025-08-08T17:35:31.933034" elapsed="15.334633">Element locator '//android.view.View[@content-desc="The voucher has been expired!"]' did not match any elements after 15 seconds</status>
 </kw>
 <kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:27.118998" level="INFO">Element '//android.view.View[@content-desc="Proceed payment successfully"]' attribute 'content-desc' value 'Proceed payment successfully' </msg>
-<msg time="2025-08-08T15:11:27.119726" level="INFO">xpath criteria: //android.view.View[@content-desc="Proceed payment successfully"]</msg>
-<msg time="2025-08-08T15:11:27.120192" level="INFO">${actual} = Proceed payment successfully</msg>
 <var>${actual}</var>
 <arg>${Elm_message}</arg>
 <arg>content-desc</arg>
 <doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:27.004008" elapsed="0.116423"/>
+<status status="NOT RUN" start="2025-08-08T17:35:47.267988" elapsed="0.000149"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${actual}</arg>
 <arg>${Expected_message}</arg>
 <arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-08T15:11:27.121062" elapsed="0.001188"/>
+<status status="NOT RUN" start="2025-08-08T17:35:47.268342" elapsed="0.000145"/>
 </kw>
 <kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-08T15:11:27.123256" level="INFO">Set test message to:
-validation error message with 'Proceed payment successfully'</msg>
 <arg>validation error message with '${actual}'</arg>
 <doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-08T15:11:27.122745" elapsed="0.000764"/>
+<status status="NOT RUN" start="2025-08-08T17:35:47.268678" elapsed="0.000114"/>
 </kw>
-<arg>//android.view.View[@content-desc="${message}"]</arg>
-<arg>${message}</arg>
-<status status="PASS" start="2025-08-08T15:11:23.061518" elapsed="4.062226"/>
+<arg>//android.view.View[@content-desc="The voucher has been expired!"]</arg>
+<arg>The voucher has been expired!</arg>
+<status status="FAIL" start="2025-08-08T17:35:31.932406" elapsed="15.336564">Element locator '//android.view.View[@content-desc="The voucher has been expired!"]' did not match any elements after 15 seconds</status>
 </kw>
-<arg>Proceed payment successfully</arg>
-<status status="PASS" start="2025-08-08T15:11:23.060002" elapsed="4.063955"/>
-</kw>
-<kw name="Then System should display text on screen as">
-<kw name="Check validation error message Android" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:27.236028" level="INFO">xpath criteria: //android.view.View[@content-desc="Your payment is confirmed!"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:27.126273" elapsed="0.110606"/>
-</kw>
-<kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:27.342846" level="INFO">Element '//android.view.View[@content-desc="Your payment is confirmed!"]' attribute 'content-desc' value 'Your payment is confirmed!' </msg>
-<msg time="2025-08-08T15:11:27.343379" level="INFO">xpath criteria: //android.view.View[@content-desc="Your payment is confirmed!"]</msg>
-<msg time="2025-08-08T15:11:27.343771" level="INFO">${actual} = Your payment is confirmed!</msg>
-<var>${actual}</var>
-<arg>${Elm_message}</arg>
-<arg>content-desc</arg>
-<doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:27.237697" elapsed="0.106304"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${actual}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-08T15:11:27.344512" elapsed="0.000980"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-08T15:11:27.346400" level="INFO">Set test message to:
-validation error message with 'Your payment is confirmed!'</msg>
-<arg>validation error message with '${actual}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-08T15:11:27.345957" elapsed="0.000851"/>
-</kw>
-<arg>//android.view.View[@content-desc="${text}"]</arg>
-<arg>${text}</arg>
-<status status="PASS" start="2025-08-08T15:11:27.125422" elapsed="0.221633"/>
-</kw>
-<arg>Your payment is confirmed!</arg>
-<status status="PASS" start="2025-08-08T15:11:27.124601" elapsed="0.222673"/>
-</kw>
-<kw name="When Choose send receipt to Email">
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:27.455429" level="INFO">xpath criteria: //android.view.View[@content-desc="Email"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:27.350678" elapsed="0.104975"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:27.457917" level="INFO">Clicking element '//android.view.View[@content-desc="Email"]'.</msg>
-<msg time="2025-08-08T15:11:27.589660" level="INFO">xpath criteria: //android.view.View[@content-desc="Email"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:27.455876" elapsed="0.134164"/>
-</kw>
-<arg>//android.view.View[@content-desc="Email"]</arg>
-<status status="PASS" start="2025-08-08T15:11:27.349951" elapsed="0.240373"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:31.208528" level="INFO">xpath criteria: //android.widget.EditText
-xpath criteria: //android.widget.EditText
-xpath criteria: //android.widget.EditText
-xpath criteria: //android.widget.EditText
-xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:27.591445" elapsed="3.617572"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:31.214086" level="INFO">Clicking element '//android.widget.EditText'.</msg>
-<msg time="2025-08-08T15:11:31.383071" level="INFO">xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:31.209537" elapsed="0.174479"/>
-</kw>
-<arg>//android.widget.EditText</arg>
-<status status="PASS" start="2025-08-08T15:11:27.590755" elapsed="3.794113"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:32.539333" level="INFO">xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:31.387310" elapsed="1.152963"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:32.546775" level="INFO">Typing text 'school@yopmail.com' into text field '//android.widget.EditText'</msg>
-<msg time="2025-08-08T15:11:32.710169" level="INFO">xpath criteria: //android.widget.EditText</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:32.541056" elapsed="0.169570"/>
-</kw>
-<arg>//android.widget.EditText</arg>
-<arg>${email}</arg>
-<status status="PASS" start="2025-08-08T15:11:31.385818" elapsed="1.325173"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:33.513873" level="INFO">xpath criteria: //android.widget.ScrollView/android.view.View[7]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:32.712146" elapsed="0.802861"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:33.521634" level="INFO">Clicking element '//android.widget.ScrollView/android.view.View[7]'.</msg>
-<msg time="2025-08-08T15:11:34.551369" level="INFO">xpath criteria: //android.widget.ScrollView/android.view.View[7]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:33.515966" elapsed="1.035727"/>
-</kw>
-<arg>//android.widget.ScrollView/android.view.View[7]</arg>
-<status status="PASS" start="2025-08-08T15:11:32.711441" elapsed="1.840492"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:34.657515" level="INFO">xpath criteria: //android.widget.EditText[@text="school@yopmail.com"]/android.view.View</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:34.553012" elapsed="0.105226"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:34.663586" level="INFO">Clicking element '//android.widget.EditText[@text="school@yopmail.com"]/android.view.View'.</msg>
-<msg time="2025-08-08T15:11:35.340573" level="INFO">xpath criteria: //android.widget.EditText[@text="school@yopmail.com"]/android.view.View</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:34.658904" elapsed="0.682722"/>
-</kw>
-<arg>//android.widget.EditText[@text="${email}"]/android.view.View</arg>
-<status status="PASS" start="2025-08-08T15:11:34.552324" elapsed="0.789814"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:35.455602" level="INFO">xpath criteria: //android.view.View[@content-desc="SEND"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:35.344117" elapsed="0.112623"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:35.463717" level="INFO">Clicking element '//android.view.View[@content-desc="SEND"]'.</msg>
-<msg time="2025-08-08T15:11:37.364909" level="INFO">xpath criteria: //android.view.View[@content-desc="SEND"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:35.457822" elapsed="1.907544"/>
-</kw>
-<arg>//android.view.View[@content-desc="SEND"]</arg>
-<status status="PASS" start="2025-08-08T15:11:35.343004" elapsed="2.022723"/>
-</kw>
-<arg>school@yopmail.com</arg>
-<status status="PASS" start="2025-08-08T15:11:27.348926" elapsed="10.017088"/>
-</kw>
-<kw name="Then System should display notify message as">
-<kw name="Check validation error message Android" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:37.469082" level="INFO">xpath criteria: //android.view.View[@content-desc="Send Receipt Successfully"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:37.368251" elapsed="0.101655"/>
-</kw>
-<kw name="Get Element Attribute" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:37.579029" level="INFO">Element '//android.view.View[@content-desc="Send Receipt Successfully"]' attribute 'content-desc' value 'Send Receipt Successfully' </msg>
-<msg time="2025-08-08T15:11:37.579765" level="INFO">xpath criteria: //android.view.View[@content-desc="Send Receipt Successfully"]</msg>
-<msg time="2025-08-08T15:11:37.580190" level="INFO">${actual} = Send Receipt Successfully</msg>
-<var>${actual}</var>
-<arg>${Elm_message}</arg>
-<arg>content-desc</arg>
-<doc>Get element attribute using given attribute: name, value,...</doc>
-<status status="PASS" start="2025-08-08T15:11:37.470707" elapsed="0.109709"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${actual}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${actual}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-08T15:11:37.581129" elapsed="0.000809"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-08T15:11:37.582699" level="INFO">Set test message to:
-validation error message with 'Send Receipt Successfully'</msg>
-<arg>validation error message with '${actual}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-08T15:11:37.582309" elapsed="0.000631"/>
-</kw>
-<arg>//android.view.View[@content-desc="${message}"]</arg>
-<arg>${message}</arg>
-<status status="PASS" start="2025-08-08T15:11:37.367432" elapsed="0.215736"/>
-</kw>
-<arg>Send Receipt Successfully</arg>
-<status status="PASS" start="2025-08-08T15:11:37.366643" elapsed="0.216742"/>
-</kw>
-<kw name="When Choose No Receipt">
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:37.685690" level="INFO">xpath criteria: //android.view.View[@content-desc="No receipt"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-08T15:11:37.585418" elapsed="0.100939"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-08T15:11:37.691918" level="INFO">Clicking element '//android.view.View[@content-desc="No receipt"]'.</msg>
-<msg time="2025-08-08T15:11:37.833917" level="INFO">xpath criteria: //android.view.View[@content-desc="No receipt"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-08T15:11:37.686975" elapsed="0.147392"/>
-</kw>
-<arg>${elm_Option_NoReceipt}</arg>
-<status status="PASS" start="2025-08-08T15:11:37.584717" elapsed="0.250011"/>
-</kw>
-<status status="PASS" start="2025-08-08T15:11:37.583979" elapsed="0.251016"/>
-</kw>
-<status status="PASS" start="2025-08-08T15:11:01.190109" elapsed="36.645599">validation error message with 'Send Receipt Successfully'</status>
+<status status="FAIL" start="2025-08-08T17:35:16.305890" elapsed="30.963486">Element locator '//android.view.View[@content-desc="The voucher has been expired!"]' did not match any elements after 15 seconds</status>
 </test>
 <kw name="Basic TearDowns Android" owner="Common" type="TEARDOWN">
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-08-08T15:11:40.840933" level="INFO">Slept 3 seconds.</msg>
+<msg time="2025-08-08T17:35:50.271771" level="INFO">Slept 3 seconds.</msg>
 <arg>3</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-08-08T15:11:37.838895" elapsed="3.002636"/>
+<status status="PASS" start="2025-08-08T17:35:47.270960" elapsed="3.002069"/>
 </kw>
 <kw name="Close Application" owner="AppiumLibrary">
 <doc>Closes the current application and also close webdriver session.</doc>
-<status status="PASS" start="2025-08-08T15:11:40.842040" elapsed="0.466007"/>
+<status status="PASS" start="2025-08-08T17:35:50.273947" elapsed="0.459955"/>
 </kw>
-<status status="PASS" start="2025-08-08T15:11:37.838179" elapsed="3.470778"/>
+<status status="PASS" start="2025-08-08T17:35:47.270567" elapsed="3.464045"/>
 </kw>
-<status status="PASS" start="2025-08-08T15:10:55.571314" elapsed="45.737976"/>
+<status status="FAIL" start="2025-08-08T17:35:11.543364" elapsed="39.191510"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="CheckoutTestcal" id="s1" pass="1" fail="0" skip="0">CheckoutTestcal</stat>
+<stat name="CheckoutTestcal" id="s1" pass="0" fail="1" skip="0">CheckoutTestcal</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2025-08-08T17:35:47.266231" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Multiple keywords with name 'Capture Page Screenshot' found. Give the full name of the keyword you want to use:
+    AppiumLibrary.Capture Page Screenshot
+    SeleniumLibrary.Capture Page Screenshot</msg>
 </errors>
 </robot>

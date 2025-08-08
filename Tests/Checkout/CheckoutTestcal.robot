@@ -276,22 +276,14 @@ Verify Checkout Paid Externally Apply Voucher and without tip
     [Tags]    checkout    voucher    payment    external    no_tip
     [Documentation]    Verify full checkout flow with voucher applied, no tip, and paid externally
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
-    # When Apply Voucher Discount    Testvoucher
-    And User clicks Submit button
-    ## Check Balance after apply voucher
-    # Then System should display updated price after discount    -$5.00    $50.00    $2.25    $47.25
+    When Select service and add on & apply voucher    2    2    'voucher'    'on'    ${voucher_code_10per}
+    Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $47.25
+    Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $45.00
-    When User Skips Tip
-    ## Check Balance after skip tips
-    # Then System should still show total amount as    $47.25
+    And Tip on service random    'none'
+    Then Get value from system and compare with result for Tip    'have_discount'
     When User Begins Charge
-    ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
     And System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
@@ -300,54 +292,32 @@ Verify Checkout Paid Externally Apply Voucher and tip custom amount
     [Tags]    checkout    voucher    payment    external    tip    custom
     [Documentation]    Verify full checkout flow with voucher applied, tip custom amount, and paid externally
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
-    # When Apply Voucher Discount    Testvoucher
-    And User clicks Submit button
-    ## Check Balance after apply voucher
-    # Then System should display updated price after discount    -$5.00    $50.00    $2.25    $47.25
+    When Select service and add on & apply voucher    2    2    'voucher'    'on'    ${voucher_code_10per}
+    Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $47.25
+    Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $45.00
-    When User selects Custom Tip option
-    # And Enter NumberPad Amount    3    0    0
-    And User clicks Submit button
-    ## Check Balance after tips amount
-    # Then System should still show total amount as    $50.25
-    ## Check tip details
-    Then System should display tip detail with technician and amount tip    caisse    $3.00
+    And Tip on service random    'tip_amount'
+    Then Get value from system and compare with result for Tip    'have_discount'
     When User Begins Charge
-    ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
-    And System should display text on screen as     Your payment is confirmed!
+    Then System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
 
 Verify Checkout Paid Externally Apply Voucher and tip percentage
     [Tags]    checkout    voucher    payment    external    tip    percentage
     [Documentation]    Verify full checkout flow with voucher applied, tip percentage, and paid externally
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
-    # When Apply Voucher Discount    Testvoucher
-    And User clicks Submit button
-    ## Check Balance after apply voucher
-    # Then System should display updated price after discount    -$5.00    $50.00    $2.25    $47.25
+    When Select service and add on & apply voucher    2    2    'voucher'    'on'    ${voucher_code_10per}
+    Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $47.25
+    Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $45.00
-    ## Check balance after tip percentage
-    # When Choose tip percentage on screen Tips    5%    $2.25
-    # Then System should still show total amount as    $49.50
-    ## Check tip details
-    Then System should display tip detail with technician and amount tip    caisse    $2.25
+    And Tip on service random    'tip_percentage'
+    Then Get value from system and compare with result for Tip    'have_discount'
     When User Begins Charge
-    ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
-    And System should display text on screen as     Your payment is confirmed!
+    Then System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
 
 # # Test Case: Validate Maximum Discount Amount : Dev inprogress fixing
@@ -383,22 +353,16 @@ Verify Checkout Paid Externally without discount and without tip
     [Documentation]    Verify full checkout flow without any voucher or tip applied,
     ...    paid externally, and ensure total amount remains unchanged with confirmation displayed.
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
+    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $52.50
+    Then Get value from system and compare with result for Balance Due    'no_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $50.00
-    When User Skips Tip
-    ## Check balance after skip tip
-    # Then System should still show total amount as    $52.50
-    ## Check tip details
-    And System should display tip detail with technician and amount tip    caisse    $0.00
+    And Tip on service random    'none'
+    Then Get value from system and compare with result for Tip    'no_discount'
     When User Begins Charge
-    ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
-    And System should display text on screen as     Your payment is confirmed!
+    Then System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
 
 Verify Checkout Paid Externally without discount and without tip and send Email
@@ -406,18 +370,13 @@ Verify Checkout Paid Externally without discount and without tip and send Email
     [Documentation]    Verify full checkout flow without voucher and tip, using external payment,
     ...    and sending receipt to email successfully, followed by choosing no printed receipt.
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
+    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $52.50
+    Then Get value from system and compare with result for Balance Due    'no_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $50.00
-    When User Skips Tip
-    ## Check balance after skip tip
-    # Then System should still show total amount as    $52.50
-    ## Check tip details
-    And System should display tip detail with technician and amount tip    caisse    $0.00
+    And Tip on service random    'none'
+    Then Get value from system and compare with result for Tip    'no_discount'
     When User Begins Charge
     ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
@@ -431,18 +390,13 @@ Verify Checkout Paid Externally without discount and without tip and send Sms
     [Documentation]    Verify full checkout flow without voucher and tip, using external payment,
     ...    and sending receipt via SMS successfully, followed by choosing no printed receipt.
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
+    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $52.50
+    Then Get value from system and compare with result for Balance Due    'no_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $50.00
-    When User Skips Tip
-    ## Check balance after skip tip
-    # Then System should still show total amount as    $52.50
-    ## Check tip details
-    And System should display tip detail with technician and amount tip    caisse    $0.00
+    And Tip on service random    'none'
+    Then Get value from system and compare with result for Tip    'no_discount'
     When User Begins Charge
     ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
@@ -456,25 +410,16 @@ Verify Checkout Paid Externally discount percentage and without tip
     [Documentation]    Verify checkout flow with 10% percentage discount applied, no tip selected,
     ...    using external payment, and ensuring price updates and confirmation display correctly.
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
-    # When Apply Percentage Discount    1    0
-    ## Check Balance after apply percentage discount
-    # Then System should display updated price after discount    -$5.00    $50.00    $2.25    $47.25 
+    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $47.25
+    Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $45.00
-    ## Check balance after Skip tip
-    When User Skips Tip
-    # Then System should still show total amount as    $47.25
-    ## Check tip details
-    Then System should display tip detail with technician and amount tip    caisse    $0.00
+    And Tip on service random    'none'
+    Then Get value from system and compare with result for Tip    'have_discount'
     When User Begins Charge
-    ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
-    And System should display text on screen as     Your payment is confirmed!
+    Then System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
 
 Verify Checkout Paid Externally discount percentage and tip percentage
@@ -482,23 +427,14 @@ Verify Checkout Paid Externally discount percentage and tip percentage
     [Documentation]    Verify the checkout flow when applying a 10% percentage discount and a 5% tip. 
     ...    Ensure the system calculates discount and tip correctly, and completes external payment with confirmation.
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
-    # When Apply Percentage Discount    1    0
-    ## Check Balance after apply percentage discount
-    # Then System should display updated price after discount    -$5.00    $50.00    $2.25    $47.25 
+    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $47.25
+    Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $45.00
-    ## Check balance after tip percentage
-    # When Choose tip percentage on screen Tips    5%    $2.25
-    # Then System should still show total amount as    $49.50
-    ## Check tip details
-    And System should display tip detail with technician and amount tip    caisse    $2.25
+    And Tip on service random    'tip_percentage'
+    Then Get value from system and compare with result for Tip    'have_discount'
     When User Begins Charge
-    ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
     And System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
@@ -508,25 +444,14 @@ Verify Checkout Paid Externally discount percentage and tip custom amount
     [Documentation]    Verify the checkout flow when applying a 10% percentage discount and a custom tip amount.
     ...    Ensure the system calculates the discount and custom tip correctly, and completes external payment flow.
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
-    # When Apply Percentage Discount    1    0
-    ## Check Balance after apply percentage discount
-    # Then System should display updated price after discount    -$5.00    $50.00    $2.25    $47.25 
+    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $47.25
+    Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $45.00
-    When User selects Custom Tip option
-    # And Enter NumberPad Amount    3    0    0
-    And User clicks Submit button
-    ## Check balance after apply tips amount
-    # Then System should still show total amount as         $50.25
-    ## Check tips details
-    Then System should display tip detail with technician and amount tip    caisse    $3.00
+    And Tip on service random    'tip_amount'
+    Then Get value from system and compare with result for Tip    'have_discount'
     When User Begins Charge
-    ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
     And System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
@@ -536,23 +461,14 @@ Verify Checkout Paid Externally discount fixed amount and without tip
     [Documentation]    Verify the checkout flow when applying a fixed discount amount ($5.00) and skipping tip.
     ...    Ensure the system correctly calculates new total, handles external payment, and skips tip successfully.
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
-    # When Apply Fixed Discount    5    0    0
-    ## Check balance after apply discount fixed amount
-    # Then System should display updated price after discount    -$5.00    $50.00    $2.25    $47.25 
+    When Select service and add on & apply voucher    2    2    'fixed_amount'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $47.25
+    Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $45.00
-    ## Check balance after Skip tip
-    When User Skips Tip
-    # Then System should still show total amount as    $47.25
-    ## Check tip details
-    Then System should display tip detail with technician and amount tip    caisse    $0.00
+    And Tip on service random    'none'
+    Then Get value from system and compare with result for Tip    'have_discount'
     When User Begins Charge
-    ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
     And System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
@@ -561,84 +477,59 @@ Verify Checkout Paid Externally discount fixed amount and tip custom amount
     [Tags]    checkout    paid_externally    fixed_discount    custom_tip    success
     [Documentation]    Verify the checkout flow with fixed discount ($5.00) and custom tip ($3.00) using Paid Externally method.
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
-    # When Apply Fixed Discount    5    0    0
-    ## Check balance after apply discount fixed amount
-    # Then System should display updated price after discount    -$5.00    $50.00    $2.25    $47.25 
+    When Select service and add on & apply voucher    2    2    'fixed_amount'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $47.25
+    Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $45.00
-    When User selects Custom Tip option
-    # And Enter NumberPad Amount    3    0    0
-    And User clicks Submit button
-    ## Check balance after apply tips amount
-    # Then System should still show total amount as         $50.25
-    ## Check tips details
-    And System should display tip detail with technician and amount tip    caisse    $3.00
+    And Tip on service random    'tip_amount'
+    Then Get value from system and compare with result for Tip    'have_discount'
     When User Begins Charge
-    ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
-    And System should display text on screen as     Your payment is confirmed!
+    Then System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
 
 Verify Checkout Paid Externally discount fixed amount and tip percentage
     [Tags]    checkout    paid_externally    fixed_discount    tip_percentage    success
     [Documentation]    Verify the checkout flow with fixed discount ($5.00) and tip 5% using Paid Externally method.
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    # Then System should display original price breakdown    $50.00    $2.50    $52.50
-    # When Apply Fixed Discount    5    0    0
-    ## Check balance after apply discount fixed amount
-    # Then System should display updated price after discount    -$5.00    $50.00    $2.25    $47.25 
+    When Select service and add on & apply voucher    2    2    'fixed_amount'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
-    # Then System should show balance due    $47.25
+    Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Paid Externally
-    ## Check display Tips total amount
-    # Then System should display tip screen with default tip amount    $45.00
-    ## Check balance after tip percentage
-    # When Choose tip percentage on screen Tips    5%    $2.25
-    # Then System should still show total amount as    $49.50
-    ## Check tip details
-    And System should display tip detail with technician and amount tip    caisse    $2.25
+    And Tip on service random    'tip_percentage'
+    Then Get value from system and compare with result for Tip    'have_discount'
     When User Begins Charge
-    ## Check display notify message and text on screen
     Then System should display notify message as     Proceed payment successfully
     And System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
 ##Method Paid Externally
 
 ##Method Cash
-Verify Check out Cash
+Verify Check out Cash without discount and without tip
     Given Find and choose Technician    caisse
-    And Find Categories services      Crystal Nails
-    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$8.00"])[2]         $8.00
-    And Check validation error message Android          //android.view.View[@content-desc="$0.40"]         $0.40
-    And Check validation error message Android          //android.view.View[@content-desc="$8.40"]         $8.40
-    And Find Categories services      Swedish Massage
-    Then Check validation error message Android    //android.view.View[@content-desc="$83.00"]    $83.00
-    And Check validation error message Android    //android.view.View[@content-desc="$4.15"]    $4.15
-    And Check validation error message Android    //android.view.View[@content-desc="$87.15"]        $87.15
-    When Click on Element mobile    //android.widget.EditText
-    And Fill Text Input mobile      //android.widget.EditText    Royal Pedicure
-    And Click on Element mobile     //android.view.View[@content-desc="Change position"]
-    And Click on Element mobile     //android.view.View[contains(@content-desc, "Royal Pedicure") and contains(@content-desc, "$45.00")]
-    Then Check validation error message Android    //android.view.View[@content-desc="$128.00"]    $128.00
-    And Check validation error message Android    //android.view.View[@content-desc="$6.40"]    $6.40
-    And Check validation error message Android    //android.view.View[@content-desc="$134.40"]        $134.40
-    When Pay By Cash
-    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
+    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'no_discount'
+    When User proceeds to Payment
+    Then Get value from system and compare with result for Balance Due    'no_discount'
+    When User selects payment method as Cash
+    # Then Get value from system and compare with result for Tip    'no_discount'
+    When User Begins Charge
+    Then System should display notify message as     Proceed payment successfully
+    And System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
 
-Verify Check out Cash and send email
+Verify Check out Cash without discount and without tip and send email
     Given Find and choose Technician    caisse
-    And Find Categories services      Crystal Nails
-    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$8.00"])[2]         $8.00
-    And Check validation error message Android          //android.view.View[@content-desc="$0.40"]         $0.40
-    And Check validation error message Android          //android.view.View[@content-desc="$8.40"]         $8.40
-    When Pay By Cash
+    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'no_discount'
+    When User proceeds to Payment
+    Then Get value from system and compare with result for Balance Due    'no_discount'
+    When User selects payment method as Cash
+    And Tip on service random    'none'
+    # Then Get value from system and compare with result for Tip    'no_discount'
+    When User Begins Charge
     Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
     When Choose send receipt to Email    school@yopmail.com
     Then Check validation error message Android    //android.view.View[@content-desc="Send Receipt Successfully"]    Send Receipt Successfully
@@ -646,97 +537,48 @@ Verify Check out Cash and send email
 
 Verify Check out Cash and send Sms
     Given Find and choose Technician    caisse
-    And Find Categories services      Crystal Nails
-    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$8.00"])[2]         $8.00
-    And Check validation error message Android          //android.view.View[@content-desc="$0.40"]         $0.40
-    And Check validation error message Android          //android.view.View[@content-desc="$8.40"]         $8.40
-    When Pay By Cash
+    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'no_discount'
+    When User proceeds to Payment
+    Then Get value from system and compare with result for Balance Due    'no_discount'
+    When User selects payment method as Cash
+    And Tip on service random    'none'
+    # Then Get value from system and compare with result for Tip    'no_discount'
+    When User Begins Charge
     Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
     When Choose send receipt to SMS      8    0    4    2    8    6    0    4    3    9
     Then Check validation error message Android    //android.view.View[@content-desc="The receipt has been sent successfully."]    The receipt has been sent successfully.
     When Choose No Receipt
-    
-
-Verify Checkout Cash many times
-    Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    And Find Categories services      Gel w/ Regular Mani
-    Then Check validation error message Android          //android.view.View[@content-desc="$85.00"]         $85.00
-    And Check validation error message Android          //android.view.View[@content-desc="$4.25"]         $4.25
-    And Check validation error message Android          //android.view.View[@content-desc="$89.25"]         $89.25
-    When Click on Element mobile    ${elm_btn_Payment}
-    And Click on Element mobile     //android.view.View[@content-desc="Clear"]
-    # And Enter NumberPad Amount    2    0    0    0
-    And Click on Element mobile    ${elm_Option_Cash}
-    Then Check validation error message Android    //android.view.View[@content-desc="$69.25"]    $69.25
-    And Click on Element mobile    ${elm_btn_BeginCharge}
-    Then Check validation error message Android    //android.view.View[@content-desc="Balance due $69.25"]    Balance due $69.25
-    When Choose No Receipt
-    And Check validation error message Android    //android.view.View[@content-desc="BALANCE DUE"]    BALANCE DUE
-    And Click on Element mobile    //android.view.View[@content-desc="Clear"]
-    # And Enter NumberPad Amount    2    0    0    0
-    And Click on Element mobile    ${elm_Option_Cash}
-    Then Check validation error message Android    //android.view.View[@content-desc="$49.25"]    $49.25
-    And Click on Element mobile    ${elm_btn_BeginCharge}
-    Then Check validation error message Android    //android.view.View[@content-desc="Balance due $49.25"]    Balance due $49.25
-    When Choose No Receipt
-    And Check validation error message Android    //android.view.View[@content-desc="BALANCE DUE"]    BALANCE DUE
-    And Click on Element mobile    //android.view.View[@content-desc="Clear"]
-    # And Enter NumberPad Amount    4    9    2    5
-    And Click on Element mobile    ${elm_Option_Cash}
-    And Click on Element mobile    ${elm_btn_BeginCharge}
-    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
-    When Choose No Receipt
 
 Verify Checkout Cash with discount percentage
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    Then Check validation error message Android          //android.view.View[@content-desc="$50.00"]         $50.00
-    And Check validation error message Android          //android.view.View[@content-desc="$2.50"]         $2.50
-    And Check validation error message Android          //android.view.View[@content-desc="$52.50"]         $52.50
-    # When Apply Percentage Discount    1    0
-    ## Check balance after apply discount percentage
-    Then Check validation error message Android         xpath=(//android.view.View[@content-desc="-$5.00"])[1]        -$5.00
-    Then Check validation error message Android          //android.view.View[@content-desc="$50.00"]        $50.00
-    Then Check validation error message Android          //android.view.View[@content-desc="$2.25"]         $2.25
-    Then Check validation error message Android          //android.view.View[@content-desc="$47.25"]         $47.25
-    When Click on Element mobile    ${elm_btn_Payment}
-    Then Check validation error message Android          //android.view.View[@content-desc="BALANCE DUE"]    BALANCE DUE
-    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$47.25"])[3]    $47.25
-    And Click on Element mobile    ${elm_Option_Cash}
-    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$47.25"])[1]    $47.25
-    And Click on Element mobile    ${elm_btn_BeginCharge}
-    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
+    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'have_discount'
+    When User proceeds to Payment
+    Then Get value from system and compare with result for Balance Due    'have_discount'
+    When User selects payment method as Cash
+    # Then Get value from system and compare with result for Tip    'no_discount'
+    When User Begins Charge
+    Then System should display notify message as     Proceed payment successfully
+    And System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
 
 Verify Checkout Cash with discount fixed amount
     Given Find and choose Technician    caisse
-    And Find Categories services      Acrylic Full Set w/ Gel
-    Then Check validation error message Android          //android.view.View[@content-desc="$50.00"]         $50.00
-    And Check validation error message Android          //android.view.View[@content-desc="$2.50"]         $2.50
-    And Check validation error message Android          //android.view.View[@content-desc="$52.50"]         $52.50
-    # When Apply Fixed Discount    5    0    0
-    ## Check balance after apply fixed amount
-    Then Check validation error message Android         xpath=(//android.view.View[@content-desc="-$5.00"])[1]        -$5.00
-    Then Check validation error message Android          //android.view.View[@content-desc="$50.00"]        $50.00
-    Then Check validation error message Android          //android.view.View[@content-desc="$2.25"]         $2.25
-    Then Check validation error message Android          //android.view.View[@content-desc="$47.25"]         $47.25
-    When Click on Element mobile    ${elm_btn_Payment}
-    Then Check validation error message Android          //android.view.View[@content-desc="BALANCE DUE"]    BALANCE DUE
-    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$47.25"])[3]    $47.25
-    And Click on Element mobile    ${elm_Option_Cash}
-    Then Check validation error message Android          xpath=(//android.view.View[@content-desc="$47.25"])[1]    $47.25
-    And Click on Element mobile    ${elm_btn_BeginCharge}
-    Then Check validation error message Android    //android.view.View[@content-desc="Your payment is confirmed!"]    Your payment is confirmed!
+    When Select service and add on & apply voucher    2    2    'fixed_amount'    'on'    ${None}
+    Then Get value from system and compare with result for billing summary    'have_discount'
+    When User proceeds to Payment
+    Then Get value from system and compare with result for Balance Due    'have_discount'
+    When User selects payment method as Cash
+    # Then Get value from system and compare with result for Tip    'no_discount'
+    When User Begins Charge
+    Then System should display notify message as     Proceed payment successfully
+    And System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
 
 Verify Checkout with Option Apply Voucher expired
     Given Find and choose Technician    caisse
-    And Find Categories services      Gel w/ Regular Mani
-    Then Check validation error message Android          //android.view.View[@content-desc="$35.00"]         $35.00
-    And Check validation error message Android          //android.view.View[@content-desc="$1.75"]         $1.75
-    And Check validation error message Android          //android.view.View[@content-desc="$36.75"]         $36.75
-    # When Apply Voucher Discount    expired
+    When Select service and add on & apply voucher    2    2    'voucher'    'on'    expired
     Then Check validation error message Android         //android.view.View[@content-desc="The voucher has been expired!"]        The voucher has been expired!
 
 # Test Case: Validate Limit Per Voucher (Usage Exceeded)
