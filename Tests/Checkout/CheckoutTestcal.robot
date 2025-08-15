@@ -7,7 +7,6 @@ Library         Collections
 Library         String
 
 *** Variables ***
-
 ${Gift_card}        SGC240932327903
 ####Gift Card balances may be change with each payment
 ${Current_amount_Giftcard}        $224.80
@@ -31,7 +30,6 @@ Verify Checkout Credit Card With Voucher Discount And Tip Amount
     When Sign And Confirm Payment
     Then System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
-
 
 Verify Checkout Credit Card With Voucher Discount And Tip Percentage
     [Tags]    checkout    credit_card    voucher_discount    tip_percentage
@@ -195,10 +193,10 @@ Verify Checkout Credit Card without discount and without tip
     When Sign And Confirm Payment
     Then System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
+##Method Credit Card
+
+
 ##Method Giftcard
-
-
-
 Validate Checkout Giftcard Not Found
     Given Find and choose Technician    caisse
     When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
@@ -271,7 +269,9 @@ Verify Checkout Giftcard with discount fixed amount and Send SMS
     Then System should display notify message as    The receipt has been sent successfully.
     When Choose No Receipt
 
-# ##Method Paid Externally
+#Method Giftcard
+
+#Method Paid Externally
 Verify Checkout Paid Externally Apply Voucher and without tip
     [Tags]    checkout    voucher    payment    external    no_tip
     [Documentation]    Verify full checkout flow with voucher applied, no tip, and paid externally
@@ -652,15 +652,11 @@ Validate Minimum Spend Requirement with Option Apply Voucher
 
 
 # ##Method Cash
-
     
     
-
-
 *** Keywords ***
 User at screen Enter Gift Card Code
     AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@content-desc="Gift Card"]        10s
-
 
 System should display notify message as
     [Arguments]    ${message}
@@ -940,16 +936,19 @@ Get value from system and compare with result for billing summary
         ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
         ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
         Log    ${Subtotal_system_value}
+
         ## Get value Tax
         ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=25 and @clickable="false"]    content-desc
         ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
         ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
         Log    ${Tax_system_value}
+
         ## Get value Total Balance Due
         ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=30 and @clickable="false"]    content-desc
         ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
         ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
         Log    ${Total_system_value}
+
         ## Get value Discount
         ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "-$") and @index=21 and @clickable="false"]        content-desc
         ${Discount_system_value}=    Get Amount Value From Service Desc    ${Discount_system}
@@ -962,16 +961,19 @@ Get value from system and compare with result for billing summary
         ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
         ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
         Log    ${Subtotal_system_value}
+
         ## Get value Tax
         ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=27 and @clickable="false"]    content-desc
         ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
         ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
         Log    ${Tax_system_value}
+
         ## Get value Total Balance Due
         ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=28 and @clickable="false"]    content-desc
         ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
         ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
         Log    ${Total_system_value}
+
         ## Get value Discount
         ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "-$") and @index=21 and @clickable="false"]        content-desc
         ${Discount_system_value}=    Get Amount Value From Service Desc    ${Discount_system}
@@ -980,6 +982,7 @@ Get value from system and compare with result for billing summary
     ELSE
         Fail    Invalid discount type: ${Tax_system} must be 'have_discount' or 'no_discount'.
     END
+
     ## So sánh giá trị của 
     Should Be Equal    ${Subtotal_system_value}    ${SUBTOTAL_BEFORE_DISCOUNT}    Subtotal_system_value không khớp với SUBTOTAL_BEFORE_DISCOUNT    
     Should Be Equal    ${Tax_system_value}    ${ORIGINAL_TAX_SUM}    Tax_system_value không khớp với ORIGINAL_TAX_SUM
@@ -1046,21 +1049,25 @@ Get value from system and compare with result for Balance Due
         ${BalanceDue_system_value}=    Get Amount Value From Service Desc    ${BalanceDue_system}
         ${Balancedue_system_value}=    Evaluate    f\"{${BalanceDue_system_value}:.2f}\"
         Log    ${BalanceDue_system_value}
+
         ## Get value Subtotal
         ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
         ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
         ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
         Log    ${Subtotal_system_value}
+
         ## Get value Tax
         ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=12 and @clickable="false"]    content-desc
         ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
         ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
         Log    ${Tax_system_value}
+
         ## Get value Tip
         ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=14 and @clickable="false"]    content-desc
         ${Tip_system_value}=    Get Amount Value From Service Desc    ${Tip_system}
         ${Tip_system_value}=    Evaluate    f\"{${Tip_system_value}:.2f}\"
         Log    ${Tip_system_value}
+
         ## Get value Total
         ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=16 and @clickable="false"]    content-desc
         ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
@@ -1192,7 +1199,6 @@ Get value from system and compare with result for Tip
         ${TipDetails_system_value}=    Evaluate    f\"{${TipDetails_system_value}:.2f}\"
         Log    ${TipDetails_system_value}
         
-
         ## So sánh giá trị của Robot Framework VS giá trị của hệ thống
         Should Be Equal As Numbers     ${TotalAmount_system_value}                ${FINAL_TOTAL_AFTER_TIP}            TotalAmount_system_value không khớp với ORIGINAL_TOTAL_SUM
         Should Be Equal As Numbers     ${Subtotal_system_value}                   ${SUBTOTAL_BEFORE_DISCOUNT}         Subtotal_system_value không khớp với SUBTOTAL_BEFORE_DISCOUNT
@@ -1240,7 +1246,6 @@ Get value from system and compare with result for Tip
         ${TipDetails_system_value}=    Evaluate    f\"{${TipDetails_system_value}:.2f}\"
         Log    ${TipDetails_system_value}
         
-
         ## So sánh giá trị của Robot Framework VS giá trị của hệ thống
         Should Be Equal As Numbers     ${TotalAmount_system_value}         ${FINAL_TOTAL_AFTER_TIP}        TotalAmount_system_value không khớp với ORIGINAL_TOTAL_SUM
         Should Be Equal As Numbers     ${Subtotal_system_value}            ${SUBTOTAL_BEFORE_DISCOUNT}     Subtotal_system_value không khớp với SUBTOTAL_BEFORE_DISCOUNT
@@ -1263,16 +1268,6 @@ Get Amount Value From Service Desc
     Run Keyword If    ${price_match} == []    Fail    Không tìm thấy giá trong amount: ${amount_str}
     ${price_value}=    Evaluate    float(${price_match[0]})
     RETURN    ${price_value}
-
-
-
-
-
-
-
-
-
-
 
 
 

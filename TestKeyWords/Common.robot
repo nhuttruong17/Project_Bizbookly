@@ -260,6 +260,19 @@ Find and choose Technician
     Should Contain    ${Actual_technician}    ${Technician}
     AppiumLibrary.Click Element    //android.view.View[contains(@content-desc, "${Technician}")]
 
+Find and choose Technician IOS
+    [Arguments]    ${Technician}
+    FOR    ${i}    IN RANGE    20
+        ${exists}=    Run Keyword And Return Status      AppiumLibrary.Element Should Be Visible    //XCUIElementTypeStaticText[contains(@name, "${Technician}")]
+
+        Exit For Loop If    ${exists}
+        AppiumLibrary.Click Element     //XCUIElementTypeStaticText[@name="Next Page"]
+        Sleep    0.5s
+    END
+    ${Actual_technician}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[contains(@name, "${Technician}")]    name
+    Should Contain    ${Actual_technician}    ${Technician}
+    AppiumLibrary.Click Element    //XCUIElementTypeStaticText[contains(@name, "${Technician}")]
+
 Find Categories services
     [Arguments]    ${Services}
     FOR    ${i}    IN RANGE    20
