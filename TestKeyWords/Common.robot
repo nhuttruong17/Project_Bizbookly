@@ -123,6 +123,11 @@ Click And Clear Field
     Click on Element mobile    //android.widget.EditText[@text="${current_text}"]
     Clear Text                //android.widget.EditText[@text="${current_text}"]
 
+Click And Clear Field IOS
+    [Arguments]    ${current_text}
+    Click on Element mobile    //XCUIElementTypeTextField[@value="${current_text}"]
+    Clear Text                //XCUIElementTypeTextField[@value="${current_text}"]
+
 Check validation error message mobile
     [Arguments]    ${Elm_message}      ${Expected_message}
     AppiumLibrary.Wait Until Element Is Visible    ${Elm_message}      20s

@@ -17,9 +17,9 @@ ${voucher_code_5fixed}    Voucher5fixed
 #Method Credit Card
 Verify Checkout Credit Card With Voucher Discount And Tip Amount IOS
     [Tags]    checkout    credit_card    voucher_discount    tip_amount    ios
-    [Documentation]    Verify Credit Card checkout with a voucher discount and custom tip amount on iOS.
+    [Documentation]    Verify Credit Card checkout with a voucher discount and custom tip amount on iOS.   
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'voucher'    'on'    ${voucher_code_10per}
+    When Select service and add on    2    2    'voucher'    ${None}    ${voucher_code_10per}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -36,7 +36,7 @@ Verify Checkout Credit Card With Voucher Discount And Tip Percentage IOS
     [Tags]    checkout    credit_card    voucher_discount    tip_percentage    ios
     [Documentation]    Verify Credit Card checkout with a voucher discount and tip selected as percentage on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'voucher'    'on'    ${voucher_code_10per}
+    When Select service and add on    2    2    'voucher'    ${None}    ${voucher_code_10per}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -53,7 +53,7 @@ Verify Checkout Credit Card With Voucher Discount Without Tip IOS
     [Tags]    checkout    credit_card    voucher_discount    no_tip    ios
     [Documentation]    Verify Credit Card checkout with a voucher discount and skip tip on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'voucher'    'on'    ${voucher_code_10per}
+    When Select service and add on    2    2    'voucher'    ${None}    ${voucher_code_10per}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -70,7 +70,7 @@ Verify Checkout Credit Card With Fixed Amount Discount And Tips Amount IOS
     [Tags]    checkout    credit_card    fixed_discount    tip_amount    ios
     [Documentation]    Verify Credit Card checkout with fixed discount and custom amount tip on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'fixed_amount'    'on'    ${None}
+    When Select service and add on    2    2    'fixed_amount'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -87,7 +87,7 @@ Verify Checkout Credit Card With Fixed Amount Discount And Tips Percentage IOS
     [Tags]    checkout    credit_card    fixed_discount    tip_percentage    ios
     [Documentation]    Verify Credit Card checkout with fixed discount and percentage tip on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'fixed_amount'    'on'    ${None}
+    When Select service and add on    2    2    'fixed_amount'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -104,7 +104,7 @@ Verify Checkout Credit Card With Percentage Discount And Tips Percentage IOS
     [Tags]    checkout    credit_card    percentage_discount    tip_percentage    ios
     [Documentation]    Verify Credit Card checkout with percentage discount and percentage tip on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    When Select service and add on    2    2    'percentage'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -121,7 +121,7 @@ Verify Checkout Credit Card With Percentage Discount And Tips Amount IOS
     [Tags]    checkout    credit_card    percentage_discount    tip_amount    ios
     [Documentation]    Verify Credit Card checkout with percentage discount and custom tip amount on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    When Select service and add on    2    2    'percentage'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -138,7 +138,7 @@ Verify Checkout Credit Card With Fixed Amount Discount No Tip And SMS Receipt IO
     [Tags]    checkout    credit_card    fixed_discount    no_tip    send_receipt_sms    ios
     [Documentation]    Verify Credit Card checkout with fixed discount, no tip and SMS receipt on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'fixed_amount'    'on'    ${None}
+    When Select service and add on    2    2    'fixed_amount'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -157,7 +157,7 @@ Verify Checkout Credit Card With Percentage Discount No Tip And Email Receipt IO
     [Tags]    checkout    credit_card    percentage_discount    no_tip    send_receipt    ios
     [Documentation]    Verify Credit Card checkout with percentage discount, no tip and email receipt on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    When Select service and add on    2    2    'percentage'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -176,7 +176,7 @@ Verify Basic Credit Card Checkout Without Discount And Tip IOS
     [Tags]    checkout    credit_card    no_discount    no_tip    ios    basic
     [Documentation]    Verify basic Credit Card checkout without any discount or tip on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    When Select service and add on    2    2    'none'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'no_discount'
@@ -196,7 +196,7 @@ Validate Gift Card Not Found IOS
     [Tags]    checkout    gift_card    validation    ios
     [Documentation]    Verify system handles invalid gift card number correctly on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    When Select service and add on    2    2    'none'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'no_discount'
@@ -208,7 +208,7 @@ Validate Gift Card Expired IOS
     [Tags]    checkout    gift_card    validation    ios
     [Documentation]    Verify system handles expired gift card correctly on iOS.
     Given User at screen Enter Gift Card Code
-    When Click And Clear Field    SGC8891M1
+    When Click And Clear Field IOS    SGC8891M1
     And Pay By Gift Card    SGC240954437458
     Then System should display text on screen as    Gift card has been expired.
 
@@ -216,7 +216,7 @@ Validate Gift Card Deactivated IOS
     [Tags]    checkout    gift_card    validation    ios
     [Documentation]    Verify system handles deactivated gift card correctly on iOS.
     Given User at screen Enter Gift Card Code
-    When Click And Clear Field    SGC240954437458
+    When Click And Clear Field IOS   SGC240954437458
     And Pay By Gift Card    SGC240961690283 
     Then System should display text on screen as    The gift card has been deactivated
 
@@ -224,7 +224,7 @@ Validate Gift Card Insufficient Balance IOS
     [Tags]    checkout    gift_card    validation    ios
     [Documentation]    Verify system handles gift card with insufficient balance correctly on iOS.
     Given User at screen Enter Gift Card Code  
-    When Click And Clear Field    SGC240961690283
+    When Click And Clear Field IOS    SGC240961690283
     And Pay By Gift Card    SGC240950990238
     Then System should display text on screen as    The gift card amount is not enough to use.
 
@@ -232,7 +232,7 @@ Verify Gift Card Basic Checkout IOS
     [Tags]    checkout    gift_card    success    ios
     [Documentation]    Verify basic gift card checkout flow on iOS.
     Given User at screen Enter Gift Card Code
-    When Click And Clear Field    SGC240950990238
+    When Click And Clear Field IOS   SGC240950990238
     And Pay By Gift Card    ${Gift_card}
     And User clicks Submit button
     Then System should display notify message as     Proceed payment successfully
@@ -243,7 +243,7 @@ Verify Gift Card Checkout With Percentage Discount And Email IOS
     [Tags]    checkout    gift_card    percentage_discount    send_email    ios
     [Documentation]    Verify gift card checkout with percentage discount and email receipt on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    When Select service and add on    2    2    'percentage'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     And User selects payment method as Gift Card
@@ -260,10 +260,10 @@ Verify Checkout Paid Externally Apply Voucher and without tip IOS
     [Tags]    checkout    voucher    payment    external    no_tip    ios
     [Documentation]    Verify full checkout flow with voucher applied, no tip, and paid externally on iOS
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher   2    2    'none'    'on'    ${None}
-    Then Get value from system and compare with result for billing summary    'no_discount'
+    When Select service and add on   2    2    'voucher'    ${None}    ${voucher_code_10per}
+    Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
-    Then Get value from system and compare with result for Balance Due    'no_discount'
+    Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Paid Externally
     And Tip on service random    'none'
     Then Get value from system and compare with result for Tip    'have_discount'
@@ -276,7 +276,7 @@ Verify Checkout Paid Externally Apply Voucher and tip custom amount IOS
     [Tags]    checkout    voucher    payment    external    tip    custom    ios
     [Documentation]    Verify full checkout flow with voucher applied, tip custom amount, and paid externally on iOS
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'voucher'    'on'    ${voucher_code_10per}
+    When Select service and add on    2    2    'voucher'    ${None}    ${voucher_code_10per}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -292,7 +292,7 @@ Verify Checkout Paid Externally Apply Voucher and tip percentage IOS
     [Tags]    checkout    voucher    payment    external    tip    percentage    ios
     [Documentation]    Verify full checkout flow with voucher applied, tip percentage, and paid externally on iOS
     Given Find and choose Technician IOS     caisse
-    When Select service and add on & apply voucher    2    2    'voucher'    'on'    ${voucher_code_10per}
+    When Select service and add on    2    2    'voucher'    ${None}    ${voucher_code_10per}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -338,7 +338,7 @@ Verify Checkout Paid Externally without discount and without tip IOS
     [Documentation]    Verify full checkout flow without any voucher or tip applied on iOS,
     ...    paid externally, and ensure total amount remains unchanged with confirmation displayed.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    When Select service and add on    2    2    'none'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'no_discount'
@@ -355,7 +355,7 @@ Verify Checkout Paid Externally without discount and without tip and send Email 
     [Documentation]    Verify full checkout flow without voucher and tip on iOS,
     ...    using external payment and sending receipt to email successfully.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    When Select service and add on    2    2    'none'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'no_discount'
@@ -374,7 +374,7 @@ Verify Checkout Paid Externally without discount and without tip and send Sms IO
     [Documentation]    Verify full checkout flow without voucher and tip on iOS,
     ...    using external payment and sending receipt via SMS successfully.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    When Select service and add on    2    2    'none'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'no_discount'
@@ -393,7 +393,7 @@ Verify Checkout Paid Externally discount percentage and without tip IOS
     [Documentation]    Verify checkout flow with 10% percentage discount applied and no tip on iOS,
     ...    using external payment and ensuring price updates correctly.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    When Select service and add on    2    2    'percentage'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -410,7 +410,7 @@ Verify Checkout Paid Externally discount percentage and tip percentage IOS
     [Documentation]    Verify the checkout flow when applying a 10% percentage discount and a 5% tip on iOS.
     ...    Ensure the system calculates discount and tip correctly.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    When Select service and add on    2    2    'percentage'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -427,7 +427,7 @@ Verify Checkout Paid Externally discount percentage and tip custom amount IOS
     [Documentation]    Verify the checkout flow when applying a 10% percentage discount and a custom tip amount on iOS.
     ...    Ensure the system calculates the discount and custom tip correctly.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    When Select service and add on    2    2    'percentage'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -444,7 +444,7 @@ Verify Checkout Paid Externally discount fixed amount and without tip IOS
     [Documentation]    Verify the checkout flow when applying a fixed discount amount ($5.00) and skipping tip on iOS.
     ...    Ensure the system correctly calculates new total and handles external payment.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'fixed_amount'    'on'    ${None}
+    When Select service and add on    2    2    'fixed_amount'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -460,7 +460,7 @@ Verify Checkout Paid Externally discount fixed amount and tip custom amount IOS
     [Tags]    checkout    paid_externally    fixed_discount    custom_tip    success    ios
     [Documentation]    Verify the checkout flow with fixed discount ($5.00) and custom tip ($3.00) using Paid Externally method on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'fixed_amount'    'on'    ${None}
+    When Select service and add on    2    2    'fixed_amount'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -476,7 +476,7 @@ Verify Checkout Paid Externally discount fixed amount and tip percentage IOS
     [Tags]    checkout    paid_externally    fixed_discount    tip_percentage    success    ios
     [Documentation]    Verify the checkout flow with fixed discount ($5.00) and tip 5% using Paid Externally method on iOS.
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'fixed_amount'    'on'    ${None}
+    When Select service and add on    2    2    'fixed_amount'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
@@ -495,11 +495,12 @@ Verify Checkout Cash Without Discount And Without Tip IOS
     [Tags]    checkout    cash    no_discount    no_tip    ios    success
     [Documentation]    Verify basic cash payment flow without any discounts or tips on iOS
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    When Select service and add on    2    2    'none'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'no_discount'
     When User selects payment method as Cash
+    Then Get value from system and compare with result for Cash    'no_discount'
     When User Begins Charge
     Then System should display notify message as     Proceed payment successfully
     And System should display text on screen as     Your payment is confirmed!
@@ -509,12 +510,12 @@ Verify Checkout Cash Without Discount And Send Email IOS
     [Tags]    checkout    cash    no_discount    send_email    ios    success
     [Documentation]    Verify cash payment flow without discount and sending email receipt on iOS
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    When Select service and add on    2    2    'none'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'no_discount'
     When User selects payment method as Cash
-    And Tip on service random    'none'
+    Then Get value from system and compare with result for Cash    'no_discount'
     When User Begins Charge
     Then System should display notify message as    Your payment is confirmed!
     When Choose send receipt to Email    school@yopmail.com
@@ -525,13 +526,13 @@ Verify Checkout Cash Without Discount And Send SMS IOS
     [Tags]    checkout    cash    no_discount    send_sms    ios    success
     [Documentation]    Verify cash payment flow without discount and sending SMS receipt on iOS
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'none'    'on'    ${None}
+    When Select service and add on    2    2    'none'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'no_discount'
     When User selects payment method as Cash
-    And Tip on service random    'none'
-    When User Begins Charge
+    Then Get value from system and compare with result for Cash    'no_discount'
+    And User Begins Charge
     Then System should display notify message as    Your payment is confirmed!
     When Choose send receipt to SMS      8    0    4    2    8    6    0    4    3    9
     Then System should display notify message as    The receipt has been sent successfully.
@@ -541,11 +542,12 @@ Verify Checkout Cash With Percentage Discount IOS
     [Tags]    checkout    cash    percentage_discount    ios    success
     [Documentation]    Verify cash payment flow with percentage discount on iOS
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'percentage'    'on'    ${None}
+    When Select service and add on    2    2    'percentage'    'off'    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Cash
+    Then Get value from system and compare with result for Cash    'have_discount'
     When User Begins Charge
     Then System should display notify message as     Proceed payment successfully
     And System should display text on screen as     Your payment is confirmed!
@@ -555,41 +557,52 @@ Verify Checkout Cash With Fixed Amount Discount IOS
     [Tags]    checkout    cash    fixed_discount    ios    success
     [Documentation]    Verify cash payment flow with fixed amount discount on iOS
     Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'fixed_amount'    'on'    ${None}
+    When Select service and add on    2    2    'fixed_amount'    ${None}    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
     When User proceeds to Payment
     Then Get value from system and compare with result for Balance Due    'have_discount'
     When User selects payment method as Cash
+    Then Get value from system and compare with result for Cash    'have_discount'
     When User Begins Charge
     Then System should display notify message as     Proceed payment successfully
     And System should display text on screen as     Your payment is confirmed!
     When Choose No Receipt
 
 ##Voucher Validation Tests
-Verify Checkout With Expired Voucher IOS
-    [Tags]    checkout    voucher    negative    ios
-    [Documentation]    Verify system handles expired voucher correctly on iOS
-    Given Find and choose Technician IOS    caisse
-    When Select service and add on & apply voucher    2    2    'voucher'    'on'    expired
-    Then System should display notify message as    The voucher has been expired!
+# Verify Checkout With Expired Voucher IOS
+#     [Tags]    checkout    voucher    negative    ios
+#     [Documentation]    Verify system handles expired voucher correctly on iOS
+#     Given Find and choose Technician IOS    caisse
+#     When Find service manual IOS    Gel w/ Aloe Vera Mani
+#     And Apply Voucher Discount manual IOS    expired
+#     Then System should display notify message as    The voucher has been expired!
 
-Validate Voucher Usage Limit Exceeded IOS
-    [Tags]    voucher    limit    negative    ios
-    [Documentation]    Verify system handles voucher usage limit exceeded correctly on iOS
-    When Click And Clear Field    expired
-    Then System should display notify message as    Voucher has reached its usage limit.
+# Validate Voucher Usage Limit Exceeded IOS
+#     [Tags]    voucher    limit    negative    ios
+#     [Documentation]    Verify system handles voucher usage limit exceeded correctly on iOS
+#     When Click And Clear Field IOS    expired
+#     Click on Element mobile    //XCUIElementTypeTextField[@name="Enter voucher code"]
+#     Fill Text Input mobile     //XCUIElementTypeTextField[@name="Enter voucher code"]    usageexceeded
+#     Click on Element mobile    //XCUIElementTypeStaticText[contains(@name, "Code: #SBVusageexceeded")]
+#     Then System should display notify message as    Voucher has reached its usage limit.
 
-Validate User Voucher Limit Exceeded IOS
-    [Tags]    voucher    user_limit    negative    ios
-    [Documentation]    Verify system handles user voucher limit exceeded correctly on iOS
-    When Click And Clear Field    usageexceeded
-    Then System should display notify message as    Voucher has reached its usage limit.
+# Validate User Voucher Limit Exceeded IOS
+#     [Tags]    voucher    user_limit    negative    ios
+#     [Documentation]    Verify system handles user voucher limit exceeded correctly on iOS
+#     When Click And Clear Field IOS    usageexceeded
+#     Click on Element mobile    //XCUIElementTypeTextField[@name="Enter voucher code"]
+#     Fill Text Input mobile     //XCUIElementTypeTextField[@name="Enter voucher code"]    userlimitexceeded
+#     Click on Element mobile    //XCUIElementTypeStaticText[contains(@name, "Code: #SBVuserlimitexceeded")]
+#     Then System should display notify message as    Voucher has reached its usage limit.
 
-Validate Minimum Spend Requirement For Voucher IOS
-    [Tags]    voucher    min_spend    negative    ios
-    [Documentation]    Verify system handles minimum spend requirement correctly on iOS
-    When Click And Clear Field    usageexceeded
-    Then System should display notify message as    The minimum spent required to apply this voucher is $50.00
+# Validate Minimum Spend Requirement For Voucher IOS
+#     [Tags]    voucher    min_spend    negative    ios
+#     [Documentation]    Verify system handles minimum spend requirement correctly on iOS
+#     When Click And Clear Field IOS    userlimitexceeded
+#     Click on Element mobile    //XCUIElementTypeTextField[@name="Enter voucher code"]    
+#     Fill Text Input mobile     //XCUIElementTypeTextField[@name="Enter voucher code"]    minimumspend50
+#     Click on Element mobile    //XCUIElementTypeStaticText[contains(@name, "Code: #SBVminimumspend50")]
+#     Then System should display notify message as    The minimum spent required to apply this voucher is $50.00
 
 # Verify Checkout Cash with Option Apply Voucher -> Dev inprogress fixing
 #     Given User at screen enter voucher code
@@ -633,12 +646,21 @@ Validate Minimum Spend Requirement For Voucher IOS
 #     Then Check validation error message Android    //android.view.View[@name="Your payment is confirmed!"]    Your payment is confirmed!
 #     When Choose No Receipt
 
-
-
-    
 *** Keywords ***
 User at screen Enter Gift Card Code
-    AppiumLibrary.Wait Until Element Is Visible    //XCUIElementTypeStaticText[@name="Gift Card"]        10s
+    AppiumLibrary.Wait Until Element Is Visible    ${elm_Method_GiftCard_IOS}      10s
+
+Find service manual IOS
+    [Arguments]    ${service_name}
+    Click on Element mobile    //XCUIElementTypeStaticText[contains(@name, "${service_name}")]
+
+Apply Voucher Discount manual IOS
+    [Arguments]    ${voucher_code}
+    Click on Element mobile    //XCUIElementTypeStaticText[@name="Discount" and @index=27]
+    Click on Element mobile    //XCUIElementTypeOther[@name="Apply Voucher"]
+    Click on Element mobile    //XCUIElementTypeTextField[@name="Enter voucher code"]
+    Fill Text Input mobile     //XCUIElementTypeTextField[@name="Enter voucher code"]    ${voucher_code}
+    Click on Element mobile    //XCUIElementTypeStaticText[contains(@name, "Code: #SBV${voucher_code}")]
 
 System should display notify message as
     [Arguments]    ${message}
@@ -647,13 +669,6 @@ System should display notify message as
 System should display text on screen as
     [Arguments]    ${text}
     Check validation error message mobile     //XCUIElementTypeStaticText[@name="${text}"]        ${text}
-
-# System should display tip detail with technician and amount tip
-#     [Arguments]    ${technician}    ${tip}
-#     AppiumLibrary.Wait Until Element Is Visible    //android.view.View[contains(@name, "${technician}") and contains(@name, "${tip}")]    10s
-#     ${desc}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@name, "${technician}") and contains(@name, "${tip}")]    name
-#     Should Contain    ${desc}    ${technician}
-#     Should Contain    ${desc}    ${tip}
 
 User proceeds to Payment
     Click on Element mobile    ${elm_btn_Payment_IOS}
@@ -669,7 +684,6 @@ User Begins Charge
 
 User selects Custom Tip option
     Click on Element mobile    ${elm_Option_CustomAmount_IOS}
-
 
 ## Method Payment
 User selects payment method as Cash
@@ -687,9 +701,9 @@ User selects payment method as Credit Card
 
 Pay By Gift Card
     [Arguments]    ${gift_card}
-    Click on Element mobile    //android.widget.EditText
-    Fill Text Input mobile    //android.widget.EditText    ${gift_card}
-    Click on Element mobile    //android.view.View[@name="Apply"]
+    Click on Element mobile    //XCUIElementTypeTextField[@name="Enter gift card code"]
+    Fill Text Input mobile     //XCUIElementTypeTextField[@name="Enter gift card code"]    ${gift_card}
+    Click on Element mobile    //XCUIElementTypeStaticText[@name="Apply"]
 
 Pay By Cash
     Click on Element mobile    ${elm_btn_Payment}
@@ -697,8 +711,8 @@ Pay By Cash
     Click on Element mobile    ${elm_btn_BeginCharge}
 Sign And Confirm Payment
     AppiumLibrary.Wait Until Element Is Visible    ${elm_btn_Done_IOS}    10s
-    Swipe    600    300    1250    300
-    Swipe    928    300    918    750
+    Swipe    236    226    783    223
+    Swipe    511    231    511    600
     Click on Element mobile    ${elm_btn_Done_IOS}
 
 Choose No Receipt
@@ -706,25 +720,25 @@ Choose No Receipt
 
 Choose send receipt to Email
     [Arguments]    ${email}
-    Click on Element mobile    //android.view.View[@name="Email"]
-    Click on Element mobile    //android.widget.EditText
-    Fill Text Input mobile     //android.widget.EditText    ${email}
-    Click on Element mobile    //android.widget.ScrollView/android.view.View[7]
-    Click on Element mobile    //android.widget.EditText[@text="${email}"]/android.view.View
-    Click on Element mobile    //android.view.View[@name="SEND"]
+    Click on Element mobile    //XCUIElementTypeStaticText[@name="Email"]
+    Click on Element mobile    //XCUIElementTypeTextField[@name="Enter Email"]
+    Fill Text Input mobile     //XCUIElementTypeTextField[@name="Enter Email"]    ${email}
+    Click on Element mobile    //XCUIElementTypeOther[@index=7]
+    Click on Element mobile    //XCUIElementTypeOther[@width=31 and @height=31]
+    Click on Element mobile    //XCUIElementTypeStaticText[@name="SEND"]
 
 Choose send receipt to SMS    
     [Arguments]    @{digits}
-    Click on Element mobile    //android.view.View[@name="Text (SMS)"]
+    Click on Element mobile    //XCUIElementTypeStaticText[@name="Text (SMS)"]
     FOR    ${digit}    IN    @{digits}
-        Click on Element mobile    //android.view.View[@name="${digit}" and @clickable="true"]
+        Click on Element mobile    //XCUIElementTypeStaticText[@name="${digit}"]
     END
 
-    Click on Element mobile    //android.view.View[@name="Send"]
+    Click on Element mobile    //XCUIElementTypeStaticText[@name="Send"]
 
 
 ### Test 
-Select service and add on & apply voucher    ### Nếu k sử dụng voucher thì sửa lại $vouchercode= ${None}
+Select service and add on    ### If do not use voucher, fix => $vouchercode=${None}
     [Arguments]    ${number_of_services}       ${number_of_add_ons}        ${discount_type}       ${include_discount}        ${voucher_code}
     ${service_list}=    AppiumLibrary.Get Webelements    xpath=(//XCUIElementTypeApplication[@name="Salonbookly Manager Dev"]//XCUIElementTypeOther[5]//XCUIElementTypeOther[2]//XCUIElementTypeStaticText[contains(@name, "$")])
     ${add_on_list}=    AppiumLibrary.Get Webelements    xpath=(//XCUIElementTypeApplication[@name="Salonbookly Manager Dev"]//XCUIElementTypeOther[6]//XCUIElementTypeOther[2]//XCUIElementTypeStaticText[contains(@name, "$")])
@@ -828,13 +842,11 @@ Select service and add on & apply voucher    ### Nếu k sử dụng voucher th�
         ${format_subtotal}=     Evaluate    '{:.2f}'.format(${Total_service})
         Log    ${format_subtotal}
         # Tạo một giá trị giảm giá ngẫu nhiên từ 1.00 đến ${format_subtotal} và làm tròn đến 2 chữ số
-        # ${random_discount}=     Evaluate       round(random.uniform(1.00, ${format_subtotal}), 2)    modules=random
-        # Log    ${random_discount}
-
-        ${random_fixed}=     Evaluate       random.uniform(1.00, ${format_subtotal})    modules=random
+        ${random_fixed}=    Evaluate    round(random.uniform(1.00, ${format_subtotal}), 2)    modules=random
         Log    ${random_fixed}
-        ${random_discount}=     Evaluate    int(${random_fixed} * 100) / 100
-        Log  ${random_discount}
+        ${random_discount}=    Evaluate    f"{${random_fixed}:.2f}"
+        Log    ${random_discount}
+        # Chuyển số ngẫu nhiên thành chuỗi
         ${number_str}=    Convert To String    ${random_discount}
         Log    ${number_str}
         # Cắt bỏ dấu . để nhập numberpad
@@ -848,7 +860,7 @@ Select service and add on & apply voucher    ### Nếu k sử dụng voucher th�
         Click on Element mobile    ${elm_btn_Submit_IOS}
 
     ELSE IF    ${discount_type} == 'voucher'
-        Click on Element mobile    //XCUIElementTypeStaticText[@index=27]
+        Click on Element mobile    //XCUIElementTypeStaticText[@name="Discount" and @index=27]
         Click on Element mobile    //XCUIElementTypeOther[@name="Apply Voucher"]
         Click on Element mobile    //XCUIElementTypeTextField[@name="Enter voucher code"]
         Fill Text Input mobile    //XCUIElementTypeTextField[@name="Enter voucher code"]    ${voucher_code}
@@ -914,6 +926,7 @@ Get value from system and compare with result for billing summary
     [Arguments]        ${use_discount}
     IF    ${use_discount} == 'have_discount'
         ## Get value Subtotal
+        AppiumLibrary.Wait Until Element Is Visible    //XCUIElementTypeStaticText[@index=24]
         ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=24]        name
         ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
         ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
@@ -939,6 +952,7 @@ Get value from system and compare with result for billing summary
 
     ELSE IF    ${use_discount} == 'no_discount'
         ## Get value Subtotal
+        AppiumLibrary.Wait Until Element Is Visible    //XCUIElementTypeStaticText[@index=24]
         ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=24]        name
         ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
         ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
@@ -1097,15 +1111,14 @@ Tip on service random
         Log    ${random_tip}
     
     ELSE IF  ${tip_type} == 'tip_amount'
-        Click on Element mobile    ${elm_Option_CustomAmount}
+        Click on Element mobile    ${elm_Option_CustomAmount_IOS}
         # Tạo một giá trị giảm giá ngẫu nhiên từ 1.00 đến ${format_subtotal} và làm tròn đến 2 chữ số
         # ${random_tip}=     Evaluate       round(random.uniform(1.00, ${ORIGINAL_PRICE_SUM}), 2)    modules=random
         # Log    ${random_tip}
-
-        ${random_fixed}=     Evaluate       random.uniform(1.00, ${ORIGINAL_PRICE_SUM})    modules=random
+        ${random_fixed}=    Evaluate    round(random.uniform(1.00, ${ORIGINAL_PRICE_SUM}), 2)    modules=random
         Log    ${random_fixed}
-        ${random_tip}=     Evaluate    int(${random_fixed} * 100) / 100
-        Log  ${random_tip}
+        ${random_tip}=    Evaluate    f"{${random_fixed}:.2f}"
+        Log    ${random_tip}
         # Chuyển số ngẫu nhiên thành chuỗi
         ${number_str}=    Convert To String    ${random_tip}
         Log    ${number_str}
@@ -1240,6 +1253,102 @@ Get value from system and compare with result for Tip
         Fail    Invalid discount type: ${use_discount} must be 'have_discount' or 'no_discount'.
     END
 
+Get value from system and compare with result for Cash
+    [Arguments]        ${use_discount}
+    IF    ${use_discount} == 'have_discount'
+        ## Get value Total Amount
+        ${TotalAmount_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=3 and @height=37]    name
+        ${TotalAmount_system_value}=    Get Amount Value From Service Desc    ${TotalAmount_system}
+        ${TotalAmount_system_value}=    Evaluate    f\"{${TotalAmount_system_value}:.2f}\"
+        Log    ${TotalAmount_system_value}
+        
+        ## Get value Subtotal
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=11 and contains(@name,"$")]    name
+        ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
+        ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
+        Log    ${Subtotal_system_value}
+
+        ## Get value Discount
+        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=13 and contains(@name,"$")]    name
+        ${Discount_system_value}=    Get Amount Value From Service Desc    ${Discount_system}
+        ${Discount_system_value}=    Evaluate    f\"{${Discount_system_value}:.2f}\"
+        Log    ${Discount_system_value}
+
+        ## Get value Discounted Subtotal
+        ${DiscountedSubtotal_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=15 and contains(@name,"$")]    name
+        ${DiscountedSubtotal_system_value}=    Get Amount Value From Service Desc    ${DiscountedSubtotal_system}
+        ${DiscountedSubtotal_system_value}=    Evaluate    f\"{${DiscountedSubtotal_system_value}:.2f}\"
+        Log    ${DiscountedSubtotal_system_value}
+
+        ## Get value Tax
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=17 and contains(@name,"$")]    name
+        ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
+        ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
+        Log    ${Tax_system_value}
+
+        ## Get value Tip
+        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=19 and contains(@name,"$")]    name
+        ${Tip_system_value}=    Get Amount Value From Service Desc    ${Tip_system}
+        ${Tip_system_value}=    Evaluate    f\"{${Tip_system_value}:.2f}\"
+        Log    ${Tip_system_value}
+        
+        ## Get value Total
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=21 and contains(@name,"$")]    name
+        ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
+        ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
+        Log    ${Total_system_value}
+        
+        
+        ## So sánh giá trị của Robot Framework VS giá trị của hệ thống
+        Should Be Equal As Numbers     ${TotalAmount_system_value}                ${ORIGINAL_TOTAL_SUM}            TotalAmount_system_value không khớp với ORIGINAL_TOTAL_SUM
+        Should Be Equal As Numbers     ${Subtotal_system_value}                   ${SUBTOTAL_BEFORE_DISCOUNT}         Subtotal_system_value không khớp với SUBTOTAL_BEFORE_DISCOUNT
+        Should Be Equal As Numbers     ${Discount_system_value}                   ${ORIGINAL_DISCOUNT_VALUE}          Discount_system_value không khớp với ORIGINAL_DISCOUNT_VALUE
+        Should Be Equal As Numbers     ${DiscountedSubtotal_system_value}         ${ORIGINAL_PRICE_SUM}               DiscountedSubtotal_system_value không khớp với ORIGINAL_PRICE_SUM
+        Should Be Equal As Numbers     ${Tax_system_value}                        ${ORIGINAL_TAX_SUM}                 Tax_system_value không khớp với ORIGINAL_TAX_SUM
+        Should Be Equal As Numbers     ${Tip_system_value}                        0.00                       Tip_system_value không khớp với
+        Should Be Equal As Numbers     ${Total_system_value}                      ${ORIGINAL_TOTAL_SUM}            Total_system_value không khớp với FINAL_TOTAL_AFTER_TIP
+        
+    ELSE IF    ${use_discount} == 'no_discount'
+        ## Get value Total Amount
+        ${TotalAmount_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=3 and @height=37]    name
+        ${TotalAmount_system_value}=    Get Amount Value From Service Desc    ${TotalAmount_system}
+        ${TotalAmount_system_value}=    Evaluate    f\"{${TotalAmount_system_value}:.2f}\"
+        Log    ${TotalAmount_system_value}
+        
+        ## Get value Subtotal
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=11 and contains(@name,"$")]    name
+        ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
+        ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
+        Log    ${Subtotal_system_value}
+
+        ## Get value Tax
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=13 and contains(@name,"$")]    name
+        ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
+        ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
+        Log    ${Tax_system_value}
+
+        ## Get value Tip
+        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=15 and contains(@name,"$")]    name
+        ${Tip_system_value}=    Get Amount Value From Service Desc    ${Tip_system}
+        ${Tip_system_value}=    Evaluate    f\"{${Tip_system_value}:.2f}\"
+        Log    ${Tip_system_value}
+        
+        ## Get value Total
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //XCUIElementTypeStaticText[@index=17 and contains(@name,"$")]    name
+        ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
+        ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
+        Log    ${Total_system_value}
+        
+        ## So sánh giá trị của Robot Framework VS giá trị của hệ thống
+        Should Be Equal As Numbers     ${TotalAmount_system_value}         ${ORIGINAL_TOTAL_SUM}        TotalAmount_system_value không khớp với ORIGINAL_TOTAL_SUM
+        Should Be Equal As Numbers     ${Subtotal_system_value}            ${SUBTOTAL_BEFORE_DISCOUNT}     Subtotal_system_value không khớp với SUBTOTAL_BEFORE_DISCOUNT
+        Should Be Equal As Numbers     ${Tax_system_value}                 ${ORIGINAL_TAX_SUM}             Tax_system_value không khớp với ORIGINAL_TAX_SUM
+        Should Be Equal As Numbers     ${Tip_system_value}                 0.00                   Tip_system_value không khớp với
+        Should Be Equal As Numbers     ${Total_system_value}               ${ORIGINAL_TOTAL_SUM}        Total_system_value không khớp với FINAL_TOTAL_AFTER_TIP
+
+    ELSE
+        Fail    Invalid discount type: ${use_discount} must be 'have_discount' or 'no_discount'.
+    END
 
 
 Get Amount Value From Service Desc
