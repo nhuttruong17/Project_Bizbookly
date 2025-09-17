@@ -508,6 +508,8 @@ Verify Checkout Paid Externally discount fixed amount and tip percentage
 
 ##Method Cash
 Verify Check out Cash without discount and without tip
+    [Tags]    checkout    cash    no_discount    no_tip   success
+    [Documentation]    Verify basic cash payment flow without any discounts or tips on iOS
     Given Find and choose Technician    caisse
     When Select service and add on    2    2    'none'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
@@ -521,6 +523,8 @@ Verify Check out Cash without discount and without tip
     When Choose No Receipt
 
 Verify Check out Cash without discount and without tip and send email
+    [Tags]    checkout    cash    no_discount    send_email      success
+    [Documentation]    Verify cash payment flow without discount and sending email receipt
     Given Find and choose Technician    caisse
     When Select service and add on   2    2    'none'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
@@ -535,6 +539,8 @@ Verify Check out Cash without discount and without tip and send email
     When Choose No Receipt
 
 Verify Check out Cash and send Sms
+    [Tags]    checkout    cash    no_discount    send_sms     success
+    [Documentation]    Verify cash payment flow without discount and sending SMS receipt
     Given Find and choose Technician    caisse
     When Select service and add on    2    2    'none'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
@@ -549,6 +555,8 @@ Verify Check out Cash and send Sms
     When Choose No Receipt
 
 Verify Checkout Cash with discount percentage
+    [Tags]    checkout    cash    percentage_discount    success
+    [Documentation]    Verify cash payment flow with percentage discount
     Given Find and choose Technician    caisse
     When Select service and add on   2    2    'percentage'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
@@ -562,6 +570,8 @@ Verify Checkout Cash with discount percentage
     When Choose No Receipt
 
 Verify Checkout Cash with discount fixed amount
+    [Tags]    checkout    cash    fixed_discount    success
+    [Documentation]    Verify cash payment flow with fixed amount discount
     Given Find and choose Technician    caisse
     When Select service and add on    2    2    'fixed_amount'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'have_discount'
@@ -751,9 +761,17 @@ Choose send receipt to SMS
 
     Click on Element mobile    //android.view.View[@content-desc="Send"]
 
-
+##Random Technician
+Random Technician Data Generation
+    [Documentation]    This test case generates random data for technician creation and selects a random existing technician from the list.
+    ${technician_list}=   AppiumLibrary.Get Webelements    xpath=//android.view.View[11]/android.view.View/android.view.View[@clickable="true"]
+    ${count_technician}=    Get Length    ${technician_list}
+    Log    Count of existing technicians: ${count_technician}
+    ${random_index}=    Evaluate    random.randint(0, ${count_technician}-1)    modules=random
+    ${element}=    Get From List    ${technician_list}    ${random_index}
+    AppiumLibrary.Click Element    ${element}
 ### Test 
-Select service and add on    ### Nếu k sử dụng voucher thì sửa lại $vouchercode= ${None}
+Select service and add on    ### If do not use voucher, fix $vouchercode= ${None}
     [Arguments]    ${number_of_services}       ${number_of_add_ons}        ${discount_type}       ${include_discount}        ${voucher_code}
     ${service_list}=    AppiumLibrary.Get Webelements    xpath=//android.view.View[8]//android.view.View[contains(@content-desc, "$") and @clickable="true"]
     ${add_on_list}=    AppiumLibrary.Get Webelements    xpath=//android.view.View[10]/android.view.View//android.view.View[contains(@content-desc, "$") and @clickable="true"]
