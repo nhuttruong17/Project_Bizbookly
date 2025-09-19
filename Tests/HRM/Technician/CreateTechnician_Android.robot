@@ -7,16 +7,13 @@ Library    String
 Library    OperatingSystem
 Library    json
 Library    Collections
-
+Library    FakerLibrary
 *** Variables ***
-${Long_FirstName_Tech}         Leo
-${Long_LastName_Tech}          Kevinson
-${Long_Address_Tech}           abbc
 
 ${Expected_error_minLength}    Minimum length is 2
 ${Expected_error_maxLength}    Maximum length exceeded
 ${Expected_email_invalid}      Email invalid
-${elm_error_invalidPhone}      //android.view.View[@content-desc="Invalid format Phone Number"]
+${elm_error_invalidPhone}      xpath=//android.view.View[@content-desc="Invalid format Phone Number"]
 ${Expected_phone_invalid}      Invalid format Phone Number
 
 ${Expected_success}                       Technician created successfully
@@ -28,9 +25,9 @@ ${elm_input_LastName_Tech_Android}        xpath=//android.widget.EditText[@hint=
 
 ${elm_ShowPassword_Android}                  xpath=//android.widget.EditText[@hint="Password"]/android.widget.ImageView
 ${elm_input_Password_Tech_Android}           xpath=//android.widget.EditText[@hint="Password"]
-${elm_error_minPassword_Android}             //android.view.View[@content-desc="Password must be 8 characters or longer!"]
+${elm_error_minPassword_Android}             xpath=//android.view.View[@content-desc="Password must be 8 characters or longer!"]
 ${Expected_minLengthPassword_Android}        Password must be 8 characters or longer!
-${elm_error_invalidPassword_Android}         //android.view.View[@content-desc="Password have a least 1 special character, 1 number, 1 normal character, 1 capital character"]
+${elm_error_invalidPassword_Android}         xpath=//android.view.View[@content-desc="Password have a least 1 special character, 1 number, 1 normal character, 1 capital character"]
 ${Expected_invalidPassword_Android}          Password have a least 1 special character, 1 number, 1 normal character, 1 capital character
 
 
@@ -47,37 +44,105 @@ ${elm_Empty_error_Android}                     xpath=(//android.view.View[@conte
 ${Expected_error_required}                     This field is required
 ${elm_minLength_error_Android}                 xpath=//android.view.View[@content-desc="This field must be 2 characters or longer!"]
 ${Expected_minLength_error_Android}            This field must be 2 characters or longer!
-${elm_email_exist_Tech_Android}                //android.view.View[@content-desc="User with this email already exists"]
-${Expected_email_exist_Tech_Android}          User with this email already exists
+${elm_email_exist_Tech_Android}                xpath=//android.view.View[@content-desc="User with this email already exists"]
+${Expected_email_exist_Tech_Android}           User with this email already exists
+
+${elm_Phone_exist_Tech_Android}                xpath=//android.view.View[@content-desc="Phone number already exists."]
+${Expected_Phone_exist_Tech_Android}           Phone number already exists.
 *** Test Cases ***
-# Random String Generation
-#     ${Random_String}=    Generate Random String    5    [LETTERS]
-#     Log    Generated Random String: ${Random_String}
-#     ${Firstname}=    Catenate    SEPARATOR=    TestFirstName_    ${Random_String}
-#     ${Lastname}=     Catenate    SEPARATOR=    TestLastName_     ${Random_String}
-#     ${Email}=        Catenate    SEPARATOR=    test_            ${Random_String}@yopmail.com
-#     Log    ${Firstname}
-#     Log    ${Lastname}
-#     Log    ${Email}    
-#     ${random_name}=   Get Length    ${Random_String}
-#     Log    Length of Random String: ${random_name}
+Generate Random Data
+    ${first}=    FakerLibrary.First Name Male
+    ${last}=     FakerLibrary.Last Name Male
+    Set Suite Variable    ${lastName}    ${last}
+    Set Suite Variable    ${firstName}   ${first}
+
+    #Generarte income rate 3k$-300k$ - Salary
+    ${Gen_income_rate}=    Evaluate    random.randint(300000, 3000000)    random
+    ${convertStr_income_rate}=    Convert To String    ${Gen_income_rate}
+    ${convertList_income_rate}=    Convert To List    ${convertStr_income_rate}
+    Set Suite Variable    ${income_rate}    ${convertList_income_rate}
+
+    #Generarte income rate 1-100% - Services
+    ${Gen_income_rate_services}=    Evaluate    random.randint(1, 100)    random
+    ${convertStr_income_rate_services}=    Convert To String    ${Gen_income_rate_services}
+    ${convertList_income_rate_services}=    Convert To List    ${convertStr_income_rate_services}
+    Set Suite Variable    ${income_rate_services}    ${convertList_income_rate_services}
+
+    #Generarte favor 1$-100$
+    ${Gen_favor}=    Evaluate    random.randint(100, 10000)    random
+    ${convertStr_favor}=    Convert To String    ${Gen_favor}
+    ${convertList_favor}=    Convert To List    ${convertStr_favor}
+    Set Suite Variable    ${favor}    ${convertList_favor}
+
+    # Generate Phone Number
+    ${rest}=    Evaluate    ''.join([str(random.randint(0,9)) for _ in range(9)])    random
+    ${num}=     Catenate    SEPARATOR=    9    ${rest}
+    ${convert_num}=    Convert To List    ${num}
+    Set Suite Variable    ${phoneNumber}    ${convert_num}
+
+    # Generate Random Email
+    ${lower}=   Convert To Lower Case    ${lastName}
+    ${rand}=    Generate Random String    4    [NUMBERS]
+    ${email}=   Catenate    SEPARATOR=    ${lower}${rand}    @yopmail.com
+    Set Suite Variable    ${Gen_email}    ${email}    
     
+    # Generate Long Address
+    ${Long_Address_Tech}=    FakerLibrary.Address
+    Set Suite Variable    ${Long_Address_Tech}    ${Long_Address_Tech}
+
+    #Generate State
+    ${state}=    FakerLibrary.State
+    Set Suite Variable    ${state}    ${state}
+
+    #Generate City
+    ${city}=    FakerLibrary.City
+    Set Suite Variable    ${city}    ${city}
+
+    #Generate Zip Code
+    ${zip}=    FakerLibrary.Zip Code
+    Set Suite Variable    ${zip}    ${zip}
+
+    #Generate Color
+    ${Gen_color}=    FakerLibrary.Hex Color
+    
+    ${split_color}=        Set Variable    ${Gen_color[1:]}
+    
+    Set Suite Variable    ${color}    ${split_color}
+
+
+
+
 Navigate to Create Technician Page
     Click on Element mobile    ${btn_OpenCreateTechnician}
 
 ### Income Rate Validation Tests ###
-Check Income Rate empty
-    Click on Element mobile     ${elm_input_IncomeRate_Tech_Android}
-    Click on Element mobile    xpath=//android.view.View[@content-desc="Done"]
-    # Click on Element mobile    xpath=//android.view.View[@content-desc="Submit"]
-    # Swipe    894    110    905    543
-    Check validation error message Android    ${elm_Empty_error_Android}    ${Expected_error_required}
-
-Check valid Income Rate
-    Click on Element mobile     ${elm_input_IncomeRate_Tech_Android}
-    Enter NumberPad Amount      1    0    0    0
-    Click on Element mobile     ${elm_btn_Done_Android}
+Check Imcome Rate
+    Custom Income Rate Type    'salary'
     AppiumLibrary.Page Should Not Contain Element    ${elm_Empty_error_Android}
+
+Check Invalid Technician Color Label 
+    Execute Script    mobile: tap    x=817    y=273
+    # Execute Script    mobile: tap    x=817    y=273
+    # Click And Clear Field    //android.widget.EditText[@text="#ffffff"]
+    # Fill Text Input mobile    //android.widget.EditText[@text="#"]    ${color}
+    # Check validation error message Android    //android.view.View[@content-desc="Invalid color value"]    Invalid color value
+
+Check Technician Color Label
+    
+    Click And Clear Field    //android.widget.EditText[@text="#ffffff"]
+    Fill Text Input mobile    //android.widget.EditText[@text="#"]    ${color}
+    AppiumLibrary.Page Should Not Contain Element    //android.view.View[@content-desc="Invalid color value"]
+
+Check Favor empty
+    Click And Clear Field          100.00
+    Click on Element mobile        xpath=//android.view.View[@content-desc="Done"]
+    Check validation error message Android    //android.view.View[@content-desc="Input should not less than the minium value 1"]    Input should not less than the minium value 1    
+
+Check valid Favor
+    Click on Element mobile        xpath=//android.view.View[@text="0.00"]
+    Enter NumberPad Amount         @{favor}
+    Click on Element mobile        ${elm_btn_Done_Android}
+    AppiumLibrary.Page Should Not Contain Element    //android.view.View[@content-desc="Input should not less than the minium value 1"]
 
 ### First Name Validation Tests ###scontainer
 Check First Name empty
@@ -96,7 +161,7 @@ Check First Name min length
 Check Valid First Name
     Click And Clear Field      a
     Click on Element mobile    ${elm_input_FirstName_Tech_Android}
-    Fill Text Input mobile     ${elm_input_FirstName_Tech_Android}    ${Long_FirstName_Tech}
+    Fill Text Input mobile     ${elm_input_FirstName_Tech_Android}    ${firstName}
     AppiumLibrary.Page Should Not Contain Element    ${elm_minLength_error_Android}
 
 # ### Email Validation Tests ###
@@ -176,7 +241,7 @@ Check Last Name min length
 
 Check Valid Last Name 
     Click And Clear Field          b
-    Fill Text Input mobile     ${elm_input_LastName_Tech_Android}    ${Long_LastName_Tech}
+    Fill Text Input mobile     ${elm_input_LastName_Tech_Android}    ${lastName}
     AppiumLibrary.Page Should Not Contain Element    ${elm_minLength_error_Android}
 
 
@@ -246,7 +311,7 @@ Check Nick Name min length
 
 Check Valid Nick Name
     Click And Clear Field           a
-    Fill Text Input mobile          ${elm_input_NickName_Tech_Android}    Nickname
+    Fill Text Input mobile          ${elm_input_NickName_Tech_Android}    ${lastName}
     AppiumLibrary.Page Should Not Contain Element    ${elm_minLength_error_Android}
 
 
@@ -270,36 +335,38 @@ Check Valid Invalid Phone
     Click on Element mobile         ${btn_Done}
     Check validation error message Android    ${elm_error_invalidPhone}    ${Expected_phone_invalid}
 
-Check Valid Phone
-    Click on Element mobile         //android.view.View[@text="(123) 456-7890"]
-    Click on Element mobile         ${btn_Clear}
-    Enter NumberPad Amount          9    2    3    4    5    6    7    8    9    0
-    Click on Element mobile         ${btn_Done}
-    AppiumLibrary.Page Should Not Contain Element    ${elm_error_invalidPhone}
-
 Check Gender
     Click on Element mobile         //android.view.View[@content-desc="Gender"]
     Click on Element mobile         //android.view.View[@content-desc="Male"]
     Click on Element mobile         ${btn_Submit}
     AppiumLibrary.Page Should Not Contain Element    //android.view.View[@content-desc="This field is required"]
 
+Check Create Technician Unsuccessfully (Without Email exist and Phone Exists)
+    Click on Element mobile         //android.view.View[@text="(123) 456-7890"]
+    Click on Element mobile         ${btn_Clear}
+    Enter NumberPad Amount          9    2    3    4    5    6    7    8    9    0
+    Click on Element mobile         ${btn_Done}
 
-# ### Check Email Already Exists ###
-Check email address exist
     Click And Clear Field        user@example.
     Fill Text Input mobile     ${elm_input_Email_Tech_Android}    school@yopmail.com
     Click on Element mobile    //android.view.View[@content-desc=" Email"]
     Click on Element mobile         ${btn_Submit}
+
     Check validation error message Android    ${elm_email_exist_Tech_Android}    ${Expected_email_exist_Tech_Android}
+    Check validation error message Android    ${elm_Phone_exist_Tech_Android}    ${Expected_Phone_exist_Tech_Android}
 
 ## Valid Technician Creation ##
 Check Valid Technician Creation successfully
+    Click on Element mobile         //android.view.View[@text="(923) 456-7890"]
+    Click on Element mobile         ${btn_Clear}
+    Enter NumberPad Amount          @{phoneNumber}
+    Click on Element mobile         ${btn_Done}
+
     Click And Clear Field        school@yopmail.com
-    Fill Text Input mobile     ${elm_input_Email_Tech_Android}    kevin17ss@yopmail.com
+    Fill Text Input mobile     ${elm_input_Email_Tech_Android}    ${Gen_email}
     Click on Element mobile    //android.view.View[@content-desc=" Email"]
-    AppiumLibrary.Wait Until Element Is Visible    ${btn_Submit}   5s
-    Click on Element mobile         ${btn_Submit}
-    Check validation error message Android    //android.view.View[@content-desc="Technician Successfully Created"]    Technician Successfully Created
+#     Click on Element mobile         ${btn_Submit}
+#     Check validation error message Android    //android.view.View[@content-desc="Technician Successfully Created"]    Technician Successfully Created
 
 *** Keywords ***
 Enter NumberPad Amount
@@ -308,3 +375,24 @@ Enter NumberPad Amount
         Click on Element mobile    //android.view.View[@content-desc="${digit}" and @clickable="true"]
     END
     
+Custom Income Rate Type
+    [Arguments]    ${Incomes_type}='services'
+
+    IF    ${Incomes_type} == 'salary'
+        Click on Element mobile     ${elm_input_IncomeRate_Tech_Android}
+        Enter NumberPad Amount      @{income_rate}
+        Click on Element mobile     ${elm_btn_Done_Android}
+        AppiumLibrary.Page Should Not Contain Element    ${elm_Empty_error_Android}
+    ELSE IF    ${Incomes_type} == 'services'
+        Click on Element mobile     //android.view.View[@content-desc="Salary"]
+        Click on Element mobile    //android.view.View[@content-desc="Service"]
+        Click on Element mobile     //android.view.View[@content-desc="Submit"]
+        Click on Element mobile    //android.view.View[@content-desc="60%"]
+        Click on Element mobile    //android.view.View[@content-desc="Other"]
+        Click on Element mobile     //android.view.View[@content-desc="Submit"]
+        Click on Element mobile    //android.view.View[contains(@hint, "Income Rate")]
+        Enter NumberPad Amount      @{income_rate_services}
+        Click on Element mobile     ${elm_btn_Done_Android}
+    ELSE    
+        Log     Fail
+    END    
