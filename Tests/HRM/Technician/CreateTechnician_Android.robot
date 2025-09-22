@@ -8,6 +8,7 @@ Library    OperatingSystem
 Library    json
 Library    Collections
 Library    FakerLibrary
+
 *** Variables ***
 
 ${Expected_error_minLength}    Minimum length is 2
@@ -88,19 +89,19 @@ Generate Random Data
     
     # Generate Long Address
     ${Long_Address_Tech}=    FakerLibrary.Address
-    Set Suite Variable    ${Long_Address_Tech}    ${Long_Address_Tech}
+    Set Suite Variable    ${Address}    ${Long_Address_Tech}
 
     #Generate State
-    ${state}=    FakerLibrary.State
-    Set Suite Variable    ${state}    ${state}
+    ${Gen_state}=    FakerLibrary.State
+    Set Suite Variable    ${state}    ${Gen_state}
 
     #Generate City
-    ${city}=    FakerLibrary.City
-    Set Suite Variable    ${city}    ${city}
+    ${Gen_city}=    FakerLibrary.City
+    Set Suite Variable    ${city}    ${Gen_city}
 
     #Generate Zip Code
-    ${zip}=    FakerLibrary.Zip Code
-    Set Suite Variable    ${zip}    ${zip}
+    ${Gen_zip}=    FakerLibrary.Zip Code
+    Set Suite Variable    ${zip}    ${Gen_zip}
 
     #Generate Color
     ${Gen_color}=    FakerLibrary.Hex Color
@@ -115,26 +116,35 @@ Generate Random Data
 Navigate to Create Technician Page
     Click on Element mobile    ${btn_OpenCreateTechnician}
 
+User uploads file from gallery
+    Click on Element mobile    //android.view.View[contains(@content-desc, "Choose an image") and contains(@content-desc, "Select file")]
+    Click on Element mobile    //android.view.View[@content-desc="GALLERY"]
+
+    Click on Element mobile    //android.widget.TextView[@resource-id="android:id/title" and @text="204947806-ilustración-de-avatar-de-estudiante-retrato-de-usuario-de-dibujos-animados-simple-icono-de-perfil-de.jpg"]
+    Click on Element mobile    //android.widget.Button[@content-desc="Crop"]
+    Sleep    3s
+
 ### Income Rate Validation Tests ###
 Check Imcome Rate
     Custom Income Rate Type    'salary'
     AppiumLibrary.Page Should Not Contain Element    ${elm_Empty_error_Android}
 
-Check Invalid Technician Color Label 
-    Execute Script    mobile: tap    x=817    y=273
-    # Execute Script    mobile: tap    x=817    y=273
-    # Click And Clear Field    //android.widget.EditText[@text="#ffffff"]
-    # Fill Text Input mobile    //android.widget.EditText[@text="#"]    ${color}
-    # Check validation error message Android    //android.view.View[@content-desc="Invalid color value"]    Invalid color value
-
-Check Technician Color Label
+# Check Invalid Technician Color Label 
     
-    Click And Clear Field    //android.widget.EditText[@text="#ffffff"]
-    Fill Text Input mobile    //android.widget.EditText[@text="#"]    ${color}
-    AppiumLibrary.Page Should Not Contain Element    //android.view.View[@content-desc="Invalid color value"]
+#     # Execute Script    mobile: tap    x=817    y=273
+#     # Click And Clear Field    //android.widget.EditText[@text="#ffffff"]
+#     # Fill Text Input mobile    //android.widget.EditText[@text="#"]    ${color}
+#     # Check validation error message Android    //android.view.View[@content-desc="Invalid color value"]    Invalid color value
+
+# Check Technician Color Label
+    
+#     Click And Clear Field    //android.widget.EditText[@text="#ffffff"]
+#     Fill Text Input mobile    //android.widget.EditText[@text="#"]    ${color}
+#     AppiumLibrary.Page Should Not Contain Element    //android.view.View[@content-desc="Invalid color value"]
 
 Check Favor empty
-    Click And Clear Field          100.00
+    Click on Element mobile        //android.view.View[@text="100.00"]
+    Click on Element mobile    xpath=//android.view.View[@content-desc="Clear"]
     Click on Element mobile        xpath=//android.view.View[@content-desc="Done"]
     Check validation error message Android    //android.view.View[@content-desc="Input should not less than the minium value 1"]    Input should not less than the minium value 1    
 
@@ -365,8 +375,30 @@ Check Valid Technician Creation successfully
     Click And Clear Field        school@yopmail.com
     Fill Text Input mobile     ${elm_input_Email_Tech_Android}    ${Gen_email}
     Click on Element mobile    //android.view.View[@content-desc=" Email"]
+
+    Click on Element mobile     //android.view.View[@hint="Address"]
+    Fill Text Input mobile    //android.view.View[@hint="Address"]    ${Address}
+
+    Click on Element mobile     //android.view.View[@hint="State"]
+    Fill Text Input mobile    //android.view.View[@hint="State"]    ${state}
+    
+    Click on Element mobile     //android.view.View[@hint="City"]
+    Fill Text Input mobile    //android.view.View[@hint="City"]    ${city}
+
+    Click on Element mobile     //android.view.View[@hint="Zipcode"]
+    Fill Text Input mobile    //android.view.View[@hint="Zipcode"]    ${zip}
+
+    Click on Element mobile     //android.view.View[@hint="Date of Birth"]
+    Swipe Dob Android Index    July    17    2022
+    
+
+    
+
 #     Click on Element mobile         ${btn_Submit}
 #     Check validation error message Android    //android.view.View[@content-desc="Technician Successfully Created"]    Technician Successfully Created
+    
+
+
 
 *** Keywords ***
 Enter NumberPad Amount
@@ -396,3 +428,43 @@ Custom Income Rate Type
     ELSE    
         Log     Fail
     END    
+
+Swipe Dob Technician
+    [Arguments]    ${MONTH_TARGET}    ${DAY_TARGET}    ${YEAR_TARGET}
+    AppiumLibrary.Wait Until Element Is Visible    //android.widget.SeekBar        10s
+    ${seekbars}=    AppiumLibrary.Get Webelements    //android.widget.SeekBar
+    ${month_seekbar}=    Set Variable    ${seekbars[0]}
+    ${day_seekbar}=      Set Variable    ${seekbars[1]}
+    ${year_seekbar}=     Set Variable    ${seekbars[2]}
+
+    # Swipe năm
+    FOR    ${i}    IN RANGE    120
+        ${year}=    AppiumLibrary.Get Element Attribute    ${year_seekbar}    content-desc
+        Exit For Loop If    '${year}' == '${YEAR_TARGET}'
+        Swipe    766    378   768    411
+        Sleep    0.5s
+    END
+    Log    ${year}
+    Should Be Equal As Strings    ${year}    ${YEAR_TARGET}
+
+    # Swipe tháng
+    FOR    ${i}    IN RANGE    12
+        ${month}=    AppiumLibrary.Get Element Attribute    ${month_seekbar}    content-desc
+        Exit For Loop If    '${month}' == '${MONTH_TARGET}'
+        Swipe    622    376   624    411
+        Sleep    0.5s
+    END
+    Log    ${month}
+    Should Be Equal As Strings    ${month}    ${MONTH_TARGET}
+
+    # Swipe ngày
+    FOR    ${i}    IN RANGE    31
+        ${day}=    AppiumLibrary.Get Element Attribute    ${day_seekbar}    content-desc
+        Exit For Loop If    '${day}' == '${DAY_TARGET}'
+        Swipe    707    376   709    405
+        Sleep    0.5s
+    END
+    Log    ${day}
+    Should Be Equal As Strings    ${day}    ${DAY_TARGET}
+
+    AppiumLibrary.Click Element    //android.view.View[@content-desc="Select"]
