@@ -120,6 +120,7 @@ Click on Element mobile
 
 Click And Clear Field
     [Arguments]    ${current_text}
+    AppiumLibrary.Wait Until Element Is Visible    //android.widget.EditText[@text="${current_text}"]
     Click on Element mobile    //android.widget.EditText[@text="${current_text}"]
     Clear Text                //android.widget.EditText[@text="${current_text}"]
 
