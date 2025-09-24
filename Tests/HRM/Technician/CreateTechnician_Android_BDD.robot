@@ -31,14 +31,12 @@ Validate Income Rate - Salary
     Then Income rate should be accepted
 
 # Check Invalid Technician Color Label 
-    
 #     # Execute Script    mobile: tap    x=817    y=273
 #     # Click And Clear Field    //android.widget.EditText[@text="#ffffff"]
 #     # Fill Text Input mobile    //android.widget.EditText[@text="#"]    ${color}
 #     # Check validation error message Android    //android.view.View[@content-desc="Invalid color value"]    Invalid color value
 
 # Check Technician Color Label
-    
 #     Click And Clear Field    //android.widget.EditText[@text="#ffffff"]
 #     Fill Text Input mobile    //android.widget.EditText[@text="#"]    ${color}
 #     AppiumLibrary.Page Should Not Contain Element    //android.view.View[@content-desc="Invalid color value"]
@@ -54,7 +52,6 @@ Validate Favor Valid
     Given User is on Create Technician screen
     When User enters favor amount by keypad    @{favor}
     Then Favor input should be accepted
-
 
 ### First Name Validation Tests ###
 Validate First Name Empty
@@ -78,7 +75,7 @@ Validate First Name Valid
     And User enters first name "${firstName}"
     Then First name should be accepted
 
-# ### Email Validation Tests ###
+### Email Validation Tests ###
 Validate Email Empty
     [Tags]    technician    email    validation
     Given User is on Create Technician screen
@@ -257,13 +254,13 @@ Validate Valid Nick Name
     When User enters Nick Name "${lastName}"
     Then Nick name should be accepted
 
-
 ### Phone Validation Tests ###
 Validate Phone Empty
     [Tags]    technician    phone    validation
     Given User is on Create Technician screen
     When User enter phone number empty
     Then System should display required error message
+
 Validate Phone min length
     [Tags]    technician    phone    validation
     Given User is on Create Technician screen
@@ -300,6 +297,7 @@ Validate Create Technician Successfully
 *** Keywords ***
 User is on Home screen
     No Operation
+    
 System should display Create Technician screen
     No Operation
 
