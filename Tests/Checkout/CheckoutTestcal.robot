@@ -12,6 +12,7 @@ ${Gift_card}        SGC240932327903
 ${Current_amount_Giftcard}        $224.80
 ${voucher_code_10per}    Voucher10per
 ${voucher_code_5fixed}    Voucher5fixed
+@{Phone_Client}           9    6    3    8    5    2    7    4    1    0
 *** Test Cases ***
 #Method Credit Card
 Verify Checkout Credit Card With Voucher Discount And Tip Amount
@@ -370,6 +371,7 @@ Verify Checkout Paid Externally without discount and without tip and send Email
     [Documentation]    Verify full checkout flow without voucher and tip, using external payment,
     ...    and sending receipt to email successfully, followed by choosing no printed receipt.
     Given Find and choose Technician    caisse
+    When Select Client
     When Select service and add on   2    2    'none'    'on'    ${None}
     Then Get value from system and compare with result for billing summary    'no_discount'
     When User proceeds to Payment
@@ -664,6 +666,25 @@ Verify Checkout Cash with discount fixed amount
     
     
 *** Keywords ***
+User at screen Select Client
+    No Operation
+
+Enter NumberPad Amount
+    [Arguments]    @{digits}
+    FOR    ${digit}    IN    @{digits}
+        Click on Element mobile    //android.view.View[@content-desc="${digit}" and @clickable="true"]
+    END
+
+Select Client
+    [Tags]    select_client
+    [Documentation]    Select a client from the client list to proceed with checkout tests.
+    Given User at screen Select Client
+    When Click on Element mobile    //android.view.View[@content-desc="Client" and @index=16]
+    And Click on Element mobile    //android.view.View[contains(@content-desc, "Phone Number")]//android.view.View
+    And Enter NumberPad Amount    @{Phone_Client}
+    And Click on Element mobile    ${elm_btn_Done}
+    And Click on Element mobile    ${elm_btn_Submit}
+    
 User at screen Enter Gift Card Code
     AppiumLibrary.Wait Until Element Is Visible    ${elm_Method_CreditCard}        10s
 
@@ -961,52 +982,52 @@ Get value from system and compare with result for billing summary
     [Arguments]        ${use_discount}
     IF    ${use_discount} == 'have_discount'
         ## Get value Subtotal
-        AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@index=23 and @clickable="false"]
-        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=23 and @clickable="false"]    content-desc
+        AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@index=24 and @clickable="false"]
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=24 and @clickable="false"]    content-desc
         ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
         ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
         Log    ${Subtotal_system_value}
 
         ## Get value Tax
-        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=25 and @clickable="false"]    content-desc
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=26 and @clickable="false"]    content-desc
         ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
         ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
         Log    ${Tax_system_value}
 
         ## Get value Total Balance Due
-        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=30 and @clickable="false"]    content-desc
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=31 and @clickable="false"]    content-desc
         ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
         ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
         Log    ${Total_system_value}
 
         ## Get value Discount
-        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "-$") and @index=21 and @clickable="false"]        content-desc
+        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "-$") and @index=22 and @clickable="false"]        content-desc
         ${Discount_system_value}=    Get Amount Value From Service Desc    ${Discount_system}
         ${Discount_system_value}=    Evaluate    f\"{${Discount_system_value}:.2f}\"
         Log    ${Discount_system_value}
 
     ELSE IF    ${use_discount} == 'no_discount'
         ## Get value Subtotal
-        AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@index=23 and @clickable="false"]
-        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=23 and @clickable="false"]    content-desc
+        AppiumLibrary.Wait Until Element Is Visible    //android.view.View[@index=24 and @clickable="false"]
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=24 and @clickable="false"]    content-desc
         ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
         ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
         Log    ${Subtotal_system_value}
 
         ## Get value Tax
-        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=27 and @clickable="false"]    content-desc
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=26 and @clickable="false"]    content-desc
         ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
         ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
         Log    ${Tax_system_value}
 
         ## Get value Total Balance Due
-        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=28 and @clickable="false"]    content-desc
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[@index=29 and @clickable="false"]    content-desc
         ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
         ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
         Log    ${Total_system_value}
 
         ## Get value Discount
-        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "-$") and @index=21 and @clickable="false"]        content-desc
+        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "-$") and @index=22 and @clickable="false"]        content-desc
         ${Discount_system_value}=    Get Amount Value From Service Desc    ${Discount_system}
         ${Discount_system_value}=    Evaluate    f\"{${Discount_system_value}:.2f}\"
         Log    ${Discount_system_value}
@@ -1030,37 +1051,37 @@ Get value from system and compare with result for Balance Due
         Log    ${BalanceDue_system_value}
 
         ## Get value Subtotal
-        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=4 and @clickable="false"]    content-desc
         ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
         ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
         Log    ${Subtotal_system_value}
 
         ## Get value Discount
-        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=12 and @clickable="false"]    content-desc
+        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=6 and @clickable="false"]    content-desc
         ${Discount_system_value}=    Get Amount Value From Service Desc    ${Discount_system}
         ${Discount_system_value}=    Evaluate    f\"{${Discount_system_value}:.2f}\"
         Log    ${Discount_system_value}
 
         ## Get value Discounted Subtotal
-        ${DiscountedSubtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=14 and @clickable="false"]    content-desc
+        ${DiscountedSubtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=8 and @clickable="false"]    content-desc
         ${DiscountedSubtotal_system_value}=    Get Amount Value From Service Desc    ${DiscountedSubtotal_system}
         ${DiscountedSubtotal_system_value}=    Evaluate    f\"{${DiscountedSubtotal_system_value}:.2f}\"
         Log    ${DiscountedSubtotal_system_value}
 
         ## Get value Tax
-        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=16 and @clickable="false"]    content-desc
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
         ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
         ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
         Log    ${Tax_system_value}
 
         ## Get value Tip
-        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=18 and @clickable="false"]    content-desc
+        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=12 and @clickable="false"]    content-desc
         ${Tip_system_value}=    Get Amount Value From Service Desc    ${Tip_system}
         ${Tip_system_value}=    Evaluate    f\"{${Tip_system_value}:.2f}\"
         Log    ${Tip_system_value}
 
         ## Get value Total
-        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=20 and @clickable="false"]    content-desc
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=14 and @clickable="false"]    content-desc
         ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
         ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
         Log    ${Total_system_value}
@@ -1082,25 +1103,25 @@ Get value from system and compare with result for Balance Due
         Log    ${BalanceDue_system_value}
 
         ## Get value Subtotal
-        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=4 and @clickable="false"]    content-desc
         ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
         ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
         Log    ${Subtotal_system_value}
 
         ## Get value Tax
-        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=12 and @clickable="false"]    content-desc
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=6 and @clickable="false"]    content-desc
         ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
         ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
         Log    ${Tax_system_value}
 
         ## Get value Tip
-        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=14 and @clickable="false"]    content-desc
+        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=8 and @clickable="false"]    content-desc
         ${Tip_system_value}=    Get Amount Value From Service Desc    ${Tip_system}
         ${Tip_system_value}=    Evaluate    f\"{${Tip_system_value}:.2f}\"
         Log    ${Tip_system_value}
 
         ## Get value Total
-        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=16 and @clickable="false"]    content-desc
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
         ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
         ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
         Log    ${Total_system_value}
@@ -1186,37 +1207,37 @@ Get value from system and compare with result for Tip
         Log    ${TotalAmount_system_value}
         
         ## Get value Subtotal
-        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=4 and @clickable="false"]    content-desc
         ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
         ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
         Log    ${Subtotal_system_value}
 
         ## Get value Discount
-        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=12 and @clickable="false"]    content-desc
+        ${Discount_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=6 and @clickable="false"]    content-desc
         ${Discount_system_value}=    Get Amount Value From Service Desc    ${Discount_system}
         ${Discount_system_value}=    Evaluate    f\"{${Discount_system_value}:.2f}\"
         Log    ${Discount_system_value}
 
         ## Get value Discounted Subtotal
-        ${DiscountedSubtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=14 and @clickable="false"]    content-desc
+        ${DiscountedSubtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=8 and @clickable="false"]    content-desc
         ${DiscountedSubtotal_system_value}=    Get Amount Value From Service Desc    ${DiscountedSubtotal_system}
         ${DiscountedSubtotal_system_value}=    Evaluate    f\"{${DiscountedSubtotal_system_value}:.2f}\"
         Log    ${DiscountedSubtotal_system_value}
 
         ## Get value Tax
-        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=16 and @clickable="false"]    content-desc
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
         ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
         ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
         Log    ${Tax_system_value}
 
         ## Get value Tip
-        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=18 and @clickable="false"]    content-desc
+        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=12 and @clickable="false"]    content-desc
         ${Tip_system_value}=    Get Amount Value From Service Desc    ${Tip_system}
         ${Tip_system_value}=    Evaluate    f\"{${Tip_system_value}:.2f}\"
         Log    ${Tip_system_value}
         
         ## Get value Total
-        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=20 and @clickable="false"]    content-desc
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=14 and @clickable="false"]    content-desc
         ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
         ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
         Log    ${Total_system_value}
@@ -1245,25 +1266,25 @@ Get value from system and compare with result for Tip
         Log    ${TotalAmount_system_value}
         
         ## Get value Subtotal
-        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
+        ${Subtotal_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=4 and @clickable="false"]    content-desc
         ${Subtotal_system_value}=    Get Amount Value From Service Desc    ${Subtotal_system}
         ${Subtotal_system_value}=    Evaluate    f\"{${Subtotal_system_value}:.2f}\"
         Log    ${Subtotal_system_value}
 
         ## Get value Tax
-        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=12 and @clickable="false"]    content-desc
+        ${Tax_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=6 and @clickable="false"]    content-desc
         ${Tax_system_value}=    Get Amount Value From Service Desc    ${Tax_system}
         ${Tax_system_value}=    Evaluate    f\"{${Tax_system_value}:.2f}\"
         Log    ${Tax_system_value}
 
         ## Get value Tip
-        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=14 and @clickable="false"]    content-desc
+        ${Tip_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=8 and @clickable="false"]    content-desc
         ${Tip_system_value}=    Get Amount Value From Service Desc    ${Tip_system}
         ${Tip_system_value}=    Evaluate    f\"{${Tip_system_value}:.2f}\"
         Log    ${Tip_system_value}
         
         ## Get value Total
-        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=16 and @clickable="false"]    content-desc
+        ${Total_system}=    AppiumLibrary.Get Element Attribute    //android.view.View[contains(@content-desc, "$") and @index=10 and @clickable="false"]    content-desc
         ${Total_system_value}=    Get Amount Value From Service Desc    ${Total_system}
         ${Total_system_value}=    Evaluate    f\"{${Total_system_value}:.2f}\"
         Log    ${Total_system_value}

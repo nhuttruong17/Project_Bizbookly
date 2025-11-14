@@ -11,6 +11,11 @@ Library    FakerLibrary
 
 
 *** Test Cases ***
+Test Swipe
+    Test Swipe Fast Dob Technician       April   15    1990
+    
+    
+
 Navigate to Update Technician Page
     [Tags]    technician    navigation
     Given User is on Home screen
@@ -377,3 +382,103 @@ Select Technician random
     ${element}=    Get From List    ${technicians}    ${random_index}
     AppiumLibrary.Click Element    ${element}
     Click on Element mobile    ${btn_Update_Technician_Android}
+
+
+
+Test Swipe Fast Dob Technician
+    [Arguments]     ${MONTH_TARGET}    ${DAY_TARGET}    ${YEAR_TARGET}           
+    AppiumLibrary.Wait Until Element Is Visible    xpath=//android.widget.SeekBar        20s
+    ${seekbars}=    AppiumLibrary.Get Webelements    xpath=//android.widget.SeekBar
+    ${month_seekbar}=    Set Variable    ${seekbars[0]}
+    ${day_seekbar}=      Set Variable    ${seekbars[1]}
+    ${year_seekbar}=     Set Variable    ${seekbars[2]}
+
+    # Swipe năm
+    FOR    ${i}    IN RANGE    120
+        ${year}=    AppiumLibrary.Get Element Attribute    ${year_seekbar}    content-desc
+        ${current_year}=    Convert To Integer    ${year}
+        ${year_target_int}=    Convert To Integer    ${YEAR_TARGET}
+        ${swipe_year}=      Evaluate   ${current_year} - ${year_target_int}
+        Log    ${swipe_year}
+        WHILE    ${swipe_year} > 0
+            IF    ${swipe_year} >= 10
+                Swipe    766    252   768    490
+                ${swipe_year}=    Evaluate    ${swipe_year} - 10
+            ELSE IF    ${swipe_year} >= 5
+                Swipe    766    350   768    480
+                ${swipe_year}=    Evaluate    ${swipe_year} - 5
+            ELSE IF    ${swipe_year} >= 2
+                Swipe    766    350   768    400
+                ${swipe_year}=    Evaluate    ${swipe_year} - 2
+            ELSE
+                Swipe    766    378   768    411
+                ${swipe_year}=    Evaluate    ${swipe_year} - 1
+            END
+        END
+        Exit For Loop If    '${year}' == '${YEAR_TARGET}'
+        Sleep    0.5s
+    END
+    # Log    ${year}
+    Should Be Equal As Strings    ${year}    ${YEAR_TARGET}
+
+    # Swipe tháng
+    FOR    ${i}    IN RANGE    12
+        ${month}=    AppiumLibrary.Get Element Attribute    ${month_seekbar}    content-desc
+        ${month_map}=    Create Dictionary    January=1    February=2    March=3    April=4    May=5    June=6    July=7    August=8    September=9    October=10    November=11    December=12
+        ${current_month_int}=    Get From Dictionary    ${month_map}    ${month}
+        ${month_target_int}=    Get From Dictionary    ${month_map}    ${MONTH_TARGET}
+        ${swipe_month}=    Evaluate    abs(int(${month_target_int}) - int(${current_month_int}))
+        
+        Log    ${swipe_month}
+        WHILE    ${swipe_month} > 0
+            IF    ${swipe_month} >= 10
+                Swipe    622    175   624    411
+                ${swipe_month}=    Evaluate    ${swipe_month} - 10
+            ELSE IF    ${swipe_month} >= 5
+                Swipe    622    280   624    411
+                ${swipe_month}=    Evaluate    ${swipe_month} - 5
+            ELSE IF    ${swipe_month} >= 2
+                Swipe    622    360   624    411
+                ${swipe_month}=    Evaluate    ${swipe_month} - 2
+            ELSE
+                Swipe    622    376   624    411
+                ${swipe_month}=    Evaluate    ${swipe_month} - 1
+            END
+        END
+        Exit For Loop If    '${month}' == '${MONTH_TARGET}'
+        Sleep    0.5s
+    END
+    Log    ${month}
+    Should Be Equal As Strings    ${month}    ${MONTH_TARGET}
+
+    # Swipe ngày
+    FOR    ${i}    IN RANGE    31
+        ${day}=    AppiumLibrary.Get Element Attribute    ${day_seekbar}    content-desc
+        ${current_day}=    Convert To Integer    ${day}
+        ${day_target_int}=    Convert To Integer    ${DAY_TARGET}
+        ${swipe_day}=    Evaluate    abs(int(${current_day}) - int(${day_target_int}))
+        Log    ${swipe_day}
+        WHILE    ${swipe_day} > 0
+            IF    ${swipe_day} >= 10
+                Swipe    713    376   709    614
+                ${swipe_day}=    Evaluate    ${swipe_day} - 10
+            ELSE IF    ${swipe_day} >= 5
+                Swipe    713    376   709    510
+                ${swipe_day}=    Evaluate    ${swipe_day} - 5
+            ELSE IF    ${swipe_day} >= 2
+                Swipe    713    376   709    426
+                ${swipe_day}=    Evaluate    ${swipe_day} - 2
+            ELSE
+                Swipe    713    376   709    405
+                ${swipe_day}=    Evaluate    ${swipe_day} - 1
+            END
+        END
+        Exit For Loop If    '${day}' == '${DAY_TARGET}'
+        Sleep    0.5s
+    END
+    Log    ${day}
+    Should Be Equal As Strings    ${day}    ${DAY_TARGET}
+
+    AppiumLibrary.Click Element    ${btn_Select}
+
+
