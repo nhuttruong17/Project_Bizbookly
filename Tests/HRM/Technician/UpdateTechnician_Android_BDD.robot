@@ -11,13 +11,9 @@ Library    FakerLibrary
 
 
 *** Test Cases ***
-Test Swipe
-    Test Swipe Fast Dob Technician       April   15    1990
-    
-    
-
 Navigate to Update Technician Page
     [Tags]    technician    navigation
+    [Documentation]    Verify that user can navigate to Update Technician screen
     Given User is on Home screen
     When Select Technician random
     And Generate Random Data Technician
@@ -25,12 +21,14 @@ Navigate to Update Technician Page
 
 Validate Upload File From Gallery
     [Tags]    technician    upload
+    [Documentation]    Verify that user can upload file from gallery successfully
     Given User is on Update Technician screen
     When User uploads file from gallery
     Then System should display file uploaded successfully
 
 Validate Income Rate - Salary
     [Tags]    technician    income    salary
+    [Documentation]    Verify that income rate input accepts valid salary type
     Given User is on Update Technician screen
     When User selects income rate type "${Type_Salary}"
     Then Income rate should be accepted
@@ -48,12 +46,14 @@ Validate Income Rate - Salary
 
 Validate Favor Empty
     [Tags]    technician    favor    validation
+    [Documentation]    Verify that system displays error when favor input is empty
     Given User is on Update Technician screen
     When User clears favor input
     Then System should display favor required error
 
 Validate Favor Valid
     [Tags]    technician    favor    positive
+    [Documentation]    Verify that favor input accepts valid favor amount
     Given User is on Update Technician screen
     When User enters favor amount by keypad    @{favor}
     Then Favor input should be accepted
@@ -61,6 +61,7 @@ Validate Favor Valid
 ### First Name Validation Tests ###
 Validate First Name Empty
     [Tags]    technician    first_name    validation
+    [Documentation]    Verify that system displays error when first name input is empty
     Given User is on Update Technician screen
     When User enters first name "${EMPTY}"
     And User submits the update technician form
@@ -68,12 +69,14 @@ Validate First Name Empty
 
 Validate First Name Min Length
     [Tags]    technician    first_name    validation
+    [Documentation]    Verify that system displays error when first name input is below minimum length
     Given User is on Update Technician screen
     When User enters first name "a"
     Then System should display first name min length error
 
 Validate First Name Valid
     [Tags]    technician    first_name    positive
+    [Documentation]    Verify that first name input accepts valid first name
     Given User is on Update Technician screen
     When User enters first name "${firstName}"
     Then First name should be accepted
@@ -81,18 +84,21 @@ Validate First Name Valid
 # ### Last Name Validation Tests ###
 Validate Last Name Empty
     [Tags]    technician    last_name    validation
+    [Documentation]    Verify that system displays error when last name input is empty
     Given User is on Update Technician screen
     When User enters last name "${EMPTY}"
     Then System should display last name required error
 
 Validate Last Name Min Length
     [Tags]    technician    last_name    validation
+    [Documentation]    Verify that system displays error when last name input is below minimum length
     Given User is on Update Technician screen
     When User enters last name "b"
     Then System should display last name min length error
 
 Validate Last Name Valid
     [Tags]    technician    last_name    positive
+    [Documentation]    Verify that last name input accepts valid last name
     Given User is on Update Technician screen
     When User enters last name "${lastName}"
     Then Last name should be accepted
@@ -100,24 +106,28 @@ Validate Last Name Valid
 ### Nick Name Validation Tests ###
 Validate Nick Name Empty
     [Tags]    technician    nick_name    validation
+    [Documentation]    Verify that system displays error when nick name input is empty
     Given User is on Update Technician screen
     When User enters Nick Name "${EMPTY}"
     Then System should display required error message
 
 Validate Nick Name Min Length
     [Tags]    technician    nick_name    validation
+    [Documentation]    Verify that system displays error when nick name input is below minimum length
     Given User is on Update Technician screen
     When User enters Nick Name "a"
     Then System should display Nick name min length error
 
 Validate Valid Nick Name
     [Tags]    technician    nick_name    positive
+    [Documentation]    Verify that nick name input accepts valid nick name
     Given User is on Update Technician screen
     When User enters Nick Name "${lastName}"
     Then Nick name should be accepted
 
 Validate Gender Selection
     [Tags]    technician    gender    positive
+    [Documentation]    Verify that Gender input accepts valid gender
     Given User is on Update Technician screen
     When User select gender on combo box
     Then Gender should be accepted
@@ -133,6 +143,7 @@ Validate Gender Selection
 
 Validate Update Technician Successfully
     [Tags]    technician    positive
+    [Documentation]  Verify that user can update technician successfully with valid information
     Given User is on Update Technician screen
     When User enter valid information technician
     # Then System should display update technician success

@@ -13,6 +13,7 @@ Library    FakerLibrary
 *** Test Cases ***
 Navigate to Create Technician Page
     [Tags]    technician    navigation
+    [Documentation]    Verify that user can navigate to Create Technician screen from Home screen
     Given User is on Home screen
     When Click on Element mobile    ${btn_OpenCreateTechnician}
     And Generate Random Data Technician
@@ -20,12 +21,14 @@ Navigate to Create Technician Page
 
 Validate Upload File From Gallery
     [Tags]    technician    upload
+    [Documentation]    Verify that user can upload file from gallery successfully
     Given User is on Create Technician screen
     When User uploads file from gallery
     Then System should display file uploaded successfully
 
 Validate Income Rate - Salary
     [Tags]    technician    income    salary
+    [Documentation]    Verify that income rate input accepts valid salary type
     Given User is on Create Technician screen
     When User selects income rate type "${Type_Salary}"
     Then Income rate should be accepted
@@ -43,12 +46,14 @@ Validate Income Rate - Salary
 
 Validate Favor Empty
     [Tags]    technician    favor    validation
+    [Documentation]    Verify that system displays error when favor input is empty
     Given User is on Create Technician screen
     When User clears favor input
     Then System should display favor required error
 
 Validate Favor Valid
     [Tags]    technician    favor    positive
+    [Documentation]    Verify that favor input accepts valid amount
     Given User is on Create Technician screen
     When User enters favor amount by keypad    @{favor}
     Then Favor input should be accepted
@@ -56,6 +61,7 @@ Validate Favor Valid
 ### First Name Validation Tests ###
 Validate First Name Empty
     [Tags]    technician    first_name    validation
+    [Documentation]    Verify that system displays error when first name input is empty
     Given User is on Create Technician screen
     When Swipe    905    740    903    213
     When User enters first name "${EMPTY}"
@@ -64,12 +70,14 @@ Validate First Name Empty
 
 Validate First Name Min Length
     [Tags]    technician    first_name    validation
+    [Documentation]    Verify that system displays error when first name input is below minimum length
     Given User is on Create Technician screen
     When User enters first name "a"
     Then System should display first name min length error
 
 Validate First Name Valid
     [Tags]    technician    first_name    positive
+    [Documentation]    Verify that first name input accepts valid first name
     Given User is on Create Technician screen
     When Click And Clear Field      a
     And User enters first name "${firstName}"
@@ -90,6 +98,7 @@ Validate email missing @
 
 Validate email missing local part
     [Tags]    technician    email    validation
+    [Documentation]    Verify that system displays error when email is missing local part
     Given User is on Create Technician screen
     When Click And Clear Field      userexample.com
     And User enters email "@example.com"
@@ -97,6 +106,7 @@ Validate email missing local part
 
 Validate email missing domain    
     [Tags]    technician    email    validation
+    [Documentation]    Verify that system displays error when email is missing domain
     Given User is on Create Technician screen
     When Click And Clear Field      @example.com
     And User enters email "user@"
@@ -104,6 +114,7 @@ Validate email missing domain
 
 Validate email contains spaces
     [Tags]    technician    email    validation
+    [Documentation]    Verify that system displays error when email contains spaces
     Given User is on Create Technician screen
     When Click And Clear Field      user@
     And User enters email "user @example.com"
@@ -111,6 +122,7 @@ Validate email contains spaces
 
 Validate email contains special characters
     [Tags]    technician    email    validation
+    [Documentation]    Verify that system displays error when email contains special characters
     Given User is on Create Technician screen
     When Click And Clear Field      user @example.com
     And User enters email "user!"
@@ -118,6 +130,7 @@ Validate email contains special characters
 
 Validate email multiple @
     [Tags]    technician    email    validation
+    [Documentation]    Verify that system displays error when email contains multiple @ symbols
     Given User is on Create Technician screen
     When Click And Clear Field      user!
     And User enters email "user@@example.com"
@@ -125,6 +138,7 @@ Validate email multiple @
 
 Validate email multiple dots in domain
     [Tags]    technician    email    validation
+    [Documentation]    Verify that system displays error when email domain contains multiple dots
     Given User is on Create Technician screen
     When Click And Clear Field      user@@example.com
     And User enters email "user@example..com"
@@ -132,6 +146,7 @@ Validate email multiple dots in domain
 
 Validate email dot at start of domain
     [Tags]    technician    email    validation
+    [Documentation]    Verify that system displays error when email domain starts with a dot
     Given User is on Create Technician screen
     When Click And Clear Field      user@example..com
     And User enters email "user@.example.com"
@@ -139,6 +154,7 @@ Validate email dot at start of domain
 
 Validate email dot at end of domain
     [Tags]    technician    email    validation
+    [Documentation]    Verify that system displays error when email domain ends with a dot
     Given User is on Create Technician screen
     When Click And Clear Field      user@.example.com
     And User enters email "user@example."
@@ -147,18 +163,21 @@ Validate email dot at end of domain
 # ### Last Name Validation Tests ###
 Validate Last Name Empty
     [Tags]    technician    last_name    validation
+    [Documentation]    Verify that system displays error when last name input is empty
     Given User is on Create Technician screen
     When User enters last name "${EMPTY}"
     Then System should display last name required error
 
 Validate Last Name Min Length
     [Tags]    technician    last_name    validation
+    [Documentation]    Verify that system displays error when last name input is below minimum length
     Given User is on Create Technician screen
     When User enters last name "b"
     Then System should display last name min length error
 
 Validate Last Name Valid
     [Tags]    technician    last_name    positive
+    [Documentation]    Verify that last name input accepts valid last name
     Given User is on Create Technician screen
     When Click And Clear Field   b
     And User enters last name "${lastName}"
@@ -167,12 +186,14 @@ Validate Last Name Valid
 # ### Password Validation Tests ###
 Validate Password Empty
     [Tags]    technician    password    validation
+    [Documentation]    Verify that system displays error when password input is empty
     Given User is on Create Technician screen
     When User enters password "${EMPTY}"
     Then System should display required error message
 
 Validate Password Min Length
     [Tags]    technician    password    validation
+    [Documentation]    Verify that system displays error when password input is below minimum length
     Given User is on Create Technician screen
     When User click show eye password
     And User enters password "a"
@@ -180,6 +201,7 @@ Validate Password Min Length
 
 Validate Password Missing Uppercase
     [Tags]    technician    password    validation
+    [Documentation]    Verify that system displays error when password input is missing uppercase letter
     Given User is on Create Technician screen
     When Click And Clear Field    a
     And User enters password "password1!"
@@ -187,6 +209,7 @@ Validate Password Missing Uppercase
 
 Validate Password Missing Lowercase
     [Tags]    technician    password    validation
+    [Documentation]    Verify that system displays error when password input is missing lowercase letter
     Given User is on Create Technician screen
     When Click And Clear Field    password1!
     And User enters password "PASSWORD1!"
@@ -194,6 +217,7 @@ Validate Password Missing Lowercase
 
 Validate Password Missing Number
     [Tags]    technician    password    validation
+    [Documentation]    Verify that system displays error when password input is missing number
     Given User is on Create Technician screen
     When Click And Clear Field    PASSWORD1!
     And User enters password "Password!"
@@ -201,6 +225,7 @@ Validate Password Missing Number
 
 Validate Password Missing Special Character
     [Tags]    technician    password    validation
+    [Documentation]    Verify that system displays error when password input is missing special character
     Given User is on Create Technician screen
     When Click And Clear Field    Password!
     And User enters password "Password1"
@@ -208,6 +233,7 @@ Validate Password Missing Special Character
 
 Validate Valid Password
     [Tags]    technician    password    positive
+    [Documentation]    Verify that password input accepts valid password
     Given User is on Create Technician screen
     When Click And Clear Field    Password1
     And User enters password "Password1!"
@@ -216,6 +242,7 @@ Validate Valid Password
 ### Re-Enter Password Validation Tests ###
 Validate Re-Enter Password Empty
     [Tags]    technician    re_password    validation
+    [Documentation]    Verify that system displays error when re-enter password input is empty
     Given User is on Create Technician screen
     When User click show eye re-enter password
     When User re-enter password "${EMPTY}"
@@ -223,12 +250,14 @@ Validate Re-Enter Password Empty
 
 Validate Re-Enter Password Mismatch
     [Tags]    technician    re_password    validation
+    [Documentation]    Verify that system displays error when re-enter password does not match password
     Given User is on Create Technician screen
     And User re-enter password "Password2!"
     Then System should display Re-Enter Password mismatch
 
 Validate Valid Re-Enter Password
     [Tags]    technician    re_password    positive
+    [Documentation]    Verify that re-enter password input accepts matching password
     Given User is on Create Technician screen
     When Click And Clear Field    Password2!
     And User re-enter password "Password1!"
@@ -237,18 +266,21 @@ Validate Valid Re-Enter Password
 ### Nick Name Validation Tests ###
 Validate Nick Name Empty
     [Tags]    technician    nick_name    validation
+    [Documentation]    Verify that system displays error when nick name input is empty
     Given User is on Create Technician screen
     When User enters Nick Name "${EMPTY}"
     Then System should display required error message
 
 Validate Nick Name Min Length
     [Tags]    technician    nick_name    validation
+    [Documentation]    Verify that system displays error when nick name input is below minimum length
     Given User is on Create Technician screen
     When User enters Nick Name "a"
     Then System should display Nick name min length error
 
 Validate Valid Nick Name
     [Tags]    technician    nick_name    positive
+    [Documentation]    Verify that nick name input accepts valid nick name
     Given User is on Create Technician screen
     When Click And Clear Field    a    
     When User enters Nick Name "${lastName}"
@@ -257,24 +289,28 @@ Validate Valid Nick Name
 ### Phone Validation Tests ###
 Validate Phone Empty
     [Tags]    technician    phone    validation
+    [Documentation]    Verify that system displays error when phone input is empty
     Given User is on Create Technician screen
     When User enter phone number empty
     Then System should display required error message
 
 Validate Phone min length
     [Tags]    technician    phone    validation
+    [Documentation]    Verify that system displays error when phone input is below minimum length
     Given User is on Create Technician screen
     When User enter min phone number
     Then System should display phone number error message
 
 Validate InValid Phone
     [Tags]    technician    phone    validation
+    [Documentation]    Verify that system displays error when phone input is invalid
     Given User is on Create Technician screen
     When User enter invalid phone number
     Then System should display phone number error message
 
 Validate Gender Selection
     [Tags]    technician    gender    positive
+    [Documentation]    Verify that gender selection works correctly
     Given User is on Create Technician screen
     When User select gender on combo box
     Then Gender should be accepted
@@ -282,6 +318,7 @@ Validate Gender Selection
 ## Valid Technician Creation ##
 Validate Create Technician Unsuccessfully (Email/Phone Exists)
     [Tags]    technician    negative
+    [Documentation]    Verify that system displays error when creating technician with existing email/phone
     Given User is on Create Technician screen
     When User enters phone number "@{phoneNumber_exists}"
     And User enters email exists "school@yopmail.com"
@@ -290,6 +327,7 @@ Validate Create Technician Unsuccessfully (Email/Phone Exists)
 
 Validate Create Technician Successfully
     [Tags]    technician    positive
+    [Documentation]    Verify that user can create technician successfully with valid information
     Given User is on Create Technician screen
     When User enter valid information technician
     Then System should display create technician success

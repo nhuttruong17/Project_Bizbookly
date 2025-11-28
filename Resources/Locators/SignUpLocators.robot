@@ -1,6 +1,6 @@
 *** Variables ***
 ############## IOS Sign Up Locators ##############
-${Role_Salon}    //XCUIElementTypeStaticText[@name="SALON\n Sign In"]
+${Role_Salon}                           //XCUIElementTypeStaticText[@name="SALON\n Sign In"]
 ${elm_error_invalid_PhoneNumber_iOS}    //XCUIElementTypeStaticText[@name="Invalid format Phone Number"]
 ${Expected_invalid_PhoneNumber_iOS}     Invalid format Phone Number
 
@@ -38,7 +38,7 @@ ${elm_Title_Personal_iOS}         xpath=(//XCUIElementTypeStaticText[@name="Pers
 ${elm_Title_Business_iOS}         xpath=(//XCUIElementTypeStaticText[@name="Business Information"])[1]
 ${Expected_Title_Business_iOS}    Business Information
 
-${elm_input_StoreName_iOS}         //XCUIElementTypeTextField[@name="Enter store name"]
+${elm_input_StoreName_iOS}          //XCUIElementTypeTextField[@name="Enter store name"]
 
 ${elm_input_StressAddress_iOS}      //XCUIElementTypeTextField[@name="Enter street address"]
 
@@ -49,7 +49,7 @@ ${elm_btn_Done_iOS}            //XCUIElementTypeStaticText[@name="Done"]
 ${elm_input_aboutUs_iOS}       //XCUIElementTypeTextField[@name="Enter about us"]
 ${elm_Title_aboutUs_iOS}       //XCUIElementTypeStaticText[@name="About us"]
 
-${elm_input_City_iOS}         //XCUIElementTypeTextField[@name="Enter city"]
+${elm_input_City_iOS}          //XCUIElementTypeTextField[@name="Enter city"]
 
 ${elm_error_invalid_PhoneNumber}        //XCUIElementTypeStaticText[@name="Invalid format Phone Number"]
 ${Expected_invalid_PhoneNumber}         Invalid format Phone Number
@@ -71,34 +71,34 @@ ${Expected_error_255Characters_iOS}             This field mustn't be 255 charac
 ${elm_error_AboutUs_iOS}              //XCUIElementTypeStaticText[@name="This field mustn't be 500 characters"]
 ${Expected_error_AboutUs_iOS}         This field mustn't be 500 characters
 
-${elm_Choose_Image_iOS}    xpath=//XCUIElementTypeStaticText[contains(@name, "Choose an image") and contains(@name, "Select file")]
+${elm_Choose_Image_iOS}                xpath=//XCUIElementTypeStaticText[contains(@name, "Choose an image") and contains(@name, "Select file")]
 ${elm_Title_RegisterSuccess_iOS}       //XCUIElementTypeStaticText[@name="Registration has been successfully completed."]
 ${Expected_RegisterSuccess_iOS}        Registration has been successfully completed.
 
 ############## ANDROID Sign Up Locators ##############
-${Role_Salon_Android}               //android.view.View[contains(@content-desc, "SALON")]
+${Role_Salon_Android}          //android.view.View[contains(@content-desc, "SALON")]
 ${elm_SignUp_Android}          //android.view.View[@content-desc="Sign Up"]
 ${btn_Next_Android}            //android.view.View[@content-desc="Next"]
 
-${elm_input_Email_Android}              //android.widget.EditText[contains(@hint, "Email")]
-${elm_error_Email_invalid_Android}      //android.view.View[contains(@content-desc, "Email invalid")]
-${Expected_Email_invalid_Android}       Email invalid
-${elm_error_input_field_Android}        //android.view.View[contains(@content-desc, "This field is required")]
-${elm_error_validation_Android_1}       xpath=(//android.view.View[@content-desc="This field is required"])[1]
-${Expected_error_validation_Android}    This field is required
-${elm_show_eye_newPassword_Android}        xpath=(//android.widget.EditText[@hint="Enter Password"])[1]/android.widget.ImageView
-${elm_input_NewPassword_Android}           xpath=(//android.widget.EditText[@hint="Enter Password"])[1]
-${elm_input_NewPassword_Android_2}         xpath=(//android.widget.EditText[@hint="Enter Password"])[1]
-${elm_Title_Account_Android}            //android.view.View[@content-desc="Account"]
-${elm_error_minPassword_Android}        //android.view.View[contains(@content-desc, "Password must be 8 characters or longer!")]
-${Expected_error_minPassword_Android}   Password must be 8 characters or longer!
-${elm_error_rule_Android}               //android.view.View[contains(@content-desc, "Password have a least 1 special character")]
-${Expected_rule_Android}                Password have a least 1 special character, 1 number, 1 normal character, 1 capital character
-${elm_error_samePassword_Android}       //android.view.View[contains(@content-desc, "Confirm password must be the same as password!")]
-${Expected_samePassword_Android}        Confirm password must be the same as password!
-${elm_show_eye_confirmPassword_Android}    xpath=(//android.widget.EditText)[3]/android.widget.ImageView
-${elm_email_exist_Android}              //android.view.View[contains(@content-desc, "The email address already existing.")]
-${Expected_email_exist_Android}         The email address already existing.
+${elm_input_Email_Android}                  //android.widget.EditText[contains(@hint, "Email")]
+${elm_error_Email_invalid_Android}          //android.view.View[contains(@content-desc, "Email invalid")]
+${Expected_Email_invalid_Android}           Email invalid
+${elm_error_input_field_Android}            //android.view.View[contains(@content-desc, "This field is required")]
+${elm_error_validation_Android_1}           xpath=(//android.view.View[@content-desc="This field is required"])[1]
+${Expected_error_validation_Android}        This field is required
+${elm_show_eye_newPassword_Android}         xpath=(//android.widget.EditText[@hint="Enter Password"])[1]/android.widget.ImageView
+${elm_input_NewPassword_Android}            xpath=(//android.widget.EditText[@hint="Enter Password"])[1]
+${elm_input_NewPassword_Android_2}          xpath=(//android.widget.EditText[@hint="Enter Password"])[1]
+${elm_Title_Account_Android}                //android.view.View[@content-desc="Account"]
+${elm_error_minPassword_Android}            //android.view.View[contains(@content-desc, "Password must be 8 characters or longer!")]
+${Expected_error_minPassword_Android}       Password must be 8 characters or longer!
+${elm_error_rule_Android}                   //android.view.View[contains(@content-desc, "Password have a least 1 special character")]
+${Expected_rule_Android}                    Password have a least 1 special character, 1 number, 1 normal character, 1 capital character
+${elm_error_samePassword_Android}           //android.view.View[contains(@content-desc, "Confirm password must be the same as password!")]
+${Expected_samePassword_Android}            Confirm password must be the same as password!
+${elm_show_eye_confirmPassword_Android}     xpath=(//android.widget.EditText)[3]/android.widget.ImageView
+${elm_email_exist_Android}                  //android.view.View[contains(@content-desc, "The email address already existing.")]
+${Expected_email_exist_Android}             The email address already existing.
 
 ${elm_input_FirstName_Android}         //android.widget.EditText[@hint="Enter first name"]
 ${elm_input_LastName_Android}          //android.widget.EditText[@hint="Enter last name"]  
@@ -118,7 +118,7 @@ ${elm_btn_Done_Android}            //android.view.View[@content-desc="Done"]
 ${elm_input_aboutUs_Android}       //android.widget.EditText[@hint="Enter about us"]
 ${elm_Title_aboutUs_Android}       //android.view.View[@hint="About us"]
 
-${elm_input_City_Android}         //android.widget.EditText[@hint="Enter city"]
+${elm_input_City_Android}          //android.widget.EditText[@hint="Enter city"]
 
 ${elm_error_invalid_PhoneNumber_Android}        //android.view.View[contains(@content-desc, "Invalid format Phone Number")]
 ${Expected_invalid_PhoneNumber_Android}         Invalid format Phone Number
@@ -140,7 +140,7 @@ ${Expected_error_255Characters_Android}             This field mustn't be 255 ch
 ${elm_error_AboutUs_Android}              //android.view.View[contains(@content-desc, "This field mustn't be 500 characters")]
 ${Expected_error_AboutUs_Android}         This field mustn't be 500 characters
 
-${elm_Choose_Image_Android}    //android.view.View[contains(@content-desc, "Choose an image") and contains(@content-desc, "Select file")]
+${elm_Choose_Image_Android}                //android.view.View[contains(@content-desc, "Choose an image") and contains(@content-desc, "Select file")]
 ${elm_Title_RegisterSuccess_Android}       //android.view.View[contains(@content-desc, "Registration has been successfully completed.")]
 ${Expected_RegisterSuccess_Android}        Registration has been successfully completed.
 

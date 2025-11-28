@@ -46,18 +46,18 @@ ${Expected_Phone_exist_Tech_Android}           Phone number already exists.
 
 ${elm_Create_Technician_Success_Android}              xpath=//android.view.View[@content-desc="Technician Successfully Created"]    
 ${Expected_Create_Technician_Success_Android}         Technician Successfully Created
-${elm_input_Address_Tech_Android}                 xpath=//android.widget.EditText[@hint="Address"]
-${elm_Title_Email_Tech_Android}                   xpath=//android.view.View[@content-desc=" Email"]
-${elm_input_State_Tech_Android}                   xpath=//android.widget.EditText[@hint="State"]
-${elm_input_City_Tech_Android}                    xpath=//android.widget.EditText[@hint="City"]
-${elm_input_Zipcode_Tech_Android}                 xpath=//android.view.View[@hint="Zipcode"]
-# ${elm_input_Dob_Tech_Android}                     xpath=//android.view.View[@hint="Date of Birth"]
-${elm_input_Dob_Tech_Android}                     xpath=//android.view.View[@index=23]
+${elm_input_Address_Tech_Android}                     xpath=//android.widget.EditText[@hint="Address"]
+${elm_Title_Email_Tech_Android}                       xpath=//android.view.View[@content-desc=" Email"]
+${elm_input_State_Tech_Android}                       xpath=//android.widget.EditText[@hint="State"]
+${elm_input_City_Tech_Android}                        xpath=//android.widget.EditText[@hint="City"]
+${elm_input_Zipcode_Tech_Android}                     xpath=//android.view.View[@hint="Zipcode"]
+# ${elm_input_Dob_Tech_Android}                       xpath=//android.view.View[@hint="Date of Birth"]
+${elm_input_Dob_Tech_Android}                         xpath=//android.view.View[@index=23]
 
 @{phoneNumber_exists}                             9    2    3    4    5    6    7    8    9    0
 ${Type_Salary}                                    'salary'
 ${Type_Services}                                  'services'
 ### Update Technician Android Locators ###
-${btn_Update_Technician_Android}                    xpath=//android.view.View[@content-desc="Update Information"]
+${btn_Update_Technician_Android}                      xpath=//android.view.View[@content-desc="Update Information"]
 ${elm_Update_Technician_Success_Android}              xpath=//android.view.View[@content-desc="Updated the technician successfully"]
 ${Expected_Create_Technician_Success_Android}         Updated the technician successfully

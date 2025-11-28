@@ -1547,6 +1547,3 @@ Select list of add on
     Set Suite Variable    ${ORIGINAL_DISCOUNT_VALUE}  ${final_discount_str} 
     Set Suite Variable    ${SELECTED_SERVICE_DESCS}   ${selected_service_texts}
     Set Suite Variable    ${DISCOUNT_TYPE_APPLIED}    ${discount_type} 
-
-
-
